@@ -1,0 +1,67 @@
+inherited Frm_ConsultaPaises: TFrm_ConsultaPaises
+  Caption = 'Frm_ConsultaPaises'
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFundo: TPanel
+    ExplicitLeft = 0
+    ExplicitTop = 0
+    inherited pnlGrid: TPanel
+      ExplicitLeft = 0
+      ExplicitTop = 97
+      ExplicitWidth = 712
+      ExplicitHeight = 303
+      inherited DBGrid1: TDBGrid
+        DataSource = dsPaises
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'codigo'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = 3947580
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'sigla'
+            Visible = True
+          end>
+      end
+    end
+  end
+  object TDset_Paises: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 496
+    Top = 321
+    object TDset_Paisescodigo: TIntegerField
+      Alignment = taLeftJustify
+      DisplayLabel = 'C'#243'd.'
+      FieldName = 'codigo'
+    end
+    object TDset_Paisesnome: TStringField
+      Alignment = taCenter
+      DisplayLabel = 'Pa'#237's'
+      FieldName = 'nome'
+      Size = 40
+    end
+    object TDset_Paisessigla: TStringField
+      Alignment = taCenter
+      DisplayLabel = 'Sigla'
+      FieldName = 'sigla'
+    end
+  end
+  object dsPaises: TDataSource
+    DataSet = TDset_Paises
+    Left = 464
+    Top = 321
+  end
+end

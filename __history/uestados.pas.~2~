@@ -1,0 +1,19 @@
+unit uestados;
+
+interface
+
+uses
+  UGeral,
+  UPaises;
+
+type
+  TEstado = class( TGeral )
+  private
+  protected
+  public
+
+  end;
+
+implementation
+
+end.

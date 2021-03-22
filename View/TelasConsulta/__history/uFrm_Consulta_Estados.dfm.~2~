@@ -1,0 +1,17 @@
+inherited Frm_Consulta_Estados: TFrm_Consulta_Estados
+  Caption = 'Frm_Consulta_Estados'
+  ExplicitTop = -88
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DsEstados: TDataSource
+    DataSet = TDset_Estados
+    Left = 408
+    Top = 321
+  end
+  object TDset_Estados: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 424
+    Top = 257
+  end
+end

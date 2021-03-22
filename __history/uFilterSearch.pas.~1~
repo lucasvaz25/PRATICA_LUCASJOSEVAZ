@@ -1,0 +1,32 @@
+unit uFilterSearch;
+
+interface
+
+type
+  TFilterSearch = class
+  private
+    FCodigo: Integer;
+    FParametro: string;
+    procedure SetCodigo( const Value: Integer );
+    procedure SetParametro( const Value: string );
+  public
+    property Codigo: Integer read FCodigo write SetCodigo;
+    property Parametro: string read FParametro write SetParametro;
+
+  end;
+
+implementation
+
+{ TFilterSearch }
+
+procedure TFilterSearch.SetCodigo( const Value: Integer );
+begin
+  FCodigo := Value;
+end;
+
+procedure TFilterSearch.SetParametro( const Value: string );
+begin
+  FParametro := Value;
+end;
+
+end.

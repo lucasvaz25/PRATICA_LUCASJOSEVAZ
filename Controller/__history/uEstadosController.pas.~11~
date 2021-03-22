@@ -1,0 +1,88 @@
+unit uEstadosController;
+
+interface
+
+uses
+  UFilterSearch,
+  System.Classes,
+  System.Contnrs,
+  System.SysUtils,
+
+  UController,
+  UEstadosDao,
+  UEstados;
+
+type
+  TEstadosController = class( TController )
+  protected
+    EstadoDao: TEstadosDao;
+  public
+    constructor Create;
+    destructor Destroy;
+
+    function GetEntity: TEstado;
+
+    function Inserir( const Value: TObject ): Boolean; virtual;
+    function Editar( const Value: TObject ): Boolean; virtual;
+    function Deletar( const VID: Integer ): Boolean; virtual;
+    function Consulta( AFilter: TFilterSearch ): TObjectList; virtual;
+    function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; virtual;
+    // procedure SetDM( Value: TObject ); virtual;
+    function VerificaExiste( Str: string ): Boolean;
+  end;
+
+implementation
+
+{ TEstadosController }
+
+function TEstadosController.Consulta( AFilter: TFilterSearch ): TObjectList;
+begin
+  Result := EstadoDao.Consulta( AFilter );
+end;
+
+constructor TEstadosController.Create;
+begin
+  inherited;
+  EstadoDao := TEstadosDao.Create;
+end;
+
+function TEstadosController.Deletar( const VID: Integer ): Boolean;
+begin
+  Result := EstadoDao.Deletar( VID );
+end;
+
+destructor TEstadosController.Destroy;
+begin
+  EstadoDao.Destroy;
+  inherited;
+end;
+
+function TEstadosController.Editar( const Value: TObject ): Boolean;
+begin
+  Result := EstadoDao.Editar( Value );
+end;
+
+function TEstadosController.GetEntity: TEstado;
+begin
+  if ( Self.Entity = nil ) then
+    Self.Entity := TEstado.Create;
+  Result        := Entity;
+end;
+
+function TEstadosController.Inserir( const Value: TObject ): Boolean;
+begin
+  Result := EstadoDao.Inserir( Value );
+end;
+
+function TEstadosController.Recuperar( const VID: Integer;
+            out Obj: TObject ): Boolean;
+begin
+  Result := EstadoDao.Recuperar( VID, Obj );
+end;
+
+function TEstadosController.VerificaExiste( Str: string ): Boolean;
+begin
+  Result := EstadoDao.VerificaExiste( Str );
+end;
+
+end.

@@ -1,0 +1,23 @@
+unit uController;
+
+interface
+
+type
+  TController = class
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+
+    function Inserir( const Value: TObject ): Boolean; virtual;
+    function Editar( const Value: TObject ): Boolean; virtual;
+    function Deletar( const VID: Integer ): Boolean; virtual;
+    function Consulta( AFilter: TFilterSearch ): TObjectList; virtual;
+    function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; virtual;
+    procedure SetDM( Value: TObject ); virtual;
+  end;
+
+implementation
+
+end.

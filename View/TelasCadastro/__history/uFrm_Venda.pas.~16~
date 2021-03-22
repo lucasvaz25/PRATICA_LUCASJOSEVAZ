@@ -1,0 +1,48 @@
+unit uFrm_Venda;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrm_Base, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TFrm_Venda = class(TFrm_Base)
+    pnlRodape: TPanel;
+    pnlCabecario: TPanel;
+    pnlGrid: TPanel;
+    GridVenda: TDBGrid;
+    pnlSubTotal: TPanel;
+    lblSubtotal: TLabel;
+    lblrealsubtotal: TLabel;
+    lblVlrSubtotal: TLabel;
+    pnlDesconto: TPanel;
+    lblDesconto: TLabel;
+    lblrealDesconto: TLabel;
+    lblValorDesconto: TLabel;
+    pnlTotal: TPanel;
+    lblTotal: TLabel;
+    lblrealTotal: TLabel;
+    lblVlrTotal: TLabel;
+    pnlTotais: TPanel;
+    pnlReceber: TPanel;
+    btnReceber: TSpeedButton;
+    pnlLimpar: TPanel;
+    btnLimpar: TSpeedButton;
+    pnlSair: TPanel;
+    btnSair: TSpeedButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Venda: TFrm_Venda;
+
+implementation
+
+{$R *.dfm}
+
+end.

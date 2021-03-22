@@ -1,0 +1,11 @@
+inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
+  Caption = 'Frm_Cad_Cidades'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFundo: TPanel
+    ExplicitLeft = 0
+    ExplicitTop = 0
+    ExplicitWidth = 712
+    ExplicitHeight = 472
+  end
+end

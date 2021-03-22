@@ -1,0 +1,26 @@
+unit uPaises;
+
+interface
+
+uses
+  UGeral;
+
+type
+  TPais = class( TGeral )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+
+    property Nome: string;
+    property Sigla: string;
+    property DDI: string;
+
+    procedure CopiarDados( Value: TPais );
+
+  end;
+
+implementation
+
+end.

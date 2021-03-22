@@ -1,0 +1,26 @@
+unit uestados;
+
+interface
+
+uses
+  UGeral,
+  UPaises;
+
+type
+  TEstado = class( TGeral )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+
+    property Nome: string;
+    property UF: string;
+    property Pais: TPais;
+
+    procedure CopiarDados( Value: TEstado );
+  end;
+
+implementation
+
+end.

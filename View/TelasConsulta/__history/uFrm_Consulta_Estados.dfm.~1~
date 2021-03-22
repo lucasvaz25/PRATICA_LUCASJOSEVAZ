@@ -1,0 +1,6 @@
+inherited Frm_Consulta_Estados: TFrm_Consulta_Estados
+  Caption = 'Frm_Consulta_Estados'
+  ExplicitTop = -93
+  PixelsPerInch = 96
+  TextHeight = 13
+end

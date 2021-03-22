@@ -1,0 +1,14 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 316
+  Width = 589
+  object conexao: TFDConnection
+    Left = 120
+    Top = 96
+  end
+  object Trans: TFDTransaction
+    Connection = conexao
+    Left = 232
+    Top = 96
+  end
+end

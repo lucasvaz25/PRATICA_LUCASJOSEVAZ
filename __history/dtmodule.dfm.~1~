@@ -1,0 +1,29 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 269
+  Width = 408
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=C:\bd\MESTREDETALHE.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'DriverID=FB')
+    Left = 112
+    Top = 56
+  end
+  object FDTransaction1: TFDTransaction
+    Connection = FDConnection1
+    Left = 168
+    Top = 56
+  end
+  object DataSource1: TDataSource
+    Left = 192
+    Top = 168
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 304
+    Top = 112
+  end
+end

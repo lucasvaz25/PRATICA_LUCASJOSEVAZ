@@ -1,0 +1,15 @@
+unit uEnum;
+
+interface
+
+type
+  TFilterSearch = class
+  public
+    property Codigo: Integer;
+    property Parametro: string;
+
+  end;
+
+implementation
+
+end.

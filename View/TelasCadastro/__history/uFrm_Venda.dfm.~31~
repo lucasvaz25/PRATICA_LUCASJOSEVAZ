@@ -1,0 +1,423 @@
+inherited Frm_Venda: TFrm_Venda
+  Caption = 'Frm_Venda'
+  ClientHeight = 488
+  ClientWidth = 862
+  ExplicitTop = -3
+  ExplicitWidth = 878
+  ExplicitHeight = 527
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFundo: TPanel
+    Width = 862
+    Height = 488
+    ExplicitLeft = 0
+    ExplicitTop = 0
+    ExplicitWidth = 712
+    ExplicitHeight = 472
+    object pnlRodape: TPanel
+      Left = 0
+      Top = 360
+      Width = 862
+      Height = 128
+      Align = alBottom
+      BevelOuter = bvNone
+      TabOrder = 0
+      ExplicitTop = 363
+      DesignSize = (
+        862
+        128)
+      object pnlTotais: TPanel
+        Left = 470
+        Top = 5
+        Width = 375
+        Height = 65
+        Alignment = taRightJustify
+        Anchors = [akRight, akBottom]
+        BevelOuter = bvNone
+        TabOrder = 0
+        object pnlTotal: TPanel
+          Left = 250
+          Top = 0
+          Width = 125
+          Height = 65
+          Align = alRight
+          BevelOuter = bvNone
+          Color = 11468718
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitLeft = 60
+          ExplicitHeight = 67
+          object lblTotal: TLabel
+            Left = 96
+            Top = 7
+            Width = 25
+            Height = 13
+            Caption = 'Total'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object lblrealTotal: TLabel
+            Left = 5
+            Top = 31
+            Width = 27
+            Height = 32
+            Caption = 'R$'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblVlrTotal: TLabel
+            Left = 24
+            Top = 31
+            Width = 97
+            Height = 32
+            BiDiMode = bdRightToLeft
+            Caption = '0,00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+        end
+        object pnlSubTotal: TPanel
+          Left = 0
+          Top = 0
+          Width = 125
+          Height = 65
+          Align = alLeft
+          BevelOuter = bvNone
+          Color = 11468799
+          ParentBackground = False
+          TabOrder = 1
+          ExplicitLeft = 60
+          ExplicitHeight = 67
+          object lblSubtotal: TLabel
+            Left = 77
+            Top = 7
+            Width = 44
+            Height = 21
+            Caption = 'Subtotal'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object lblrealsubtotal: TLabel
+            Left = 5
+            Top = 31
+            Width = 27
+            Height = 32
+            Caption = 'R$'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblVlrSubtotal: TLabel
+            Left = 38
+            Top = 31
+            Width = 83
+            Height = 32
+            BiDiMode = bdRightToLeft
+            Caption = '0,00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+        end
+        object pnlDesconto: TPanel
+          Left = 125
+          Top = 0
+          Width = 125
+          Height = 65
+          Align = alRight
+          BevelOuter = bvNone
+          Color = 12698111
+          ParentBackground = False
+          TabOrder = 2
+          ExplicitLeft = 60
+          ExplicitHeight = 67
+          object lblDesconto: TLabel
+            Left = 72
+            Top = 7
+            Width = 49
+            Height = 13
+            Caption = 'Desconto'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object lblrealDesconto: TLabel
+            Left = 3
+            Top = 32
+            Width = 27
+            Height = 32
+            Caption = 'R$'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblValorDesconto: TLabel
+            Left = 36
+            Top = 31
+            Width = 85
+            Height = 32
+            BiDiMode = bdRightToLeft
+            Caption = '0,00'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -24
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentBiDiMode = False
+            ParentFont = False
+          end
+        end
+      end
+      object pnlReceber: TPanel
+        Left = 19
+        Top = 85
+        Width = 120
+        Height = 32
+        Anchors = [akLeft, akBottom]
+        BevelOuter = bvNone
+        Color = 16744448
+        ParentBackground = False
+        TabOrder = 1
+        object btnReceber: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 120
+          Height = 32
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = '&Receber'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 25
+        end
+      end
+      object pnlLimpar: TPanel
+        Left = 607
+        Top = 85
+        Width = 120
+        Height = 32
+        Anchors = [akRight, akBottom]
+        BevelOuter = bvNone
+        Color = 9999508
+        ParentBackground = False
+        TabOrder = 2
+        object btnLimpar: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 120
+          Height = 32
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = '&Limpar'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ExplicitTop = -8
+        end
+      end
+      object pnlSair: TPanel
+        Left = 730
+        Top = 85
+        Width = 120
+        Height = 32
+        Anchors = [akRight, akBottom]
+        BevelOuter = bvNone
+        Color = 3355647
+        ParentBackground = False
+        TabOrder = 3
+        object btnSair: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 120
+          Height = 32
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = '&Sair'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ExplicitTop = -8
+        end
+      end
+    end
+    object pnlCabecario: TPanel
+      Left = 0
+      Top = 0
+      Width = 862
+      Height = 145
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitTop = -3
+      object lblVenda: TLabel
+        Left = 9
+        Top = 3
+        Width = 43
+        Height = 21
+        Caption = 'Venda'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+      end
+      object edCodigo: TVazEdit
+        Left = 9
+        Top = 22
+        Width = 65
+        Height = 24
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        ChangeColor = 14745599
+      end
+    end
+    object pnlGrid: TPanel
+      Left = 0
+      Top = 145
+      Width = 862
+      Height = 215
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 2
+      ExplicitLeft = 360
+      ExplicitTop = 280
+      ExplicitWidth = 185
+      ExplicitHeight = 41
+      object GridVenda: TDBGrid
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 856
+        Height = 209
+        Align = alClient
+        Color = clWhite
+        FixedColor = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -13
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            Title.Caption = 'Item'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clMenuText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Style = []
+            Width = 40
+            Visible = True
+          end
+          item
+            Expanded = False
+            Title.Alignment = taCenter
+            Title.Caption = 'C'#243'digo'
+            Width = 149
+            Visible = True
+          end
+          item
+            Expanded = False
+            Title.Alignment = taCenter
+            Title.Caption = 'Produto'
+            Width = 297
+            Visible = True
+          end
+          item
+            ButtonStyle = cbsEllipsis
+            Expanded = False
+            Width = 25
+            Visible = True
+          end
+          item
+            Expanded = False
+            Title.Alignment = taRightJustify
+            Title.Caption = 'Vlr. Unit.'
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            Title.Alignment = taRightJustify
+            Title.Caption = 'Qtde.'
+            Width = 55
+            Visible = True
+          end
+          item
+            Expanded = False
+            Title.Alignment = taRightJustify
+            Title.Caption = 'Desc.'
+            Visible = True
+          end
+          item
+            Expanded = False
+            Title.Alignment = taRightJustify
+            Title.Caption = 'Total'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Style = []
+            Width = 100
+            Visible = True
+          end>
+      end
+    end
+  end
+end

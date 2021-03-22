@@ -1,0 +1,65 @@
+unit uestados;
+
+interface
+
+uses
+  UGeral,
+  UPaises;
+
+type
+  TEstado = class( TGeral )
+  private
+    FUF: string;
+    FNome: string;
+    FPais: TPais;
+    procedure SetNome( const Value: string );
+    procedure SetPais( const Value: TPais );
+    procedure SetUF( const Value: string );
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+
+    property Nome: string read FNome write SetNome;
+    property UF: string read FUF write SetUF;
+    property Pais: TPais read FPais write SetPais;
+
+    procedure CopiarDados( Value: TEstado );
+  end;
+
+implementation
+
+{ TEstado }
+
+procedure TEstado.CopiarDados( Value: TEstado );
+begin
+  inherited CopiarDados( Value );
+
+end;
+
+constructor TEstado.Create;
+begin
+
+end;
+
+destructor TEstado.Destroy;
+begin
+
+end;
+
+procedure TEstado.SetNome( const Value: string );
+begin
+  FNome := Value;
+end;
+
+procedure TEstado.SetPais( const Value: TPais );
+begin
+  FPais := Value;
+end;
+
+procedure TEstado.SetUF( const Value: string );
+begin
+  FUF := Value;
+end;
+
+end.

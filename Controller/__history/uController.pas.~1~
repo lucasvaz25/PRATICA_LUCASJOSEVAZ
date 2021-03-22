@@ -1,0 +1,15 @@
+unit uController;
+
+interface
+
+type
+  TController = class
+  private
+  protected
+  public
+
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,26 @@
+unit uCidades;
+
+interface
+
+uses
+  UGeral,
+  UEstados;
+
+type
+  TCidade = class( TGeral )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+
+    property Nome: string;
+    property DDD: string;
+    property Estado: TEstado;
+
+    procedure CopiarDados( Value: TCidade );
+  end;
+
+implementation
+
+end.
