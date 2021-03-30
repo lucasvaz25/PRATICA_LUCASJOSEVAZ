@@ -1,0 +1,236 @@
+object FRM_Principal: TFRM_Principal
+  Left = 0
+  Top = 0
+  Align = alClient
+  BorderStyle = bsNone
+  Caption = 'FRM_Principal'
+  ClientHeight = 768
+  ClientWidth = 1024
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlFundo: TPanel
+    Left = 0
+    Top = 0
+    Width = 1024
+    Height = 768
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitTop = 8
+    ExplicitWidth = 645
+    ExplicitHeight = 427
+    object pnlTop: TPanel
+      Left = 0
+      Top = 0
+      Width = 1024
+      Height = 65
+      Align = alTop
+      BevelOuter = bvNone
+      Color = clHighlight
+      ParentBackground = False
+      TabOrder = 0
+      ExplicitWidth = 645
+      object pnlCabecalho: TPanel
+        Left = 0
+        Top = 0
+        Width = 1024
+        Height = 20
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clHighlight
+        ParentBackground = False
+        TabOrder = 0
+        ExplicitWidth = 645
+        object pnlFechar: TPanel
+          Left = 996
+          Top = 0
+          Width = 28
+          Height = 20
+          Align = alRight
+          BevelOuter = bvNone
+          Caption = 'X'
+          Color = 3355647
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 0
+          ExplicitLeft = 616
+          object btnFechar: TSpeedButton
+            Left = 0
+            Top = 0
+            Width = 28
+            Height = 20
+            Cursor = crHandPoint
+            Align = alClient
+            Flat = True
+            OnClick = btnFecharClick
+            ExplicitLeft = 5
+            ExplicitTop = -2
+            ExplicitWidth = 23
+            ExplicitHeight = 22
+          end
+        end
+      end
+    end
+    object pnlmenu: TPanel
+      Left = 0
+      Top = 65
+      Width = 185
+      Height = 703
+      Align = alLeft
+      BevelOuter = bvNone
+      Color = clHighlight
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitLeft = -6
+      ExplicitTop = 71
+      object pnlConsultaPais: TPanel
+        Left = 0
+        Top = 41
+        Width = 185
+        Height = 41
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clHighlight
+        ParentBackground = False
+        TabOrder = 0
+        ExplicitLeft = 48
+        ExplicitTop = 56
+        object btnConsultaPais: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 185
+          Height = 41
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = 'Consulta Paises'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBtnHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btnConsultaPaisClick
+          ExplicitLeft = 48
+          ExplicitTop = 24
+          ExplicitWidth = 23
+          ExplicitHeight = 22
+        end
+      end
+      object pnlEstados: TPanel
+        Left = 0
+        Top = 0
+        Width = 185
+        Height = 41
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clHighlight
+        ParentBackground = False
+        TabOrder = 1
+        ExplicitTop = 8
+        object btnEstados: TSpeedButton
+          Left = 0
+          Top = 0
+          Width = 185
+          Height = 41
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = 'Consulta Estados'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBtnHighlight
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btnEstadosClick
+          ExplicitLeft = 48
+          ExplicitTop = 24
+          ExplicitWidth = 23
+          ExplicitHeight = 22
+        end
+      end
+    end
+    object pnlPrincipal: TPanel
+      Left = 185
+      Top = 65
+      Width = 839
+      Height = 703
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 2
+      ExplicitLeft = 544
+      ExplicitTop = 216
+      ExplicitWidth = 185
+      ExplicitHeight = 41
+      object pnlCentralTop: TPanel
+        Left = 0
+        Top = 0
+        Width = 839
+        Height = 41
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        ExplicitLeft = 224
+        ExplicitTop = 152
+        ExplicitWidth = 185
+      end
+      object pnlForm: TPanel
+        Left = 40
+        Top = 41
+        Width = 799
+        Height = 662
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 1
+        ExplicitLeft = 6
+        ExplicitTop = 47
+        ExplicitWidth = 839
+      end
+      object pnlLateral: TPanel
+        Left = 0
+        Top = 41
+        Width = 40
+        Height = 662
+        Align = alLeft
+        BevelOuter = bvNone
+        Caption = 'pnlLateral'
+        TabOrder = 2
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 128
+    Top = 32
+    object consultas1: TMenuItem
+      Caption = 'consultas'
+      object Paises1: TMenuItem
+        Caption = 'Paises'
+        OnClick = Paises1Click
+      end
+      object Estados1: TMenuItem
+        Caption = 'Estados'
+        OnClick = Estados1Click
+      end
+    end
+  end
+end

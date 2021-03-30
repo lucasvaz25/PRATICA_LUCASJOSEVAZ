@@ -1,20 +1,26 @@
 inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
   Caption = 'Frm_Cad_SubGrupo'
   ClientHeight = 449
-  ClientWidth = 428
-  ExplicitWidth = 444
-  ExplicitHeight = 488
+  ClientWidth = 558
+  OnCreate = FormCreate
+  ExplicitWidth = 564
+  ExplicitHeight = 478
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
-    Width = 428
+    Width = 558
     Height = 449
+    ExplicitWidth = 428
+    ExplicitHeight = 449
     inherited lblUsuarioDataCad: TLabel
       Top = 422
+      ExplicitTop = 422
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 232
+      Left = 362
       Top = 422
+      ExplicitLeft = 232
+      ExplicitTop = 422
     end
     object lblSubGrupo: TLabel [3]
       Left = 24
@@ -56,13 +62,13 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       ParentFont = False
     end
     inherited pnlSalvar: TPanel
-      Left = 150
+      Left = 214
       Top = 353
       ExplicitLeft = 150
       ExplicitTop = 353
     end
     inherited pnlSair: TPanel
-      Left = 281
+      Left = 385
       Top = 353
       ExplicitLeft = 281
       ExplicitTop = 353
@@ -70,7 +76,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
     object edSubGrupo: TVazEdit
       Left = 22
       Top = 104
-      Width = 380
+      Width = 484
       Height = 29
       BiDiMode = bdLeftToRight
       Font.Charset = DEFAULT_CHARSET
@@ -88,27 +94,36 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
     object edObs: TMemo
       Left = 22
       Top = 220
-      Width = 380
+      Width = 484
       Height = 105
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       MaxLength = 100
+      ParentFont = False
       TabOrder = 4
     end
     object lkpGrupo: TDBLookupComboBox
-      Left = 24
-      Top = 161
-      Width = 307
+      Left = 22
+      Top = 163
+      Width = 412
       Height = 29
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
+      KeyField = 'codigo'
+      ListField = 'grupo'
+      ListSource = DsGrupo
       ParentFont = False
       TabOrder = 5
     end
     object pnlbotoes: TPanel
-      Left = 336
-      Top = 161
+      Left = 440
+      Top = 163
       Width = 66
       Height = 29
       BevelOuter = bvNone
@@ -157,6 +172,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
           Flat = True
           ParentShowHint = False
           ShowHint = True
+          OnClick = btnNovoCadClick
           ExplicitLeft = 8
           ExplicitTop = 16
           ExplicitWidth = 23
@@ -255,6 +271,26 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
           ExplicitHeight = 22
         end
       end
+    end
+  end
+  object DsGrupo: TDataSource
+    DataSet = TDset_Grupo
+    Left = 456
+    Top = 48
+  end
+  object TDset_Grupo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 400
+    Top = 56
+    object TDset_Grupocodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object TDset_Grupogrupo: TStringField
+      DisplayLabel = 'Grupo'
+      FieldName = 'grupo'
+      Size = 50
     end
   end
 end

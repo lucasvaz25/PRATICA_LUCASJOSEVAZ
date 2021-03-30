@@ -2,15 +2,14 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
   Caption = 'Frm_Cad_Cidades'
   ClientHeight = 332
   ClientWidth = 513
-  ExplicitWidth = 529
-  ExplicitHeight = 371
+  OnCreate = FormCreate
+  ExplicitWidth = 519
+  ExplicitHeight = 361
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 513
     Height = 332
-    ExplicitLeft = -8
-    ExplicitTop = -8
     ExplicitWidth = 513
     ExplicitHeight = 332
     inherited lblUsuarioDataCad: TLabel
@@ -166,6 +165,19 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
         Proportional = True
         ShowHint = True
         ExplicitLeft = 16
+      end
+      object btnPesquisarEstados: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 33
+        Height = 29
+        Align = alClient
+        Flat = True
+        OnClick = btnPesquisarEstadosClick
+        ExplicitLeft = 16
+        ExplicitTop = 8
+        ExplicitWidth = 23
+        ExplicitHeight = 22
       end
     end
   end

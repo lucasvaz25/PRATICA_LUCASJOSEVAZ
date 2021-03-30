@@ -32,7 +32,23 @@ uses
   uPaisesController in 'Controller\uPaisesController.pas',
   uEstadosDao in 'Model\DAO\uEstadosDao.pas',
   uEstadosController in 'Controller\uEstadosController.pas',
-  uFrm_Consulta_Estados in 'View\TelasConsulta\uFrm_Consulta_Estados.pas' {Frm_Consulta_Estados};
+  uFrm_Consulta_Estados in 'View\TelasConsulta\uFrm_Consulta_Estados.pas' {Frm_Consulta_Estados},
+  uChamadasInterfaces in 'View\uChamadasInterfaces.pas',
+  uGrupos in 'Model\Classes\uGrupos.pas',
+  uSubGrupos in 'Model\Classes\uSubGrupos.pas',
+  uDepartamentos in 'Model\Classes\uDepartamentos.pas',
+  uCargos in 'Model\Classes\uCargos.pas',
+  uCondicaoPagamento in 'Model\Classes\uCondicaoPagamento.pas',
+  uFormasPagamentos in 'Model\Classes\uFormasPagamentos.pas',
+  uCidadesDao in 'Model\DAO\uCidadesDao.pas',
+  uCidadesController in 'Controller\uCidadesController.pas',
+  uFrm_Consulta_Cidades in 'View\TelasConsulta\uFrm_Consulta_Cidades.pas' {Frm_Consulta_Cidades},
+  uGruposDao in 'Model\DAO\uGruposDao.pas',
+  uGruposController in 'Controller\uGruposController.pas',
+  uFrm_Consulta_Grupos in 'View\TelasConsulta\uFrm_Consulta_Grupos.pas' {Frm_Consulta_Grupos},
+  uSubGruposDao in 'Model\DAO\uSubGruposDao.pas',
+  uSubGruposController in 'Controller\uSubGruposController.pas',
+  uFrm_Consulta_SubGrupos in 'View\TelasConsulta\uFrm_Consulta_SubGrupos.pas' {Frm_Consulta_SubGrupos};
 
 {$R *.res}
 
@@ -58,5 +74,8 @@ begin
   Application.CreateForm(TFrm_Venda, Frm_Venda);
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrm_Consulta_Estados, Frm_Consulta_Estados);
+  Application.CreateForm(TFrm_Consulta_Cidades, Frm_Consulta_Cidades);
+  Application.CreateForm(TFrm_Consulta_Grupos, Frm_Consulta_Grupos);
+  Application.CreateForm(TFrm_Consulta_SubGrupos, Frm_Consulta_SubGrupos);
   Application.Run;
 end.

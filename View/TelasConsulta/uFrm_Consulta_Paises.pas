@@ -24,7 +24,6 @@ uses
   UPaises,
   UPaisesController,
   UFilterSearch,
-  UDM,
   Vcl.ExtCtrls,
   Vcl.Buttons;
 

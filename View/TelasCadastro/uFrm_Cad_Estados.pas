@@ -126,10 +126,9 @@ procedure TFrm_Cad_Estados.PopulaObj;
 begin
   with EstadoControl.GetEntity do
   begin
-    Codigo := StrToInt( EdCodigo.Text );
-    Estado := UpperCase( EdEstado.Text );
-    UF     := UpperCase( EdUF.Text );
-    // Pais.CopiarDados( Pais );
+    Codigo  := StrToInt( EdCodigo.Text );
+    Estado  := UpperCase( EdEstado.Text );
+    UF      := UpperCase( EdUF.Text );
     DataCad := Date;
     UserCad := UpperCase( 'lucas' );
   end;
@@ -179,12 +178,13 @@ begin
   end;
 
   // somente obrigatório se pais for brasil
-  if ( EdUF.Text = '' ) then
-  begin
-    MessageDlg( 'Insira uma UF válida!!', MtInformation, [ MbOK ], 0 );
-    EdUF.SetFocus;
-    Exit;
-  end;
+  if EstadoControl.GetEntity.Pais.Codigo = 1 then
+    if ( EdUF.Text = '' ) then
+    begin
+      MessageDlg( 'Insira uma UF válida!!', MtInformation, [ MbOK ], 0 );
+      EdUF.SetFocus;
+      Exit;
+    end;
 
   if EdCodigo.Text = '0' then
     if Estadocontrol.VerificaExiste( UpperCase( EdEstado.Text ) ) then

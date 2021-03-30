@@ -28,34 +28,41 @@ uses
   Vcl.StdCtrls,
   System.Win.TaskbarCore,
   Vcl.Taskbar,
-  UFrm_Cad_Paises,
-  UFrm_Cad_Estados,
-  UFrm_Cad_Cidades,
-  UFrm_Cad_Fornecedor,
-  UFrm_cad_Produtos,
-  UFrm_Cad_Funcionario,
-  UFrm_Cad_Clientes,
-  UFrm_Cad_Cargo,
-  UFrm_Cad_Grupo,
-  UFrm_Cad_SubGrupo,
-  UFrm_Cad_Departamento,
-  UFrm_Consulta_Paises,
-  UFrm_Consulta_Estados,
-  UDM,
-  UFrm_Venda;
+
+  UChamadasInterfaces,
+  Vcl.Buttons,
+  Vcl.Imaging.Jpeg,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.CategoryButtons;
 
 type
   TFRM_Principal = class( TForm )
-    StatusBar1: TStatusBar;
-    Button1: TButton;
-    Button2: TButton;
-    procedure Button1Click( Sender: TObject );
+    MainMenu1: TMainMenu;
+    Consultas1: TMenuItem;
+    Paises1: TMenuItem;
+    Estados1: TMenuItem;
+    Cidades1: TMenuItem;
+    SplitView1: TSplitView;
+    Image1: TImage;
+    CategoryButtons1: TCategoryButtons;
+    ImageList1: TImageList;
+    N1: TMenuItem;
+    Grupos1: TMenuItem;
+    SubGrupos1: TMenuItem;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
-    procedure Button2Click( Sender: TObject );
+    procedure BtnFecharClick( Sender: TObject );
+
+    procedure Paises1Click( Sender: TObject );
+    procedure Estados1Click( Sender: TObject );
+    procedure Cidades1Click( Sender: TObject );
+    procedure Grupos1Click( Sender: TObject );
+    procedure SubGrupos1Click( Sender: TObject );
+
   private
     { Private declarations }
-    // DM: TDM;
+    ChamadaInter: TchamadasInterfaces;
   public
     { Public declarations }
   end;
@@ -68,33 +75,44 @@ implementation
 {$R *.dfm}
 
 
-procedure TFRM_Principal.Button1Click( Sender: TObject );
-var
-  Cad: TFrm_ConsultaPaises;
+procedure TFRM_Principal.BtnFecharClick( Sender: TObject );
 begin
-  Cad := TFrm_ConsultaPaises.Create( Self );
-  // Cad.PaisControl.SetDM( DM );
-  Cad.ShowModal;
+  Close;
 end;
 
-procedure TFRM_Principal.Button2Click( Sender: TObject );
-var
-  Cad: TFrm_Consulta_Estados;
+procedure TFRM_Principal.Cidades1Click( Sender: TObject );
 begin
-  Cad := TFrm_Consulta_Estados.Create( Self );
-  Cad.ShowModal;
+  ChamadaInter.ChamadaConsultaCidades;
+end;
+
+procedure TFRM_Principal.Estados1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaEstados;
 end;
 
 procedure TFRM_Principal.FormCreate( Sender: TObject );
 begin
-  // DM := TDM.Create( Self );
-
+  ChamadaInter := TchamadasInterfaces.Create( Self );
 end;
 
 procedure TFRM_Principal.FormDestroy( Sender: TObject );
 begin
-  // if Assigned( DM ) then
-  // FreeAndNil( DM );
+  ChamadaInter.Free;
+end;
+
+procedure TFRM_Principal.Grupos1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaGrupos;
+end;
+
+procedure TFRM_Principal.Paises1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaPaises;
+end;
+
+procedure TFRM_Principal.SubGrupos1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaSubGrupos;
 end;
 
 end.

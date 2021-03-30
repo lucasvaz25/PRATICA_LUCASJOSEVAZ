@@ -10,9 +10,11 @@ type
     FCodigo: Integer;
     FParametro: string;
     FTipoConsulta: TTipoConsulta;
+    FRecuperarObj: Boolean;
     procedure SetCodigo( const Value: Integer );
     procedure SetParametro( const Value: string );
     procedure SetTipoConsulta( const Value: TTipoConsulta );
+    procedure SetRecuperarObj( const Value: Boolean );
   public
     constructor Create;
     destructor Destroy;
@@ -20,6 +22,7 @@ type
     property TipoConsulta: TTipoConsulta read FTipoConsulta write SetTipoConsulta;
     property Codigo: Integer read FCodigo write SetCodigo;
     property Parametro: string read FParametro write SetParametro;
+    property RecuperarObj: Boolean read FRecuperarObj write SetRecuperarObj;
 
   end;
 
@@ -31,6 +34,7 @@ constructor TFilterSearch.Create;
 begin
   FCodigo       := 0;
   FParametro    := '';
+  FRecuperarObj := False;
   FTipoConsulta := TpCIndefinido;
 end;
 
@@ -53,6 +57,11 @@ end;
 procedure TFilterSearch.SetParametro( const Value: string );
 begin
   FParametro := Value;
+end;
+
+procedure TFilterSearch.SetRecuperarObj( const Value: Boolean );
+begin
+  FRecuperarObj := Value;
 end;
 
 procedure TFilterSearch.SetTipoConsulta( const Value: TTipoConsulta );

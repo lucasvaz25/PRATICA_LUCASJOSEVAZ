@@ -2,22 +2,24 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
   Caption = 'Frm_Cad_Produto'
   ClientHeight = 568
   ClientWidth = 735
-  ExplicitTop = -66
-  ExplicitWidth = 751
-  ExplicitHeight = 607
+  ExplicitWidth = 741
+  ExplicitHeight = 597
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 735
     Height = 568
-    ExplicitWidth = 761
+    ExplicitWidth = 735
+    ExplicitHeight = 568
     inherited lblUsuarioDataCad: TLabel
       Top = 541
+      ExplicitTop = 541
     end
     inherited lblUsuarioDataAlteracao: TLabel
       Left = 539
       Top = 541
       ExplicitLeft = 565
+      ExplicitTop = 541
     end
     object lblDescricao: TLabel [3]
       Left = 24
@@ -71,20 +73,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Style = []
       ParentFont = False
     end
-    object lblQtd: TLabel [7]
-      Left = 297
-      Top = 138
-      Width = 37
-      Height = 21
-      Caption = 'Qtde.'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clMenuText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lblEstoque: TLabel [8]
+    object lblEstoque: TLabel [7]
       Left = 380
       Top = 138
       Width = 55
@@ -97,7 +86,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Style = []
       ParentFont = False
     end
-    object lblFornecedor: TLabel [9]
+    object lblFornecedor: TLabel [8]
       Left = 24
       Top = 198
       Width = 79
@@ -110,7 +99,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Style = []
       ParentFont = False
     end
-    object lblSubGrupo: TLabel [10]
+    object lblSubGrupo: TLabel [9]
       Left = 24
       Top = 256
       Width = 71
@@ -123,7 +112,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Style = []
       ParentFont = False
     end
-    object lblGrupo: TLabel [11]
+    object lblGrupo: TLabel [10]
       Left = 456
       Top = 256
       Width = 44
@@ -137,7 +126,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Style = []
       ParentFont = False
     end
-    object lblObs: TLabel [12]
+    object lblObs: TLabel [11]
       Left = 24
       Top = 311
       Width = 82
@@ -151,19 +140,19 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     inherited edCodigo: TVazEdit
-      TabOrder = 8
+      TabOrder = 7
     end
     inherited pnlSalvar: TPanel
       Left = 465
       Top = 472
-      TabOrder = 9
+      TabOrder = 8
       ExplicitLeft = 465
       ExplicitTop = 472
     end
     inherited pnlSair: TPanel
       Left = 601
       Top = 472
-      TabOrder = 10
+      TabOrder = 9
       ExplicitLeft = 601
       ExplicitTop = 472
     end
@@ -248,7 +237,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 10
       object imgProduto: TImage
         Left = 8
         Top = 20
@@ -320,25 +309,6 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
         end
       end
     end
-    object edQtd: TVazEdit
-      Left = 297
-      Top = 160
-      Width = 56
-      Height = 29
-      Anchors = [akLeft, akTop, akRight]
-      BiDiMode = bdLeftToRight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      MaxLength = 5
-      NumbersOnly = True
-      ParentBiDiMode = False
-      ParentFont = False
-      TabOrder = 4
-      ChangeColor = 14745599
-    end
     object edEstoque: TVazEdit
       Left = 380
       Top = 160
@@ -355,7 +325,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       ChangeColor = 14745599
     end
     object edFornecedor: TVazEdit
@@ -373,7 +343,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
       TextHint = 'digite o nome do fornecedor'
       ChangeColor = 14745599
     end
@@ -385,7 +355,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 12
+      TabOrder = 11
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -442,7 +412,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 6
       TextHint = 'digite o subgrupo'
       ChangeColor = 14745599
     end
@@ -454,7 +424,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 13
+      TabOrder = 12
       object Image1: TImage
         Left = 0
         Top = 0
@@ -511,7 +481,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 14
+      TabOrder = 13
       ChangeColor = 14745599
     end
     object edObs: TMemo
@@ -525,7 +495,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 14
     end
   end
 end

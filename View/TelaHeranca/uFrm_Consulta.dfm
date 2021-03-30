@@ -1,29 +1,34 @@
 inherited Frm_Consulta: TFrm_Consulta
+  BorderStyle = bsSingle
   Caption = 'Frm_Consulta'
-  ClientWidth = 693
+  ClientHeight = 482
+  ClientWidth = 703
   OnShow = FormShow
   ExplicitWidth = 709
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
-    Width = 693
+    Width = 703
+    Height = 482
     ExplicitLeft = 0
     ExplicitTop = 0
     ExplicitWidth = 693
     ExplicitHeight = 472
     object pnlRodape: TPanel
       Left = 0
-      Top = 400
-      Width = 693
+      Top = 410
+      Width = 703
       Height = 72
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitTop = 400
+      ExplicitWidth = 693
       DesignSize = (
-        693
+        703
         72)
       object pnlNovo: TPanel
-        Left = 91
+        Left = 93
         Top = 17
         Width = 121
         Height = 41
@@ -32,6 +37,7 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 0
+        ExplicitLeft = 91
         object btnNovo: TSpeedButton
           Left = 0
           Top = 0
@@ -52,7 +58,7 @@ inherited Frm_Consulta: TFrm_Consulta
         end
       end
       object pnlAlterar: TPanel
-        Left = 222
+        Left = 226
         Top = 17
         Width = 121
         Height = 41
@@ -61,6 +67,7 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 1
+        ExplicitLeft = 222
         object btnAlterar: TSpeedButton
           Left = 0
           Top = 0
@@ -84,7 +91,7 @@ inherited Frm_Consulta: TFrm_Consulta
         end
       end
       object pnlExcluir: TPanel
-        Left = 355
+        Left = 361
         Top = 17
         Width = 121
         Height = 41
@@ -93,6 +100,7 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 2
+        ExplicitLeft = 355
         object btnExcluir: TSpeedButton
           Left = 0
           Top = 0
@@ -116,7 +124,7 @@ inherited Frm_Consulta: TFrm_Consulta
         end
       end
       object pnlSair: TPanel
-        Left = 485
+        Left = 493
         Top = 17
         Width = 121
         Height = 41
@@ -125,6 +133,7 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 3
+        ExplicitLeft = 485
         object btnSair: TSpeedButton
           Left = 0
           Top = 0
@@ -148,14 +157,15 @@ inherited Frm_Consulta: TFrm_Consulta
     object pnlCabecalho: TPanel
       Left = 0
       Top = 0
-      Width = 693
+      Width = 703
       Height = 97
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitWidth = 693
       object lblConsulta: TLabel
         Left = 137
-        Top = 21
+        Top = 35
         Width = 110
         Height = 21
         Caption = 'Consultar todos'
@@ -168,7 +178,7 @@ inherited Frm_Consulta: TFrm_Consulta
       end
       object pnlPesquisar: TPanel
         Left = 550
-        Top = 44
+        Top = 58
         Width = 33
         Height = 29
         BevelOuter = bvNone
@@ -242,7 +252,7 @@ inherited Frm_Consulta: TFrm_Consulta
       end
       object edPesquisar: TVazEdit
         Left = 137
-        Top = 44
+        Top = 58
         Width = 407
         Height = 29
         BiDiMode = bdLeftToRight
@@ -262,7 +272,7 @@ inherited Frm_Consulta: TFrm_Consulta
       object rgFiltro: TRadioGroup
         AlignWithMargins = True
         Left = 19
-        Top = 2
+        Top = 18
         Width = 102
         Height = 71
         Caption = 'Filtro'
@@ -288,17 +298,19 @@ inherited Frm_Consulta: TFrm_Consulta
     object pnlGrid: TPanel
       Left = 0
       Top = 97
-      Width = 693
-      Height = 303
+      Width = 703
+      Height = 313
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
+      ExplicitWidth = 693
+      ExplicitHeight = 303
       object DBGrid1: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 687
-        Height = 297
+        Width = 697
+        Height = 307
         Align = alClient
         DrawingStyle = gdsClassic
         FixedColor = 8553090

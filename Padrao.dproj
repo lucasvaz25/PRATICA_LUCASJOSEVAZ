@@ -189,6 +189,31 @@
             <Form>Frm_Consulta_Estados</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="View\uChamadasInterfaces.pas"/>
+        <DCCReference Include="Model\Classes\uGrupos.pas"/>
+        <DCCReference Include="Model\Classes\uSubGrupos.pas"/>
+        <DCCReference Include="Model\Classes\uDepartamentos.pas"/>
+        <DCCReference Include="Model\Classes\uCargos.pas"/>
+        <DCCReference Include="Model\Classes\uCondicaoPagamento.pas"/>
+        <DCCReference Include="Model\Classes\uFormasPagamentos.pas"/>
+        <DCCReference Include="Model\DAO\uCidadesDao.pas"/>
+        <DCCReference Include="Controller\uCidadesController.pas"/>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Cidades.pas">
+            <Form>Frm_Consulta_Cidades</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Model\DAO\uGruposDao.pas"/>
+        <DCCReference Include="Controller\uGruposController.pas"/>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Grupos.pas">
+            <Form>Frm_Consulta_Grupos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Model\DAO\uSubGruposDao.pas"/>
+        <DCCReference Include="Controller\uSubGruposController.pas"/>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_SubGrupos.pas">
+            <Form>Frm_Consulta_SubGrupos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

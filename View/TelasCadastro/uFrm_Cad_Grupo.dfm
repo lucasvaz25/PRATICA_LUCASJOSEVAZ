@@ -1,20 +1,27 @@
 inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
   Caption = 'Frm_Cad_Grupo'
   ClientHeight = 407
-  ClientWidth = 426
-  ExplicitWidth = 442
-  ExplicitHeight = 446
+  ClientWidth = 518
+  OnCreate = FormCreate
+  ExplicitTop = -63
+  ExplicitWidth = 524
+  ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
-    Width = 426
+    Width = 518
     Height = 407
+    ExplicitWidth = 426
+    ExplicitHeight = 407
     inherited lblUsuarioDataCad: TLabel
       Top = 380
+      ExplicitTop = 380
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 230
+      Left = 322
       Top = 380
+      ExplicitLeft = 230
+      ExplicitTop = 380
     end
     object lblGrupo: TLabel [3]
       Left = 24
@@ -43,21 +50,21 @@ inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
       ParentFont = False
     end
     inherited pnlSalvar: TPanel
-      Left = 150
+      Left = 195
       Top = 311
       ExplicitLeft = 150
       ExplicitTop = 311
     end
     inherited pnlSair: TPanel
-      Left = 280
+      Left = 353
       Top = 311
       ExplicitLeft = 280
       ExplicitTop = 311
     end
-    object edCargo: TVazEdit
+    object edGrupo: TVazEdit
       Left = 22
       Top = 104
-      Width = 380
+      Width = 452
       Height = 29
       BiDiMode = bdLeftToRight
       Font.Charset = DEFAULT_CHARSET
@@ -75,9 +82,15 @@ inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
     object edObs: TMemo
       Left = 22
       Top = 161
-      Width = 380
+      Width = 452
       Height = 105
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       MaxLength = 100
+      ParentFont = False
       TabOrder = 4
     end
   end

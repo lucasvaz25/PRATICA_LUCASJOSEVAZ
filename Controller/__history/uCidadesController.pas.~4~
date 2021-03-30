@@ -1,0 +1,98 @@
+unit uCidadesController;
+
+interface
+
+uses
+  UFilterSearch,
+  System.Classes,
+  System.Contnrs,
+  System.SysUtils,
+
+  UController,
+  UCidadesDao,
+  UCidades;
+
+type
+  TCidadesController = class( TController )
+  protected
+    CidadeDao: TCidadesDao;
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    function GetInstance( var Instance: TCidadesController; OWner: TComponent ): TCidadesController;
+    function GetEntity: TCidade;
+
+    function Inserir( const Value: TObject ): Boolean; virtual;
+    function Editar( const Value: TObject ): Boolean; virtual;
+    function Deletar( const VID: Integer ): Boolean; virtual;
+    function Consulta( AFilter: TFilterSearch ): TObjectList; virtual;
+    function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; virtual;
+    // procedure SetDM( Value: TObject ); virtual;
+    function VerificaExiste( Str: string ): Boolean;
+  end;
+
+implementation
+
+{ TCidadesController }
+
+function TCidadesController.Consulta( AFilter: TFilterSearch ): TObjectList;
+begin
+  Result := CidadeDao.Consulta( AFilter );
+end;
+
+constructor TCidadesController.Create;
+begin
+  inherited;
+  CidadeDao := TCidadesDao.Create;
+end;
+
+function TCidadesController.Deletar( const VID: Integer ): Boolean;
+begin
+
+end;
+
+destructor TCidadesController.Destroy;
+begin
+
+end;
+
+function TCidadesController.Editar( const Value: TObject ): Boolean;
+begin
+
+end;
+
+procedure TCidadesController.Free;
+begin
+
+end;
+
+function TCidadesController.GetEntity: TCidade;
+begin
+
+end;
+
+function TCidadesController.GetInstance( var Instance: TCidadesController;
+            OWner: TComponent ): TCidadesController;
+begin
+
+end;
+
+function TCidadesController.Inserir( const Value: TObject ): Boolean;
+begin
+
+end;
+
+function TCidadesController.Recuperar( const VID: Integer;
+            out Obj: TObject ): Boolean;
+begin
+
+end;
+
+function TCidadesController.VerificaExiste( Str: string ): Boolean;
+begin
+
+end;
+
+end.

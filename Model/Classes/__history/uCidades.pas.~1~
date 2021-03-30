@@ -1,0 +1,74 @@
+unit uCidades;
+
+interface
+
+uses
+  UGeral,
+  UEstados;
+
+type
+  TCidade = class( TGeral )
+  private
+    FDDD: string;
+    FNome: string;
+    FEstado: TEstado;
+    procedure SetDDD( const Value: string );
+    procedure SetEstado( const Value: TEstado );
+    procedure SetNome( const Value: string );
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+
+    property Nome: string read FNome write SetNome;
+    property DDD: string read FDDD write SetDDD;
+    property Estado: TEstado read FEstado write SetEstado;
+
+    procedure CopiarDados( Value: TCidade );
+  end;
+
+implementation
+
+{ TCidade }
+
+procedure TCidade.CopiarDados( Value: TCidade );
+begin
+  inherited CopiarDados( Value );
+  FNome := Value.Nome;
+  FDDD  := Value.DDD;
+  FEstado.CopiarDados( Value.Estado );
+end;
+
+constructor TCidade.Create;
+begin
+  inherited Create;
+  FNome   := '';
+  FDDD    := '';
+  FEstado := TEstado.Create;
+end;
+
+destructor TCidade.Destroy;
+begin
+  if Assigned( Self ) then
+  begin
+    FEstado.Destroy;
+    inherited Destroy;
+  end;
+end;
+
+procedure TCidade.SetDDD( const Value: string );
+begin
+  FDDD := Value;
+end;
+
+procedure TCidade.SetEstado( const Value: TEstado );
+begin
+  FEstado := Value;
+end;
+
+procedure TCidade.SetNome( const Value: string );
+begin
+  FNome := Value;
+end;
+
+end.

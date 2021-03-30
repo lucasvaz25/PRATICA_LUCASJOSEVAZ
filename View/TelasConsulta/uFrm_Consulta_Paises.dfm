@@ -3,14 +3,16 @@ inherited Frm_ConsultaPaises: TFrm_ConsultaPaises
   ClientWidth = 630
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ExplicitWidth = 646
+  ExplicitWidth = 636
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 630
     ExplicitWidth = 630
+    ExplicitHeight = 472
     inherited pnlRodape: TPanel
       Width = 630
+      ExplicitTop = 400
       ExplicitWidth = 630
       inherited pnlNovo: TPanel
         Left = 40

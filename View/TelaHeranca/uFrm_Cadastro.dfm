@@ -1,16 +1,21 @@
 inherited Frm_Cadastro: TFrm_Cadastro
+  BorderStyle = bsSingle
   Caption = 'Frm_Cadastro'
+  ClientHeight = 482
+  ClientWidth = 722
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
+    Width = 722
+    Height = 482
     ExplicitLeft = 0
     ExplicitTop = 0
     ExplicitWidth = 712
     ExplicitHeight = 472
     DesignSize = (
-      712
-      472)
+      722
+      482)
     object lblCodigo: TLabel
       Left = 24
       Top = 29
@@ -26,7 +31,7 @@ inherited Frm_Cadastro: TFrm_Cadastro
     end
     object lblUsuarioDataCad: TLabel
       Left = 24
-      Top = 445
+      Top = 455
       Width = 170
       Height = 13
       Anchors = [akLeft, akBottom]
@@ -37,10 +42,11 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      ExplicitTop = 445
     end
     object lblUsuarioDataAlteracao: TLabel
-      Left = 516
-      Top = 445
+      Left = 526
+      Top = 455
       Width = 173
       Height = 13
       Anchors = [akRight, akBottom]
@@ -51,6 +57,8 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      ExplicitLeft = 516
+      ExplicitTop = 445
     end
     object edCodigo: TVazEdit
       Left = 24
@@ -68,8 +76,8 @@ inherited Frm_Cadastro: TFrm_Cadastro
       ChangeColor = 14745599
     end
     object pnlSalvar: TPanel
-      Left = 410
-      Top = 376
+      Left = 417
+      Top = 386
       Width = 121
       Height = 41
       Anchors = [akBottom]
@@ -77,6 +85,8 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Color = 16744448
       ParentBackground = False
       TabOrder = 1
+      ExplicitLeft = 410
+      ExplicitTop = 376
       object btnSalvar: TSpeedButton
         Left = 0
         Top = 0
@@ -102,8 +112,8 @@ inherited Frm_Cadastro: TFrm_Cadastro
       end
     end
     object pnlSair: TPanel
-      Left = 550
-      Top = 376
+      Left = 559
+      Top = 386
       Width = 121
       Height = 41
       Anchors = [akBottom]
@@ -117,6 +127,8 @@ inherited Frm_Cadastro: TFrm_Cadastro
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
+      ExplicitLeft = 550
+      ExplicitTop = 376
       object btnSair: TSpeedButton
         Left = 0
         Top = 0

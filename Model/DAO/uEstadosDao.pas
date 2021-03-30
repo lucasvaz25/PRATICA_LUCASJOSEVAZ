@@ -51,39 +51,49 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT * FROM ESTADOS ' );
+    SQL.Add( 'SELECT E.*, P.NOME FROM ESTADOS E ' );
+    SQL.Add( 'LEFT JOIN PAISES P ON P.CODIGO = E.COD_PAIS ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
         begin
-          SQL.Add( 'WHERE CODIGO = ' + IntToStr( AFilter.Codigo ) );
+          SQL.Add( 'WHERE E.CODIGO = ' + IntToStr( AFilter.Codigo ) );
         end;
 
       TpCParam:
         begin
-          SQL.Add( 'WHERE ESTADO LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
+          SQL.Add( 'WHERE E.ESTADO LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
         end;
 
       TpCTODOS:
         ;
     end;
 
-    SQL.Add( ' ORDER BY ESTADO ' );
+    SQL.Add( ' ORDER BY E.ESTADO ' );
     Open;
 
-    PaisDao := TPaisesDao.Create;
-    Pais    := TPais.Create;
     try
       Result := TObjectList.Create;
       while ( not Eof ) do
       begin
         Aux := TEstado.Create;
         Self.FieldsToObj( Aux );
+        Aux.Pais.Nome := FieldByName( 'NOME' ).AsString;
 
-        if Aux.Pais.Codigo > 0 then
+        if AFilter.RecuperarObj then
         begin
-          if PaisDao.Recuperar( Aux.Pais.Codigo, TObject( Pais ) ) then
-            Aux.Pais.CopiarDados( Pais );
+          if Aux.Pais.Codigo > 0 then
+          begin
+            PaisDao := TPaisesDao.Create;
+            Pais    := TPais.Create;
+            try
+              if PaisDao.Recuperar( Aux.Pais.Codigo, TObject( Pais ) ) then
+                Aux.Pais.CopiarDados( Pais );
+            finally
+              Pais.Free;
+              PaisDao.Destroy;
+            end;
+          end;
         end;
 
         Result.Add( Aux );
@@ -91,8 +101,6 @@ begin
         Next;
       end;
     finally
-      Pais.Free;
-      PaisDao.Destroy;
       Close;
     end;
 
@@ -234,6 +242,7 @@ begin
   try
     Afilter.TipoConsulta := TpCCodigo;
     Afilter.Codigo       := VID;
+    AFilter.RecuperarObj := True;
     List                 := Self.Consulta( Afilter );
     if List <> nil then
     begin

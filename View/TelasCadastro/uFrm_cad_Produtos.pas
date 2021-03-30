@@ -22,8 +22,6 @@ type
     pnlRemoverImage: TPanel;
     btnInserirImagem: TSpeedButton;
     btnRemoverImage: TSpeedButton;
-    edQtd: TVazEdit;
-    lblQtd: TLabel;
     imgProduto: TImage;
     lblImageProduto: TLabel;
     edEstoque: TVazEdit;

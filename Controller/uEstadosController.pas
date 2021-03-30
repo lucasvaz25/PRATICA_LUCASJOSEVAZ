@@ -24,12 +24,12 @@ type
     function GetInstance( var Instance: TEstadosController; OWner: TComponent ): TEstadosController;
     function GetEntity: TEstado;
 
-    function Inserir( const Value: TObject ): Boolean; virtual;
-    function Editar( const Value: TObject ): Boolean; virtual;
-    function Deletar( const VID: Integer ): Boolean; virtual;
-    function Consulta( AFilter: TFilterSearch ): TObjectList; virtual;
-    function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; virtual;
-    // procedure SetDM( Value: TObject ); virtual;
+    function Inserir( const Value: TObject ): Boolean; override;
+    function Editar( const Value: TObject ): Boolean; override;
+    function Deletar( const VID: Integer ): Boolean; override;
+    function Consulta( AFilter: TFilterSearch ): TObjectList; override;
+    function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
+    // procedure SetDM( Value: TObject ); override;
     function VerificaExiste( Str: string ): Boolean;
   end;
 

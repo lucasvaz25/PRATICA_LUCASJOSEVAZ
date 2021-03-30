@@ -1,0 +1,39 @@
+inherited Frm_Consulta_SubGrupos: TFrm_Consulta_SubGrupos
+  Caption = 'Frm_Consulta_SubGrupos'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFundo: TPanel
+    inherited pnlRodape: TPanel
+      inherited pnlNovo: TPanel
+        ExplicitLeft = 93
+      end
+      inherited pnlAlterar: TPanel
+        ExplicitLeft = 226
+      end
+      inherited pnlExcluir: TPanel
+        ExplicitLeft = 361
+      end
+      inherited pnlSair: TPanel
+        ExplicitLeft = 493
+      end
+    end
+    inherited pnlCabecalho: TPanel
+      ExplicitWidth = 703
+    end
+    inherited pnlGrid: TPanel
+      ExplicitWidth = 703
+      ExplicitHeight = 313
+    end
+  end
+  object DsSubGrupos: TDataSource
+    DataSet = TDset_SubGrupos
+    Left = 168
+    Top = 201
+  end
+  object TDset_SubGrupos: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 216
+    Top = 201
+  end
+end

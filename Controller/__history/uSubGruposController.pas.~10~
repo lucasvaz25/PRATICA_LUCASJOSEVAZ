@@ -1,0 +1,99 @@
+unit uSubGruposController;
+
+interface
+
+uses
+  UFilterSearch,
+  System.Classes,
+  System.Contnrs,
+  System.SysUtils,
+
+  UController,
+  USubGruposDao,
+  USubGrupos;
+
+type
+  TSubGruposController = class( TController )
+  protected
+    SubGrupoDao: TSubGruposDao;
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    function GetInstance( var Instance: TSubGruposController; OWner: TComponent ): TSubGruposController;
+    function GetEntity: TSubGrupos;
+
+    function Inserir( const Value: TObject ): Boolean; override;
+    function Editar( const Value: TObject ): Boolean; override;
+    function Deletar( const VID: Integer ): Boolean; override;
+    function Consulta( AFilter: TFilterSearch ): TObjectList; override;
+    function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
+    // procedure SetDM( Value: TObject ); override;
+    function VerificaExiste( Str: string ): Boolean;
+  end;
+
+implementation
+
+{ TSubGruposController }
+
+function TSubGruposController.Consulta( AFilter: TFilterSearch ): TObjectList;
+begin
+  Result := SubGrupoDao.Consulta( AFilter );
+end;
+
+constructor TSubGruposController.Create;
+begin
+  inherited;
+  SubGrupoDao := TSubGruposDao.Create;
+end;
+
+function TSubGruposController.Deletar( const VID: Integer ): Boolean;
+begin
+  Result := SubGrupoDao.Deletar( VID );
+end;
+
+destructor TSubGruposController.Destroy;
+begin
+  SubGrupoDao.Destroy;
+  inherited;
+end;
+
+function TSubGruposController.Editar( const Value: TObject ): Boolean;
+begin
+
+end;
+
+procedure TSubGruposController.Free;
+begin
+
+end;
+
+function TSubGruposController.GetEntity: TSubGrupos;
+begin
+
+end;
+
+function TSubGruposController.GetInstance( var Instance: TSubGruposController;
+            OWner: TComponent ): TSubGruposController;
+begin
+
+end;
+
+function TSubGruposController.Inserir( const Value: TObject ): Boolean;
+begin
+
+end;
+
+function TSubGruposController.Recuperar( const VID: Integer;
+            out Obj: TObject ): Boolean;
+begin
+
+end;
+
+function TSubGruposController.VerificaExiste( Str: string ): Boolean;
+begin
+
+end;
+
+end.

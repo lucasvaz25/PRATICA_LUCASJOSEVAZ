@@ -10,17 +10,18 @@ type
   TCidade = class( TGeral )
   private
     FDDD: string;
-    FNome: string;
+    FCidade: string;
     FEstado: TEstado;
     procedure SetDDD( const Value: string );
     procedure SetEstado( const Value: TEstado );
-    procedure SetNome( const Value: string );
+    procedure SetCidade( const Value: string );
   protected
   public
     constructor Create;
     destructor Destroy;
+    procedure Free;
 
-    property Nome: string read FNome write SetNome;
+    property Cidade: string read FCidade write SetCidade;
     property DDD: string read FDDD write SetDDD;
     property Estado: TEstado read FEstado write SetEstado;
 
@@ -34,26 +35,29 @@ implementation
 procedure TCidade.CopiarDados( Value: TCidade );
 begin
   inherited CopiarDados( Value );
-  FNome := Value.Nome;
-  FDDD  := Value.DDD;
+  FCidade := Value.Cidade;
+  FDDD    := Value.DDD;
   FEstado.CopiarDados( Value.Estado );
 end;
 
 constructor TCidade.Create;
 begin
   inherited Create;
-  FNome   := '';
+  FCidade := '';
   FDDD    := '';
   FEstado := TEstado.Create;
 end;
 
 destructor TCidade.Destroy;
 begin
+  FEstado.Destroy;
+  inherited Destroy;
+end;
+
+procedure TCidade.Free;
+begin
   if Assigned( Self ) then
-  begin
-    FEstado.Destroy;
-    inherited Destroy;
-  end;
+    Self.Destroy;
 end;
 
 procedure TCidade.SetDDD( const Value: string );
@@ -66,9 +70,9 @@ begin
   FEstado := Value;
 end;
 
-procedure TCidade.SetNome( const Value: string );
+procedure TCidade.SetCidade( const Value: string );
 begin
-  FNome := Value;
+  FCidade := Value;
 end;
 
 end.

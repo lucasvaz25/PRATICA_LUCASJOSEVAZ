@@ -1,0 +1,22 @@
+unit uFormasPagamentos;
+
+interface
+
+uses
+  UGeral;
+
+type
+  TFormasPagamentos = class( TGeral )
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property FormaPagamento: string;
+
+    procedure CopiarDados( Value: TFormasPagamentos );
+  end;
+
+implementation
+
+end.

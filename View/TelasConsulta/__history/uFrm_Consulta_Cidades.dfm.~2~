@@ -1,0 +1,51 @@
+inherited Frm_Consulta_Cidades: TFrm_Consulta_Cidades
+  Caption = 'Frm_Consulta_Cidades'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFundo: TPanel
+    inherited pnlRodape: TPanel
+      inherited pnlNovo: TPanel
+        ExplicitLeft = 93
+      end
+      inherited pnlAlterar: TPanel
+        ExplicitLeft = 226
+      end
+      inherited pnlExcluir: TPanel
+        ExplicitLeft = 361
+      end
+      inherited pnlSair: TPanel
+        ExplicitLeft = 493
+      end
+    end
+    inherited pnlCabecalho: TPanel
+      ExplicitWidth = 703
+    end
+    inherited pnlGrid: TPanel
+      ExplicitWidth = 703
+      ExplicitHeight = 313
+    end
+  end
+  object DsCidades: TDataSource
+    DataSet = TDset_Cidades
+    Left = 168
+    Top = 209
+  end
+  object TDset_Cidades: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 504
+    Top = 193
+    object TDset_Cidadescodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object TDset_Cidadescidade: TStringField
+      FieldName = 'cidade'
+    end
+    object TDset_Cidadesuf: TStringField
+      FieldName = 'uf'
+    end
+    object TDset_Cidadespais: TStringField
+      FieldName = 'pais'
+    end
+  end
+end

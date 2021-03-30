@@ -16,6 +16,15 @@ type
     Trans: TFDTransaction;
     QryPaises: TFDQuery;
     QryEstados: TFDQuery;
+    QryCidades: TFDQuery;
+    QryDepartamentos: TFDQuery;
+    QryCond_Pag: TFDQuery;
+    QryCargos: TFDQuery;
+    QryGrupos: TFDQuery;
+    QrySubgrupos: TFDQuery;
+    QryClientes: TFDQuery;
+    QryFuncionarios: TFDQuery;
+    QryF_Pagamentos: TFDQuery;
   private
     { Private declarations }
   public

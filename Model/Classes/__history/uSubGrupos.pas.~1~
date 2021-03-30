@@ -1,0 +1,25 @@
+unit uSubGrupos;
+
+interface
+
+uses
+  UGeral,
+  UGrupos;
+
+type
+  TSubGrupos = class( TGeral )
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property Subgrupo: string;
+    property Obs: string;
+    property Grupo: TGrupos;
+
+    procedure CopiarDados( Value: TSubGrupos );
+  end;
+
+implementation
+
+end.

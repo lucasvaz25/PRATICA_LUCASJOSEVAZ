@@ -1,0 +1,94 @@
+unit uFrm_Cad_Cidades;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  UFrm_Cadastro,
+  Vcl.Buttons,
+  Vcl.StdCtrls,
+  VazEdit,
+  Vcl.ExtCtrls,
+  Vcl.Imaging.Pngimage,
+  UCidades,
+  UCidadesController,
+  UEstadosController;
+
+type
+  TFrm_Cad_Cidades = class( TFrm_Cadastro )
+    EdCidade: TVazEdit;
+    LblCidade: TLabel;
+    EdDDD: TVazEdit;
+    LblDDD: TLabel;
+    EdEstado: TVazEdit;
+    LblEstado: TLabel;
+    PnlPesquisar: TPanel;
+    ImgPesquisar: TImage;
+    BalloonHint1: TBalloonHint;
+
+  private
+    procedure PopulaObj;
+    procedure PopulaForm;
+    function ValidaForm: Boolean;
+  public
+    { Public declarations }
+    CidadeControl: TCidadesController;
+    EstadoControl: TEstadosController;
+
+    procedure Salvar; override;
+    procedure Sair; override;
+
+  end;
+
+var
+  Frm_Cad_Cidades: TFrm_Cad_Cidades;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrm_Cad_Cidades }
+
+procedure TFrm_Cad_Cidades.PopulaForm;
+begin
+
+end;
+
+procedure TFrm_Cad_Cidades.PopulaObj;
+begin
+  with CidadeControl.GetEntity do
+  begin
+    Codigo  := StrToInt( EdCodigo.Text );
+    Cidade  := UpperCase( EdCidade.Text );
+    DDD     := UpperCase( EdDDD.Text );
+    DataCad := Date;
+    UserCad := UpperCase( 'lucas' );
+  end;
+end;
+
+procedure TFrm_Cad_Cidades.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrm_Cad_Cidades.Salvar;
+begin
+  inherited;
+
+end;
+
+function TFrm_Cad_Cidades.ValidaForm: Boolean;
+begin
+
+end;
+
+end.
