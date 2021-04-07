@@ -96,7 +96,7 @@ end;
 
 procedure TFrm_Cad_Grupo.Salvar;
 var
-  Aux: TGrupos;
+  Aux: TObject;
 begin
   inherited;
   if ValidaForm then

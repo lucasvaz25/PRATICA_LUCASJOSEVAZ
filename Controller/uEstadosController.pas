@@ -24,8 +24,8 @@ type
     function GetInstance( var Instance: TEstadosController; OWner: TComponent ): TEstadosController;
     function GetEntity: TEstado;
 
-    function Inserir( const Value: TObject ): Boolean; override;
-    function Editar( const Value: TObject ): Boolean; override;
+    function Inserir( var Value: TObject ): Boolean; override;
+    function Editar( var Value: TObject ): Boolean; override;
     function Deletar( const VID: Integer ): Boolean; override;
     function Consulta( AFilter: TFilterSearch ): TObjectList; override;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
@@ -59,7 +59,7 @@ begin
   inherited;
 end;
 
-function TEstadosController.Editar( const Value: TObject ): Boolean;
+function TEstadosController.Editar( var Value: TObject ): Boolean;
 begin
   Result := EstadoDao.Editar( Value );
 end;
@@ -85,7 +85,7 @@ begin
   Result     := Instance;
 end;
 
-function TEstadosController.Inserir( const Value: TObject ): Boolean;
+function TEstadosController.Inserir( var Value: TObject ): Boolean;
 begin
   Result := EstadoDao.Inserir( Value );
 end;

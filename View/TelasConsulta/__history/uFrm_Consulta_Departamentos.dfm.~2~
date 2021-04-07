@@ -1,0 +1,40 @@
+inherited Frm_Consulta_Departamentos: TFrm_Consulta_Departamentos
+  Caption = 'Frm_Consulta_Departamentos'
+  ExplicitTop = -136
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFundo: TPanel
+    inherited pnlRodape: TPanel
+      inherited pnlNovo: TPanel
+        ExplicitLeft = 93
+      end
+      inherited pnlAlterar: TPanel
+        ExplicitLeft = 226
+      end
+      inherited pnlExcluir: TPanel
+        ExplicitLeft = 361
+      end
+      inherited pnlSair: TPanel
+        ExplicitLeft = 493
+      end
+    end
+    inherited pnlCabecalho: TPanel
+      ExplicitWidth = 703
+    end
+    inherited pnlGrid: TPanel
+      ExplicitWidth = 703
+      ExplicitHeight = 313
+    end
+  end
+  object DsDept: TDataSource
+    DataSet = TDset_Dept
+    Left = 480
+    Top = 297
+  end
+  object TDset_Dept: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 560
+    Top = 249
+  end
+end

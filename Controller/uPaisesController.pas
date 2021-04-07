@@ -24,8 +24,8 @@ type
     function GetEntity: TPais;
     function GetInstance( var Instance: TPaisesController; OWner: TComponent ): TPaisesController;
 
-    function Inserir( const Value: TObject ): Boolean; override;
-    function Editar( const Value: TObject ): Boolean; override;
+    function Inserir( var Value: TObject ): Boolean; override;
+    function Editar( var Value: TObject ): Boolean; override;
     function Deletar( const VID: Integer ): Boolean; override;
     function Consulta( AFilter: TFilterSearch ): TObjectList; override;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
@@ -59,7 +59,7 @@ begin
   inherited;
 end;
 
-function TPaisesController.Editar( const Value: TObject ): Boolean;
+function TPaisesController.Editar( var Value: TObject ): Boolean;
 begin
   Result := PaisDao.Editar( Value );
 end;
@@ -85,7 +85,7 @@ begin
   Result     := Instance;
 end;
 
-function TPaisesController.Inserir( const Value: TObject ): Boolean;
+function TPaisesController.Inserir( var Value: TObject ): Boolean;
 begin
   Result := PaisDao.Inserir( Value );
 end;

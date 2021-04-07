@@ -18,8 +18,8 @@ type
     constructor Create;
     destructor Destroy;
 
-    function Inserir( const Value: TObject ): Boolean; virtual;
-    function Editar( const Value: TObject ): Boolean; virtual;
+    function Inserir( var Value: TObject ): Boolean; virtual;
+    function Editar( var Value: TObject ): Boolean; virtual;
     function Deletar( const VID: Integer ): Boolean; virtual;
     function Consulta( AFilter: TFilterSearch ): TObjectList; virtual;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; virtual;
@@ -38,7 +38,7 @@ end;
 constructor Dao.Create;
 begin
   if not( Assigned( DM ) ) then
-     DM := TDM.Create( nil );
+    DM := TDM.Create( nil );
 
   try
     if not( DM.Conexao.Connected ) then
@@ -62,12 +62,12 @@ begin
     FreeAndNil( DM );
 end;
 
-function Dao.Editar( const Value: TObject ): Boolean;
+function Dao.Editar( var Value: TObject ): Boolean;
 begin
 
 end;
 
-function Dao.Inserir( const Value: TObject ): Boolean;
+function Dao.Inserir( var Value: TObject ): Boolean;
 begin
 
 end;

@@ -25,8 +25,8 @@ type
     function GetInstance( var Instance: TGruposController; OWner: TComponent ): TGruposController;
     function GetEntity: TGrupos;
 
-    function Inserir( const Value: TObject ): Boolean; override;
-    function Editar( const Value: TObject ): Boolean; override;
+    function Inserir( var Value: TObject ): Boolean; override;
+    function Editar( var Value: TObject ): Boolean; override;
     function Deletar( const VID: Integer ): Boolean; override;
     function Consulta( AFilter: TFilterSearch ): TObjectList; override;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
@@ -61,7 +61,7 @@ begin
   inherited;
 end;
 
-function TGruposController.Editar( const Value: TObject ): Boolean;
+function TGruposController.Editar( var Value: TObject ): Boolean;
 begin
   Result := GrupoDao.Editar( Value );
 end;
@@ -87,7 +87,7 @@ begin
   Result     := Instance;
 end;
 
-function TGruposController.Inserir( const Value: TObject ): Boolean;
+function TGruposController.Inserir( var Value: TObject ): Boolean;
 begin
   Result := GrupoDao.Inserir( Value );
 end;

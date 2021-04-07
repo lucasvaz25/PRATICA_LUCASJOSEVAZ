@@ -125,7 +125,7 @@ end;
 
 procedure TFrm_Cad_Cidades.Salvar;
 var
-  Aux: TCidade;
+  Aux: TObject;
 begin
   inherited;
   if ValidaForm then

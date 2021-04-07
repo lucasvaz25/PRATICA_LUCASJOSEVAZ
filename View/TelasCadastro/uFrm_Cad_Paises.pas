@@ -107,7 +107,7 @@ end;
 
 procedure TFrm_Cad_Paises.Salvar;
 var
-  Aux: TPais;
+  Aux: TObject;
 begin
   inherited;
 

@@ -24,8 +24,8 @@ type
     function GetInstance( var Instance: TCidadesController; OWner: TComponent ): TCidadesController;
     function GetEntity: TCidade;
 
-    function Inserir( const Value: TObject ): Boolean; override;
-    function Editar( const Value: TObject ): Boolean; override;
+    function Inserir( var Value: TObject ): Boolean; override;
+    function Editar( var Value: TObject ): Boolean; override;
     function Deletar( const VID: Integer ): Boolean; override;
     function Consulta( AFilter: TFilterSearch ): TObjectList; override;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
@@ -59,7 +59,7 @@ begin
   inherited;
 end;
 
-function TCidadesController.Editar( const Value: TObject ): Boolean;
+function TCidadesController.Editar( var Value: TObject ): Boolean;
 begin
   Result := CidadeDao.Editar( Value );
 end;
@@ -85,7 +85,7 @@ begin
   Result     := Instance;
 end;
 
-function TCidadesController.Inserir( const Value: TObject ): Boolean;
+function TCidadesController.Inserir( var Value: TObject ): Boolean;
 begin
   Result := CidadeDao.Inserir( Value );
 end;

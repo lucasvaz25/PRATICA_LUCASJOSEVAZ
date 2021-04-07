@@ -48,7 +48,10 @@ uses
   uFrm_Consulta_Grupos in 'View\TelasConsulta\uFrm_Consulta_Grupos.pas' {Frm_Consulta_Grupos},
   uSubGruposDao in 'Model\DAO\uSubGruposDao.pas',
   uSubGruposController in 'Controller\uSubGruposController.pas',
-  uFrm_Consulta_SubGrupos in 'View\TelasConsulta\uFrm_Consulta_SubGrupos.pas' {Frm_Consulta_SubGrupos};
+  uFrm_Consulta_SubGrupos in 'View\TelasConsulta\uFrm_Consulta_SubGrupos.pas' {Frm_Consulta_SubGrupos},
+  uDepartamentosDao in 'Model\DAO\uDepartamentosDao.pas',
+  uDepartamentosController in 'Controller\uDepartamentosController.pas',
+  uFrm_Consulta_Departamentos in 'View\TelasConsulta\uFrm_Consulta_Departamentos.pas' {Frm_Consulta_Departamentos};
 
 {$R *.res}
 
@@ -77,5 +80,6 @@ begin
   Application.CreateForm(TFrm_Consulta_Cidades, Frm_Consulta_Cidades);
   Application.CreateForm(TFrm_Consulta_Grupos, Frm_Consulta_Grupos);
   Application.CreateForm(TFrm_Consulta_SubGrupos, Frm_Consulta_SubGrupos);
+  Application.CreateForm(TFrm_Consulta_Departamentos, Frm_Consulta_Departamentos);
   Application.Run;
 end.

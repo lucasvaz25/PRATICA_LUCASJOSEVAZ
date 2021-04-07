@@ -17,8 +17,8 @@ type
     constructor Create;
     destructor Destroy;
 
-    function Inserir( const Value: TObject ): Boolean; virtual;
-    function Editar( const Value: TObject ): Boolean; virtual;
+    function Inserir( var Value: TObject ): Boolean; virtual;
+    function Editar( var Value: TObject ): Boolean; virtual;
     function Deletar( const VID: Integer ): Boolean; virtual;
     function Consulta( AFilter: TFilterSearch ): TObjectList; virtual;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; virtual;
@@ -49,12 +49,12 @@ begin
 
 end;
 
-function TController.Editar( const Value: TObject ): Boolean;
+function TController.Editar( var Value: TObject ): Boolean;
 begin
 
 end;
 
-function TController.Inserir( const Value: TObject ): Boolean;
+function TController.Inserir( var Value: TObject ): Boolean;
 begin
 
 end;

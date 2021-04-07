@@ -34,7 +34,8 @@ uses
   Vcl.Imaging.Jpeg,
   System.ImageList,
   Vcl.ImgList,
-  Vcl.CategoryButtons;
+  Vcl.CategoryButtons,
+  Vcl.Imaging.Pngimage;
 
 type
   TFRM_Principal = class( TForm )
@@ -44,12 +45,18 @@ type
     Estados1: TMenuItem;
     Cidades1: TMenuItem;
     SplitView1: TSplitView;
-    Image1: TImage;
-    CategoryButtons1: TCategoryButtons;
     ImageList1: TImageList;
     N1: TMenuItem;
     Grupos1: TMenuItem;
     SubGrupos1: TMenuItem;
+    PnlTop: TPanel;
+    Image1: TImage;
+    PnlMenu: TPanel;
+    BtnMenu: TSpeedButton;
+    CategoryButtons1: TCategoryButtons;
+    CategoryButtons2: TCategoryButtons;
+    N2: TMenuItem;
+    Departamentos1: TMenuItem;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure BtnFecharClick( Sender: TObject );
@@ -59,6 +66,11 @@ type
     procedure Cidades1Click( Sender: TObject );
     procedure Grupos1Click( Sender: TObject );
     procedure SubGrupos1Click( Sender: TObject );
+    procedure BtnMenuClick( Sender: TObject );
+    procedure SplitView1Opened( Sender: TObject );
+    procedure SplitView1Closed( Sender: TObject );
+    procedure CategoryButtons2Categories0Items0Click( Sender: TObject );
+    procedure Departamentos1Click( Sender: TObject );
 
   private
     { Private declarations }
@@ -80,9 +92,25 @@ begin
   Close;
 end;
 
+procedure TFRM_Principal.BtnMenuClick( Sender: TObject );
+begin
+  SplitView1.Opened := not SplitView1.Opened;
+end;
+
+procedure TFRM_Principal.CategoryButtons2Categories0Items0Click(
+            Sender: TObject );
+begin
+  Self.Close;
+end;
+
 procedure TFRM_Principal.Cidades1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaCidades;
+end;
+
+procedure TFRM_Principal.Departamentos1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaDepartamentos;
 end;
 
 procedure TFRM_Principal.Estados1Click( Sender: TObject );
@@ -108,6 +136,16 @@ end;
 procedure TFRM_Principal.Paises1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaPaises;
+end;
+
+procedure TFRM_Principal.SplitView1Closed( Sender: TObject );
+begin
+  CategoryButtons1.ShowHint := not SplitView1.Opened;
+end;
+
+procedure TFRM_Principal.SplitView1Opened( Sender: TObject );
+begin
+  CategoryButtons1.ShowHint := not SplitView1.Opened;
 end;
 
 procedure TFRM_Principal.SubGrupos1Click( Sender: TObject );

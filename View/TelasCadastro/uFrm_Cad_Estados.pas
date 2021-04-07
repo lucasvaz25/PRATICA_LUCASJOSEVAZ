@@ -142,7 +142,7 @@ end;
 
 procedure TFrm_Cad_Estados.Salvar;
 var
-  Aux: TEstado;
+  Aux: TObject;
 begin
   inherited;
   if ValidaForm then

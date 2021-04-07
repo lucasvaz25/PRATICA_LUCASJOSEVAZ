@@ -20,8 +20,8 @@ type
     constructor Create;
     destructor Destroy;
 
-    function Inserir( const Value: TObject ): Boolean; override;
-    function Editar( const Value: TObject ): Boolean; override;
+    function Inserir( var Value: TObject ): Boolean; override;
+    function Editar( var Value: TObject ): Boolean; override;
     function Deletar( const VID: Integer ): Boolean; override;
     function Consulta( AFilter: TFilterSearch ): TObjectList; override;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
@@ -114,7 +114,7 @@ begin
   inherited;
 end;
 
-function TPaisesDao.Editar( const Value: TObject ): Boolean;
+function TPaisesDao.Editar( var Value: TObject ): Boolean;
 var
   Pais: TPais;
 begin
@@ -158,7 +158,7 @@ begin
   end;
 end;
 
-function TPaisesDao.Inserir( const Value: TObject ): Boolean;
+function TPaisesDao.Inserir( var Value: TObject ): Boolean;
 var
   Pais: TPais;
 begin

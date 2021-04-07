@@ -1,0 +1,92 @@
+unit uFrm_Cad_Departamento;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  UFrm_Cadastro,
+  Vcl.Buttons,
+  Vcl.StdCtrls,
+  VazEdit,
+  Vcl.ExtCtrls,
+  UDepartamentos,
+  UDepartamentosController;
+
+type
+  TFrm_Cad_Departamento = class( TFrm_Cadastro )
+    LblDepartamento: TLabel;
+    EdDepartamento: TVazEdit;
+    procedure FormShow( Sender: TObject );
+    procedure FormCreate( Sender: TObject );
+  private
+    { Private declarations }
+    procedure PopulaObj;
+    procedure PopulaForm;
+    function ValidaForm: Boolean;
+  public
+    { Public declarations }
+    DeptControl: TDepartamentosController;
+
+    procedure Salvar; override;
+    procedure Sair; override;
+  end;
+
+var
+  Frm_Cad_Departamento: TFrm_Cad_Departamento;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrm_Cad_Departamento }
+
+procedure TFrm_Cad_Departamento.FormCreate( Sender: TObject );
+begin
+  inherited;
+  GrupoControl := nil;
+  GrupoControl.GetInstance( GrupoControl, Self );
+end;
+
+procedure TFrm_Cad_Departamento.FormShow( Sender: TObject );
+begin
+  inherited;
+  if not( EdCodigo.Text = '0' ) then
+    PopulaForm;
+end;
+
+procedure TFrm_Cad_Departamento.PopulaForm;
+begin
+
+end;
+
+procedure TFrm_Cad_Departamento.PopulaObj;
+begin
+
+end;
+
+procedure TFrm_Cad_Departamento.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrm_Cad_Departamento.Salvar;
+begin
+  inherited;
+
+end;
+
+function TFrm_Cad_Departamento.ValidaForm: Boolean;
+begin
+
+end;
+
+end.

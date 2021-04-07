@@ -22,8 +22,8 @@ type
     constructor Create;
     destructor Destroy;
 
-    function Inserir( const Value: TObject ): Boolean; override;
-    function Editar( const Value: TObject ): Boolean; override;
+    function Inserir( var Value: TObject ): Boolean; override;
+    function Editar( var Value: TObject ): Boolean; override;
     function Deletar( const VID: Integer ): Boolean; override;
     function Consulta( AFilter: TFilterSearch ): TObjectList; override;
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
@@ -138,7 +138,7 @@ begin
   inherited;
 end;
 
-function TEstadosDao.Editar( const Value: TObject ): Boolean;
+function TEstadosDao.Editar( var Value: TObject ): Boolean;
 var
   Estado: TEstado;
 begin
@@ -182,7 +182,7 @@ begin
   end;
 end;
 
-function TEstadosDao.Inserir( const Value: TObject ): Boolean;
+function TEstadosDao.Inserir( var Value: TObject ): Boolean;
 var
   Estado: TEstado;
 begin
