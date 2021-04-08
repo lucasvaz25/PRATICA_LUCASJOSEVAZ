@@ -2,32 +2,13 @@ inherited Frm_Consulta_Grupos: TFrm_Consulta_Grupos
   Caption = 'Frm_Consulta_Grupos'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ExplicitTop = -76
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
-    inherited pnlRodape: TPanel
-      inherited pnlNovo: TPanel
-        ExplicitLeft = 93
-      end
-      inherited pnlAlterar: TPanel
-        ExplicitLeft = 226
-      end
-      inherited pnlExcluir: TPanel
-        ExplicitLeft = 361
-      end
-      inherited pnlSair: TPanel
-        ExplicitLeft = 493
-      end
-    end
-    inherited pnlCabecalho: TPanel
-      ExplicitWidth = 703
-    end
     inherited pnlGrid: TPanel
-      ExplicitWidth = 703
-      ExplicitHeight = 313
       inherited DBGrid1: TDBGrid
         DataSource = DsGrupos
+        OnDblClick = DBGrid1DblClick
         Columns = <
           item
             Expanded = False

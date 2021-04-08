@@ -3,6 +3,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
   ClientHeight = 449
   ClientWidth = 558
   OnCreate = FormCreate
+  ExplicitTop = -43
   ExplicitWidth = 564
   ExplicitHeight = 478
   PixelsPerInch = 96
@@ -10,7 +11,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
   inherited pnlFundo: TPanel
     Width = 558
     Height = 449
-    ExplicitWidth = 428
+    ExplicitWidth = 558
     ExplicitHeight = 449
     inherited lblUsuarioDataCad: TLabel
       Top = 422
@@ -49,7 +50,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       ParentFont = False
     end
     object lblGrupo: TLabel [5]
-      Left = 24
+      Left = 81
       Top = 139
       Width = 51
       Height = 21
@@ -61,16 +62,30 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       Font.Style = []
       ParentFont = False
     end
+    object lblCodigoGrupo: TLabel [6]
+      Left = 24
+      Top = 139
+      Width = 31
+      Height = 21
+      Caption = 'C'#243'd.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     inherited pnlSalvar: TPanel
       Left = 214
       Top = 353
-      ExplicitLeft = 150
+      ExplicitLeft = 214
       ExplicitTop = 353
     end
     inherited pnlSair: TPanel
       Left = 385
       Top = 353
-      ExplicitLeft = 281
+      TabOrder = 3
+      ExplicitLeft = 385
       ExplicitTop = 353
     end
     object edSubGrupo: TVazEdit
@@ -87,7 +102,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       TextHint = 'digite o subgrupo'
       ChangeColor = 14745599
     end
@@ -103,194 +118,120 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       Font.Style = []
       MaxLength = 100
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 6
     end
-    object lkpGrupo: TDBLookupComboBox
-      Left = 22
+    object edGrupo: TVazEdit
+      Left = 81
       Top = 163
-      Width = 412
+      Width = 388
       Height = 29
+      BiDiMode = bdLeftToRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      KeyField = 'codigo'
-      ListField = 'grupo'
-      ListSource = DsGrupo
+      MaxLength = 50
+      ParentBiDiMode = False
       ParentFont = False
+      ReadOnly = True
       TabOrder = 5
+      TextHint = 'consulte o grupo'
+      ChangeColor = 14745599
     end
-    object pnlbotoes: TPanel
-      Left = 440
+    object edCodGrupo: TVazEdit
+      Left = 20
       Top = 163
-      Width = 66
+      Width = 55
+      Height = 29
+      BiDiMode = bdLeftToRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 5
+      NumbersOnly = True
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 4
+      OnExit = edCodGrupoExit
+      OnKeyPress = edCodGrupoKeyPress
+      ChangeColor = 14745599
+    end
+    object pnlPesquisar: TPanel
+      Left = 472
+      Top = 163
+      Width = 33
       Height = 29
       BevelOuter = bvNone
-      TabOrder = 6
-      object pnlNovoCad: TPanel
+      Color = 16744448
+      ParentBackground = False
+      TabOrder = 7
+      object imgPesquisar: TImage
         Left = 0
         Top = 0
         Width = 33
         Height = 29
-        Align = alLeft
-        BevelOuter = bvNone
-        Color = 16744448
-        ParentBackground = False
-        TabOrder = 0
-        object imgNovoCad: TImage
-          Left = 0
-          Top = 0
-          Width = 33
-          Height = 29
-          Cursor = crHandPoint
-          Align = alClient
-          Center = True
-          Picture.Data = {
-            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000300000
-            003008060000005702F98700000006624B474400FF00FF00FFA0BDA793000000
-            A44944415478DAEDD63B0E8020108461F75ABE0E2FE8B570496C2CD025511793
-            7F1A1A12E64B2846BA9F47BC0B00F02E00C0BB40538094D2AA477F732D8AC8D4
-            2A20991ED50000000000000000009CCBE77DB318AF4F6A88AF028CC3ECAB1407
-            E015C0F41DBE4AE9DB010000000080D700418FD1BBF891A0FDE72A406D149CB1
-            C1787DD042DB13EF32E600000000000000000D012C03B038CCDC011E01E01D00
-            DEF93D60078B5D9631C96114F50000000049454E44AE426082}
-          Proportional = True
-          ExplicitLeft = 48
-          ExplicitTop = 24
-          ExplicitWidth = 105
-          ExplicitHeight = 105
-        end
-        object btnNovoCad: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 33
-          Height = 29
-          Cursor = crHandPoint
-          Hint = 'Novo'
-          Align = alClient
-          Flat = True
-          ParentShowHint = False
-          ShowHint = True
-          OnClick = btnNovoCadClick
-          ExplicitLeft = 8
-          ExplicitTop = 16
-          ExplicitWidth = 23
-          ExplicitHeight = 22
-        end
+        Align = alClient
+        ParentShowHint = False
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000320000
+          003208060000001E3F88B100000006624B474400FF00FF00FFA0BDA793000004
+          0C4944415478DAED995B48154118C7E79045901A1474358A0AAD7C081421A14C
+          E966172AD3B7D48A1E444A7AE96250A4F59205421744AA87B4CB5311E1A5B232
+          AD1733A35E2A0B2ABA408559884269C5E9FFB173E03BDB39EBEE9959CF1A0EFC
+          F9E0DBB3DFB7BFB33B33DFCCF8C47FD27CD17E8011109D207EBF7F2ACC1A6829
+          940CCD84E2E5E51EE81DF40C6A851A7D3EDF674F810020136637940D8DB279DB
+          6FE826741C40F7A30A0280B930A7A1558A796F4025007A3DE420802884A982C6
+          69CADD071503E6E2908100E230CCC130975F40D7A13BD047296A33A0E9D00A68
+          03342FCCFDE58029731D041047600E84B8D40E95E221EED9FC33D2618E418BDD
+          80B104919F538DC93D0095406791DCEF2419E251BE22E80434C674391FF12E69
+          07911DFBA908EE13DD500E123E50F9F7103B03E61A3481B9A9CF2C44EC37BA41
+          68A8E4A313BD89E5AA102C3ECD3DB7A1D1CCDD80F8EBB481C879C2FCED1721C9
+          191D102C4FB1304642DE3222F9B3C281D4C3AC65AE8750BAD33E6103C42763A7
+          31771DF2AC57069165C77B2886B93311BC552704CB9705D3CC5C54012420DF17
+          5590ED30E798EB398226BB01C17276C22431D736E43CAF0A520B53C05C471174
+          BFCB2015307B99AB0639B7AA823C8649612E1AA9EEBA0C42B37F13737520679A
+          9318A140BEC24C64AE24047DE532087D569DCCD5859C935441FA45F0AC1B87A0
+          7D2E83C4C2F432573F728ED50D128FA0BDF6434604428BB11EE6EA43CE385510
+          2F7C5A6F9173B62A48074C2A7345A3B3B72167BA2A0855BB85CC5581A0A52E83
+          5079BF87B9AA9073872A887942EC44D0F92E83BC844964AE3CE4BCAA0A3205E6
+          83082E51B210B8C5258865C2585D061A55D9D390AF5B094406AF83E1E534AD06
+          17B954343E12C17DB21679B6388D150E84163EE62291360AAA3583EC84396572
+          A720CF132D20324923CC6AE6FA258C114CCB9E94AC7A6F89E085D565C4DF1C49
+          3C2B9039C258EAC632F73768936A492F176ED499F95297E6AF0588DDA5154426
+          CC87B96072D39BD9055547B8F940C36AA5087E13D46855486F7C403B884C5E06
+          7328C4259A38F72171F36031641C1A9DA85C4FB5F819ED40D21BFFA91D641018
+          6A34070436E868D80E6CD0250863932EB0419728EC351A31F39CBE19275BA6D4
+          0969D48AB57B8F42AB9730FDDA41240C15722745F0C684D346FDEA0A341E5AA9
+          0B26D2638525C2A88D68788EB1791B7DF7F40956E2E1DA1183D61BB449976D71
+          4F03946B0746F5A067B284C914C641CF2C611CF4FC11C6AEE42761CCDC6DF40F
+          E381BE9BEED70613F5A337C0D0228EE614AB1D46DAF5CCB11ACDA20EE20086AA
+          808DE1603C01A203C63320AA309E027100D324617E781644C2D819CD0AF8F9A3
+          2741248CD59B29034439777816C402E61F08CF8384800909312C40240CF5995C
+          ABC3D2610162A78D8078ADFD0501F79442478F295F0000000049454E44AE4260
+          82}
+        Proportional = True
+        ShowHint = False
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 32
+        ExplicitHeight = 27
       end
-      object pnlAlterarCad: TPanel
-        Left = 33
+      object btnPesquisar: TSpeedButton
+        Left = 0
         Top = 0
         Width = 33
         Height = 29
-        Align = alRight
-        BevelOuter = bvNone
-        Color = clMedGray
-        ParentBackground = False
-        TabOrder = 1
-        object imgAlterarCad: TImage
-          Left = 0
-          Top = 0
-          Width = 33
-          Height = 29
-          Cursor = crHandPoint
-          Align = alClient
-          Center = True
-          Picture.Data = {
-            0954506E67496D61676589504E470D0A1A0A0000000D49484452000000340000
-            00340806000000C5781BEB00000006624B474400FF00FF00FFA0BDA793000005
-            A24944415478DAD59A696C554514C7E7919A20015151C044A38909C62814C444
-            71C1682CA5058D0103244891C5A282960AB8A1B8E0062EE04241CB0776344A00
-            A5C86684B8804BD144A21F2506E307D9C10504EAFF9F998BE7CD9BBBBDDEFB6E
-            BDC9C9C99B39F79EF3EBB93373666E73AA8D5E2D2D2DBDA06E819C01D905D99C
-            CBE54E84DD97CB3A7007487BA8B7213556D74F906180DAF5BF01020CB3B10A72
-            9B8FC941C800407DD3E68100C3583E800C0931DD0FA900D4CE360D64A02643CD
-            8960EA9BA9CC8100710102FB4DFC7E08EAD508B73A3395291082BF1A6A23A411
-            813D2ADAEBA15E8BF088824C650684A0FB43AD8374324DB39280CA04C8AC313B
-            20675A5DCF20B0A785DDC3048DF048BE7E37714ACF0AA81D542364ACA3DB867A
-            04EAA5088FFD11D2ABA44008AECC5BED6342F1557C31828BCA920121A8CBA13E
-            848C41B09F1701F518D40B216EA6940408C15C01F509A41BE428A4AA48A8C7A1
-            9E0F70559B3A1082B8D2C07415CD5C772E45B07F1501F504D44C87DD49488F54
-            81E0BCA781395F341F81547B1912B671A09E847AD6B2990B9BFAD480E0B41C6A
-            0BE43C0B86AFDB17C2EE74A510136A06DBCCCFD54A57E227520182B3DE509B2D
-            983F2083E0749BB06380754A2C8CA6486D80DCEB78B4BDF8724AE79EE976B41F
-            635BE24070D2C7C07411CDCCCC4038FD52D83D05E5FDC5F3EAB298992A931BBF
-            44817C605C99712D9679254C9C4CC92B312053686E829C239A0F2B9D99EDC2CE
-            35A0BD6B0B6C2B846D50A6FAC3F6B35480E0F82AA53373AE055309A73B845D50
-            6DF63DE456D8EFB39E6D67AA05321576CEC2B5D54070788DD25B80CE21307EEB
-            07AF66A5C7D00161EF9AFD464146A37DA55F3CAD0282A37E501F5B3087947ECD
-            24CC74A8E762C0D419F86AABA228C7EFEF82622A1A080EAE33306785C04C839A
-            EDF31806C7D76CBF0533C7C4C6096530FAB7468DAB282038BD016ABDFA6F73E6
-            C1F035FB4AD8051594DF2A3DABC9CC3C0835D78A8B53FE65729B9E28109C5EAF
-            7466C260A642BDECF318AE371556662640CDB762E204500FBBD7A3C6170B2846
-            66E2C2D4422D70C04C86DD1B71628C0C04A7371A988E213053A05E4900A60E76
-            6FC681890C640E349A1C301C035FA700F300ECE6C585890494104CB3B19730F7
-            287D866DC34C825D433130A14070CA3264ADCA3F9D61CD5569C1041D0EBAD699
-            54600281E07400D49A12C24C84DDFCD6C0F802C1E950A86590F6A2F98009AE59
-            D805CD665C5CB9C81E12F6F741CDB3FC9E828C83DDA2D6C23881E09465CC1E95
-            3F665C30416366BB81392CEC595C36583E790E3016764B9280F1031A0EF5AE68
-            2A383F0E39A675C18C57FA356B97268C1FD06295FFF5AC164E1B457FD098E18E
-            B4CA8271550084A981DD8A24610A804C45CB9AC93B72E260BD088E7F35FD41DF
-            6F5C30E3A0DE518599B91B76CB92867101F5338179D74E38EE6BFA5829F074A5
-            8BE339BC87AFD911F12CD76CC6BDFF5DB07B2F0D181710F72CD345D34C389F61
-            D9F450FAA4E67ED3C423A9AA0830FF4046C2EEFDB4605C40DC06978BA66B659D
-            26ECB8467197EACA0CF7FF1C73F66B362A68A799381002B910EA17D1B617D20D
-            419C72005D0CB55C1566C605C3CC0C87DDEAB4616C20CE460B44DF520451E3BA
-            C94C1E1DD07F54B4B92680E34A9F68AE2D058C0DF411D460D13722EAE0C5BD63
-            A0163A60989935A582390D64FE7B83C7471D4C3B67A3AEB206F301E1E791D14A
-            7F8C92303C96BD13F7AF2B258C04AA527AF3E65DAC0EFA20A0DD160083E68162
-            B591BE1688073304F7AE57195C1ED05B5013AD3EC2DCACF4DE87DB884190812A
-            FF3B8F7D7102E0C1F9862C6024D0CF509738FA992916A965119E459869710E34
-            5201325FD87E28F2FEDF21CC06C7CA26C01CCC12C6038AFA85D9BBF8F99C3322
-            3F666D8DF23F6CA506E282774780CD9F4A7F56E4B9421300F6641D7418108F8A
-            2659EDBB959EF5F82A7D0A88BFB30E340ED0D94A1FA477877013D714F65F836D
-            F9FA17C69DE1868047F9830000000049454E44AE426082}
-          Proportional = True
-          ExplicitLeft = 48
-          ExplicitTop = 24
-          ExplicitWidth = 105
-          ExplicitHeight = 105
-        end
-        object btnAlterarCad: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 33
-          Height = 29
-          Cursor = crHandPoint
-          Hint = 'Alterar'
-          Align = alClient
-          BiDiMode = bdLeftToRight
-          Flat = True
-          ParentShowHint = False
-          ParentBiDiMode = False
-          ShowHint = True
-          ExplicitLeft = 8
-          ExplicitTop = 16
-          ExplicitWidth = 23
-          ExplicitHeight = 22
-        end
+        Align = alClient
+        Flat = True
+        OnClick = btnPesquisarClick
+        ExplicitLeft = 8
+        ExplicitTop = 8
+        ExplicitWidth = 23
+        ExplicitHeight = 22
       end
-    end
-  end
-  object DsGrupo: TDataSource
-    DataSet = TDset_Grupo
-    Left = 456
-    Top = 48
-  end
-  object TDset_Grupo: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 400
-    Top = 56
-    object TDset_Grupocodigo: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'codigo'
-    end
-    object TDset_Grupogrupo: TStringField
-      DisplayLabel = 'Grupo'
-      FieldName = 'grupo'
-      Size = 50
     end
   end
 end

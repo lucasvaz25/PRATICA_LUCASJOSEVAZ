@@ -11,8 +11,8 @@ inherited Frm_Cadastro: TFrm_Cadastro
     Height = 482
     ExplicitLeft = 0
     ExplicitTop = 0
-    ExplicitWidth = 712
-    ExplicitHeight = 472
+    ExplicitWidth = 722
+    ExplicitHeight = 482
     DesignSize = (
       722
       482)
@@ -65,6 +65,7 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Top = 51
       Width = 57
       Height = 24
+      TabStop = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -85,8 +86,6 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Color = 16744448
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 410
-      ExplicitTop = 376
       object btnSalvar: TSpeedButton
         Left = 0
         Top = 0
@@ -127,8 +126,6 @@ inherited Frm_Cadastro: TFrm_Cadastro
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
-      ExplicitLeft = 550
-      ExplicitTop = 376
       object btnSair: TSpeedButton
         Left = 0
         Top = 0

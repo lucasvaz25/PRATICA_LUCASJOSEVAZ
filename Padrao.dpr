@@ -59,27 +59,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFRM_Principal, FRM_Principal);
-  Application.CreateForm(TFrm_Base, Frm_Base);
-  Application.CreateForm(TFrm_Cadastro, Frm_Cadastro);
-  Application.CreateForm(TFrm_Consulta, Frm_Consulta);
-  Application.CreateForm(TFrm_Cad_Cargo, Frm_Cad_Cargo);
-  Application.CreateForm(TFrm_Cad_Cidades, Frm_Cad_Cidades);
-  Application.CreateForm(TFrm_Cad_Clientes, Frm_Cad_Clientes);
-  Application.CreateForm(TFrm_Cad_Departamento, Frm_Cad_Departamento);
-  Application.CreateForm(TFrm_Cad_Estados, Frm_Cad_Estados);
-  Application.CreateForm(TFrm_Cad_Fornecedor, Frm_Cad_Fornecedor);
-  Application.CreateForm(TFrm_Cad_Funcionario, Frm_Cad_Funcionario);
-  Application.CreateForm(TFrm_Cad_Grupo, Frm_Cad_Grupo);
-  Application.CreateForm(TFrm_Cad_Paises, Frm_Cad_Paises);
-  Application.CreateForm(TFrm_Cad_Produto, Frm_Cad_Produto);
-  Application.CreateForm(TFrm_Cad_SubGrupo, Frm_Cad_SubGrupo);
-  Application.CreateForm(TFrm_ConsultaPaises, Frm_ConsultaPaises);
-  Application.CreateForm(TFrm_Venda, Frm_Venda);
-  Application.CreateForm(TDM, DM);
-  Application.CreateForm(TFrm_Consulta_Estados, Frm_Consulta_Estados);
-  Application.CreateForm(TFrm_Consulta_Cidades, Frm_Consulta_Cidades);
-  Application.CreateForm(TFrm_Consulta_Grupos, Frm_Consulta_Grupos);
-  Application.CreateForm(TFrm_Consulta_SubGrupos, Frm_Consulta_SubGrupos);
-  Application.CreateForm(TFrm_Consulta_Departamentos, Frm_Consulta_Departamentos);
   Application.Run;
 end.

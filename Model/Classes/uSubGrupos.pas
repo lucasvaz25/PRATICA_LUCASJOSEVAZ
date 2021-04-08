@@ -42,7 +42,9 @@ end;
 constructor TSubGrupos.Create;
 begin
   inherited Create;
-  FGrupo.Create;
+  FSubgrupo := '';
+  FObs      := '';
+  FGrupo    := TGrupos.Create;
 end;
 
 destructor TSubGrupos.Destroy;

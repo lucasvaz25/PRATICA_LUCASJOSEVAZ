@@ -159,7 +159,8 @@ end;
 procedure TFrm_ConsultaPaises.DBGrid1DblClick( Sender: TObject );
 begin
   inherited;
-  Self.SelecionaRegistro;
+  if IsSelecionar then
+    Self.SelecionaRegistro;
 end;
 
 procedure TFrm_ConsultaPaises.Excluir;

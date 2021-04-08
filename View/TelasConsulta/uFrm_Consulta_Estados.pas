@@ -160,7 +160,8 @@ end;
 procedure TFrm_Consulta_Estados.DBGrid1DblClick( Sender: TObject );
 begin
   inherited;
-  Self.SelecionaRegistro;
+  if IsSelecionar then
+    Self.SelecionaRegistro;
 end;
 
 procedure TFrm_Consulta_Estados.Excluir;

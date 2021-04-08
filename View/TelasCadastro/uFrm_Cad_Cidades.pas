@@ -69,7 +69,8 @@ var
 begin
   inherited;
   //
-  Frm := TFrm_Consulta_Estados.Create( Self );
+  Frm              := TFrm_Consulta_Estados.Create( Self );
+  Frm.IsSelecionar := True;
   Frm.ShowModal;
   EdEstado.Text := Frm.EstadoControl.GetEntity.Estado;
   CidadeControl.GetEntity.Estado.CopiarDados( Frm.EstadoControl.GetEntity );

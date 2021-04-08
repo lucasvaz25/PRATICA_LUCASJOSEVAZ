@@ -53,12 +53,13 @@ type
     procedure BtnPesquisarClick( Sender: TObject );
     procedure FormShow( Sender: TObject );
     procedure EdPesquisarKeyPress( Sender: TObject; var Key: Char );
+    procedure FormCreate( Sender: TObject );
   private
     { Private declarations }
   protected
-
   public
     { Public declarations }
+    IsSelecionar: Boolean;
     procedure Novo; virtual;
     procedure Alterar; virtual;
     procedure Excluir; virtual;
@@ -181,6 +182,12 @@ end;
 procedure TFrm_Consulta.Excluir;
 begin
 
+end;
+
+procedure TFrm_Consulta.FormCreate( Sender: TObject );
+begin
+  inherited;
+  IsSelecionar := False;
 end;
 
 procedure TFrm_Consulta.FormShow( Sender: TObject );

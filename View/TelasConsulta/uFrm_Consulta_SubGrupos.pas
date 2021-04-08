@@ -36,6 +36,7 @@ type
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure FormShow( Sender: TObject );
+    procedure DBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -152,6 +153,13 @@ begin
     VFilter.Free;
     Lista.Free;
   end;
+end;
+
+procedure TFrm_Consulta_SubGrupos.DBGrid1DblClick(Sender: TObject);
+begin
+  inherited;
+  if IsSelecionar then
+    Self.SelecionaRegistro;
 end;
 
 procedure TFrm_Consulta_SubGrupos.Excluir;

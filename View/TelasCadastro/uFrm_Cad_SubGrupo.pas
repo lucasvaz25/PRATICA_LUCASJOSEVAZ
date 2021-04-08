@@ -7,6 +7,7 @@ uses
   Winapi.Messages,
   System.SysUtils,
   System.Variants,
+  System.Contnrs,
   System.Classes,
   Vcl.Graphics,
   Vcl.Controls,
@@ -32,26 +33,23 @@ type
     LblObs: TLabel;
     EdObs: TMemo;
     LblGrupo: TLabel;
-    LkpGrupo: TDBLookupComboBox;
-    Pnlbotoes: TPanel;
-    PnlNovoCad: TPanel;
-    ImgNovoCad: TImage;
-    BtnNovoCad: TSpeedButton;
-    PnlAlterarCad: TPanel;
-    ImgAlterarCad: TImage;
-    BtnAlterarCad: TSpeedButton;
-    DsGrupo: TDataSource;
-    TDset_Grupo: TClientDataSet;
-    TDset_Grupocodigo: TIntegerField;
-    TDset_Grupogrupo: TStringField;
+    EdGrupo: TVazEdit;
+    EdCodGrupo: TVazEdit;
+    LblCodigoGrupo: TLabel;
+    PnlPesquisar: TPanel;
+    ImgPesquisar: TImage;
+    BtnPesquisar: TSpeedButton;
     procedure FormCreate( Sender: TObject );
     procedure FormShow( Sender: TObject );
-    procedure BtnNovoCadClick( Sender: TObject );
+    procedure BtnPesquisarClick( Sender: TObject );
+    procedure EdCodGrupoExit( Sender: TObject );
+    procedure EdCodGrupoKeyPress( Sender: TObject; var Key: Char );
   private
     { Private declarations }
     procedure PopulaObj;
     procedure PopulaForm;
     function ValidaForm: Boolean;
+    procedure ConsultaGrupoCod;
   public
     { Public declarations }
     SubGrupoControl: TSubGruposController;
@@ -68,29 +66,68 @@ var
 implementation
 
 uses
-  UFrm_Cad_Grupo;
+  UFilterSearch,
+  UGrupos,
+  UFrm_Consulta_Grupos;
 {$R *.dfm}
 
 { TFrm_Cad_SubGrupo }
 
-procedure TFrm_Cad_SubGrupo.BtnNovoCadClick( Sender: TObject );
+procedure TFrm_Cad_SubGrupo.BtnPesquisarClick( Sender: TObject );
 var
-  Form: TFrm_Cad_Grupo;
+  Frm: TFrm_Consulta_Grupos;
 begin
   inherited;
-  Form := TFrm_Cad_Grupo.Create( Self );
+  Frm := TFrm_Consulta_Grupos.Create( Self );
   try
-    Form.ShowModal;
-    if Form.Salvou then
-    begin
-      GrupoControl.PopularLkpGrupo( TDset_Grupo );
-      LkpGrupo.KeyValue := Form.GrupoControl.GetEntity.Codigo;
-    end;
+    Frm.IsSelecionar := True;
+    Frm.ShowModal;
+    EdGrupo.Text    := Frm.GrupoControl.GetEntity.Grupo;
+    EdCodGrupo.Text := IntToStr( Frm.GrupoControl.GetEntity.Codigo );
+    SubGrupoControl.GetEntity.Grupo.CopiarDados( Frm.GrupoControl.GetEntity );
   finally
-    Form.Free;
+    Frm.Release;
   end;
-  // if LkpGrupo.KeyValue = Null then
 
+end;
+
+procedure TFrm_Cad_SubGrupo.ConsultaGrupoCod;
+var
+  Filtro: TFilterSearch;
+  List: TObjectlist;
+begin
+  if EdCodGrupo.Text <> '' then
+  begin
+    Filtro := TFilterSearch.Create;
+    try
+      Filtro.TipoConsulta := TpCCodigo;
+      Filtro.Codigo       := StrToInt( EdCodGrupo.Text );
+      List                := GrupoControl.Consulta( Filtro );
+      if List.Count > 0 then
+        EdGrupo.Text := TGrupos( List[ 0 ] ).Grupo
+      else
+      begin
+        ShowMessage( 'Grupo não encontrado!!' );
+        EdGrupo.Clear;
+        EdGrupo.SetFocus;
+      end;
+    finally
+      Filtro.Free;
+    end;
+  end;
+end;
+
+procedure TFrm_Cad_SubGrupo.EdCodGrupoExit( Sender: TObject );
+begin
+  inherited;
+  Self.ConsultaGrupoCod;
+end;
+
+procedure TFrm_Cad_SubGrupo.EdCodGrupoKeyPress( Sender: TObject; var Key: Char );
+begin
+  inherited;
+  if Key = #13 then
+    Self.ConsultaGrupoCod;
 end;
 
 procedure TFrm_Cad_SubGrupo.FormCreate( Sender: TObject );
@@ -101,17 +138,6 @@ begin
 
   GrupoControl := nil;
   GrupoControl.GetInstance( GrupoControl, Self );
-
-  TDset_Grupo.AfterScroll := nil;
-  if ( not TDset_Grupo.IsEmpty ) then
-    TDset_Grupo.EmptyDataSet;
-  TDset_Grupo.Active := False;
-  TDset_Grupo.DisableControls;
-  TDset_Grupo.CreateDataSet;
-
-  TDset_Grupo.Open;
-
-  GrupoControl.PopularLkpGrupo( TDset_Grupo );
 
 end;
 
@@ -129,7 +155,8 @@ begin
     EdCodigo.Text             := IntToStr( Codigo );
     EdSubGrupo.Text           := Subgrupo;
     EdObs.Text                := Obs;
-    LkpGrupo.KeyValue         := Grupo.Codigo;
+    EdCodGrupo.Text           := IntToStr( Grupo.Codigo );
+    EdGrupo.Text              := Grupo.Grupo;
     LblUsuarioDataCad.Caption := 'Usuário: ' + Usercad + ' - Data Cadastro :' + Datetostr( DataCad );
   end;
 end;
@@ -138,12 +165,11 @@ procedure TFrm_Cad_SubGrupo.PopulaObj;
 begin
   with SubGrupoControl.GetEntity do
   begin
-    Codigo       := StrToInt( EdCodigo.Text );
-    SubGrupo     := UpperCase( EdSubGrupo.Text );
-    Obs          := UpperCase( EdObs.Text );
-    Grupo.Codigo := LkpGrupo.KeyValue;
-    DataCad      := Date;
-    UserCad      := UpperCase( 'lucas' );
+    Codigo   := StrToInt( EdCodigo.Text );
+    SubGrupo := UpperCase( EdSubGrupo.Text );
+    Obs      := UpperCase( EdObs.Text );
+    DataCad  := Date;
+    UserCad  := UpperCase( 'lucas' );
   end;
 end;
 
@@ -183,10 +209,10 @@ begin
     Exit;
   end;
 
-  if LkpGrupo.Text = '' then
+  if ( EdCodGrupo.Text = '' ) or ( EdGrupo.Text = '' ) then
   begin
     MessageDlg( 'Selecione um Grupo válido!!', MtInformation, [ MbOK ], 0 );
-    LkpGrupo.SetFocus;
+    EdGrupo.SetFocus;
     Exit;
   end;
 

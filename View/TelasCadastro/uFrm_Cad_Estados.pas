@@ -73,7 +73,8 @@ var
 begin
   inherited;
   //
-  Frm := TFrm_ConsultaPaises.Create( Self );
+  Frm              := TFrm_ConsultaPaises.Create( Self );
+  Frm.IsSelecionar := True;
   Frm.ShowModal;
   EdPais.Text := Frm.PaisControl.GetEntity.Nome;
   EstadoControl.GetEntity.Pais.CopiarDados( Frm.PaisControl.GetEntity );

@@ -3,6 +3,7 @@ inherited Frm_Consulta: TFrm_Consulta
   Caption = 'Frm_Consulta'
   ClientHeight = 482
   ClientWidth = 703
+  OnCreate = FormCreate
   OnShow = FormShow
   ExplicitWidth = 709
   PixelsPerInch = 96
@@ -12,8 +13,8 @@ inherited Frm_Consulta: TFrm_Consulta
     Height = 482
     ExplicitLeft = 0
     ExplicitTop = 0
-    ExplicitWidth = 693
-    ExplicitHeight = 472
+    ExplicitWidth = 703
+    ExplicitHeight = 482
     object pnlRodape: TPanel
       Left = 0
       Top = 410
@@ -22,8 +23,6 @@ inherited Frm_Consulta: TFrm_Consulta
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitTop = 400
-      ExplicitWidth = 693
       DesignSize = (
         703
         72)
@@ -37,7 +36,6 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 91
         object btnNovo: TSpeedButton
           Left = 0
           Top = 0
@@ -67,7 +65,6 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 1
-        ExplicitLeft = 222
         object btnAlterar: TSpeedButton
           Left = 0
           Top = 0
@@ -100,7 +97,6 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 2
-        ExplicitLeft = 355
         object btnExcluir: TSpeedButton
           Left = 0
           Top = 0
@@ -133,7 +129,6 @@ inherited Frm_Consulta: TFrm_Consulta
         Color = 16744448
         ParentBackground = False
         TabOrder = 3
-        ExplicitLeft = 485
         object btnSair: TSpeedButton
           Left = 0
           Top = 0
@@ -162,7 +157,6 @@ inherited Frm_Consulta: TFrm_Consulta
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 693
       object lblConsulta: TLabel
         Left = 137
         Top = 35
@@ -303,8 +297,6 @@ inherited Frm_Consulta: TFrm_Consulta
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitWidth = 693
-      ExplicitHeight = 303
       object DBGrid1: TDBGrid
         AlignWithMargins = True
         Left = 3
