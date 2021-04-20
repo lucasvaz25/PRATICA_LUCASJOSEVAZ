@@ -220,6 +220,17 @@
             <Form>Frm_Consulta_Departamentos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="View\TelasCadastro\uFrm_Cad_Ordem_Producao.pas">
+            <Form>Frm_Cad_Ordem_Producao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Model\Classes\uUnidades.pas"/>
+        <DCCReference Include="Model\Classes\uDepositos.pas"/>
+        <DCCReference Include="Model\Classes\uFuncionarios.pas"/>
+        <DCCReference Include="Model\Classes\uFornecedores.pas"/>
+        <DCCReference Include="Model\Classes\uClientes.pas"/>
+        <DCCReference Include="Model\Classes\uEnum.pas"/>
+        <DCCReference Include="Model\DAO\uCargosDao.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

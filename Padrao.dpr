@@ -51,7 +51,15 @@ uses
   uFrm_Consulta_SubGrupos in 'View\TelasConsulta\uFrm_Consulta_SubGrupos.pas' {Frm_Consulta_SubGrupos},
   uDepartamentosDao in 'Model\DAO\uDepartamentosDao.pas',
   uDepartamentosController in 'Controller\uDepartamentosController.pas',
-  uFrm_Consulta_Departamentos in 'View\TelasConsulta\uFrm_Consulta_Departamentos.pas' {Frm_Consulta_Departamentos};
+  uFrm_Consulta_Departamentos in 'View\TelasConsulta\uFrm_Consulta_Departamentos.pas' {Frm_Consulta_Departamentos},
+  uFrm_Cad_Ordem_Producao in 'View\TelasCadastro\uFrm_Cad_Ordem_Producao.pas' {Frm_Cad_Ordem_Producao},
+  uUnidades in 'Model\Classes\uUnidades.pas',
+  uDepositos in 'Model\Classes\uDepositos.pas',
+  uFuncionarios in 'Model\Classes\uFuncionarios.pas',
+  uFornecedores in 'Model\Classes\uFornecedores.pas',
+  uClientes in 'Model\Classes\uClientes.pas',
+  uEnum in 'Model\Classes\uEnum.pas',
+  uCargosDao in 'Model\DAO\uCargosDao.pas';
 
 {$R *.res}
 
@@ -59,5 +67,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFRM_Principal, FRM_Principal);
+  Application.CreateForm(TFrm_Cad_Ordem_Producao, Frm_Cad_Ordem_Producao);
   Application.Run;
 end.

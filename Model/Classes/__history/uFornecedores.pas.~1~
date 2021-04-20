@@ -1,0 +1,22 @@
+unit uFornecedores;
+
+interface
+
+uses
+  UPessoa;
+
+type
+  TFornecedores = class( TPessoa )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    procedure CopiarDados( Value: TFornecedores );
+  end;
+
+implementation
+
+end.

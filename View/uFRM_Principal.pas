@@ -71,6 +71,7 @@ type
     procedure SplitView1Closed( Sender: TObject );
     procedure CategoryButtons2Categories0Items0Click( Sender: TObject );
     procedure Departamentos1Click( Sender: TObject );
+    procedure CategoryButtons1Categories0Items0Click( Sender: TObject );
 
   private
     { Private declarations }
@@ -84,6 +85,8 @@ var
 
 implementation
 
+uses
+  UFrm_Cad_Ordem_Producao;
 {$R *.dfm}
 
 
@@ -95,6 +98,15 @@ end;
 procedure TFRM_Principal.BtnMenuClick( Sender: TObject );
 begin
   SplitView1.Opened := not SplitView1.Opened;
+end;
+
+procedure TFRM_Principal.CategoryButtons1Categories0Items0Click(
+            Sender: TObject );
+var
+  Frm: TFrm_Cad_Ordem_Producao;
+begin
+  Frm := TFrm_Cad_Ordem_Producao.Create( Self );
+  Frm.ShowModal;
 end;
 
 procedure TFRM_Principal.CategoryButtons2Categories0Items0Click(

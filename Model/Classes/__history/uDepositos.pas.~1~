@@ -1,0 +1,17 @@
+unit uDepositos;
+
+interface
+
+uses UGeral;
+
+type
+  TDepositos = class( TGeral )
+  private
+  protected
+  public
+    procedure CopiarDados( Value: TDepositos );
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,20 @@
+unit uDepositos;
+
+interface
+
+uses UGeral;
+
+type
+  TDepositos = class( TGeral )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+    procedure CopiarDados( Value: TDepositos );
+  end;
+
+implementation
+
+end.

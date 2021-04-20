@@ -1,0 +1,26 @@
+unit uDepositos;
+
+interface
+
+uses UGeral,
+  UCidades;
+
+type
+  TDepositos = class( TGeral )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property Deposito: string;
+    property Obs: string;
+    property Cidade: TCidade;
+
+    procedure CopiarDados( Value: TDepositos );
+  end;
+
+implementation
+
+end.

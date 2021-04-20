@@ -1,0 +1,47 @@
+unit uUnidades;
+
+interface
+
+uses
+  UGeral;
+
+type
+  TUnidades = class( TGeral )
+  private
+    FDescricao: string;
+    procedure SetDescricao( const Value: string );
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property Descricao: string read FDescricao write SetDescricao;
+  end;
+
+implementation
+
+{ TUnidades }
+
+constructor TUnidades.Create;
+begin
+  inherited Create;
+end;
+
+destructor TUnidades.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TUnidades.Free;
+begin
+  if Assigned( Self ) then
+    Self.Destroy;
+end;
+
+procedure TUnidades.SetDescricao( const Value: string );
+begin
+  FDescricao := Value;
+end;
+
+end.

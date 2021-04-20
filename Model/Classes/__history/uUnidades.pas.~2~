@@ -1,0 +1,17 @@
+unit uUnidades;
+
+interface
+
+uses
+  UGeral;
+
+type
+  TUnidades = class( TGeral )
+  private
+  protected
+  public
+  end;
+
+implementation
+
+end.

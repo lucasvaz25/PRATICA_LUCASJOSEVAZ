@@ -1,0 +1,58 @@
+unit uFornecedores;
+
+interface
+
+uses
+  UPessoa;
+
+type
+  TTipoPessoa = ( TTpPIndefinido = -1, TTpPFisica = 0, TTpPJuridica = 1 );
+
+  TFornecedores = class( TPessoa )
+  private
+    FTpPessoa: TTipoPessoa;
+    procedure SetTpPessoa( const Value: TTipoPessoa );
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property TpPessoa: TTipoPessoa read FTpPessoa write SetTpPessoa;
+
+    procedure CopiarDados( Value: TFornecedores );
+  end;
+
+implementation
+
+{ TFornecedores }
+
+procedure TFornecedores.CopiarDados( Value: TFornecedores );
+begin
+  inherited CopiarDados( Value );
+  FTpPessoa := Value.TpPessoa;
+end;
+
+constructor TFornecedores.Create;
+begin
+  inherited Create;
+  FTpPessoa := TTpPIndefinido;
+end;
+
+destructor TFornecedores.Destroy;
+begin
+  inherited Free;
+end;
+
+procedure TFornecedores.Free;
+begin
+  if Assigned( Self ) then
+    Self.Destroy;
+end;
+
+procedure TFornecedores.SetTpPessoa( const Value: TTipoPessoa );
+begin
+  FTpPessoa := Value;
+end;
+
+end.

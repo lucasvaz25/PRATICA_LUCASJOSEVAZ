@@ -1,0 +1,27 @@
+unit uClientes;
+
+interface
+
+uses
+  UPessoa,
+  UCondicaoPagamento,
+  UEnum;
+
+type
+  TClientes = class( TPessoa )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property TpPessoa: TTipoPessoa;
+    property CondPagamento: TCondicaoPagamento;
+
+    procedure CopiarDados( Value: TClientes );
+  end;
+
+implementation
+
+end.

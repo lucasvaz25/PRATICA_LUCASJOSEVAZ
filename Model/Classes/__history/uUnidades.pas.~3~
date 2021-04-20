@@ -1,0 +1,22 @@
+unit uUnidades;
+
+interface
+
+uses
+  UGeral;
+
+type
+  TUnidades = class( TGeral )
+  private
+  protected
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property Descricao: string;
+  end;
+
+implementation
+
+end.
