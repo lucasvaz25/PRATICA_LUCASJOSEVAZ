@@ -59,7 +59,8 @@ uses
   uFornecedores in 'Model\Classes\uFornecedores.pas',
   uClientes in 'Model\Classes\uClientes.pas',
   uEnum in 'Model\Classes\uEnum.pas',
-  uCargosDao in 'Model\DAO\uCargosDao.pas';
+  uCargosDao in 'Model\DAO\uCargosDao.pas',
+  uUnidadesDao in 'Model\DAO\uUnidadesDao.pas';
 
 {$R *.res}
 
