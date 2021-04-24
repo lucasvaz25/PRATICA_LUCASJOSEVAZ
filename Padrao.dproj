@@ -232,6 +232,8 @@
         <DCCReference Include="Model\Classes\uEnum.pas"/>
         <DCCReference Include="Model\DAO\uCargosDao.pas"/>
         <DCCReference Include="Model\DAO\uUnidadesDao.pas"/>
+        <DCCReference Include="Controller\uCargosController.pas"/>
+        <DCCReference Include="Controller\uUnidadesController.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

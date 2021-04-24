@@ -9,11 +9,13 @@ uses
 
   UDao,
   UFilterSearch,
-  UPaises;
+  UPaises,
+  FireDAC.Comp.Client;
 
 type
   TPaisesDao = class( DAO )
   private
+    Qry: TFDQuery;
     procedure FieldsToObj( var Value: TPais );
     procedure ObjToFields( var Value: TPais );
   public
@@ -42,7 +44,7 @@ var
 begin
   Result := nil;
 
-  with DM.QryPaises do
+  with Qry do
   begin
 
     SQL.Clear;
@@ -86,13 +88,17 @@ end;
 constructor TPaisesDao.Create;
 begin
   inherited;
+  if not Assigned( Qry ) then
+    Qry := TFDQuery.Create( nil );
+
+  Qry.Connection := Dm.Conexao;
 end;
 
 function TPaisesDao.Deletar( const VID: Integer ): Boolean;
 begin
   DM.Trans.StartTransaction;
   try
-    with DM.QryPaises do
+    with Qry do
     begin
       Close;
       SQL.Clear;
@@ -111,6 +117,7 @@ end;
 
 destructor TPaisesDao.Destroy;
 begin
+  Qry.Free;
   inherited;
 end;
 
@@ -122,7 +129,7 @@ begin
   Pais := TPais( Value );
   DM.Trans.StartTransaction;
   try
-    with DM.QryPaises do
+    with Qry do
     begin
       Close;
       SQL.Clear;
@@ -145,7 +152,7 @@ end;
 
 procedure TPaisesDao.ObjToFields( var Value: TPais );
 begin
-  with Value, DM.QryPaises do
+  with Value, Qry do
   begin
     ParamByName( 'CODIGO' ).AsInteger    := Codigo;
     ParamByName( 'DATA_CAD' ).AsDateTime := DataCad;
@@ -165,7 +172,7 @@ begin
   Pais := TPais( Value );
   DM.Trans.StartTransaction;
   try
-    with DM.QryPaises do
+    with Qry do
     begin
       Close;
       SQl.Clear;
@@ -194,7 +201,7 @@ end;
 
 procedure TPaisesDao.FieldsToObj( var Value: TPais );
 begin
-  with Value, DM.QryPaises do
+  with Value, Qry do
   begin
     Codigo  := FieldByName( 'CODIGO' ).AsInteger;
     DataCad := FieldByName( 'DATA_CAD' ).AsDateTime;

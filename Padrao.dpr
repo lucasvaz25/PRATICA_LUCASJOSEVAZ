@@ -60,7 +60,9 @@ uses
   uClientes in 'Model\Classes\uClientes.pas',
   uEnum in 'Model\Classes\uEnum.pas',
   uCargosDao in 'Model\DAO\uCargosDao.pas',
-  uUnidadesDao in 'Model\DAO\uUnidadesDao.pas';
+  uUnidadesDao in 'Model\DAO\uUnidadesDao.pas',
+  uCargosController in 'Controller\uCargosController.pas',
+  uUnidadesController in 'Controller\uUnidadesController.pas';
 
 {$R *.res}
 
