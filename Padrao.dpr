@@ -62,7 +62,8 @@ uses
   uCargosDao in 'Model\DAO\uCargosDao.pas',
   uUnidadesDao in 'Model\DAO\uUnidadesDao.pas',
   uCargosController in 'Controller\uCargosController.pas',
-  uUnidadesController in 'Controller\uUnidadesController.pas';
+  uUnidadesController in 'Controller\uUnidadesController.pas',
+  uDepositosDao in 'Model\DAO\uDepositosDao.pas';
 
 {$R *.res}
 
