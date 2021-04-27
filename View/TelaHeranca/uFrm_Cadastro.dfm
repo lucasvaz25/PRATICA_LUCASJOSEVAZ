@@ -4,6 +4,7 @@ inherited Frm_Cadastro: TFrm_Cadastro
   ClientHeight = 482
   ClientWidth = 722
   OnShow = FormShow
+  ExplicitTop = -138
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
@@ -30,7 +31,7 @@ inherited Frm_Cadastro: TFrm_Cadastro
       ParentFont = False
     end
     object lblUsuarioDataCad: TLabel
-      Left = 24
+      Left = 10
       Top = 455
       Width = 170
       Height = 13
@@ -42,10 +43,9 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitTop = 445
     end
     object lblUsuarioDataAlteracao: TLabel
-      Left = 526
+      Left = 453
       Top = 455
       Width = 173
       Height = 13
@@ -57,8 +57,6 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 516
-      ExplicitTop = 445
     end
     object edCodigo: TVazEdit
       Left = 24
@@ -66,6 +64,7 @@ inherited Frm_Cadastro: TFrm_Cadastro
       Width = 57
       Height = 24
       TabStop = False
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13

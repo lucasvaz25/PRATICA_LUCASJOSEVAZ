@@ -3,6 +3,7 @@ inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
   ClientHeight = 407
   ClientWidth = 518
   OnCreate = FormCreate
+  ExplicitTop = -63
   ExplicitWidth = 524
   ExplicitHeight = 436
   PixelsPerInch = 96
@@ -10,7 +11,7 @@ inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
   inherited pnlFundo: TPanel
     Width = 518
     Height = 407
-    ExplicitWidth = 426
+    ExplicitWidth = 518
     ExplicitHeight = 407
     inherited lblUsuarioDataCad: TLabel
       Top = 380
@@ -51,13 +52,13 @@ inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
     inherited pnlSalvar: TPanel
       Left = 195
       Top = 311
-      ExplicitLeft = 150
+      ExplicitLeft = 195
       ExplicitTop = 311
     end
     inherited pnlSair: TPanel
       Left = 353
       Top = 311
-      ExplicitLeft = 280
+      ExplicitLeft = 353
       ExplicitTop = 311
     end
     object edGrupo: TVazEdit

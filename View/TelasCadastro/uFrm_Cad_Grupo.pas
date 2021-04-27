@@ -69,10 +69,11 @@ procedure TFrm_Cad_Grupo.PopulaForm;
 begin
   with GrupoControl.GetEntity do
   begin
-    EdCodigo.Text             := IntToStr( Codigo );
-    EdGrupo.Text              := Grupo;
-    EdObs.Text                := Obs;
-    LblUsuarioDataCad.Caption := 'Usuário: ' + Usercad + ' - Data Cadastro :' + Datetostr( DataCad );
+    EdCodigo.Text                   := IntToStr( Codigo );
+    EdGrupo.Text                    := Grupo;
+    EdObs.Text                      := Obs;
+    LblUsuarioDataCad.Caption       := 'Usuário: ' + Usercad + ' - Data Cadastro :' + Datetostr( DataCad );
+    LblUsuarioDataAlteracao.Caption := 'Usuário: ' + UserAlt + ' - Data Alteração :' + Datetostr( DataAlt );
   end;
 end;
 
@@ -85,6 +86,12 @@ begin
     Obs     := UpperCase( EdObs.Text );
     DataCad := Date;
     UserCad := UpperCase( 'lucas' );
+
+    if ( Codigo <> 0 ) then
+    begin
+      DataAlt := Date;
+      UserAlt := UpperCase( 'lucas' );
+    end;
   end;
 end;
 
