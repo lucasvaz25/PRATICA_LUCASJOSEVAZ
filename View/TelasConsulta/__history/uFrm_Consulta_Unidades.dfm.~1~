@@ -1,0 +1,5 @@
+inherited Frm_Consulta_Unidadeas: TFrm_Consulta_Unidadeas
+  Caption = 'Frm_Consulta_Unidadeas'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

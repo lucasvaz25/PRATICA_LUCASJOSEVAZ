@@ -63,7 +63,9 @@ uses
   uUnidadesDao in 'Model\DAO\uUnidadesDao.pas',
   uCargosController in 'Controller\uCargosController.pas',
   uUnidadesController in 'Controller\uUnidadesController.pas',
-  uDepositosDao in 'Model\DAO\uDepositosDao.pas';
+  uDepositosDao in 'Model\DAO\uDepositosDao.pas',
+  uFrm_Cad_Unidades in 'View\TelasCadastro\uFrm_Cad_Unidades.pas' {Frm_Cad_Unidades},
+  uFrm_Consulta_Unidades in 'View\TelasConsulta\uFrm_Consulta_Unidades.pas' {Frm_Consulta_Unidades};
 
 {$R *.res}
 
@@ -72,5 +74,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFRM_Principal, FRM_Principal);
   Application.CreateForm(TFrm_Cad_Ordem_Producao, Frm_Cad_Ordem_Producao);
+  Application.CreateForm(TFrm_Cad_Unidades, Frm_Cad_Unidades);
+  Application.CreateForm(TFrm_Consulta_Unidades, Frm_Consulta_Unidades);
   Application.Run;
 end.

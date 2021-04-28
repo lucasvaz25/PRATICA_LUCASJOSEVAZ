@@ -8,15 +8,15 @@ uses
 type
   TUnidades = class( TGeral )
   private
-    FDescricao: string;
-    procedure SetDescricao( const Value: string );
+    FUnidade: string;
+    procedure SetUnidade( const Value: string );
   protected
   public
     constructor Create;
     destructor Destroy;
     procedure Free;
 
-    property Descricao: string read FDescricao write SetDescricao;
+    property Unidade: string read FUnidade write SetUnidade;
 
     procedure CopiarDados( Value: TUnidades );
   end;
@@ -28,13 +28,13 @@ implementation
 procedure TUnidades.CopiarDados( Value: TUnidades );
 begin
   inherited CopiarDados( Value );
-  FDescricao := Value.Descricao;
+  FUnidade := Value.Unidade;
 end;
 
 constructor TUnidades.Create;
 begin
   inherited Create;
-  FDescricao := '';
+  FUnidade := '';
 end;
 
 destructor TUnidades.Destroy;
@@ -48,9 +48,9 @@ begin
     Self.Destroy;
 end;
 
-procedure TUnidades.SetDescricao( const Value: string );
+procedure TUnidades.SetUnidade( const Value: string );
 begin
-  FDescricao := Value;
+  FUnidade := Value;
 end;
 
 end.

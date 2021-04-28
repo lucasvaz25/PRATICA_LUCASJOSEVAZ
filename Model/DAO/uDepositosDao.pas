@@ -48,7 +48,7 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT D.*, D.DEPARTAMENTO FROM Depositos D ' );
+    SQL.Add( 'SELECT D.* FROM Depositos D ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:

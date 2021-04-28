@@ -1,0 +1,5 @@
+inherited Frm_Cad_Unidades: TFrm_Cad_Unidades
+  Caption = 'Frm_Cad_Unidades'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

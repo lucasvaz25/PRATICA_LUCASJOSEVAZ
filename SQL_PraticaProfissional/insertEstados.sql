@@ -1,0 +1,12 @@
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'PARANA', 'PR', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'SAO PAULO', 'SP', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'RIO DE JANEIRO', 'RJ	', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'SANTA CATARINA', 'SC', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'RIO GRANDE DO SUL', 'RS', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'MATO GROSSO DO SUL', 'MS', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'MATO GROSSO', 'MT', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'GOIAS', 'GO', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'MINAS GERAIS', 'MG', 1);
+insert into estados (user_cad, data_cad, estado, uf, cod_pais) values ('LUCAS', '03/21/2021', 'PARANA', 'PR', 1);
+insert into estados (user_cad, data_cad, estado, cod_pais) values ('LUCAS', '03/21/2021', 'ALTO PARANA', 2);
+insert into estados (user_cad, data_cad, estado, cod_pais) values ('LUCAS', '03/21/2021', 'AMAMBAY', 2);
