@@ -57,6 +57,7 @@ type
     CategoryButtons2: TCategoryButtons;
     N2: TMenuItem;
     Departamentos1: TMenuItem;
+    Panel1: TPanel;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure BtnFecharClick( Sender: TObject );

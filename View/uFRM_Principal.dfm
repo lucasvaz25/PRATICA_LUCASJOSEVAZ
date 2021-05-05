@@ -485,6 +485,22 @@ object FRM_Principal: TFRM_Principal
       end
     end
   end
+  object Panel1: TPanel
+    Left = 44
+    Top = 40
+    Width = 974
+    Height = 699
+    Align = alClient
+    BevelOuter = bvNone
+    Caption = 'Panel1'
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 2
+    ExplicitLeft = 440
+    ExplicitTop = 256
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
   object MainMenu1: TMainMenu
     Left = 728
     Top = 32
