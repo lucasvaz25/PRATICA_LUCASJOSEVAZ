@@ -181,7 +181,7 @@ begin
       SQL.Add( 'USER_ALT, DATA_ALT ' );
       SQL.Add( ')VALUES(' );
       SQL.Add( ':CODIGO, :DATA_CAD, :USER_CAD, ' );
-      SQL.Add( ':Deposito, ' );
+      SQL.Add( ':UNIDADE, ' );
       SQL.Add( ':USER_ALT, :DATA_ALT' );
 
       SQL.Add( ')' );

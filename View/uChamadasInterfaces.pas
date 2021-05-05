@@ -9,6 +9,7 @@ uses
   UFrm_Consulta_Grupos,
   UFrm_Consulta_SubGrupos,
   UFrm_Consulta_Departamentos,
+  UFrm_Consulta_Unidades,
   System.Classes;
 
 type
@@ -21,6 +22,7 @@ type
     ConsultaGrupos: TFrm_Consulta_Grupos;
     ConsultaSubGrupos: TFrm_Consulta_SubGrupos;
     ConsultaDepartamentos: TFrm_Consulta_Departamentos;
+    ConsultaUnidades: TFrm_Consulta_Unidades;
   public
     constructor Create( Owner: TComponent );
     destructor Destroy;
@@ -43,6 +45,9 @@ type
 
     procedure ChamadaConsultaDepartamentos( Parent: TObject ); overload;
     procedure ChamadaConsultaDepartamentos; overload;
+
+    procedure ChamadaConsultaUnidades( Parent: TObject ); overload;
+    procedure ChamadaConsultaUnidades; overload;
   end;
 
 implementation
@@ -82,6 +87,20 @@ begin
   ConsultaSubGrupos.ShowModal;
 end;
 
+procedure TchamadasInterfaces.ChamadaConsultaUnidades;
+begin
+  ConsultaUnidades.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaUnidades( Parent: TObject );
+begin
+  ConsultaUnidades.Parent      := TPanel( Parent );
+  ConsultaUnidades.Align       := Alclient;
+  ConsultaUnidades.BorderStyle := BsNone;
+  TPanel( Parent ).Tag         := 0;
+  ConsultaUnidades.Show;
+end;
+
 procedure TchamadasInterfaces.ChamadaConsultaSubGrupos( Parent: TObject );
 begin
   ConsultaSubGrupos.Parent      := TPanel( Parent );
@@ -99,6 +118,7 @@ begin
   ConsultaGrupos        := TFrm_Consulta_Grupos.Create( Owner );
   ConsultaSubGrupos     := TFrm_Consulta_SubGrupos.Create( Owner );
   ConsultaDepartamentos := TFrm_Consulta_Departamentos.Create( Owner );
+  ConsultaUnidades      := TFrm_Consulta_Unidades.Create( Owner );
 end;
 
 destructor TchamadasInterfaces.Destroy;
@@ -109,6 +129,7 @@ begin
   ConsultaGrupos.Release;
   ConsultaSubGrupos.Release;
   ConsultaDepartamentos.Release;
+  ConsultaUnidades.Release;
 end;
 
 procedure TchamadasInterfaces.Free;

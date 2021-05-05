@@ -536,6 +536,10 @@ object FRM_Principal: TFRM_Principal
         Caption = 'Departamentos'
         OnClick = Departamentos1Click
       end
+      object Unidades1: TMenuItem
+        Caption = 'Unidades'
+        OnClick = Unidades1Click
+      end
     end
   end
   object ImageList1: TImageList

@@ -65,7 +65,8 @@ uses
   uUnidadesController in 'Controller\uUnidadesController.pas',
   uDepositosDao in 'Model\DAO\uDepositosDao.pas',
   uFrm_Cad_Unidades in 'View\TelasCadastro\uFrm_Cad_Unidades.pas' {Frm_Cad_Unidades},
-  uFrm_Consulta_Unidades in 'View\TelasConsulta\uFrm_Consulta_Unidades.pas' {Frm_Consulta_Unidades};
+  uFrm_Consulta_Unidades in 'View\TelasConsulta\uFrm_Consulta_Unidades.pas' {Frm_Consulta_Unidades},
+  uDepositosController in 'Controller\uDepositosController.pas';
 
 {$R *.res}
 

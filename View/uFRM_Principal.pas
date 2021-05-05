@@ -58,6 +58,7 @@ type
     N2: TMenuItem;
     Departamentos1: TMenuItem;
     Panel1: TPanel;
+    Unidades1: TMenuItem;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure BtnFecharClick( Sender: TObject );
@@ -73,6 +74,7 @@ type
     procedure CategoryButtons2Categories0Items0Click( Sender: TObject );
     procedure Departamentos1Click( Sender: TObject );
     procedure CategoryButtons1Categories0Items0Click( Sender: TObject );
+    procedure Unidades1Click( Sender: TObject );
 
   private
     { Private declarations }
@@ -164,6 +166,11 @@ end;
 procedure TFRM_Principal.SubGrupos1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaSubGrupos;
+end;
+
+procedure TFRM_Principal.Unidades1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaUnidades;
 end;
 
 end.

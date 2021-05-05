@@ -1,0 +1,80 @@
+unit uFrm_Cad_Unidades;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  UFrm_Cadastro,
+  Vcl.Buttons,
+  Vcl.StdCtrls,
+  VazEdit,
+  Vcl.ExtCtrls,
+  UUnidadesController;
+
+type
+  TFrm_Cad_Unidades = class( TFrm_Cadastro )
+    EdUnidade: TVazEdit;
+    LblUnidade: TLabel;
+  private
+    { Private declarations }
+    procedure PopulaObj;
+    procedure PopulaForm;
+    function ValidaForm: Boolean;
+  public
+    { Public declarations }
+    UnidadeControl: TUnidadesController;
+    procedure Salvar; override;
+    procedure Sair; override;
+  end;
+
+var
+  Frm_Cad_Unidades: TFrm_Cad_Unidades;
+
+implementation
+
+uses
+  UFilterSearch,
+  UUnidades;
+{$R *.dfm}
+
+{ TFrm_Cad_Unidades }
+
+procedure TFrm_Cad_Unidades.PopulaForm;
+begin
+  with UnidadeControl.GetEntity do
+  begin
+
+  end;
+end;
+
+procedure TFrm_Cad_Unidades.PopulaObj;
+begin
+
+end;
+
+procedure TFrm_Cad_Unidades.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TFrm_Cad_Unidades.Salvar;
+begin
+  inherited;
+
+end;
+
+function TFrm_Cad_Unidades.ValidaForm: Boolean;
+begin
+
+end;
+
+end.

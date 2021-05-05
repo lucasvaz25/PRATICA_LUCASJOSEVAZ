@@ -2,6 +2,7 @@ inherited Frm_Cad_Unidades: TFrm_Cad_Unidades
   Caption = 'Frm_Cad_Unidades'
   ClientHeight = 270
   ClientWidth = 465
+  OnCreate = FormCreate
   ExplicitWidth = 471
   ExplicitHeight = 299
   PixelsPerInch = 96
@@ -9,8 +10,11 @@ inherited Frm_Cad_Unidades: TFrm_Cad_Unidades
   inherited pnlFundo: TPanel
     Width = 465
     Height = 270
+    ExplicitWidth = 465
+    ExplicitHeight = 270
     inherited lblUsuarioDataCad: TLabel
       Top = 243
+      ExplicitTop = 243
     end
     inherited lblUsuarioDataAlteracao: TLabel
       Left = 250
@@ -18,7 +22,7 @@ inherited Frm_Cad_Unidades: TFrm_Cad_Unidades
       ExplicitLeft = 250
       ExplicitTop = 243
     end
-    object lblPais: TLabel [3]
+    object lblUnidade: TLabel [3]
       Left = 24
       Top = 82
       Width = 65
