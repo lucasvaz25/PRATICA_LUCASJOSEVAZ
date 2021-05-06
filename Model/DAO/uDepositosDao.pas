@@ -135,8 +135,9 @@ begin
       Close;
       SQL.Clear;
       SQL.Add( 'UPDATE Depositos SET ' );
-      SQL.Add( 'CODIGO = :CODIGO, DATA_ALT = :DATA_ALT, USER_ALT = :USER_ALT, ' );
-      SQL.Add( 'Deposito = :Deposito, DATA_CAD = :DATA_CAD, USER_CAD = :USER_CAD ' );
+      SQL.Add( 'CODIGO = :CODIGO, DATA_ALT = :DATA_ALT, USER_ALT = :USER_ALT, CEP = :CEP, ' );
+      SQL.Add( 'logradouro = :logradouro, num = :num, bairro = :bairro, obs = :obs, cod_cidade = :cod_cidade, ' );
+      SQL.Add( 'Deposito = :Deposito, CEP = :CEP,DATA_CAD = :DATA_CAD, USER_CAD = :USER_CAD ' );
       SQL.Add( 'WHERE  CODIGO = :CODIGO' );
       ObjToFields( Deposito );
       ExecSQL;
@@ -155,12 +156,17 @@ procedure TDepositosDao.FieldsToObj( var Value: TDepositos );
 begin
   with Value, Qry do
   begin
-    Codigo   := FieldByName( 'CODIGO' ).AsInteger;
-    DataCad  := FieldByName( 'DATA_CAD' ).AsDateTime;
-    DataAlt  := FieldByName( 'DATA_ALT' ).AsDateTime;
-    UserCad  := FieldByName( 'USER_CAD' ).AsString;
-    UserAlt  := FieldByName( 'USER_ALT' ).AsString;
-    Deposito := FieldByName( 'Deposito' ).AsString;
+    Codigo        := FieldByName( 'CODIGO' ).AsInteger;
+    DataCad       := FieldByName( 'DATA_CAD' ).AsDateTime;
+    DataAlt       := FieldByName( 'DATA_ALT' ).AsDateTime;
+    UserCad       := FieldByName( 'USER_CAD' ).AsString;
+    UserAlt       := FieldByName( 'USER_ALT' ).AsString;
+    Deposito      := FieldByName( 'Deposito' ).AsString;
+    Logradouro    := FieldByName( 'logradouro' ).AsString;
+    Numero        := FieldByName( 'num' ).AsString;
+    Bairro        := FieldByName( 'bairro' ).AsString;
+    CEP           := FieldByName( 'CEP' ).AsString;
+    Cidade.Codigo := FieldByName( 'cod_cidade' ).AsInteger;
   end;
 end;
 
@@ -177,11 +183,11 @@ begin
       SQl.Clear;
       SQL.Add( 'INSERT INTO Depositos ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, USER_CAD, ' );
-      SQL.Add( 'Deposito, ' );
+      SQL.Add( 'Deposito, logradouro, num, bairro, cod_cidade, obs, CEP, ' );
       SQL.Add( 'USER_ALT, DATA_ALT ' );
       SQL.Add( ')VALUES(' );
       SQL.Add( ':CODIGO, :DATA_CAD, :USER_CAD, ' );
-      SQL.Add( ':Deposito, ' );
+      SQL.Add( ':Deposito, :logradouro, :num, :bairro, :cod_cidade, :obs, :CEP, ' );
       SQL.Add( ':USER_ALT, :DATA_ALT' );
 
       SQL.Add( ')' );
@@ -202,12 +208,18 @@ procedure TDepositosDao.ObjToFields( var Value: TDepositos );
 begin
   with Value, Qry do
   begin
-    ParamByName( 'CODIGO' ).AsInteger    := Codigo;
-    ParamByName( 'DATA_CAD' ).AsDateTime := DataCad;
-    ParamByName( 'DATA_ALT' ).AsDateTime := DataAlt;
-    ParamByName( 'USER_CAD' ).AsString   := UserCad;
-    ParamByName( 'USER_ALT' ).AsString   := UserAlt;
-    ParamByName( 'Deposito' ).AsString   := Deposito;
+    ParamByName( 'CODIGO' ).AsInteger     := Codigo;
+    ParamByName( 'DATA_CAD' ).AsDateTime  := DataCad;
+    ParamByName( 'DATA_ALT' ).AsDateTime  := DataAlt;
+    ParamByName( 'USER_CAD' ).AsString    := UserCad;
+    ParamByName( 'USER_ALT' ).AsString    := UserAlt;
+    ParamByName( 'Deposito' ).AsString    := Deposito;
+    ParamByName( 'logradouro' ).AsString  := Logradouro;
+    ParamByName( 'num' ).AsString         := Numero;
+    ParamByName( 'bairro' ).AsString      := Bairro;
+    ParamByName( 'Obs' ).AsString         := Obs;
+    ParamByName( 'CEP' ).AsString         := CEP;
+    ParamByName( 'cod_cidade' ).AsInteger := Cidade.Codigo;
   end;
 end;
 

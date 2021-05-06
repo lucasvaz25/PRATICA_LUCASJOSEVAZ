@@ -38,7 +38,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-    CargoControl: TCargosController;
   end;
 
 var

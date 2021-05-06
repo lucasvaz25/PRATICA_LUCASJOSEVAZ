@@ -18,8 +18,7 @@ uses
   Vcl.DBCtrls,
   Vcl.Buttons,
   Vcl.StdCtrls,
-  VazEdit,
-  UCargosController;
+  VazEdit;
 
 type
   TFrm_Cad_Cargo = class( TFrm_Cadastro )
@@ -38,7 +37,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-    CargoControl: TCargosController;
   end;
 
 var
@@ -46,8 +44,6 @@ var
 
 implementation
 
-uses
-  UCargos;
 {$R *.dfm}
 
 end.

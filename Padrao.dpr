@@ -66,7 +66,8 @@ uses
   uDepositosDao in 'Model\DAO\uDepositosDao.pas',
   uFrm_Cad_Unidades in 'View\TelasCadastro\uFrm_Cad_Unidades.pas' {Frm_Cad_Unidades},
   uFrm_Consulta_Unidades in 'View\TelasConsulta\uFrm_Consulta_Unidades.pas' {Frm_Consulta_Unidades},
-  uDepositosController in 'Controller\uDepositosController.pas';
+  uDepositosController in 'Controller\uDepositosController.pas',
+  uFrm_Cad_Depositos in 'View\TelasCadastro\uFrm_Cad_Depositos.pas' {Frm_Cad_Depositos};
 
 {$R *.res}
 
@@ -77,5 +78,6 @@ begin
   Application.CreateForm(TFrm_Cad_Ordem_Producao, Frm_Cad_Ordem_Producao);
   Application.CreateForm(TFrm_Cad_Unidades, Frm_Cad_Unidades);
   Application.CreateForm(TFrm_Consulta_Unidades, Frm_Consulta_Unidades);
+  Application.CreateForm(TFrm_Cad_Depositos, Frm_Cad_Depositos);
   Application.Run;
 end.

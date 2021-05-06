@@ -13,15 +13,13 @@ type
     FCidade: TCidade;
     FBairro: string;
     FNumero: string;
-    FLogradouro: string;
-    FCEP: string;
+    FEndereco: string;
     procedure SetCidade( const Value: TCidade );
     procedure SetDeposito( const Value: string );
     procedure SetObs( const Value: string );
     procedure SetBairro( const Value: string );
-    procedure SetLogradouro( const Value: string );
+    procedure SetEndereco( const Value: string );
     procedure SetNumero( const Value: string );
-    procedure SetCEP( const Value: string );
   protected
   public
     constructor Create;
@@ -30,10 +28,9 @@ type
 
     property Deposito: string read FDeposito write SetDeposito;
     property Obs: string read FObs write SetObs;
-    property Logradouro: string read FLogradouro write SetLogradouro;
+    property Endereco: string read FEndereco write SetEndereco;
     property Numero: string read FNumero write SetNumero;
     property Bairro: string read FBairro write SetBairro;
-    property CEP: string read FCEP write SetCEP;
     property Cidade: TCidade read FCidade write SetCidade;
 
     procedure CopiarDados( Value: TDepositos );
@@ -46,25 +43,23 @@ implementation
 procedure TDepositos.CopiarDados( Value: TDepositos );
 begin
   inherited CopiarDados( Value );
-  FDeposito   := Value.Deposito;
-  FObs        := Value.Obs;
-  FLogradouro := Value.Logradouro;
-  FNumero     := Value.Numero;
-  FBairro     := Value.Bairro;
-  FCEP        := Value.CEP;
+  FDeposito := Value.Deposito;
+  FObs      := Value.Obs;
+  FEndereco := Value.Endereco;
+  FNumero   := Value.Numero;
+  FBairro   := Value.Bairro;
   FCidade.CopiarDados( Value.Cidade );
 end;
 
 constructor TDepositos.Create;
 begin
   inherited Create;
-  FDeposito   := '';
-  FObs        := '';
-  FLogradouro := '';
-  FNumero     := '';
-  FBairro     := '';
-  FCEP        := '';
-  FCidade     := TCidade.Create;
+  FDeposito := '';
+  FObs      := '';
+  FEndereco := '';
+  FNumero   := '';
+  FBairro   := '';
+  FCidade   := TCidade.Create;
 end;
 
 destructor TDepositos.Destroy;
@@ -84,11 +79,6 @@ begin
   FBairro := Value;
 end;
 
-procedure TDepositos.SetCEP( const Value: string );
-begin
-  FCEP := Value;
-end;
-
 procedure TDepositos.SetCidade( const Value: TCidade );
 begin
   FCidade := Value;
@@ -99,9 +89,9 @@ begin
   FDeposito := Value;
 end;
 
-procedure TDepositos.SetLogradouro( const Value: string );
+procedure TDepositos.SetEndereco( const Value: string );
 begin
-  FLogradouro := Value;
+  FEndereco := Value;
 end;
 
 procedure TDepositos.SetNumero( const Value: string );

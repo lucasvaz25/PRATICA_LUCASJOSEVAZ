@@ -51,7 +51,6 @@ begin
   FLogradouro := Value.Logradouro;
   FNumero     := Value.Numero;
   FBairro     := Value.Bairro;
-  FCEP        := Value.CEP;
   FCidade.CopiarDados( Value.Cidade );
 end;
 
@@ -63,7 +62,6 @@ begin
   FLogradouro := '';
   FNumero     := '';
   FBairro     := '';
-  FCEP        := '';
   FCidade     := TCidade.Create;
 end;
 

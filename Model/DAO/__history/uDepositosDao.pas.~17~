@@ -43,12 +43,12 @@ var
 begin
   Result := nil;
 
-  with DM.QryDepositos do
+  with Qry do
   begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT D.*, D.DEPARTAMENTO FROM Depositos D ' );
+    SQL.Add( 'SELECT D.* FROM Depositos D ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
@@ -88,16 +88,18 @@ end;
 constructor TDepositosDao.Create;
 begin
   inherited;
-  if not Assigned( Qry ) then
-    Qry := TFDQuery.Create( Self );
 
+  if not Assigned( Qry ) then
+    Qry := TFDQuery.Create( nil );
+
+  Qry.Connection := Dm.Conexao;
 end;
 
 function TDepositosDao.Deletar( const VID: Integer ): Boolean;
 begin
   DM.Trans.StartTransaction;
   try
-    with DM.QryDepositos do
+    with Qry do
     begin
       Close;
       SQL.Clear;
@@ -116,6 +118,7 @@ end;
 
 destructor TDepositosDao.Destroy;
 begin
+  Qry.Free;
   inherited;
 end;
 
@@ -127,7 +130,7 @@ begin
   Deposito := TDepositos( Value );
   DM.Trans.StartTransaction;
   try
-    with DM.QryDepositos do
+    with Qry do
     begin
       Close;
       SQL.Clear;
@@ -150,7 +153,7 @@ end;
 
 procedure TDepositosDao.FieldsToObj( var Value: TDepositos );
 begin
-  with Value, DM.QryDepositos do
+  with Value, Qry do
   begin
     Codigo   := FieldByName( 'CODIGO' ).AsInteger;
     DataCad  := FieldByName( 'DATA_CAD' ).AsDateTime;
@@ -168,17 +171,17 @@ begin
   Deposito := TDepositos( Value );
   DM.Trans.StartTransaction;
   try
-    with DM.QryDepositos do
+    with Qry do
     begin
       Close;
       SQl.Clear;
       SQL.Add( 'INSERT INTO Depositos ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, USER_CAD, ' );
-      SQL.Add( 'Deposito, ' );
+      SQL.Add( 'Deposito, logradouro, num, bairro, cod_cidade, obs, ' );
       SQL.Add( 'USER_ALT, DATA_ALT ' );
       SQL.Add( ')VALUES(' );
       SQL.Add( ':CODIGO, :DATA_CAD, :USER_CAD, ' );
-      SQL.Add( ':Deposito, ' );
+      SQL.Add( ':Deposito, :logradouro, :num, :bairro, :cod_cidade, :obs, ' );
       SQL.Add( ':USER_ALT, :DATA_ALT' );
 
       SQL.Add( ')' );
@@ -197,7 +200,7 @@ end;
 
 procedure TDepositosDao.ObjToFields( var Value: TDepositos );
 begin
-  with Value, DM.QryDepositos do
+  with Value, Qry do
   begin
     ParamByName( 'CODIGO' ).AsInteger    := Codigo;
     ParamByName( 'DATA_CAD' ).AsDateTime := DataCad;

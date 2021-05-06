@@ -43,12 +43,12 @@ var
 begin
   Result := nil;
 
-  with DM.Qry do
+  with Qry do
   begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT D.*, D.DEPARTAMENTO FROM Depositos D ' );
+    SQL.Add( 'SELECT D.* FROM Depositos D ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
@@ -90,7 +90,7 @@ begin
   inherited;
 
   if not Assigned( Qry ) then
-    Qry := TFDQuery.Create( Self );
+    Qry := TFDQuery.Create( nil );
 
   Qry.Connection := Dm.Conexao;
 end;
@@ -99,7 +99,7 @@ function TDepositosDao.Deletar( const VID: Integer ): Boolean;
 begin
   DM.Trans.StartTransaction;
   try
-    with DM.Qry do
+    with Qry do
     begin
       Close;
       SQL.Clear;
@@ -118,6 +118,7 @@ end;
 
 destructor TDepositosDao.Destroy;
 begin
+  Qry.Free;
   inherited;
 end;
 
@@ -129,7 +130,7 @@ begin
   Deposito := TDepositos( Value );
   DM.Trans.StartTransaction;
   try
-    with DM.Qry do
+    with Qry do
     begin
       Close;
       SQL.Clear;
@@ -152,7 +153,7 @@ end;
 
 procedure TDepositosDao.FieldsToObj( var Value: TDepositos );
 begin
-  with Value, DM.Qry do
+  with Value, Qry do
   begin
     Codigo   := FieldByName( 'CODIGO' ).AsInteger;
     DataCad  := FieldByName( 'DATA_CAD' ).AsDateTime;
@@ -170,17 +171,17 @@ begin
   Deposito := TDepositos( Value );
   DM.Trans.StartTransaction;
   try
-    with DM.Qry do
+    with Qry do
     begin
       Close;
       SQl.Clear;
       SQL.Add( 'INSERT INTO Depositos ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, USER_CAD, ' );
-      SQL.Add( 'Deposito, ' );
+      SQL.Add( 'Deposito, logradouro, num, bairro, cod_cidade, obs, ' );
       SQL.Add( 'USER_ALT, DATA_ALT ' );
       SQL.Add( ')VALUES(' );
       SQL.Add( ':CODIGO, :DATA_CAD, :USER_CAD, ' );
-      SQL.Add( ':Deposito, ' );
+      SQL.Add( ':Deposito, :logradouro, :num, :bairro, :cod_cidade, :obs, ' );
       SQL.Add( ':USER_ALT, :DATA_ALT' );
 
       SQL.Add( ')' );
@@ -199,7 +200,7 @@ end;
 
 procedure TDepositosDao.ObjToFields( var Value: TDepositos );
 begin
-  with Value, DM.Qry do
+  with Value, Qry do
   begin
     ParamByName( 'CODIGO' ).AsInteger    := Codigo;
     ParamByName( 'DATA_CAD' ).AsDateTime := DataCad;
@@ -207,6 +208,10 @@ begin
     ParamByName( 'USER_CAD' ).AsString   := UserCad;
     ParamByName( 'USER_ALT' ).AsString   := UserAlt;
     ParamByName( 'Deposito' ).AsString   := Deposito;
+    ParamByName( 'logradouro' ).AsString := Logradouro;
+    ParamByName( 'num' ).AsString        := Numero;
+    ParamByName( 'bairro' ).AsString     := Bairro;
+    ParamByName( 'Obs' ).AsString        := Obs;
   end;
 end;
 

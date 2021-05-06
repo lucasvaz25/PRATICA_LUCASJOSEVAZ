@@ -2,24 +2,19 @@ inherited Frm_Cad_Cargo: TFrm_Cad_Cargo
   Caption = 'Frm_Cad_Cargo'
   ClientHeight = 311
   ClientWidth = 437
-  ExplicitWidth = 443
-  ExplicitHeight = 340
+  ExplicitWidth = 453
+  ExplicitHeight = 350
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 437
     Height = 311
-    ExplicitWidth = 437
-    ExplicitHeight = 311
     inherited lblUsuarioDataCad: TLabel
       Top = 284
-      ExplicitTop = 284
     end
     inherited lblUsuarioDataAlteracao: TLabel
       Left = 241
       Top = 284
-      ExplicitLeft = 241
-      ExplicitTop = 284
     end
     object lblCargo: TLabel [3]
       Left = 24
@@ -51,13 +46,13 @@ inherited Frm_Cad_Cargo: TFrm_Cad_Cargo
       Left = 150
       Top = 215
       ExplicitLeft = 150
-      ExplicitTop = 215
+      ExplicitTop = 205
     end
     inherited pnlSair: TPanel
       Left = 284
       Top = 215
       ExplicitLeft = 284
-      ExplicitTop = 215
+      ExplicitTop = 205
     end
     object edCargo: TVazEdit
       Left = 22
