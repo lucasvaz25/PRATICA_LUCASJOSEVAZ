@@ -59,6 +59,14 @@ type
     Departamentos1: TMenuItem;
     Panel1: TPanel;
     Unidades1: TMenuItem;
+    Depositos1: TMenuItem;
+    Cargos1: TMenuItem;
+    N3: TMenuItem;
+    Clientes1: TMenuItem;
+    Fornecedores1: TMenuItem;
+    Funcionarios1: TMenuItem;
+    Produtos1: TMenuItem;
+    OrdemdeProduo1: TMenuItem;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure BtnFecharClick( Sender: TObject );
@@ -75,6 +83,13 @@ type
     procedure Departamentos1Click( Sender: TObject );
     procedure CategoryButtons1Categories0Items0Click( Sender: TObject );
     procedure Unidades1Click( Sender: TObject );
+    procedure Depositos1Click( Sender: TObject );
+    procedure Cargos1Click( Sender: TObject );
+    procedure Clientes1Click( Sender: TObject );
+    procedure Fornecedores1Click( Sender: TObject );
+    procedure Funcionarios1Click( Sender: TObject );
+    procedure Produtos1Click( Sender: TObject );
+    procedure OrdemdeProduo1Click( Sender: TObject );
 
   private
     { Private declarations }
@@ -103,6 +118,11 @@ begin
   SplitView1.Opened := not SplitView1.Opened;
 end;
 
+procedure TFRM_Principal.Cargos1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaCargos;
+end;
+
 procedure TFRM_Principal.CategoryButtons1Categories0Items0Click(
             Sender: TObject );
 var
@@ -123,9 +143,19 @@ begin
   ChamadaInter.ChamadaConsultaCidades;
 end;
 
+procedure TFRM_Principal.Clientes1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaClientes;
+end;
+
 procedure TFRM_Principal.Departamentos1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaDepartamentos;
+end;
+
+procedure TFRM_Principal.Depositos1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaDepositos;
 end;
 
 procedure TFRM_Principal.Estados1Click( Sender: TObject );
@@ -143,14 +173,34 @@ begin
   ChamadaInter.Free;
 end;
 
+procedure TFRM_Principal.Fornecedores1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaFornecedores;
+end;
+
+procedure TFRM_Principal.Funcionarios1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaFuncionarios;
+end;
+
 procedure TFRM_Principal.Grupos1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaGrupos;
 end;
 
+procedure TFRM_Principal.OrdemdeProduo1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaOrdemProducao;;
+end;
+
 procedure TFRM_Principal.Paises1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaPaises;
+end;
+
+procedure TFRM_Principal.Produtos1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaProdutos;
 end;
 
 procedure TFRM_Principal.SplitView1Closed( Sender: TObject );

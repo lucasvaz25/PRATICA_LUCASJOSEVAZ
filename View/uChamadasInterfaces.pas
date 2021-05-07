@@ -10,6 +10,13 @@ uses
   UFrm_Consulta_SubGrupos,
   UFrm_Consulta_Departamentos,
   UFrm_Consulta_Unidades,
+  UFrm_Consulta_Depositos,
+  UFrm_Consulta_Cargos,
+  UFrm_Consulta_Clientes,
+  UFrm_Consulta_Fornecedores,
+  UFrm_Consulta_Funcionarios,
+  UFrm_Consulta_Produtos,
+  UFrm_Consulta_OrdemProducao,
   System.Classes;
 
 type
@@ -23,6 +30,14 @@ type
     ConsultaSubGrupos: TFrm_Consulta_SubGrupos;
     ConsultaDepartamentos: TFrm_Consulta_Departamentos;
     ConsultaUnidades: TFrm_Consulta_Unidades;
+    ConsultaDepositos: TFrm_Consulta_Depositos;
+    ConsultaCargos: TFrm_Consulta_Cargos;
+    ConsultaClientes: TFrm_Consulta_Cliente;
+    ConsultaFornecedores: TFrm_Consulta_Fornecedores;
+    ConsultaFuncionarios: TFrm_Consulta_Funcionario;
+    ConsultaProdutos: TFrm_Consulta_Produtos;
+    ConsultaOrdemProducao: TFrm_Consulta_OrdemProducao;
+
   public
     constructor Create( Owner: TComponent );
     destructor Destroy;
@@ -48,6 +63,27 @@ type
 
     procedure ChamadaConsultaUnidades( Parent: TObject ); overload;
     procedure ChamadaConsultaUnidades; overload;
+
+    procedure ChamadaConsultaDepositos( Parent: TObject ); overload;
+    procedure ChamadaConsultaDepositos; overload;
+
+    procedure ChamadaConsultaCargos( Parent: TObject ); overload;
+    procedure ChamadaConsultaCargos; overload;
+
+    procedure ChamadaConsultaClientes( Parent: TObject ); overload;
+    procedure ChamadaConsultaClientes; overload;
+
+    procedure ChamadaConsultaFornecedores( Parent: TObject ); overload;
+    procedure ChamadaConsultaFornecedores; overload;
+
+    procedure ChamadaConsultaFuncionarios( Parent: TObject ); overload;
+    procedure ChamadaConsultaFuncionarios; overload;
+
+    procedure ChamadaConsultaProdutos( Parent: TObject ); overload;
+    procedure ChamadaConsultaProdutos; overload;
+
+    procedure ChamadaConsultaOrdemProducao( Parent: TObject ); overload;
+    procedure ChamadaConsultaOrdemProducao; overload;
   end;
 
 implementation
@@ -80,6 +116,20 @@ end;
 procedure TchamadasInterfaces.ChamadaConsultaPaises;
 begin
   ConsultaPaises.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaProdutos;
+begin
+  ConsultaProdutos.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaProdutos( Parent: TObject );
+begin
+  ConsultaProdutos.Parent      := TPanel( Parent );
+  ConsultaProdutos.Align       := Alclient;
+  ConsultaProdutos.BorderStyle := BsNone;
+  TPanel( Parent ).Tag         := 0;
+  ConsultaProdutos.Show;
 end;
 
 procedure TchamadasInterfaces.ChamadaConsultaSubGrupos;
@@ -119,6 +169,13 @@ begin
   ConsultaSubGrupos     := TFrm_Consulta_SubGrupos.Create( Owner );
   ConsultaDepartamentos := TFrm_Consulta_Departamentos.Create( Owner );
   ConsultaUnidades      := TFrm_Consulta_Unidades.Create( Owner );
+  ConsultaDepositos     := TFrm_Consulta_Depositos.Create( Owner );
+  ConsultaCargos        := TFrm_Consulta_Cargos.Create( Owner );
+  ConsultaClientes      := TFrm_Consulta_Cliente.Create( Owner );
+  ConsultaFornecedores  := TFrm_Consulta_Fornecedores.Create( Owner );
+  ConsultaFuncionarios  := TFrm_Consulta_Funcionario.Create( Owner );
+  ConsultaProdutos      := TFrm_Consulta_Produtos.Create( Owner );
+  ConsultaOrdemProducao := TFrm_Consulta_OrdemProducao.Create( Owner );
 end;
 
 destructor TchamadasInterfaces.Destroy;
@@ -130,6 +187,13 @@ begin
   ConsultaSubGrupos.Release;
   ConsultaDepartamentos.Release;
   ConsultaUnidades.Release;
+  ConsultaDepositos.Release;
+  ConsultaCargos.Release;
+  ConsultaClientes.Release;
+  ConsultaFornecedores.Release;
+  ConsultaFuncionarios.Release;
+  ConsultaProdutos.Release;
+  ConsultaOrdemProducao.Release;
 end;
 
 procedure TchamadasInterfaces.Free;
@@ -138,14 +202,56 @@ begin
     Self.Destroy;
 end;
 
+procedure TchamadasInterfaces.ChamadaConsultaCargos;
+begin
+  ConsultaCargos.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaCargos( Parent: TObject );
+begin
+  ConsultaCargos.Parent      := TPanel( Parent );
+  ConsultaCargos.Align       := Alclient;
+  ConsultaCargos.BorderStyle := BsNone;
+  TPanel( Parent ).Tag       := 1;
+  ConsultaCargos.Show;
+end;
+
 procedure TchamadasInterfaces.ChamadaConsultaCidades;
 begin
   ConsultaCidades.ShowModal;
 end;
 
+procedure TchamadasInterfaces.ChamadaConsultaClientes;
+begin
+  ConsultaClientes.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaClientes( Parent: TObject );
+begin
+  ConsultaClientes.Parent      := TPanel( Parent );
+  ConsultaClientes.Align       := Alclient;
+  ConsultaClientes.BorderStyle := BsNone;
+  TPanel( Parent ).Tag         := 1;
+  ConsultaClientes.Show;
+end;
+
 procedure TchamadasInterfaces.ChamadaConsultaDepartamentos;
 begin
   ConsultaDepartamentos.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaDepositos;
+begin
+  ConsultaDepositos.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaDepositos( Parent: TObject );
+begin
+  ConsultaDepositos.Parent      := TPanel( Parent );
+  ConsultaDepositos.Align       := Alclient;
+  ConsultaDepositos.BorderStyle := BsNone;
+  TPanel( Parent ).Tag          := 1;
+  ConsultaDepositos.Show;
 end;
 
 procedure TchamadasInterfaces.ChamadaConsultaDepartamentos( Parent: TObject );
@@ -171,9 +277,51 @@ begin
   ConsultaEstados.ShowModal;
 end;
 
+procedure TchamadasInterfaces.ChamadaConsultaFornecedores;
+begin
+  ConsultaFornecedores.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaFuncionarios;
+begin
+  ConsultaFuncionarios.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaFuncionarios( Parent: TObject );
+begin
+  ConsultaFuncionarios.Parent      := TPanel( Parent );
+  ConsultaFuncionarios.Align       := Alclient;
+  ConsultaFuncionarios.BorderStyle := BsNone;
+  TPanel( Parent ).Tag             := 1;
+  ConsultaFuncionarios.Show;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaFornecedores( Parent: TObject );
+begin
+  ConsultaFornecedores.Parent      := TPanel( Parent );
+  ConsultaFornecedores.Align       := Alclient;
+  ConsultaFornecedores.BorderStyle := BsNone;
+  TPanel( Parent ).Tag             := 1;
+  ConsultaFornecedores.Show;
+end;
+
 procedure TchamadasInterfaces.ChamadaConsultaGrupos;
 begin
   ConsultaGrupos.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaOrdemProducao;
+begin
+  ConsultaOrdemProducao.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaOrdemProducao( Parent: TObject );
+begin
+  ConsultaOrdemProducao.Parent      := TPanel( Parent );
+  ConsultaOrdemProducao.Align       := Alclient;
+  ConsultaOrdemProducao.BorderStyle := BsNone;
+  TPanel( Parent ).Tag              := 1;
+  ConsultaOrdemProducao.Show;
 end;
 
 procedure TchamadasInterfaces.ChamadaConsultaGrupos( Parent: TObject );

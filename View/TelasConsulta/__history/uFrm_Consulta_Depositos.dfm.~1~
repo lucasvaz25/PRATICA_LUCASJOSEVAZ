@@ -1,0 +1,5 @@
+inherited Frm_Consulta_Depositos: TFrm_Consulta_Depositos
+  Caption = 'Frm_Consulta_Depositos'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

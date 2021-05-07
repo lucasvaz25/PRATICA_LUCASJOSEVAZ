@@ -248,6 +248,26 @@
             <Form>Frm_Cad_Depositos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Depositos.pas">
+            <Form>Frm_Consulta_Depositos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Cargos.pas">
+            <Form>Frm_Consulta_Cargos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Clientes.pas">
+            <Form>Frm_Consulta_Cliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Fornecedores.pas">
+            <Form>Frm_Consulta_Fornecedores</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Funcionarios.pas">
+            <Form>Frm_Consulta_Funcionario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

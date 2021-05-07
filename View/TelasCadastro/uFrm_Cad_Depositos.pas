@@ -18,7 +18,9 @@ uses
   VazEdit,
   Vcl.ExtCtrls,
   Vcl.Imaging.Pngimage,
-  UDepositosController, Vcl.Mask, VazMaskEdit;
+  UDepositosController,
+  Vcl.Mask,
+  VazMaskEdit;
 
 type
   TFrm_Cad_Depositos = class( TFrm_Cadastro )
@@ -38,12 +40,13 @@ type
     ImgPesquisar: TImage;
     EdObs: TMemo;
     LblObs: TLabel;
-    edCEP: TVazMaskEdit;
-    lblCEP: TLabel;
+    EdCEP: TVazMaskEdit;
+    LblCEP: TLabel;
   private
     { Private declarations }
   public
     { Public declarations }
+    DepositoControl: TDepositosController;
   end;
 
 var

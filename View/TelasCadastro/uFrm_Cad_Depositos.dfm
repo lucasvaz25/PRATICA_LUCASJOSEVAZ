@@ -9,12 +9,17 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
   inherited pnlFundo: TPanel
     Width = 579
     Height = 505
+    ExplicitWidth = 579
+    ExplicitHeight = 505
     inherited lblUsuarioDataCad: TLabel
       Top = 478
+      ExplicitTop = 478
     end
     inherited lblUsuarioDataAlteracao: TLabel
       Left = 310
       Top = 478
+      ExplicitLeft = 310
+      ExplicitTop = 478
     end
     object lblDeposito: TLabel [3]
       Left = 24
@@ -84,7 +89,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
     object lblUF: TLabel [8]
       Left = 510
       Top = 244
-      Width = 22
+      Width = 19
       Height = 21
       Caption = 'UF'
       Enabled = False
@@ -124,14 +129,14 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
     inherited pnlSalvar: TPanel
       Left = 257
       Top = 409
-      ExplicitLeft = 250
-      ExplicitTop = 198
+      ExplicitLeft = 257
+      ExplicitTop = 409
     end
     inherited pnlSair: TPanel
       Left = 411
       Top = 409
-      ExplicitLeft = 400
-      ExplicitTop = 198
+      ExplicitLeft = 411
+      ExplicitTop = 409
     end
     object edDeposito: TVazEdit
       Left = 24

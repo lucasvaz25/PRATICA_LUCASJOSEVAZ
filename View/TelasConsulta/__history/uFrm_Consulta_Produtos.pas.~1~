@@ -1,0 +1,26 @@
+unit uFrm_Consulta_Produtos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrm_Consulta, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, VazEdit, Vcl.Imaging.pngimage,
+  Vcl.Buttons;
+
+type
+  TFrm_Consulta_Produtos = class(TFrm_Consulta)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Consulta_Produtos: TFrm_Consulta_Produtos;
+
+implementation
+
+{$R *.dfm}
+
+end.

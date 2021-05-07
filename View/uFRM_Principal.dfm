@@ -496,10 +496,6 @@ object FRM_Principal: TFRM_Principal
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 440
-    ExplicitTop = 256
-    ExplicitWidth = 185
-    ExplicitHeight = 41
   end
   object MainMenu1: TMainMenu
     Left = 728
@@ -539,6 +535,37 @@ object FRM_Principal: TFRM_Principal
       object Unidades1: TMenuItem
         Caption = 'Unidades'
         OnClick = Unidades1Click
+      end
+      object Depositos1: TMenuItem
+        Caption = 'Depositos'
+        OnClick = Depositos1Click
+      end
+      object Cargos1: TMenuItem
+        Caption = 'Cargos'
+        OnClick = Cargos1Click
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object Clientes1: TMenuItem
+        Caption = 'Clientes'
+        OnClick = Clientes1Click
+      end
+      object Fornecedores1: TMenuItem
+        Caption = 'Fornecedores'
+        OnClick = Fornecedores1Click
+      end
+      object Funcionarios1: TMenuItem
+        Caption = 'Funcionarios'
+        OnClick = Funcionarios1Click
+      end
+      object Produtos1: TMenuItem
+        Caption = 'Produtos'
+        OnClick = Produtos1Click
+      end
+      object OrdemdeProduo1: TMenuItem
+        Caption = 'Ordem de Produ'#231#227'o'
+        OnClick = OrdemdeProduo1Click
       end
     end
   end

@@ -67,7 +67,12 @@ uses
   uFrm_Cad_Unidades in 'View\TelasCadastro\uFrm_Cad_Unidades.pas' {Frm_Cad_Unidades},
   uFrm_Consulta_Unidades in 'View\TelasConsulta\uFrm_Consulta_Unidades.pas' {Frm_Consulta_Unidades},
   uDepositosController in 'Controller\uDepositosController.pas',
-  uFrm_Cad_Depositos in 'View\TelasCadastro\uFrm_Cad_Depositos.pas' {Frm_Cad_Depositos};
+  uFrm_Cad_Depositos in 'View\TelasCadastro\uFrm_Cad_Depositos.pas' {Frm_Cad_Depositos},
+  uFrm_Consulta_Depositos in 'View\TelasConsulta\uFrm_Consulta_Depositos.pas' {Frm_Consulta_Depositos},
+  uFrm_Consulta_Cargos in 'View\TelasConsulta\uFrm_Consulta_Cargos.pas' {Frm_Consulta_Cargos},
+  uFrm_Consulta_Clientes in 'View\TelasConsulta\uFrm_Consulta_Clientes.pas' {Frm_Consulta_Cliente},
+  uFrm_Consulta_Fornecedores in 'View\TelasConsulta\uFrm_Consulta_Fornecedores.pas' {Frm_Consulta_Fornecedores},
+  uFrm_Consulta_Funcionarios in 'View\TelasConsulta\uFrm_Consulta_Funcionarios.pas' {Frm_Consulta_Funcionario};
 
 {$R *.res}
 
@@ -79,5 +84,10 @@ begin
   Application.CreateForm(TFrm_Cad_Unidades, Frm_Cad_Unidades);
   Application.CreateForm(TFrm_Consulta_Unidades, Frm_Consulta_Unidades);
   Application.CreateForm(TFrm_Cad_Depositos, Frm_Cad_Depositos);
+  Application.CreateForm(TFrm_Consulta_Depositos, Frm_Consulta_Depositos);
+  Application.CreateForm(TFrm_Consulta_Cargos, Frm_Consulta_Cargos);
+  Application.CreateForm(TFrm_Consulta_Cliente, Frm_Consulta_Cliente);
+  Application.CreateForm(TFrm_Consulta_Fornecedores, Frm_Consulta_Fornecedores);
+  Application.CreateForm(TFrm_Consulta_Funcionario, Frm_Consulta_Funcionario);
   Application.Run;
 end.
