@@ -190,7 +190,7 @@ end;
 
 procedure TFRM_Principal.OrdemdeProduo1Click( Sender: TObject );
 begin
-  ChamadaInter.ChamadaConsultaOrdemProducao;;
+  ChamadaInter.ChamadaConsultaOrdemProducao;
 end;
 
 procedure TFRM_Principal.Paises1Click( Sender: TObject );

@@ -268,6 +268,14 @@
             <Form>Frm_Consulta_Funcionario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_Produtos.pas">
+            <Form>Frm_Consulta_Produtos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_OrdemProducao.pas">
+            <Form>Frm_Consulta_OrdemProducao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

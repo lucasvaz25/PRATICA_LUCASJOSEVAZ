@@ -485,6 +485,18 @@ object FRM_Principal: TFRM_Principal
       end
     end
   end
+  object Panel1: TPanel
+    Left = 44
+    Top = 40
+    Width = 974
+    Height = 699
+    Align = alClient
+    BevelOuter = bvNone
+    Caption = 'Panel1'
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 2
+  end
   object MainMenu1: TMainMenu
     Left = 728
     Top = 32
@@ -519,6 +531,41 @@ object FRM_Principal: TFRM_Principal
       object Departamentos1: TMenuItem
         Caption = 'Departamentos'
         OnClick = Departamentos1Click
+      end
+      object Unidades1: TMenuItem
+        Caption = 'Unidades'
+        OnClick = Unidades1Click
+      end
+      object Depositos1: TMenuItem
+        Caption = 'Depositos'
+        OnClick = Depositos1Click
+      end
+      object Cargos1: TMenuItem
+        Caption = 'Cargos'
+        OnClick = Cargos1Click
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object Clientes1: TMenuItem
+        Caption = 'Clientes'
+        OnClick = Clientes1Click
+      end
+      object Fornecedores1: TMenuItem
+        Caption = 'Fornecedores'
+        OnClick = Fornecedores1Click
+      end
+      object Funcionarios1: TMenuItem
+        Caption = 'Funcionarios'
+        OnClick = Funcionarios1Click
+      end
+      object Produtos1: TMenuItem
+        Caption = 'Produtos'
+        OnClick = Produtos1Click
+      end
+      object OrdemdeProduo1: TMenuItem
+        Caption = 'Ordem de Produ'#231#227'o'
+        OnClick = OrdemdeProduo1Click
       end
     end
   end
