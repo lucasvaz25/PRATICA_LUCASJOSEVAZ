@@ -24,6 +24,8 @@ type
     FEndereco: string;
     FTelefone: string;
     FCidade: TCidade;
+    FApelido: string;
+    FEmail: string;
     procedure SetBairro( const Value: string );
     procedure SetCEP( const Value: string );
     procedure SetCNPJ( const Value: string );
@@ -38,6 +40,8 @@ type
     procedure SetSexo( const Value: TSexo );
     procedure SetTelefone( const Value: string );
     procedure SetCidade( const Value: TCidade );
+    procedure SetApelido( const Value: string );
+    procedure SetEmail( const Value: string );
   protected
   public
     constructor Create;
@@ -45,6 +49,7 @@ type
     procedure Free;
 
     property Nome: string read FNome write SetNome;
+    property Apelido: string read FApelido write SetApelido;
     property Idade: Integer read FIdade write SetIdade;
     property Sexo: TSexo read FSexo write SetSexo;
     property RG: string read FRG write SetRG;
@@ -58,6 +63,7 @@ type
     property DataNasc: TDate read FDataNasc write SetDataNasc;
     property CEP: string read FCEP write SetCEP;
     property Cidade: TCidade read FCidade write SetCidade;
+    property Email: string read FEmail write SetEmail;
 
     procedure CopiarDados( Value: TPessoa );
 
@@ -82,8 +88,10 @@ begin
   FComplemento := Value.Complemento;
   FSexo        := Value.Sexo;
   FNome        := Value.Nome;
+  FApelido     := Value.Apelido;
   FEndereco    := Value.Endereco;
   FTelefone    := Value.Telefone;
+  FEmail       := Value.Email;
   FCidade.CopiarDados( Value.Cidade );
 end;
 
@@ -101,8 +109,10 @@ begin
   FComplemento := '';
   FSexo        := TSxIndefinido;
   FNome        := '';
+  FApelido     := '';
   FEndereco    := '';
   FTelefone    := '';
+  FEmail       := '';
   FCidade      := TCidade.Create;
 end;
 
@@ -119,6 +129,11 @@ procedure TPessoa.Free;
 begin
   if Assigned( Self ) then
     Self.Destroy;
+end;
+
+procedure TPessoa.SetApelido( const Value: string );
+begin
+  FApelido := Value;
 end;
 
 procedure TPessoa.SetBairro( const Value: string );
@@ -154,6 +169,11 @@ end;
 procedure TPessoa.SetDataNasc( const Value: TDate );
 begin
   FDataNasc := Value;
+end;
+
+procedure TPessoa.SetEmail( const Value: string );
+begin
+  FEmail := Value;
 end;
 
 procedure TPessoa.SetEndereco( const Value: string );

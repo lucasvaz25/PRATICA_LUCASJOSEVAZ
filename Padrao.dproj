@@ -276,6 +276,14 @@
             <Form>Frm_Consulta_OrdemProducao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Model\DAO\uCondicaoPagamentoDao.pas"/>
+        <DCCReference Include="Controller\uCondicaoPagamentoController.pas"/>
+        <DCCReference Include="Model\DAO\uFuncionariosDao.pas"/>
+        <DCCReference Include="Controller\uFuncionariosController.pas"/>
+        <DCCReference Include="Model\DAO\uClientesDao.pas"/>
+        <DCCReference Include="Controller\uClientesController.pas"/>
+        <DCCReference Include="Model\DAO\uFornecedoresDao.pas"/>
+        <DCCReference Include="Controller\uFornecedoresController.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

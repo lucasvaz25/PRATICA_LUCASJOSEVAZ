@@ -38,7 +38,8 @@ end;
 constructor TCargos.Create;
 begin
   inherited Create;
-  FDepartamento.Create;
+  FCargo        := '';
+  FDepartamento := TDepartamentos.Create;
 end;
 
 destructor TCargos.Destroy;

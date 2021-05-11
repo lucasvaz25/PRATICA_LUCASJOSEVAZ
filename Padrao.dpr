@@ -74,7 +74,15 @@ uses
   uFrm_Consulta_Fornecedores in 'View\TelasConsulta\uFrm_Consulta_Fornecedores.pas' {Frm_Consulta_Fornecedores},
   uFrm_Consulta_Funcionarios in 'View\TelasConsulta\uFrm_Consulta_Funcionarios.pas' {Frm_Consulta_Funcionario},
   uFrm_Consulta_Produtos in 'View\TelasConsulta\uFrm_Consulta_Produtos.pas' {Frm_Consulta_Produtos},
-  uFrm_Consulta_OrdemProducao in 'View\TelasConsulta\uFrm_Consulta_OrdemProducao.pas' {Frm_Consulta_OrdemProducao};
+  uFrm_Consulta_OrdemProducao in 'View\TelasConsulta\uFrm_Consulta_OrdemProducao.pas' {Frm_Consulta_OrdemProducao},
+  uCondicaoPagamentoDao in 'Model\DAO\uCondicaoPagamentoDao.pas',
+  uCondicaoPagamentoController in 'Controller\uCondicaoPagamentoController.pas',
+  uFuncionariosDao in 'Model\DAO\uFuncionariosDao.pas',
+  uFuncionariosController in 'Controller\uFuncionariosController.pas',
+  uClientesDao in 'Model\DAO\uClientesDao.pas',
+  uClientesController in 'Controller\uClientesController.pas',
+  uFornecedoresDao in 'Model\DAO\uFornecedoresDao.pas',
+  uFornecedoresController in 'Controller\uFornecedoresController.pas';
 
 {$R *.res}
 

@@ -1,0 +1,62 @@
+inherited Frm_Consulta_Cargos: TFrm_Consulta_Cargos
+  Caption = 'Frm_Consulta_Cargos'
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlFundo: TPanel
+    inherited pnlGrid: TPanel
+      inherited DBGrid1: TDBGrid
+        DataSource = DsCargos
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'codigo'
+            Title.Alignment = taRightJustify
+            Title.Caption = 'C'#243'd.'
+            Width = 50
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'cargo'
+            Title.Alignment = taCenter
+            Width = 300
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'dept'
+            Title.Alignment = taCenter
+            Width = 320
+            Visible = True
+          end>
+      end
+    end
+  end
+  object TDset_Cargos: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 592
+    Top = 249
+    object TDset_Cargoscodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object TDset_Cargoscargo: TStringField
+      Alignment = taCenter
+      DisplayLabel = 'Cargo'
+      FieldName = 'cargo'
+      Size = 50
+    end
+    object TDset_Cargosdept: TStringField
+      Alignment = taCenter
+      DisplayLabel = 'Departamento'
+      FieldName = 'dept'
+      Size = 50
+    end
+  end
+  object DsCargos: TDataSource
+    DataSet = TDset_Cargos
+    Left = 632
+    Top = 249
+  end
+end

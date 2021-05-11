@@ -36,7 +36,7 @@ type
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure FormShow( Sender: TObject );
-    procedure DBGrid1DblClick(Sender: TObject);
+    procedure DBGrid1DblClick( Sender: TObject );
   private
     { Private declarations }
   public
@@ -155,7 +155,7 @@ begin
   end;
 end;
 
-procedure TFrm_Consulta_SubGrupos.DBGrid1DblClick(Sender: TObject);
+procedure TFrm_Consulta_SubGrupos.DBGrid1DblClick( Sender: TObject );
 begin
   inherited;
   if IsSelecionar then
@@ -197,7 +197,6 @@ end;
 
 procedure TFrm_Consulta_SubGrupos.FormDestroy( Sender: TObject );
 begin
-  inherited;
   SubGrupoControl.Destroy;
   inherited;
 end;
