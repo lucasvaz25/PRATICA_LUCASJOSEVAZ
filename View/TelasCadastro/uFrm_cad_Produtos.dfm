@@ -2,6 +2,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
   Caption = 'Frm_Cad_Produto'
   ClientHeight = 568
   ClientWidth = 735
+  ExplicitTop = -49
   ExplicitWidth = 741
   ExplicitHeight = 597
   PixelsPerInch = 96
@@ -24,9 +25,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
     object lblDescricao: TLabel [3]
       Left = 24
       Top = 82
-      Width = 74
+      Width = 63
       Height = 21
-      Caption = 'Descri'#231#227'o*'
+      Caption = 'Produto*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
