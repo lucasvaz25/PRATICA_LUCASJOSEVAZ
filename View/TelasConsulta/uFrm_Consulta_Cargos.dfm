@@ -20,14 +20,12 @@ inherited Frm_Consulta_Cargos: TFrm_Consulta_Cargos
           item
             Expanded = False
             FieldName = 'cargo'
-            Title.Alignment = taCenter
             Width = 300
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'dept'
-            Title.Alignment = taCenter
             Width = 320
             Visible = True
           end>
@@ -43,13 +41,11 @@ inherited Frm_Consulta_Cargos: TFrm_Consulta_Cargos
       FieldName = 'codigo'
     end
     object TDset_Cargoscargo: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Cargo'
       FieldName = 'cargo'
       Size = 50
     end
     object TDset_Cargosdept: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Departamento'
       FieldName = 'dept'
       Size = 50

@@ -18,13 +18,14 @@ inherited Frm_Consulta_Departamentos: TFrm_Consulta_Departamentos
           item
             Expanded = False
             FieldName = 'departamento'
-            Title.Alignment = taCenter
             Width = 401
             Visible = True
           end
           item
+            Alignment = taCenter
             Expanded = False
             FieldName = 'datacad'
+            Title.Alignment = taCenter
             Visible = True
           end>
       end
@@ -45,7 +46,6 @@ inherited Frm_Consulta_Departamentos: TFrm_Consulta_Departamentos
       FieldName = 'codigo'
     end
     object TDset_Deptdepartamento: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Departamento'
       FieldName = 'departamento'
       Size = 40

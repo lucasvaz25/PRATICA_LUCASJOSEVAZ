@@ -41,6 +41,14 @@ type
     edCNPJ: TVazMaskEdit;
     lblCNPJ: TLabel;
     rgTpPessoa: TRadioGroup;
+    edCodCidade: TVazEdit;
+    lblCodCidade: TLabel;
+    lblCodCondPag: TLabel;
+    edCodCondPag: TVazEdit;
+    lblCondPag: TLabel;
+    edCondPag: TVazEdit;
+    pnlPesquisaCondPag: TPanel;
+    imgPesquisaCondPag: TImage;
   private
     { Private declarations }
   public

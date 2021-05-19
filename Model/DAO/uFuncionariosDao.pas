@@ -29,6 +29,7 @@ type
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
     // procedure SetDM( Value: TObject ); override;
     function VerificaExiste( Str: string ): Boolean;
+    function VerificaExisteCPF( Str: string ): Boolean;
   end;
 
 implementation
@@ -60,6 +61,11 @@ begin
       TpCParam:
         begin
           SQL.Add( 'WHERE F.Funcionario LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
+        end;
+
+      TpCCPF_CNPJ:
+        begin
+          SQL.Add( 'WHERE F.CPF = ' + QuotedStr( AFilter.Parametro ) );
         end;
 
       TpCTODOS:
@@ -289,6 +295,34 @@ begin
   Afilter := TFilterSearch.Create;
   try
     Afilter.TipoConsulta := TpCParam;
+    Afilter.Parametro    := Str;
+    List                 := Self.Consulta( Afilter );
+    if List <> nil then
+    begin
+      for I := 0 to List.Count - 1 do
+        if ( Str = TFuncionarios( List[ I ] ).Nome ) then
+        begin
+          Result := True;
+          Break;
+        end;
+    end;
+  finally
+    Afilter.Free;
+    List.Free;
+  end;
+end;
+
+function TFuncionariosDao.VerificaExisteCPF( Str: string ): Boolean;
+var
+  List: Tobjectlist;
+  Afilter: TFilterSearch;
+  I: Integer;
+begin
+  Result  := False;
+  List    := Tobjectlist.Create;
+  Afilter := TFilterSearch.Create;
+  try
+    Afilter.TipoConsulta := TpCCPF_CNPJ;
     Afilter.Parametro    := Str;
     List                 := Self.Consulta( Afilter );
     if List <> nil then

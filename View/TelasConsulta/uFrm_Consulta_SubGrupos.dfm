@@ -19,14 +19,12 @@ inherited Frm_Consulta_SubGrupos: TFrm_Consulta_SubGrupos
           item
             Expanded = False
             FieldName = 'subgrupo'
-            Title.Alignment = taCenter
             Width = 310
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'grupo'
-            Title.Alignment = taCenter
             Width = 310
             Visible = True
           end>
@@ -48,13 +46,11 @@ inherited Frm_Consulta_SubGrupos: TFrm_Consulta_SubGrupos
       FieldName = 'codigo'
     end
     object TDset_SubGrupossubgrupo: TStringField
-      Alignment = taCenter
       DisplayLabel = 'SubGrupo'
       FieldName = 'subgrupo'
       Size = 50
     end
     object TDset_SubGruposgrupo: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Grupo'
       FieldName = 'grupo'
       Size = 50

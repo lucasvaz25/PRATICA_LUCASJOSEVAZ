@@ -1,6 +1,5 @@
 inherited Frm_Consulta_Estados: TFrm_Consulta_Estados
   Caption = 'Frm_Consulta_Estados'
-  OnCreate = FormCreate
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
@@ -20,7 +19,6 @@ inherited Frm_Consulta_Estados: TFrm_Consulta_Estados
           item
             Expanded = False
             FieldName = 'estado'
-            Title.Alignment = taCenter
             Width = 320
             Visible = True
           end
@@ -34,7 +32,6 @@ inherited Frm_Consulta_Estados: TFrm_Consulta_Estados
           item
             Expanded = False
             FieldName = 'pais'
-            Title.Alignment = taCenter
             Width = 280
             Visible = True
           end>
@@ -56,13 +53,11 @@ inherited Frm_Consulta_Estados: TFrm_Consulta_Estados
       FieldName = 'codigo'
     end
     object TDset_Estadosestado: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Estado'
       FieldName = 'estado'
       Size = 50
     end
     object TDset_Estadospais: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Pa'#237's'
       FieldName = 'pais'
       Size = 50

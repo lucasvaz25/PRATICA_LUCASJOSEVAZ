@@ -34,6 +34,7 @@ type
     PnlPesquisar: TPanel;
     ImgPesquisar: TImage;
     BtnPesquisar: TSpeedButton;
+    ChkObrigatorioCNH: TCheckBox;
     procedure BtnPesquisarClick( Sender: TObject );
     procedure EdCodDeptKeyPress( Sender: TObject; var Key: Char );
     procedure EdCodDeptExit( Sender: TObject );
@@ -87,7 +88,10 @@ begin
       Filtro.Codigo       := StrToInt( EdCodDept.Text );
       List                := DeptControl.Consulta( Filtro );
       if List.Count > 0 then
-        EdDepartamento.Text := TDepartamentos( List[ 0 ] ).Departamento
+      begin
+        EdDepartamento.Text := TDepartamentos( List[ 0 ] ).Departamento;
+        CargoControl.GetEntity.Departamento.CopiarDados( TDepartamentos( List[ 0 ] ) );
+      end
       else
       begin
         ShowMessage( 'Departamento não encontrado!!' );
@@ -152,6 +156,7 @@ begin
   with CargoControl.GetEntity do
   begin
     EdCodigo.Text             := IntToStr( Codigo );
+    ChkObrigatorioCNH.Checked := IsObrigatorioCNH;
     EdCargo.Text              := Cargo;
     EdCodDept.Text            := IntToStr( Departamento.Codigo );
     EdDepartamento.Text       := Departamento.Departamento;
@@ -163,10 +168,11 @@ procedure TFrm_Cad_Cargo.PopulaObj;
 begin
   with CargoControl.GetEntity do
   begin
-    Codigo  := StrToInt( EdCodigo.Text );
-    Cargo   := UpperCase( EdCargo.Text );
-    DataCad := Date;
-    UserCad := UpperCase( 'lucas' );
+    Codigo           := StrToInt( EdCodigo.Text );
+    Cargo            := UpperCase( EdCargo.Text );
+    IsObrigatorioCNH := ChkObrigatorioCNH.Checked;
+    DataCad          := Date;
+    UserCad          := UpperCase( 'lucas' );
   end;
 end;
 

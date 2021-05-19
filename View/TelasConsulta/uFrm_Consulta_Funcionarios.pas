@@ -20,10 +20,16 @@ uses
   Vcl.ExtCtrls,
   VazEdit,
   Vcl.Imaging.Pngimage,
-  Vcl.Buttons;
+  Vcl.Buttons, Datasnap.DBClient;
 
 type
   TFrm_Consulta_Funcionario = class( TFrm_Consulta )
+    DsFuncionarios: TDataSource;
+    TDset_Funcionarios: TClientDataSet;
+    TDset_Funcionarioscodigo: TIntegerField;
+    TDset_Funcionariosfuncionario: TStringField;
+    TDset_Funcionarioscpf: TStringField;
+    TDset_Funcionarioscargo: TStringField;
   private
     { Private declarations }
   public

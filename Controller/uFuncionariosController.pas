@@ -33,6 +33,7 @@ type
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
     // procedure SetDM( Value: TObject ); override;
     function VerificaExiste( Str: string ): Boolean;
+    function VerificaExisteCPF( Str: string ): Boolean;
 
   end;
 
@@ -102,6 +103,11 @@ end;
 function TFuncionariosController.VerificaExiste( Str: string ): Boolean;
 begin
   Result := FuncionarioDao.VerificaExiste( Str );
+end;
+
+function TFuncionariosController.VerificaExisteCPF( Str: string ): Boolean;
+begin
+  Result := FuncionarioDao.VerificaExisteCPF( Str );
 end;
 
 end.

@@ -1,24 +1,25 @@
 inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
   Caption = 'Frm_Cad_Fornecedor'
-  ClientHeight = 644
+  ClientHeight = 722
   ClientWidth = 655
-  ExplicitWidth = 671
-  ExplicitHeight = 683
+  ExplicitTop = -132
+  ExplicitWidth = 661
+  ExplicitHeight = 751
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 655
-    Height = 644
+    Height = 722
     Anchors = [akLeft, akTop]
     ExplicitWidth = 655
     ExplicitHeight = 644
     inherited lblUsuarioDataCad: TLabel
-      Top = 617
+      Top = 695
       ExplicitTop = 509
     end
     inherited lblUsuarioDataAlteracao: TLabel
       Left = 459
-      Top = 617
+      Top = 695
       ExplicitLeft = 554
       ExplicitTop = 509
     end
@@ -49,8 +50,8 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ParentFont = False
     end
     object lblIE: TLabel [5]
-      Left = 214
-      Top = 470
+      Left = 202
+      Top = 464
       Width = 12
       Height = 21
       Caption = 'IE'
@@ -63,7 +64,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblTelefone: TLabel [6]
       Left = 24
-      Top = 194
+      Top = 354
       Width = 57
       Height = 21
       Caption = 'Telefone'
@@ -76,7 +77,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblEmail: TLabel [7]
       Left = 161
-      Top = 194
+      Top = 354
       Width = 44
       Height = 21
       Caption = 'E-mail'
@@ -89,7 +90,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblLogradouro: TLabel [8]
       Left = 24
-      Top = 304
+      Top = 190
       Width = 82
       Height = 21
       Caption = 'Logradouro'
@@ -102,7 +103,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblBairro: TLabel [9]
       Left = 24
-      Top = 360
+      Top = 246
       Width = 42
       Height = 21
       Caption = 'Bairro'
@@ -115,7 +116,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblNum: TLabel [10]
       Left = 548
-      Top = 306
+      Top = 192
       Width = 38
       Height = 21
       Caption = 'Num.'
@@ -127,8 +128,8 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ParentFont = False
     end
     object lblCidade: TLabel [11]
-      Left = 24
-      Top = 416
+      Left = 85
+      Top = 301
       Width = 55
       Height = 21
       Caption = 'Cidade*'
@@ -141,7 +142,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblUF: TLabel [12]
       Left = 594
-      Top = 415
+      Top = 301
       Width = 19
       Height = 21
       Caption = 'UF'
@@ -168,7 +169,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblContato: TLabel [14]
       Left = 24
-      Top = 250
+      Top = 410
       Width = 55
       Height = 21
       Caption = 'Contato'
@@ -181,7 +182,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblsite: TLabel [15]
       Left = 221
-      Top = 250
+      Top = 410
       Width = 26
       Height = 21
       Caption = 'Site'
@@ -194,7 +195,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object lblCNPJ: TLabel [16]
       Left = 24
-      Top = 470
+      Top = 464
       Width = 43
       Height = 21
       Caption = 'CNPJ*'
@@ -205,15 +206,54 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Font.Style = []
       ParentFont = False
     end
+    object lblCodCidade: TLabel [17]
+      Left = 26
+      Top = 301
+      Width = 31
+      Height = 21
+      Caption = 'C'#243'd.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblCodCondPag: TLabel [18]
+      Left = 24
+      Top = 518
+      Width = 31
+      Height = 21
+      Caption = 'C'#243'd.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblCondPag: TLabel [19]
+      Left = 82
+      Top = 518
+      Width = 122
+      Height = 21
+      Caption = 'Cond. Pagamento'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     inherited pnlSalvar: TPanel
       Left = 370
-      Top = 548
+      Top = 626
       ExplicitLeft = 370
       ExplicitTop = 548
     end
     inherited pnlSair: TPanel
       Left = 513
-      Top = 548
+      Top = 626
       ExplicitLeft = 513
       ExplicitTop = 548
     end
@@ -252,8 +292,8 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ChangeColor = 14745599
     end
     object edIE: TVazEdit
-      Left = 214
-      Top = 491
+      Left = 202
+      Top = 485
       Width = 225
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -270,7 +310,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edTelefone: TVazMaskEdit
       Left = 24
-      Top = 214
+      Top = 374
       Width = 128
       Height = 29
       EditMask = '(99) 9999-9999;0;_'
@@ -288,7 +328,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edEmail: TVazEdit
       Left = 161
-      Top = 214
+      Top = 374
       Width = 473
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -322,7 +362,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edLogradouro: TVazEdit
       Left = 24
-      Top = 327
+      Top = 213
       Width = 515
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -338,7 +378,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edBairro: TVazEdit
       Left = 24
-      Top = 382
+      Top = 268
       Width = 610
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -354,7 +394,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edNum: TVazEdit
       Left = 548
-      Top = 327
+      Top = 213
       Width = 86
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -369,9 +409,9 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ChangeColor = 14745599
     end
     object edCidade: TVazEdit
-      Left = 24
-      Top = 436
-      Width = 524
+      Left = 85
+      Top = 322
+      Width = 463
       Height = 29
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -386,7 +426,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edUF: TVazEdit
       Left = 594
-      Top = 436
+      Top = 322
       Width = 40
       Height = 29
       Enabled = False
@@ -402,7 +442,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object pnlPesquisar: TPanel
       Left = 555
-      Top = 436
+      Top = 322
       Width = 33
       Height = 29
       BevelOuter = bvNone
@@ -450,7 +490,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edContato: TVazEdit
       Left = 24
-      Top = 270
+      Top = 430
       Width = 187
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -466,7 +506,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edSite: TVazEdit
       Left = 221
-      Top = 270
+      Top = 430
       Width = 413
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -482,7 +522,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edCNPJ: TVazMaskEdit
       Left = 24
-      Top = 491
+      Top = 485
       Width = 170
       Height = 29
       EditMask = '99.999.999/9999-99;0;_'
@@ -518,6 +558,106 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 18
+    end
+    object edCodCidade: TVazEdit
+      Left = 24
+      Top = 322
+      Width = 54
+      Height = 29
+      BiDiMode = bdLeftToRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 5
+      NumbersOnly = True
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 19
+      ChangeColor = 14745599
+    end
+    object edCodCondPag: TVazEdit
+      Left = 22
+      Top = 539
+      Width = 54
+      Height = 29
+      BiDiMode = bdLeftToRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 5
+      NumbersOnly = True
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 20
+      ChangeColor = 14745599
+    end
+    object edCondPag: TVazEdit
+      Left = 82
+      Top = 539
+      Width = 298
+      Height = 29
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 12
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 21
+      ChangeColor = 14745599
+    end
+    object pnlPesquisaCondPag: TPanel
+      Left = 386
+      Top = 539
+      Width = 33
+      Height = 29
+      BevelOuter = bvNone
+      Color = 16744448
+      ParentBackground = False
+      TabOrder = 22
+      object imgPesquisaCondPag: TImage
+        Left = 0
+        Top = 0
+        Width = 33
+        Height = 29
+        Cursor = crHandPoint
+        Hint = 'Pesquisar Cidade'
+        Align = alClient
+        ParentShowHint = False
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+          00200806000000737A7AF400000006624B474400FF00FF00FFA0BDA793000002
+          A54944415478DAED965B884D511CC6D76E2E261ECC50333C30721D531EE445B9
+          0CD128920721522EC983E461521445CAED8DE24152232F484A2986D230529E24
+          1A83D4BC98A4DC4586D3F6FBB7D66EFE767B9F598B3947C9AAAFEFECB5D7F7FF
+          BEBD2E7B9FC8FCE516FD1301E238963A0DE06B14451FCA1200D349D046B0064C
+          0415EE563FB80F2E82B304FA34A401301E011D01DB9CBE580D998D5D84383524
+          01301F077580A640ED39B08520FDBF1D00F391D00330C1E9625000E7C10DD00B
+          6AC034639765AE964B08026CF8930057A0E5CA5CD6792D457B73C62F32761FD4
+          299FAD8C3F1D1C8062F3A1DBEA696E81A559539AD235BA59AB735DEFC178BD31
+          7D035C8596B94B113752E49DA776317453756D477BD23B80DBF56256E59E7E0F
+          050EFB98AB1A5D66604F74A25F1812600E7457753551E06960801DD07177F90D
+          7D4D488055C66E26E366A08A0285C000ADC61EDFA4D5266F4C9F00EB8D3DC7D2
+          7E806AC471608016A853753550E3B56F8025D075D53516F1ABC00072FEDBDD65
+          C1CD62EC1B600CD4A7C66E42DC3E982E55E302B4DA5DF6A09F9EDCF33D86DD50
+          227A069A7DF701DAC9626AECC74A9EFA00DAFDA10136436754D7418AECF5D00D
+          33F604CD725EB287A6E8B7A76F806AE811989A748143605FDE4CA0190D5D022D
+          66E0F57D8CF16D7A9C6F805150975B06AD790EE4A5D441E13EC655CA13829560
+          3718AECC1F83D98CFB1214C099DF01CDAA58964EA6B722638CFC7E011660FE32
+          2D2A1A20C7FC09A854CB3158BB6CECC9F998753337408EB99C06F9327E06EBC0
+          4E755FB7EFE01A388AF1BD62E932031479F279147C9B1A5B0FCD04C2B2BEF2CE
+          78985E6BEF0014AC35F6DB3F4399F738F3379ED3EEDD7E09506EF3AC00F2C56A
+          4D2E8D5BF3F4B4973280FCD53EE1FABB4DC69A9734800AB1C2D83F9C2535CF0C
+          50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
+        Proportional = True
+        ShowHint = True
+        ExplicitLeft = 16
+      end
     end
   end
 end

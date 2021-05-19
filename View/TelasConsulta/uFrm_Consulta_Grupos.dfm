@@ -1,6 +1,5 @@
 inherited Frm_Consulta_Grupos: TFrm_Consulta_Grupos
   Caption = 'Frm_Consulta_Grupos'
-  OnCreate = FormCreate
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
@@ -20,7 +19,6 @@ inherited Frm_Consulta_Grupos: TFrm_Consulta_Grupos
           item
             Expanded = False
             FieldName = 'grupo'
-            Title.Alignment = taCenter
             Width = 400
             Visible = True
           end
@@ -48,7 +46,6 @@ inherited Frm_Consulta_Grupos: TFrm_Consulta_Grupos
       FieldName = 'codigo'
     end
     object TDset_Gruposgrupo: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Grupo'
       DisplayWidth = 100
       FieldName = 'grupo'

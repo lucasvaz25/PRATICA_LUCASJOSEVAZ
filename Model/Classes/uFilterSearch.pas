@@ -3,7 +3,7 @@ unit uFilterSearch;
 interface
 
 type
-  TTipoConsulta = ( TpCIndefinido = -1, TpCCodigo = 0, TpCParam = 1, TpCTODOS = 2 );
+  TTipoConsulta = ( TpCIndefinido = -1, TpCCodigo = 0, TpCParam = 1, TpCTODOS = 2, TpCCPF_CNPJ = 3 );
 
   TFilterSearch = class
   private

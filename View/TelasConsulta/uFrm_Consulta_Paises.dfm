@@ -54,7 +54,6 @@ inherited Frm_ConsultaPaises: TFrm_ConsultaPaises
           item
             Expanded = False
             FieldName = 'nome'
-            Title.Alignment = taCenter
             Width = 395
             Visible = True
           end
@@ -78,7 +77,6 @@ inherited Frm_ConsultaPaises: TFrm_ConsultaPaises
       FieldName = 'codigo'
     end
     object TDset_Paisesnome: TStringField
-      Alignment = taCenter
       DisplayLabel = 'Pa'#237's'
       FieldName = 'nome'
       Size = 40

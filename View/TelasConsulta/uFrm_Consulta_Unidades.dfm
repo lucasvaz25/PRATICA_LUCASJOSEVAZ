@@ -17,7 +17,6 @@ inherited Frm_Consulta_Unidades: TFrm_Consulta_Unidades
           item
             Expanded = False
             FieldName = 'Unidade'
-            Title.Alignment = taCenter
             Width = 341
             Visible = True
           end>
@@ -39,7 +38,6 @@ inherited Frm_Consulta_Unidades: TFrm_Consulta_Unidades
       FieldName = 'Codigo'
     end
     object TDset_UnidadesUnidade: TStringField
-      Alignment = taCenter
       FieldName = 'Unidade'
       Size = 40
     end

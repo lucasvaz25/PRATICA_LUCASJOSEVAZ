@@ -7,26 +7,30 @@ correções no sistema:
 * Ajustar layout:
    * Adicionar campo cód. para consulta de classe que compõe objeto:
        * uFrm_Cad_Cidades;
-	   * uFrm_Cad_Clientes;
+	   * --uFrm_Cad_Clientes-- FINALIZADO;
 	   * uFrm_Cad_Estados;
-	   * uFrm_Cad_Fornecedor;
-	   * uFrm_Cad_Funcionario;
+	   * --uFrm_Cad_Fornecedor-- FINALIZADO;
+	   * --uFrm_Cad_Funcionario-- FINALIZADO;
 	   * uFrm_Cad_Produtos;
 	   * uFrm_Cad_Depositos.
 
-   * Adicionar ao Cadastro de Forncedores o campo 'Condição de Pagamento'.
+   * --Adicionar ao Cadastro de Forncedores o campo 'Condição de Pagamento'.-- FINALIZADO.
 	
-   * Alterar local campo Cargo no Cadastro de Funcionario, para verificar se é obrigatório o campo CNH.
+   * --Alterar local campo Cargo no Cadastro de Funcionario, para verificar se é obrigatório o campo CNH.-- FINALIZADO.
    
-   * Alterar posição dos campos 'Telefone, E-Mail, Contato e Site', posicionar após os campos de endereço.
+   * --Alterar posição dos campos 'Telefone, E-Mail, Contato e Site', posicionar após os campos de endereço.-- FINALIZADO.
    
-   * Alterar posição campo 'Condição Pagamento', no Cadastro de Clientes, posicionando após campos de info. pessoais.
+   * --Alterar posição campo 'Condição Pagamento', no Cadastro de Clientes, posicionando após campos de info. pessoais.-- FINALIZADO.
    
    * Bloquear após cadastro, os campos 'Tipo Pessoa, CPF, CNPJ, IE, RG', nos cadastros de Clientes, Forncedores e Funcionários.
+   
+   * --Ajustar colunas das GRIDs.-- FINALIZADO.
    
 * Integrar View das classes:
   * TClientes;
   * TFornecedores;
   * TFuncionarios;
   * TProdutos;
+  * TCondicaoPagamento;
   Com as respectivas Dao's.
+  
