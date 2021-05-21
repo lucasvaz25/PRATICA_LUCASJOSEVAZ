@@ -62,8 +62,7 @@ end;
 
 destructor TGeral.Destroy;
 begin
-  if Assigned( Self ) then
-    inherited;
+  inherited Destroy;
 end;
 
 procedure TGeral.SetCodigo( const Value: Integer );

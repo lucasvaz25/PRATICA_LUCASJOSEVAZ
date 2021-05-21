@@ -36,12 +36,20 @@ implementation
 
 uses
   UEnum,
+  UCidades,
+  UCargos,
+  UCidadesDao,
+  UCargosDao,
   Vcl.Dialogs;
 { TFuncionariosDao }
 
 function TFuncionariosDao.Consulta( AFilter: TFilterSearch ): TObjectList;
 var
   Aux: TFuncionarios;
+  Cidade: TCidade;
+  Cargo: TCargos;
+  CidadeDao: TCidadesDao;
+  CargoDao: TCargosDao;
 begin
   Result := nil;
 
@@ -50,7 +58,8 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT F.* FROM Funcionarios F ' );
+    SQL.Add( 'SELECT F.*, C.CARGO AS CARGO FROM Funcionarios F ' );
+    SQL.Add( 'LEFT JOIN CARGOS C ON C.CODIGO = F.COD_CARGO ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
@@ -81,6 +90,38 @@ begin
       begin
         Aux := TFuncionarios.Create;
         Self.FieldsToObj( Aux );
+        Aux.Cargo.Cargo := FieldByName( 'CARGO' ).AsString;
+
+        if AFilter.RecuperarObj then
+        begin
+          if ( Aux.Cidade.Codigo > 0 ) then
+          begin
+            Cidade    := TCidade.Create;
+            CidadeDao := TCidadesDao.Create;
+            try
+              Cidade.Codigo := Aux.Cidade.Codigo;
+              if CidadeDao.Recuperar( Cidade.Codigo, TObject( Cidade ) ) then
+                Aux.Cidade.CopiarDados( Cidade );
+            finally
+              Cidade.Free;
+              CidadeDao.Free;
+            end;
+          end;
+          if ( Aux.Cargo.Codigo > 0 ) then
+          begin
+            Cargo    := TCargos.Create;
+            CargoDao := TCargosDao.Create;
+            try
+              Cidade.Codigo := Aux.Cargo.Codigo;
+              if CargoDao.Recuperar( Cargo.Codigo, TObject( Cargo ) ) then
+                Aux.Cargo.CopiarDados( Cargo );
+            finally
+              Cargo.Free;
+              CargoDao.Free;
+            end;
+          end;
+        end;
+
         Result.Add( Aux );
 
         Next;

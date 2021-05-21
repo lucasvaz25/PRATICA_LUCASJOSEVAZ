@@ -118,11 +118,8 @@ end;
 
 destructor TPessoa.Destroy;
 begin
-  if Assigned( Self ) then
-  begin
-    FCidade.Destroy;
-    inherited Destroy;
-  end;
+  FCidade.Free;
+  inherited Destroy;
 end;
 
 procedure TPessoa.Free;

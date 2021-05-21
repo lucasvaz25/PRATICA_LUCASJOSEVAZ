@@ -1,11 +1,13 @@
 inherited Frm_Consulta_Funcionario: TFrm_Consulta_Funcionario
   Caption = 'Frm_Consulta_Funcionario'
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     inherited pnlGrid: TPanel
       inherited DBGrid1: TDBGrid
         DataSource = DsFuncionarios
+        OnDblClick = DBGrid1DblClick
         Columns = <
           item
             Expanded = False

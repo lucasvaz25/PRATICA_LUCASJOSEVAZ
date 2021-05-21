@@ -73,7 +73,7 @@ end;
 destructor TFuncionarios.Destroy;
 begin
   FCargo.Free;
-  inherited Free;
+  inherited;
 end;
 
 procedure TFuncionarios.Free;

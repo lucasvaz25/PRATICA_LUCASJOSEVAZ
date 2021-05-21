@@ -300,6 +300,12 @@ begin
     EdNumCNH.Text         := CNH;
     // EdCategoria.Text      := Categoria;
     EdValCNH.DateTime := ValidadeCNH;
+    EdCidade.Text     := Cidade.Cidade;
+    EdCodCidade.Text  := IntToStr( Cidade.Codigo );
+    EdUF.Text         := Cidade.Estado.UF;
+    EdCargo.Text      := Cargo.Cargo;
+    EdCodCargo.Text   := IntToStr( Cargo.Codigo );
+
   end;
 end;
 
