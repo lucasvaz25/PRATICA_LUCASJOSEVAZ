@@ -2,7 +2,8 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
   Caption = 'Frm_Cad_Fornecedor'
   ClientHeight = 722
   ClientWidth = 655
-  ExplicitTop = -132
+  OnCreate = FormCreate
+  ExplicitTop = -14
   ExplicitWidth = 661
   ExplicitHeight = 751
   PixelsPerInch = 96
@@ -12,7 +13,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     Height = 722
     Anchors = [akLeft, akTop]
     ExplicitWidth = 655
-    ExplicitHeight = 644
+    ExplicitHeight = 722
     inherited lblUsuarioDataCad: TLabel
       Top = 695
       ExplicitTop = 509
@@ -249,13 +250,13 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Left = 370
       Top = 626
       ExplicitLeft = 370
-      ExplicitTop = 548
+      ExplicitTop = 626
     end
     inherited pnlSair: TPanel
       Left = 513
       Top = 626
       ExplicitLeft = 513
-      ExplicitTop = 548
+      ExplicitTop = 626
     end
     object edNome: TVazEdit
       Left = 24
@@ -605,7 +606,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 12
+      MaxLength = 40
       ParentFont = False
       ReadOnly = True
       TabOrder = 21

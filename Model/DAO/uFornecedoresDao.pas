@@ -141,6 +141,7 @@ begin
       SQL.Add( 'num = :num, bairro = :bairro, NOME_FANTASIA = :NOME_FANTASIA, ' );
       SQL.Add( 'logradouro = :logradouro, Fornecedore = :Fornecedore, RG = :RG, ' );
       SQL.Add( 'CPF = :CPF, DATA_ADMISSAO = :DATA_ADMISSAO, DATA_DEMISSAO = :DATA_DEMISSAO, ' );
+      SQL.Add( 'CONTATO = :CONTATO, SITE = :SITE, ' );
       SQL.Add( 'EMAIL = :EMAIL, TELEFONE = :TELEFONE, SALARIO = :SALARIO, COD_CARGO = :COD_CARGO, ' );
       SQL.Add( 'CNH = :CNH, CATEGORIA = :CATEGORIA, VALIDADE_CNH = :VALIDADE_CNH, SEXO = :SEXO, cod_cidade = :cod_cidade ' );
       SQL.Add( 'WHERE  CODIGO = :CODIGO' );
@@ -181,6 +182,8 @@ begin
     DataNasc             := FieldByName( 'DATA_NASC' ).AsDateTime;
     CondPagamento.Codigo := FieldByName( 'cod_condPag' ).AsInteger;
     TpPessoa             := TTipoPessoa( FieldByName( 'TIPO_PESSOA' ).AsInteger );
+    Contato              := FieldByName( 'CONTATO' ).AsString;
+    Site                 := FieldByName( 'SITE' ).AsString;
   end;
 end;
 
@@ -198,12 +201,12 @@ begin
       SQL.Add( 'INSERT INTO Fornecedores ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, DATA_ALT, USER_CAD, USER_ALT, ' );
       SQL.Add( 'Fornecedor, logradouro, num, bairro, NOME_FANTASIA, CEP, ' );
-      SQL.Add( 'TELEFONE, EMAIL, CPF, RG, ' );
+      SQL.Add( 'TELEFONE, EMAIL, CPF, RG, CONTATO, SITE, ' );
       SQL.Add( 'DATA_NASC, cod_CondPag, TIPO_PESSOA, SEXO, cod_cidade ' );
       SQL.Add( ')VALUES(' );
       SQL.Add( ':CODIGO, :DATA_CAD, :DATA_ALT, :USER_CAD, :USER_ALT, ' );
       SQL.Add( ':Fornecedor, :logradouro, :num, :bairro, :NOME_FANTASIA, :CEP, ' );
-      SQL.Add( ':TELEFONE, :EMAIL, :CPF, :RG, ' );
+      SQL.Add( ':TELEFONE, :EMAIL, :CPF, :RG, :CONTATO, :SITE, ' );
       SQL.Add( ':DATA_NASC, :cod_CondPag, :TIPO_PESSOA, :SEXO, :cod_cidade ' );
       SQL.Add( ')' );
       ObjToFields( Fornecedor );
@@ -243,7 +246,8 @@ begin
     ParamByName( 'DATA_NASC' ).AsDateTime   := DataNasc;
     ParamByName( 'cod_condPag' ).AsInteger  := CondPagamento.Codigo;
     ParamByName( 'TIPO_PESSOA' ).AsInteger  := Integer( TpPessoa );
-
+    ParamByName( 'CONTATO' ).AsString       := Contato;
+    ParamByName( 'SITE' ).AsString          := Site;
   end;
 end;
 

@@ -433,7 +433,7 @@ begin
     if FuncionarioControl.VerificaExisteCPF( UpperCase( EdCPF.Text ) ) then
     begin
       MessageDlg( 'Já existe um Funcionário com esse CPF!!', MtInformation, [ MbOK ], 0 );
-      EdCargo.SetFocus;
+      EdNome.SetFocus;
       Exit;
     end;
 

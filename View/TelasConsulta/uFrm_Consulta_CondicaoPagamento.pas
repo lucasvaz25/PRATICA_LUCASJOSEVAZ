@@ -3,17 +3,34 @@ unit uFrm_Consulta_CondicaoPagamento;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrm_Consulta, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, VazEdit, Vcl.Imaging.pngimage,
-  Vcl.Buttons;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  UFrm_Consulta,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  VazEdit,
+  Vcl.Imaging.Pngimage,
+  Vcl.Buttons,
+
+  UCondicaoPagamentoController;
 
 type
-  TFrm_Consulta_CondicaoPagamento = class(TFrm_Consulta)
+  TFrm_Consulta_CondicaoPagamento = class( TFrm_Consulta )
   private
     { Private declarations }
   public
     { Public declarations }
+    CondPagControl: TCondicaoPagamentoController;
   end;
 
 var

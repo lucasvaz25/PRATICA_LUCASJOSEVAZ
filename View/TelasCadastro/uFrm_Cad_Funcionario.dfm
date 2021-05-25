@@ -3,7 +3,6 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
   ClientHeight = 640
   ClientWidth = 688
   OnCreate = FormCreate
-  ExplicitTop = -111
   ExplicitWidth = 694
   ExplicitHeight = 669
   PixelsPerInch = 96
