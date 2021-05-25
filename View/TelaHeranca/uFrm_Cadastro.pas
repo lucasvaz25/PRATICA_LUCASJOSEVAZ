@@ -36,6 +36,8 @@ type
     procedure FormShow( Sender: TObject );
   private
     { Private declarations }
+  protected
+    procedure UppercaseField;
   public
     { Public declarations }
     Salvou: Boolean;
@@ -91,6 +93,7 @@ end;
 procedure TFrm_Cadastro.FormShow( Sender: TObject );
 begin
   inherited;
+  UppercaseField;
   if EdCodigo.Text = '0' then
     Self.LimparCampos;
 end;
@@ -126,6 +129,24 @@ end;
 
 procedure TFrm_Cadastro.Salvar;
 begin
+
+end;
+
+procedure TFrm_Cadastro.UppercaseField;
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if ( Components[ I ] is TVazEdit ) then
+      TVazEdit( Components[ I ] ).CharCase := EcUpperCase
+    else if ( Components[ I ] is TVazMaskEdit ) then
+      TVazMaskEdit( Components[ I ] ).CharCase := EcUpperCase
+    else if ( Components[ I ] is TEdit ) then
+      TEdit( Components[ I ] ).CharCase := EcUpperCase
+    else if ( Components[ I ] is TMemo ) then
+      TMemo( Components[ I ] ).CharCase := EcUpperCase;
+  end;
 
 end;
 

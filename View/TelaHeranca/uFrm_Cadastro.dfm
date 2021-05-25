@@ -4,14 +4,11 @@ inherited Frm_Cadastro: TFrm_Cadastro
   ClientHeight = 482
   ClientWidth = 722
   OnShow = FormShow
-  ExplicitTop = -138
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 722
     Height = 482
-    ExplicitLeft = 0
-    ExplicitTop = 0
     ExplicitWidth = 722
     ExplicitHeight = 482
     DesignSize = (
