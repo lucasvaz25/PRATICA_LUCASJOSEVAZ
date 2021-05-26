@@ -3,8 +3,8 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
   ClientHeight = 326
   ClientWidth = 510
   OnCreate = FormCreate
-  ExplicitWidth = 526
-  ExplicitHeight = 365
+  ExplicitWidth = 516
+  ExplicitHeight = 355
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
@@ -49,11 +49,24 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       ParentFont = False
     end
     object lblPais: TLabel [5]
-      Left = 24
-      Top = 138
+      Left = 80
+      Top = 139
       Width = 34
       Height = 21
       Caption = 'Pa'#237's*'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblCodDept: TLabel [6]
+      Left = 24
+      Top = 139
+      Width = 31
+      Height = 21
+      Caption = 'C'#243'd.'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -105,9 +118,9 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       ChangeColor = 14745599
     end
     object edPais: TVazEdit
-      Left = 24
+      Left = 80
       Top = 160
-      Width = 417
+      Width = 361
       Height = 29
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -116,6 +129,7 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       Font.Style = []
       MaxLength = 40
       ParentFont = False
+      ReadOnly = True
       TabOrder = 5
       TextHint = 'digite o nome do Pa'#237's'
       ChangeColor = 14745599
@@ -185,6 +199,26 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
         ExplicitWidth = 23
         ExplicitHeight = 22
       end
+    end
+    object edCodPais: TVazEdit
+      Left = 24
+      Top = 160
+      Width = 50
+      Height = 29
+      BiDiMode = bdLeftToRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 5
+      NumbersOnly = True
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 7
+      OnExit = edCodPaisExit
+      OnKeyPress = edCodPaisKeyPress
+      ChangeColor = 14745599
     end
   end
   object BalloonHint1: TBalloonHint

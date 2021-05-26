@@ -1,26 +1,26 @@
 inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
   Caption = 'Frm_Cad_Fornecedor'
-  ClientHeight = 722
+  ClientHeight = 685
   ClientWidth = 655
   OnCreate = FormCreate
-  ExplicitTop = -14
+  ExplicitTop = -231
   ExplicitWidth = 661
-  ExplicitHeight = 751
+  ExplicitHeight = 714
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 655
-    Height = 722
+    Height = 685
     Anchors = [akLeft, akTop]
     ExplicitWidth = 655
     ExplicitHeight = 722
     inherited lblUsuarioDataCad: TLabel
-      Top = 695
+      Top = 658
       ExplicitTop = 509
     end
     inherited lblUsuarioDataAlteracao: TLabel
       Left = 459
-      Top = 695
+      Top = 658
       ExplicitLeft = 554
       ExplicitTop = 509
     end
@@ -248,13 +248,13 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     inherited pnlSalvar: TPanel
       Left = 370
-      Top = 626
+      Top = 589
       ExplicitLeft = 370
       ExplicitTop = 626
     end
     inherited pnlSair: TPanel
       Left = 513
-      Top = 626
+      Top = 589
       ExplicitLeft = 513
       ExplicitTop = 626
     end
@@ -421,6 +421,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Font.Style = []
       MaxLength = 50
       ParentFont = False
+      ReadOnly = True
       TabOrder = 12
       TextHint = 'digite a cidade'
       ChangeColor = 14745599
@@ -486,6 +487,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgPesquisarClick
         ExplicitLeft = 16
       end
     end
@@ -576,6 +578,8 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 19
+      OnExit = edCodCidadeExit
+      OnKeyPress = edCodCidadeKeyPress
       ChangeColor = 14745599
     end
     object edCodCondPag: TVazEdit

@@ -26,6 +26,8 @@ type
     property Estado: TEstado read FEstado write SetEstado;
 
     procedure CopiarDados( Value: TCidade );
+
+    function GetCidadeUF: string;
   end;
 
 implementation
@@ -58,6 +60,11 @@ procedure TCidade.Free;
 begin
   if Assigned( Self ) then
     Self.Destroy;
+end;
+
+function TCidade.GetCidadeUF: string;
+begin
+  Result := Self.FCidade + '-' + Self.FEstado.UF;
 end;
 
 procedure TCidade.SetDDD( const Value: string );

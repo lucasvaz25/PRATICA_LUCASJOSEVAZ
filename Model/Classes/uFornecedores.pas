@@ -57,7 +57,7 @@ end;
 destructor TFornecedores.Destroy;
 begin
   FCondPagamento.Free;
-  inherited Free;
+  inherited;
 end;
 
 procedure TFornecedores.Free;

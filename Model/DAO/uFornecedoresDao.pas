@@ -29,6 +29,7 @@ type
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
     // procedure SetDM( Value: TObject ); override;
     function VerificaExiste( Str: string ): Boolean;
+    function VerificaExisteCPF_CNPJ( Str: string ): Boolean;
   end;
 
 implementation
@@ -49,7 +50,9 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT F.* FROM Fornecedores F ' );
+    SQL.Add( 'SELECT F.*, C.CODIGO, C.CIDADE, C.COD_ESTADO, E.UF FROM Fornecedores F ' );
+    SQL.Add( 'LEFT JOIN CIDADES C ON C.CODIGO = F.COD_CIDADE ' );
+    SQL.Add( 'LEFT JOIN ESTADOS E ON E.CODIGO = C.COD_ESTADO ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
@@ -60,6 +63,11 @@ begin
       TpCParam:
         begin
           SQL.Add( 'WHERE F.Fornecedor LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
+        end;
+
+      TpCCPF_CNPJ:
+        begin
+          SQL.Add( 'WHERE F.CPF = ' + QuotedStr( AFilter.Parametro ) );
         end;
 
       TpCTODOS:
@@ -75,6 +83,9 @@ begin
       begin
         Aux := TFornecedores.Create;
         Self.FieldsToObj( Aux );
+        Aux.Cidade.Cidade    := FieldByName( 'CIDADE' ).AsString;
+        Aux.Cidade.Estado.UF := FieldByName( 'UF' ).AsString;
+
         Result.Add( Aux );
 
         Next;
@@ -138,12 +149,12 @@ begin
       SQL.Add( 'UPDATE Fornecedores SET ' );
       SQL.Add( 'CODIGO = :CODIGO, DATA_CAD = :DATA_CAD, DATA_ALT = :DATA_ALT, ' );
       SQL.Add( 'USER_CAD = :USER_CAD, USER_ALT = :USER_ALT, CEP = :CEP, ' );
-      SQL.Add( 'num = :num, bairro = :bairro, NOME_FANTASIA = :NOME_FANTASIA, ' );
-      SQL.Add( 'logradouro = :logradouro, Fornecedore = :Fornecedore, RG = :RG, ' );
-      SQL.Add( 'CPF = :CPF, DATA_ADMISSAO = :DATA_ADMISSAO, DATA_DEMISSAO = :DATA_DEMISSAO, ' );
-      SQL.Add( 'CONTATO = :CONTATO, SITE = :SITE, ' );
-      SQL.Add( 'EMAIL = :EMAIL, TELEFONE = :TELEFONE, SALARIO = :SALARIO, COD_CARGO = :COD_CARGO, ' );
-      SQL.Add( 'CNH = :CNH, CATEGORIA = :CATEGORIA, VALIDADE_CNH = :VALIDADE_CNH, SEXO = :SEXO, cod_cidade = :cod_cidade ' );
+      SQL.Add( 'NUMERO = :NUMERO, bairro = :bairro, NOME_FANTASIA = :NOME_FANTASIA, ' );
+      SQL.Add( 'logradouro = :logradouro, Fornecedor = :Fornecedor, RG = :RG, ' );
+      SQL.Add( 'CPF = :CPF, DATA_NASC = :DATA_NASC, ' );
+      SQL.Add( 'CONTATO = :CONTATO, SITE = :SITE, TIPO_PESSOA = :TIPO_PESSOA, ' );
+      SQL.Add( 'EMAIL = :EMAIL, TELEFONE = :TELEFONE, cod_condPag = :cod_condPag, ' );
+      SQL.Add( ' SEXO = :SEXO, cod_cidade = :cod_cidade ' );
       SQL.Add( 'WHERE  CODIGO = :CODIGO' );
       ObjToFields( Fornecedor );
       ExecSQL;
@@ -169,7 +180,7 @@ begin
     UserAlt              := FieldByName( 'USER_ALT' ).AsString;
     Nome                 := FieldByName( 'Fornecedor' ).AsString;
     Endereco             := FieldByName( 'logradouro' ).AsString;
-    Numero               := FieldByName( 'num' ).AsString;
+    Numero               := FieldByName( 'NUMERO' ).AsString;
     Bairro               := FieldByName( 'bairro' ).AsString;
     Apelido              := FieldByName( 'NOME_FANTASIA' ).AsString;
     CEP                  := FieldByName( 'CEP' ).AsString;
@@ -200,12 +211,12 @@ begin
       SQl.Clear;
       SQL.Add( 'INSERT INTO Fornecedores ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, DATA_ALT, USER_CAD, USER_ALT, ' );
-      SQL.Add( 'Fornecedor, logradouro, num, bairro, NOME_FANTASIA, CEP, ' );
+      SQL.Add( 'Fornecedor, logradouro, NUMERO, bairro, NOME_FANTASIA, CEP, ' );
       SQL.Add( 'TELEFONE, EMAIL, CPF, RG, CONTATO, SITE, ' );
       SQL.Add( 'DATA_NASC, cod_CondPag, TIPO_PESSOA, SEXO, cod_cidade ' );
       SQL.Add( ')VALUES(' );
       SQL.Add( ':CODIGO, :DATA_CAD, :DATA_ALT, :USER_CAD, :USER_ALT, ' );
-      SQL.Add( ':Fornecedor, :logradouro, :num, :bairro, :NOME_FANTASIA, :CEP, ' );
+      SQL.Add( ':Fornecedor, :logradouro, :NUMERO, :bairro, :NOME_FANTASIA, :CEP, ' );
       SQL.Add( ':TELEFONE, :EMAIL, :CPF, :RG, :CONTATO, :SITE, ' );
       SQL.Add( ':DATA_NASC, :cod_CondPag, :TIPO_PESSOA, :SEXO, :cod_cidade ' );
       SQL.Add( ')' );
@@ -233,7 +244,7 @@ begin
     ParamByName( 'USER_ALT' ).AsString      := UserAlt;
     ParamByName( 'Fornecedor' ).AsString    := Nome;
     ParamByName( 'logradouro' ).AsString    := Endereco;
-    ParamByName( 'num' ).AsString           := Numero;
+    ParamByName( 'NUMERO' ).AsString        := Numero;
     ParamByName( 'bairro' ).AsString        := Bairro;
     ParamByName( 'NOME_FANTASIA' ).AsString := Apelido;
     ParamByName( 'CEP' ).AsString           := CEP;
@@ -292,6 +303,34 @@ begin
     begin
       for I := 0 to List.Count - 1 do
         if ( Str = TFornecedores( List[ I ] ).Nome ) then
+        begin
+          Result := True;
+          Break;
+        end;
+    end;
+  finally
+    Afilter.Free;
+    List.Free;
+  end;
+end;
+
+function TFornecedoresDao.VerificaExisteCPF_CNPJ( Str: string ): Boolean;
+var
+  List: Tobjectlist;
+  Afilter: TFilterSearch;
+  I: Integer;
+begin
+  Result  := False;
+  List    := Tobjectlist.Create;
+  Afilter := TFilterSearch.Create;
+  try
+    Afilter.TipoConsulta := TpCCPF_CNPJ;
+    Afilter.Parametro    := Str;
+    List                 := Self.Consulta( Afilter );
+    if List <> nil then
+    begin
+      for I := 0 to List.Count - 1 do
+        if ( Str = TFornecedores( List[ I ] ).CPF ) then
         begin
           Result := True;
           Break;

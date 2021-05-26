@@ -34,18 +34,24 @@ type
     ImgPesquisar: TImage;
     BalloonHint1: TBalloonHint;
     BtnPesquisarEstados: TSpeedButton;
+    LblCodDept: TLabel;
+    EdCodEstado: TVazEdit;
     procedure FormCreate( Sender: TObject );
     procedure FormShow( Sender: TObject );
+    procedure EdCodEstadoExit( Sender: TObject );
+    procedure EdCodEstadoKeyPress( Sender: TObject; var Key: Char );
     procedure BtnPesquisarEstadosClick( Sender: TObject );
 
   private
+    EstadoControl: TEstadosController;
     procedure PopulaObj;
     procedure PopulaForm;
     function ValidaForm: Boolean;
+    procedure ConsultarEstado;
+    procedure PesquisaBtnEstado;
   public
     { Public declarations }
     CidadeControl: TCidadesController;
-    EstadoControl: TEstadosController;
 
     procedure Salvar; override;
     procedure Sair; override;
@@ -58,23 +64,63 @@ var
 implementation
 
 uses
+  System.Contnrs,
+  UEnum,
+  UToolsSistema,
+  UFilterSearch,
+  UEstados,
   UFrm_Consulta_Estados;
 {$R *.dfm}
 
 { TFrm_Cad_Cidades }
 
 procedure TFrm_Cad_Cidades.BtnPesquisarEstadosClick( Sender: TObject );
-var
-  Frm: TFrm_Consulta_Estados;
 begin
   inherited;
-  //
-  Frm              := TFrm_Consulta_Estados.Create( Self );
-  Frm.IsSelecionar := True;
-  Frm.ShowModal;
-  EdEstado.Text := Frm.EstadoControl.GetEntity.Estado;
-  CidadeControl.GetEntity.Estado.CopiarDados( Frm.EstadoControl.GetEntity );
-  Frm.Release;
+  Self.PesquisaBtnEstado;
+end;
+
+procedure TFrm_Cad_Cidades.ConsultarEstado;
+var
+  Filtro: TFilterSearch;
+  List: TObjectlist;
+begin
+  if EdCodEstado.Text <> '' then
+  begin
+    Filtro := TFilterSearch.Create;
+    try
+      Filtro.TipoConsulta := TpCCodigo;
+      Filtro.RecuperarObj := True;
+      Filtro.Codigo       := StrToInt( EdCodEstado.Text );
+      List                := EstadoControl.Consulta( Filtro );
+      if List.Count > 0 then
+      begin
+        EdEstado.Text := TEstado( List[ 0 ] ).Estado;
+        CidadeControl.GetEntity.Estado.CopiarDados( TEstado( List[ 0 ] ) );
+      end
+      else
+      begin
+        ShowMessage( 'Estado não encontrado!!' );
+        EdCodEstado.Clear;
+        EdEstado.SetFocus;
+      end;
+    finally
+      Filtro.Free;
+    end;
+  end;
+end;
+
+procedure TFrm_Cad_Cidades.EdCodEstadoExit( Sender: TObject );
+begin
+  inherited;
+  Self.ConsultarEstado;
+end;
+
+procedure TFrm_Cad_Cidades.EdCodEstadoKeyPress( Sender: TObject; var Key: Char );
+begin
+  inherited;
+  if Key = #13 then
+    Self.ConsultarEstado;
 end;
 
 procedure TFrm_Cad_Cidades.FormCreate( Sender: TObject );
@@ -92,6 +138,24 @@ begin
   inherited;
   if not( EdCodigo.Text = '0' ) then
     PopulaForm;
+end;
+
+procedure TFrm_Cad_Cidades.PesquisaBtnEstado;
+var
+  Frm: TFrm_Consulta_Estados;
+begin
+  inherited;
+  Frm := TFrm_Consulta_Estados.Create( Self );
+  try
+    Frm.IsSelecionar := True;
+    Frm.ShowModal;
+    EdEstado.Text    := Frm.EstadoControl.GetEntity.Estado;
+    EdCodEstado.Text := IntToStr( Frm.EstadoControl.GetEntity.Codigo );
+    CidadeControl.GetEntity.Estado.CopiarDados
+                ( Frm.EstadoControl.GetEntity );
+  finally
+    Frm.Release;
+  end;
 end;
 
 procedure TFrm_Cad_Cidades.PopulaForm;
