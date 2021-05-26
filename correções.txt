@@ -6,9 +6,9 @@ correções no sistema:
 
 * Ajustar layout:
    * Adicionar campo cód. para consulta de classe que compõe objeto:
-       * uFrm_Cad_Cidades;
+       * --uFrm_Cad_Cidades-- FINALIZADO;
 	   * --uFrm_Cad_Clientes-- FINALIZADO;
-	   * uFrm_Cad_Estados;
+	   * --uFrm_Cad_Estados-- FINALIZADO;
 	   * --uFrm_Cad_Fornecedor-- FINALIZADO;
 	   * --uFrm_Cad_Funcionario-- FINALIZADO;
 	   * uFrm_Cad_Produtos;
@@ -28,9 +28,12 @@ correções no sistema:
    
 * Integrar View das classes:
   * TClientes;
-  * TFornecedores;
-  * TFuncionarios;
+  * --TFornecedores-- FINALIZADO;
+  * --TFuncionarios-- FINALIZADO;
   * TProdutos;
   * TCondicaoPagamento;
   Com as respectivas Dao's.
+  
+  
+ * Ao tentar inserir um registro e houver um exeption, ajustar para não fechar a tela de cadastro. Verificar em todos os form de cadastro.
   

@@ -1,0 +1,92 @@
+unit VazMaskEdit;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+  Vcl.Controls,
+  Vcl.StdCtrls,
+  Vcl.Mask,
+  Vcl.Graphics;
+
+type
+  TTypeMask = ( TtmData, TtmCPF, TtmCEP, TtmTelefone, TtmCelular );
+
+  TVazMaskEdit = class( TMaskEdit )
+  private
+    FChangeColor: TColor;
+    FTypeMask: TTypeMask;
+    procedure SetChangeColor( const Value: TColor );
+    procedure SetTypeMask( const Value: TTypeMask );
+    { Private declarations }
+  protected
+    { Protected declarations }
+    procedure DoEnter; override;
+    procedure DoExit; override;
+  public
+    { Public declarations }
+    constructor Create( AOwner: TComponent ); override;
+  published
+    { Published declarations }
+    property TypeMask: TTypeMask read FTypeMask write SetTypeMask;
+    property ChangeColor: TColor read FChangeColor write SetChangeColor;
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents( 'Vaz', [ TVazMaskEdit ] );
+end;
+
+{ TVazMaskEdit }
+
+constructor TVazMaskEdit.Create( AOwner: TComponent );
+begin
+  inherited Create( AOwner );
+  FChangeColor := $E0FFFF;
+end;
+
+procedure TVazMaskEdit.DoEnter;
+begin
+  inherited;
+  Color := FChangeColor;
+end;
+
+procedure TVazMaskEdit.DoExit;
+begin
+  inherited;
+  Color := ClWindow;
+end;
+
+procedure TVazMaskEdit.SetChangeColor( const Value: TColor );
+begin
+  FChangeColor := Value;
+end;
+
+procedure TVazMaskEdit.SetTypeMask( const Value: TTypeMask );
+begin
+  FTypeMask := Value;
+
+  case Value of
+    TtmData:
+      EditMask := '99/99/9999;0_';
+    TtmCPF:
+      EditMask := '99/99/9999;0_';
+
+    TtmCEP:
+      EditMask := '99/99/9999;0_';
+
+    TtmTelefone:
+      EditMask := '99/99/9999;0_';
+
+    TtmCelular:
+      EditMask := '99/99/9999;0_';
+
+  end;
+end;
+
+end.
