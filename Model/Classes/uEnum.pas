@@ -11,6 +11,8 @@ type
   TCategoriaCNH = ( TCCNH_Indefinido = -1, TCCNH_A = 0, TCCNH_B = 1,
               TCCNH_C = 2, TCCNH_D = 3, TCCNH_E = 4, TCCNH_AB = 5 );
 
+  TStatus = ( TSIndefinido = -1, TSInativo = 0, TSAtivo = 1 );
+
   TEnum = class
   public
     class function GetCategoriaCNH( Value: TCategoriaCNH ): string;

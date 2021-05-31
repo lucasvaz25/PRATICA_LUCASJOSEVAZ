@@ -2,7 +2,6 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
   Caption = 'Frm_Cad_Clientes'
   ClientHeight = 640
   ClientWidth = 675
-  ExplicitTop = -74
   ExplicitWidth = 681
   ExplicitHeight = 669
   PixelsPerInch = 96
@@ -10,8 +9,10 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
   inherited pnlFundo: TPanel
     Width = 675
     Height = 640
+    ExplicitLeft = 0
+    ExplicitTop = 0
     ExplicitWidth = 675
-    ExplicitHeight = 593
+    ExplicitHeight = 640
     inherited lblCodigo: TLabel
       Anchors = [akLeft, akTop, akRight]
     end
@@ -242,14 +243,14 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Top = 544
       TabOrder = 13
       ExplicitLeft = 380
-      ExplicitTop = 497
+      ExplicitTop = 544
     end
     inherited pnlSair: TPanel
       Left = 528
       Top = 544
       TabOrder = 14
       ExplicitLeft = 528
-      ExplicitTop = 497
+      ExplicitTop = 544
     end
     object edNome: TVazEdit
       Left = 24

@@ -776,5 +776,16 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
         ExplicitLeft = 1
       end
     end
+    object chkAtivo: TCheckBox
+      Left = 337
+      Top = 58
+      Width = 97
+      Height = 17
+      Caption = 'Ativo'
+      Checked = True
+      State = cbChecked
+      TabOrder = 27
+      OnClick = chkAtivoClick
+    end
   end
 end

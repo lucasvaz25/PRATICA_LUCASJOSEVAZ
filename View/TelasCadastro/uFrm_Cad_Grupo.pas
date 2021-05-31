@@ -118,7 +118,8 @@ begin
     else
       Salvou := GrupoControl.Editar( Aux );
 
-    Self.Sair;
+    if Salvou then
+      Self.Sair;
   end;
 end;
 

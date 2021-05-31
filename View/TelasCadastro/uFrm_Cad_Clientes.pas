@@ -259,7 +259,8 @@ end;
 procedure TFrm_Cad_Clientes.Salvar;
 begin
   inherited;
-
+  if Salvou then
+    Self.Sair;
 end;
 
 function TFrm_Cad_Clientes.ValidaForm: Boolean;

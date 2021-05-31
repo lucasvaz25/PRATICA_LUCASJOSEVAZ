@@ -3,7 +3,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
   ClientHeight = 685
   ClientWidth = 655
   OnCreate = FormCreate
-  ExplicitTop = -231
+  ExplicitTop = -291
   ExplicitWidth = 661
   ExplicitHeight = 714
   PixelsPerInch = 96
@@ -13,7 +13,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     Height = 685
     Anchors = [akLeft, akTop]
     ExplicitWidth = 655
-    ExplicitHeight = 722
+    ExplicitHeight = 685
     inherited lblUsuarioDataCad: TLabel
       Top = 658
       ExplicitTop = 509
@@ -250,13 +250,13 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Left = 370
       Top = 589
       ExplicitLeft = 370
-      ExplicitTop = 626
+      ExplicitTop = 589
     end
     inherited pnlSair: TPanel
       Left = 513
       Top = 589
       ExplicitLeft = 513
-      ExplicitTop = 626
+      ExplicitTop = 589
     end
     object edNome: TVazEdit
       Left = 24
@@ -542,7 +542,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ChangeColor = 14745599
     end
     object rgTpPessoa: TRadioGroup
-      Left = 146
+      Left = 137
       Top = 28
       Width = 279
       Height = 47
@@ -561,6 +561,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 18
+      OnClick = rgTpPessoaClick
     end
     object edCodCidade: TVazEdit
       Left = 24
@@ -663,6 +664,24 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
         ShowHint = True
         ExplicitLeft = 16
       end
+    end
+    object rgSexo: TRadioGroup
+      Left = 425
+      Top = 25
+      Width = 209
+      Height = 50
+      Caption = 'Sexo'
+      Columns = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Items.Strings = (
+        'Masculino'
+        'Feminino')
+      ParentFont = False
+      TabOrder = 23
     end
   end
 end

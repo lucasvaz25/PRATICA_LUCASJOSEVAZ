@@ -3,7 +3,6 @@ inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
   ClientHeight = 407
   ClientWidth = 518
   OnCreate = FormCreate
-  ExplicitTop = -63
   ExplicitWidth = 524
   ExplicitHeight = 436
   PixelsPerInch = 96

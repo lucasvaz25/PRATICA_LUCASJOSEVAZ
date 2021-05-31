@@ -22,7 +22,7 @@ correções no sistema:
    
    * --Alterar posição campo 'Condição Pagamento', no Cadastro de Clientes, posicionando após campos de info. pessoais.-- FINALIZADO.
    
-   * Bloquear após cadastro, os campos 'Tipo Pessoa, CPF, CNPJ, IE, RG', nos cadastros de Clientes, Forncedores e Funcionários.
+   * Bloquear após cadastro, os campos 'Tipo Pessoa, CPF, CNPJ, IE, RG', nos cadastros de Clientes, Fornecedores e Funcionários.
    
    * --Ajustar colunas das GRIDs.-- FINALIZADO.
    
@@ -35,5 +35,5 @@ correções no sistema:
   Com as respectivas Dao's.
   
   
- * Ao tentar inserir um registro e houver um exeption, ajustar para não fechar a tela de cadastro. Verificar em todos os form de cadastro.
+ * --Ao tentar inserir um registro e houver um exception, ajustar para não fechar a tela de cadastro. Verificar em todos os form de cadastro.-- FINALIZADO.
   

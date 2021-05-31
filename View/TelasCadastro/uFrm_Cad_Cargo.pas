@@ -197,7 +197,8 @@ begin
     else
       Salvou := CargoControl.Editar( Aux );
 
-    Self.Sair;
+    if Salvou then
+      Self.Sair;
   end;
 end;
 

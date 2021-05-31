@@ -75,6 +75,7 @@ type
     EdCargo: TVazEdit;
     PnlPesquisaCargo: TPanel;
     ImgCargo: TImage;
+    ChkAtivo: TCheckBox;
     procedure FormCreate( Sender: TObject );
     procedure FormShow( Sender: TObject );
     procedure EdCodCidadeExit( Sender: TObject );
@@ -83,6 +84,7 @@ type
     procedure EdCodCargoKeyPress( Sender: TObject; var Key: Char );
     procedure ImgPesquisarClick( Sender: TObject );
     procedure ImgCargoClick( Sender: TObject );
+    procedure ChkAtivoClick( Sender: TObject );
   private
     { Private declarations }
     CidadeControl: TCidadesController;
@@ -95,6 +97,9 @@ type
     procedure ConsultarCidade;
     procedure PesquisaBtnCidade;
     procedure VerificaObrigatorioCNH;
+    procedure UnlockFields;
+    procedure BlockFields;
+    procedure ChangeChkAtivo;
   public
     { Public declarations }
     FuncionarioControl: TFuncionariosController;
@@ -120,6 +125,26 @@ uses
 {$R *.dfm}
 
 { TFrm_Cad_Funcionario }
+
+procedure TFrm_Cad_Funcionario.ChangeChkAtivo;
+begin
+  EdDtDemissao.Enabled := not( ChkAtivo.Checked );
+
+  if not( ChkAtivo.Checked ) then
+  begin
+    EdDtDemissao.Date := Date;
+    EdDtDemissao.Show;
+  end
+  else
+    EdDtDemissao.Hide;
+
+end;
+
+procedure TFrm_Cad_Funcionario.ChkAtivoClick( Sender: TObject );
+begin
+  inherited;
+  Self.ChangeChkAtivo;
+end;
 
 procedure TFrm_Cad_Funcionario.ConsultarCargo;
 var
@@ -229,6 +254,7 @@ begin
   inherited;
   if not( EdCodigo.Text = '0' ) then
     PopulaForm;
+  Self.ChangeChkAtivo;
 end;
 
 procedure TFrm_Cad_Funcionario.ImgCargoClick( Sender: TObject );
@@ -305,7 +331,7 @@ begin
     EdUF.Text         := Cidade.Estado.UF;
     EdCargo.Text      := Cargo.Cargo;
     EdCodCargo.Text   := IntToStr( Cargo.Codigo );
-
+    ChkAtivo.Checked  := Integer( Status ).ToBoolean;
   end;
 end;
 
@@ -327,12 +353,17 @@ begin
     Email         := EdEmail.Text;
     Salario       := StrToCurr( EdSalario.Text );
     Data_Admissao := EdDtAdmissao.DateTime;
-    Data_Demissao := EdDtDemissao.DateTime;
     CNH           := EdNumCNH.Text;
     // Categoria     := EdCategoria.Text;
     ValidadeCNH := EdValCNH.DateTime;
+    Status      := TStatus( ChkAtivo.Checked.ToInteger );
     DataCad     := Date;
     UserCad     := UpperCase( 'lucas' );
+
+    if ChkAtivo.Checked then
+      Data_Demissao := 0
+    else
+      Data_Demissao := EdDtDemissao.DateTime;
   end;
 end;
 
@@ -340,6 +371,22 @@ procedure TFrm_Cad_Funcionario.Sair;
 begin
   inherited;
 
+end;
+
+procedure TFrm_Cad_Funcionario.UnlockFields;
+begin
+  EdNome.Enabled := True;
+  RgSexo.Enabled := True;
+  EdCPF.Enabled  := True;
+  EdRg.Enabled   := True;
+end;
+
+procedure TFrm_Cad_Funcionario.BlockFields;
+begin
+  EdNome.Enabled := False;
+  RgSexo.Enabled := False;
+  EdCPF.Enabled  := False;
+  EdRg.Enabled   := False;
 end;
 
 procedure TFrm_Cad_Funcionario.Salvar;
@@ -357,7 +404,8 @@ begin
     else
       Salvou := FuncionarioControl.Editar( Aux );
 
-    Self.Sair;
+    if Salvou then
+      Self.Sair;
   end
 end;
 
@@ -398,6 +446,16 @@ begin
     MessageDlg( 'Informe o sexo do funcionário!!', MtInformation, [ MbOK ], 0 );
     RgSexo.SetFocus;
     Exit;
+  end;
+
+  if not( ChkAtivo.Checked ) then
+  begin
+    if ( EdDtAdmissao.Date > EdDtDemissao.Date ) then
+    begin
+      MessageDlg( 'Data de demissão não pode ser anterior a data de admissão!!', MtInformation, [ MbOK ], 0 );
+      EdDtDemissao.SetFocus;
+      Exit;
+    end;
   end;
 
   if FuncionarioControl.GetEntity.Cargo.IsObrigatorioCNH then

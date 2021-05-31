@@ -218,7 +218,8 @@ begin
     else
       Salvou := EstadoControl.Editar( Aux );
 
-    Self.Sair;
+    if Salvou then
+      Self.Sair;
   end;
 end;
 

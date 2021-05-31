@@ -18,6 +18,7 @@ type
     FCategoria: TCategoriaCNH;
     FData_Demissao: TDateTime;
     FCargo: TCargos;
+    FStatus: TStatus;
     procedure SetCargo( const Value: TCargos );
     procedure SetCategoria( const Value: TCategoriaCNH );
     procedure SetCNH( const Value: string );
@@ -25,6 +26,7 @@ type
     procedure SetData_Demissao( const Value: TDateTime );
     procedure SetSalario( const Value: Currency );
     procedure SetValidadeCNH( const Value: TDateTime );
+    procedure SetStatus( const Value: TStatus );
   protected
   public
     constructor Create;
@@ -38,6 +40,7 @@ type
     property Categoria: TCategoriaCNH read FCategoria write SetCategoria;
     property ValidadeCNH: TDateTime read FValidadeCNH write SetValidadeCNH;
     property Cargo: TCargos read FCargo write SetCargo;
+    property Status: TStatus read FStatus write SetStatus;
 
     procedure CopiarDados( Value: TFuncionarios );
   end;
@@ -55,6 +58,7 @@ begin
   FCNH           := Value.CNH;
   FCategoria     := Value.Categoria;
   FValidadeCNH   := Value.ValidadeCNH;
+  FStatus        := Value.Status;
   FCargo.CopiarDados( Value.Cargo );
 end;
 
@@ -67,6 +71,7 @@ begin
   FCNH           := '';
   FCategoria     := TCCNH_Indefinido;
   FValidadeCNH   := 0;
+  FStatus        := TSIndefinido;
   FCargo         := TCargos.Create;
 end;
 
@@ -80,6 +85,11 @@ procedure TFuncionarios.Free;
 begin
   if Assigned( Self ) then
     Self.Destroy;
+end;
+
+procedure TFuncionarios.SetStatus( const Value: TStatus );
+begin
+  FStatus := Value;
 end;
 
 procedure TFuncionarios.SetCargo( const Value: TCargos );

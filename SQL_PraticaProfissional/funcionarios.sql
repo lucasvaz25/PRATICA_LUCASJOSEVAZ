@@ -29,3 +29,12 @@ FOREIGN KEY (COD_CARGO) REFERENCES CARGOS(CODIGO)
 
 alter table funcionarios
 add NUM varchar(6);
+
+alter table funcionarios
+add status smallint
+default 1;
+
+update funcionarios set status = 1;
+
+update funcionarios set DATA_DEMISSAO = NULL
+where status = 1;
