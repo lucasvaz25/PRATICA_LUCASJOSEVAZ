@@ -425,7 +425,7 @@ begin
     Exit;
   end;
 
-  if TToolsSistema.ValidarCPF( EdCPF.Text ) then
+  if not TToolsSistema.ValidarCPF( EdCPF.Text ) then
   begin
     MessageDlg( 'Informe um CPF válido!!', MtInformation, [ MbOK ], 0 );
     EdCPF.SetFocus;
