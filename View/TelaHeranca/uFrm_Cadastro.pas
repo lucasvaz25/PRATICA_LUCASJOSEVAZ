@@ -37,7 +37,8 @@ type
   private
     { Private declarations }
   protected
-    procedure UppercaseField;
+    procedure UpperCaseField;
+    procedure ClearFieldsDate;
   public
     { Public declarations }
     Salvou: Boolean;
@@ -83,6 +84,18 @@ procedure TFrm_Cadastro.BtnSalvarMouseMove( Sender: TObject; Shift: TShiftState;
 begin
   inherited;
   PnlSalvar.Color := $00FFB164;
+end;
+
+procedure TFrm_Cadastro.ClearFieldsDate;
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount - 1 do
+    if ( Components[ I ] is TVazMaskEdit ) and
+                ( TVazMaskEdit( Components[ I ] ).
+                EditText = '30/12/1899' ) then
+      TVazMaskEdit( Components[ I ] ).Clear;
+
 end;
 
 procedure TFrm_Cadastro.ConhecaObj( Obj, Objcontrol: TObject );

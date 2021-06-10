@@ -9,8 +9,6 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
   inherited pnlFundo: TPanel
     Width = 675
     Height = 640
-    ExplicitLeft = 0
-    ExplicitTop = 0
     ExplicitWidth = 675
     ExplicitHeight = 640
     inherited lblCodigo: TLabel

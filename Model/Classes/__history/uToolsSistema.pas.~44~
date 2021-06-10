@@ -1,0 +1,47 @@
+unit uToolsSistema;
+
+interface
+
+uses
+  System.SysUtils,
+  Vcl.Dialogs;
+
+type
+  TToolsSistema = class
+  public
+    class function ValidarCPF( const Value: string ): Boolean;
+    class function GetDefaultDate( const ADate, Field: string ): TDateTime;
+  end;
+
+implementation
+
+{ TToolsSistema }
+
+class function TToolsSistema.GetDefaultDate( const ADate, Field: string ): TDateTime;
+var
+  StrDate: string;
+begin
+  if ( ADate.Equals( '__/__/____' ) ) then
+    StrDate := EmptyStr
+  else
+    StrDate.Copy( ADate );
+
+  if ( StrDate.Length > 0 ) then
+  begin
+    if not TryStrToDate( StrDate, Result ) then
+    begin
+      MessageDlg( 'Data Inválida!' + #13#10 + 'Campo: ' +
+                  Field + '.', MtError, [ MbOK ], 0 );
+      Abort;
+    end;
+  end
+  else
+    Result := 0;
+end;
+
+class function TToolsSistema.ValidarCPF( const Value: string ): Boolean;
+begin
+  Result := not( Value.Length = 11 );
+end;
+
+end.

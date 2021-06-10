@@ -99,8 +99,9 @@ uses
   UCondicaoPagamento,
   UCidades,
   UClientes,
+  UFrm_Consulta_CondicaoPagamento,
   UFrm_Consulta_Cidades;
-// UFrm_Consulta_Condi;
+
 {$R *.dfm}
 
 
@@ -218,30 +219,69 @@ begin
 end;
 
 procedure TFrm_Cad_Clientes.PesquisaBtnCondPag;
-// var
-// Frm: TFrm_Consulta_Cidades;
+var
+  Frm: TFrm_Consulta_CondicaoPagamento;
 begin
-  // inherited;
-  // Frm := TFrm_Consulta_Cidades.Create( Self );
-  // try
-  // Frm.IsSelecionar := True;
-  // Frm.ShowModal;
-  // EdCidade.Text    := Frm.CidadeControl.GetEntity.Cidade;
-  // EdCodCidade.Text := IntToStr( Frm.CidadeControl.GetEntity.Codigo );
-  // ClienteControl.GetEntity.Cidade.CopiarDados( Frm.CidadeControl.GetEntity );
-  // finally
-  // Frm.Release;
-  // end;
+  inherited;
+  Frm := TFrm_Consulta_CondicaoPagamento.Create( Self );
+  try
+    Frm.IsSelecionar := True;
+    Frm.ShowModal;
+    EdCondPag.Text    := Frm.CondPagControl.GetEntity.CondPag;
+    EdCodCondPag.Text := IntToStr( Frm.CondPagControl.GetEntity.Codigo );
+    ClienteControl.GetEntity.CondPagamento.CopiarDados
+                ( Frm.CondPagControl.GetEntity );
+  finally
+    Frm.Release;
+  end;
 end;
 
 procedure TFrm_Cad_Clientes.PopulaForm;
 begin
-
+  with ClienteControl.GetEntity do
+  begin
+    EdCodigo.Text        := IntToStr( Codigo );
+    EdNome.Text          := Nome;
+    EdRG.Text            := RG;
+    EdBairro.Text        := Bairro;
+    EdCPF.Text           := CPF;
+    EdCEP.Text           := CEP;
+    EdNum.Text           := Numero;
+    EdNomeFantasia.Text  := Apelido;
+    EdLogradouro.Text    := Endereco;
+    EdTelefone.Text      := Telefone;
+    EdEmail.Text         := Email;
+    EdCidade.Text        := Cidade.Cidade;
+    EdCodCidade.Text     := IntToStr( Cidade.Codigo );
+    EdUF.Text            := Cidade.Estado.UF;
+    EdCondPag.Text       := CondPagamento.CondPag;
+    EdCodCondPag.Text    := IntToStr( CondPagamento.Codigo );
+    RgTpPessoa.ItemIndex := Integer( TpPessoa );
+  end;
 end;
 
 procedure TFrm_Cad_Clientes.PopulaObj;
 begin
-
+  with ClienteControl.GetEntity do
+  begin
+    Codigo                := StrToInt( EdCodigo.Text );
+    Nome                  := UpperCase( EdNome.Text );
+    RG                    := EdRG.Text;
+    Bairro                := UpperCase( EdBairro.Text );
+    CPF                   := EdCPF.Text;
+    CEP                   := EdCEP.Text;
+    Numero                := EdNum.Text;
+    Apelido               := EdNomeFantasia.Text;
+    Endereco              := EdLogradouro.Text;
+    Telefone              := EdTelefone.Text;
+    Email                 := EdEmail.Text;
+    Cidade.Cidade         := EdCidade.Text;
+    Cidade.Codigo         := StrToInt( EdCodCidade.Text );
+    Cidade.Estado.UF      := EdUF.Text;
+    CondPagamento.CondPag := EdCondPag.Text;
+    CondPagamento.Codigo  := StrToInt( EdCodCondPag.Text );
+    // TpPessoa              := TTipoPessoa( RgTpPessoa.ItemIndex );
+  end;
 end;
 
 procedure TFrm_Cad_Clientes.RgTpPessoaClick( Sender: TObject );

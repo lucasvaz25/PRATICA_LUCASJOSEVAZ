@@ -53,9 +53,7 @@ type
     LblCPF: TLabel;
     EdRG: TVazEdit;
     LblRG: TLabel;
-    EdDtAdmissao: TDateTimePicker;
     LblDtAdmissao: TLabel;
-    EdDtDemissao: TDateTimePicker;
     LblDtDemissao: TLabel;
     PnlPesquisar: TPanel;
     ImgPesquisar: TImage;
@@ -63,7 +61,6 @@ type
     LblCNH: TLabel;
     EdCategoria: TVazEdit;
     LblCategoria: TLabel;
-    EdValCNH: TDateTimePicker;
     LblValCNH: TLabel;
     LblCargo: TLabel;
     EdSalario: TVazEdit;
@@ -76,6 +73,9 @@ type
     PnlPesquisaCargo: TPanel;
     ImgCargo: TImage;
     ChkAtivo: TCheckBox;
+    EdDtDemissao: TVazMaskEdit;
+    EdDtAdmissao: TVazMaskEdit;
+    EdValCNH: TVazMaskEdit;
     procedure FormCreate( Sender: TObject );
     procedure FormShow( Sender: TObject );
     procedure EdCodCidadeExit( Sender: TObject );
@@ -130,13 +130,13 @@ procedure TFrm_Cad_Funcionario.ChangeChkAtivo;
 begin
   EdDtDemissao.Enabled := not( ChkAtivo.Checked );
 
-  if not( ChkAtivo.Checked ) then
-  begin
-    EdDtDemissao.Date := Date;
-    EdDtDemissao.Show;
-  end
-  else
-    EdDtDemissao.Hide;
+  // if not( ChkAtivo.Checked ) then
+  // begin
+  // EdDtDemissao.Date := Date;
+  // EdDtDemissao.Show;
+  // end
+  // else
+  // EdDtDemissao.Hide;
 
 end;
 
@@ -255,6 +255,7 @@ begin
   if not( EdCodigo.Text = '0' ) then
     PopulaForm;
   Self.ChangeChkAtivo;
+  Self.ClearFieldsDate;
 end;
 
 procedure TFrm_Cad_Funcionario.ImgCargoClick( Sender: TObject );
@@ -308,30 +309,30 @@ procedure TFrm_Cad_Funcionario.PopulaForm;
 begin
   with FuncionarioControl.GetEntity do
   begin
-    EdCodigo.Text         := IntToStr( Codigo );
-    EdNome.Text           := Nome;
-    EdRG.Text             := RG;
-    EdBairro.Text         := Bairro;
-    EdCPF.Text            := CPF;
-    EdCEP.Text            := CEP;
-    EdNum.Text            := Numero;
-    RgSexo.ItemIndex      := Integer( Sexo );
-    EdApelido.Text        := Apelido;
-    EdLogradouro.Text     := Endereco;
-    EdTelefone.Text       := Telefone;
-    EdEmail.Text          := Email;
-    EdSalario.Text        := FormatCurr( '0.00', Salario );
-    EdDtAdmissao.DateTime := Data_Admissao;
-    EdDtDemissao.DateTime := Data_Demissao;
-    EdNumCNH.Text         := CNH;
+    EdCodigo.Text     := IntToStr( Codigo );
+    EdNome.Text       := Nome;
+    EdRG.Text         := RG;
+    EdBairro.Text     := Bairro;
+    EdCPF.Text        := CPF;
+    EdCEP.Text        := CEP;
+    EdNum.Text        := Numero;
+    RgSexo.ItemIndex  := Integer( Sexo );
+    EdApelido.Text    := Apelido;
+    EdLogradouro.Text := Endereco;
+    EdTelefone.Text   := Telefone;
+    EdEmail.Text      := Email;
+    EdSalario.Text    := FormatCurr( '0.00', Salario );
+    EdNumCNH.Text     := CNH;
     // EdCategoria.Text      := Categoria;
-    EdValCNH.DateTime := ValidadeCNH;
-    EdCidade.Text     := Cidade.Cidade;
-    EdCodCidade.Text  := IntToStr( Cidade.Codigo );
-    EdUF.Text         := Cidade.Estado.UF;
-    EdCargo.Text      := Cargo.Cargo;
-    EdCodCargo.Text   := IntToStr( Cargo.Codigo );
-    ChkAtivo.Checked  := Integer( Status ).ToBoolean;
+    EdCidade.Text         := Cidade.Cidade;
+    EdCodCidade.Text      := IntToStr( Cidade.Codigo );
+    EdUF.Text             := Cidade.Estado.UF;
+    EdCargo.Text          := Cargo.Cargo;
+    EdCodCargo.Text       := IntToStr( Cargo.Codigo );
+    ChkAtivo.Checked      := Integer( Status ).ToBoolean;
+    EdDtAdmissao.EditText := DateToStr( Data_Admissao );
+    EdDtDemissao.EditText := DateToStr( Data_Demissao );
+    EdValCNH.EditText     := DateToStr( ValidadeCNH );
   end;
 end;
 
@@ -339,31 +340,33 @@ procedure TFrm_Cad_Funcionario.PopulaObj;
 begin
   with FuncionarioControl.GetEntity do
   begin
-    Codigo        := StrToInt( EdCodigo.Text );
-    Nome          := UpperCase( EdNome.Text );
-    RG            := EdRG.Text;
-    Bairro        := UpperCase( EdBairro.Text );
-    CPF           := EdCPF.Text;
-    CEP           := EdCEP.Text;
-    Numero        := EdNum.Text;
-    Sexo          := TSexo( RgSexo.ItemIndex );
-    Apelido       := UpperCase( EdApelido.Text );
-    Endereco      := UpperCase( EdLogradouro.Text );
-    Telefone      := EdTelefone.Text;
-    Email         := EdEmail.Text;
-    Salario       := StrToCurr( EdSalario.Text );
-    Data_Admissao := EdDtAdmissao.DateTime;
-    CNH           := EdNumCNH.Text;
+    Codigo   := StrToInt( EdCodigo.Text );
+    Nome     := UpperCase( EdNome.Text );
+    RG       := EdRG.Text;
+    Bairro   := UpperCase( EdBairro.Text );
+    CPF      := EdCPF.Text;
+    CEP      := EdCEP.Text;
+    Numero   := EdNum.Text;
+    Sexo     := TSexo( RgSexo.ItemIndex );
+    Apelido  := UpperCase( EdApelido.Text );
+    Endereco := UpperCase( EdLogradouro.Text );
+    Telefone := EdTelefone.Text;
+    Email    := EdEmail.Text;
+    Salario  := StrToCurr( EdSalario.Text );
+    CNH      := EdNumCNH.Text;
     // Categoria     := EdCategoria.Text;
-    ValidadeCNH := EdValCNH.DateTime;
-    Status      := TStatus( ChkAtivo.Checked.ToInteger );
-    DataCad     := Date;
-    UserCad     := UpperCase( 'lucas' );
+    Status  := TStatus( ChkAtivo.Checked.ToInteger );
+    DataCad := Date;
+    UserCad := UpperCase( 'lucas' );
 
-    if ChkAtivo.Checked then
-      Data_Demissao := 0
-    else
-      Data_Demissao := EdDtDemissao.DateTime;
+    Data_Admissao := TToolsSistema.GetDefaultDate
+                ( EdDtAdmissao.EditText, 'Data Admissão' );
+
+    Data_Demissao := TToolsSistema.GetDefaultDate
+                ( EdDtDemissao.EditText, 'Data Demissão' );
+
+    ValidadeCNH := TToolsSistema.GetDefaultDate
+                ( EdValCNH.EditText, 'Val. CNH' );
   end;
 end;
 
@@ -410,6 +413,8 @@ begin
 end;
 
 function TFrm_Cad_Funcionario.ValidaForm: Boolean;
+var
+  DtDemissao, DtAdmissao, DtCNH: TDateTime;
 begin
   Result := False;
 
@@ -448,9 +453,13 @@ begin
     Exit;
   end;
 
-  if not( ChkAtivo.Checked ) then
+  DtDemissao := TToolsSistema.GetDefaultDate
+              ( EdDtDemissao.EditText, 'Data Demissão' );
+  if ( DtDemissao > 0 ) then
   begin
-    if ( EdDtAdmissao.Date > EdDtDemissao.Date ) then
+    DtAdmissao := TToolsSistema.GetDefaultDate
+                ( EdDtAdmissao.EditText, 'Data Admissão' );
+    if ( DtAdmissao > DtDemissao ) then
     begin
       MessageDlg( 'Data de demissão não pode ser anterior a data de admissão!!', MtInformation, [ MbOK ], 0 );
       EdDtDemissao.SetFocus;
@@ -472,7 +481,9 @@ begin
       EdCategoria.SetFocus;
       Exit;
     end;
-    if EdValCNH.Date < Date then
+    DtCNH := TToolsSistema.GetDefaultDate
+                ( EdValCNH.EditText, 'Val. CNH' );
+    if DtCNH < Date then
     begin
       MessageDlg( 'Insira uma Data de Validade da CNH vencida!!', MtInformation, [ MbOK ], 0 );
       EdValCNH.SetFocus;
