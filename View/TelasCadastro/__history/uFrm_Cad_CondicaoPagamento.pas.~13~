@@ -1,0 +1,57 @@
+unit uFrm_Cad_CondicaoPagamento;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrm_Cadastro, Vcl.Buttons,
+  Vcl.StdCtrls, VazEdit, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Datasnap.DBClient, Vcl.Imaging.pngimage;
+
+type
+  TFrm_Cad_CondicaoPagamento = class(TFrm_Cadastro)
+    edCondPag: TVazEdit;
+    lblCondPag: TLabel;
+    edParcelas: TVazEdit;
+    lblParcelas: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    DBGrid1: TDBGrid;
+    TDset_Parcelas: TClientDataSet;
+    DsParcelas: TDataSource;
+    TDset_Parcelasnumero: TIntegerField;
+    TDset_Parcelasdias: TIntegerField;
+    TDset_Parcelasporcentagem: TIntegerField;
+    TDset_ParcelasFormaPagamento: TStringField;
+    lbltxJuros: TLabel;
+    edTxJuros: TVazEdit;
+    lblMulta: TLabel;
+    edMulta: TVazEdit;
+    lblDesconto: TLabel;
+    edDesconto: TVazEdit;
+    edDias: TVazEdit;
+    lblDias: TLabel;
+    Panel3: TPanel;
+    lblParcela: TLabel;
+    lblPorcentagem: TLabel;
+    edPorcentagem: TVazEdit;
+    edFormaPagamento: TVazEdit;
+    lblFormaPagamento: TLabel;
+    edCodFormaPagamento: TVazEdit;
+    lblCodFormaPagamento: TLabel;
+    pnlPesquisar: TPanel;
+    imgPesquisar: TImage;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -37,7 +37,6 @@ type
     LblCodDept: TLabel;
     EdCodEstado: TVazEdit;
     procedure FormCreate( Sender: TObject );
-    procedure FormShow( Sender: TObject );
     procedure EdCodEstadoExit( Sender: TObject );
     procedure EdCodEstadoKeyPress( Sender: TObject; var Key: Char );
     procedure BtnPesquisarEstadosClick( Sender: TObject );
@@ -45,7 +44,7 @@ type
   private
     EstadoControl: TEstadosController;
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
     procedure ConsultarEstado;
     procedure PesquisaBtnEstado;
@@ -133,13 +132,6 @@ begin
   EstadoControl.GetInstance( EstadoControl, Self );
 end;
 
-procedure TFrm_Cad_Cidades.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
-end;
-
 procedure TFrm_Cad_Cidades.PesquisaBtnEstado;
 var
   Frm: TFrm_Consulta_Estados;
@@ -165,6 +157,7 @@ begin
     EdCodigo.Text             := IntToStr( Codigo );
     EdEstado.Text             := Estado.Estado;
     EdCidade.Text             := Cidade;
+    EdCodEstado.Text          := Estado.Codigo.ToString;
     EdDDD.Text                := DDD;
     LblUsuarioDataCad.Caption := 'Usuário: ' + Usercad + ' - Data Cadastro :' + Datetostr( DataCad );
   end;

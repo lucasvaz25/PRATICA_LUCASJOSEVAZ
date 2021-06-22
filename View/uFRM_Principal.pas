@@ -67,6 +67,7 @@ type
     Funcionarios1: TMenuItem;
     Produtos1: TMenuItem;
     OrdemdeProduo1: TMenuItem;
+    CondiodePagamento1: TMenuItem;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure BtnFecharClick( Sender: TObject );
@@ -90,6 +91,7 @@ type
     procedure Funcionarios1Click( Sender: TObject );
     procedure Produtos1Click( Sender: TObject );
     procedure OrdemdeProduo1Click( Sender: TObject );
+    procedure CondiodePagamento1Click( Sender: TObject );
 
   private
     { Private declarations }
@@ -146,6 +148,11 @@ end;
 procedure TFRM_Principal.Clientes1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaClientes;
+end;
+
+procedure TFRM_Principal.CondiodePagamento1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaCondPagamento;
 end;
 
 procedure TFRM_Principal.Departamentos1Click( Sender: TObject );

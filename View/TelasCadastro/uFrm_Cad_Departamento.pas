@@ -24,12 +24,11 @@ type
   TFrm_Cad_Departamento = class( TFrm_Cadastro )
     LblDepartamento: TLabel;
     EdDepartamento: TVazEdit;
-    procedure FormShow( Sender: TObject );
     procedure FormCreate( Sender: TObject );
   private
     { Private declarations }
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
   public
     { Public declarations }
@@ -53,13 +52,6 @@ begin
   inherited;
   DeptControl := nil;
   DeptControl.GetInstance( DeptControl, Self );
-end;
-
-procedure TFrm_Cad_Departamento.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
 end;
 
 procedure TFrm_Cad_Departamento.PopulaForm;

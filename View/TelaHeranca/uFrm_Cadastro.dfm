@@ -4,11 +4,14 @@ inherited Frm_Cadastro: TFrm_Cadastro
   ClientHeight = 482
   ClientWidth = 722
   OnShow = FormShow
+  ExplicitTop = -138
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Width = 722
     Height = 482
+    ExplicitLeft = 0
+    ExplicitTop = 0
     ExplicitWidth = 722
     ExplicitHeight = 482
     DesignSize = (
@@ -28,8 +31,8 @@ inherited Frm_Cadastro: TFrm_Cadastro
       ParentFont = False
     end
     object lblUsuarioDataCad: TLabel
-      Left = 10
-      Top = 455
+      Left = 0
+      Top = 386
       Width = 170
       Height = 13
       Anchors = [akLeft, akBottom]
@@ -42,11 +45,10 @@ inherited Frm_Cadastro: TFrm_Cadastro
       ParentFont = False
     end
     object lblUsuarioDataAlteracao: TLabel
-      Left = 453
-      Top = 455
+      Left = 0
+      Top = 414
       Width = 173
       Height = 13
-      Anchors = [akRight, akBottom]
       Caption = 'Nome usu'#225'rio e data de altera'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText

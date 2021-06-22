@@ -72,25 +72,22 @@ type
     EdCargo: TVazEdit;
     PnlPesquisaCargo: TPanel;
     ImgCargo: TImage;
-    ChkAtivo: TCheckBox;
     EdDtDemissao: TVazMaskEdit;
     EdDtAdmissao: TVazMaskEdit;
     EdValCNH: TVazMaskEdit;
     procedure FormCreate( Sender: TObject );
-    procedure FormShow( Sender: TObject );
     procedure EdCodCidadeExit( Sender: TObject );
     procedure EdCodCidadeKeyPress( Sender: TObject; var Key: Char );
     procedure EdCodCargoExit( Sender: TObject );
     procedure EdCodCargoKeyPress( Sender: TObject; var Key: Char );
     procedure ImgPesquisarClick( Sender: TObject );
     procedure ImgCargoClick( Sender: TObject );
-    procedure ChkAtivoClick( Sender: TObject );
   private
     { Private declarations }
     CidadeControl: TCidadesController;
     CargoControl: TCargosController;
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
     procedure ConsultarCargo;
     procedure PesquisaBtnCargo;
@@ -99,7 +96,7 @@ type
     procedure VerificaObrigatorioCNH;
     procedure UnlockFields;
     procedure BlockFields;
-    procedure ChangeChkAtivo;
+
   public
     { Public declarations }
     FuncionarioControl: TFuncionariosController;
@@ -125,26 +122,6 @@ uses
 {$R *.dfm}
 
 { TFrm_Cad_Funcionario }
-
-procedure TFrm_Cad_Funcionario.ChangeChkAtivo;
-begin
-  EdDtDemissao.Enabled := not( ChkAtivo.Checked );
-
-  // if not( ChkAtivo.Checked ) then
-  // begin
-  // EdDtDemissao.Date := Date;
-  // EdDtDemissao.Show;
-  // end
-  // else
-  // EdDtDemissao.Hide;
-
-end;
-
-procedure TFrm_Cad_Funcionario.ChkAtivoClick( Sender: TObject );
-begin
-  inherited;
-  Self.ChangeChkAtivo;
-end;
 
 procedure TFrm_Cad_Funcionario.ConsultarCargo;
 var
@@ -249,15 +226,6 @@ begin
   CidadeControl.GetInstance( CidadeControl, Self );
 end;
 
-procedure TFrm_Cad_Funcionario.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
-  Self.ChangeChkAtivo;
-  Self.ClearFieldsDate;
-end;
-
 procedure TFrm_Cad_Funcionario.ImgCargoClick( Sender: TObject );
 begin
   inherited;
@@ -329,7 +297,6 @@ begin
     EdUF.Text             := Cidade.Estado.UF;
     EdCargo.Text          := Cargo.Cargo;
     EdCodCargo.Text       := IntToStr( Cargo.Codigo );
-    ChkAtivo.Checked      := Integer( Status ).ToBoolean;
     EdDtAdmissao.EditText := DateToStr( Data_Admissao );
     EdDtDemissao.EditText := DateToStr( Data_Demissao );
     EdValCNH.EditText     := DateToStr( ValidadeCNH );
@@ -355,7 +322,6 @@ begin
     Salario  := StrToCurr( EdSalario.Text );
     CNH      := EdNumCNH.Text;
     // Categoria     := EdCategoria.Text;
-    Status  := TStatus( ChkAtivo.Checked.ToInteger );
     DataCad := Date;
     UserCad := UpperCase( 'lucas' );
 

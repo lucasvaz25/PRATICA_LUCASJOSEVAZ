@@ -47,7 +47,7 @@ end;
 destructor TClientes.Destroy;
 begin
   FCondPagamento.Free;
-  inherited Free;
+  inherited;
 end;
 
 procedure TClientes.Free;

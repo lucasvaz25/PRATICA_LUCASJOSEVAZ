@@ -27,11 +27,10 @@ type
     EdObs: TMemo;
     LblObs: TLabel;
     procedure FormCreate( Sender: TObject );
-    procedure FormShow( Sender: TObject );
   private
     { Private declarations }
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
   public
     { Public declarations }
@@ -56,13 +55,6 @@ begin
   GrupoControl := nil;
   GrupoControl.GetInstance( GrupoControl, Self );
 
-end;
-
-procedure TFrm_Cad_Grupo.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
 end;
 
 procedure TFrm_Cad_Grupo.PopulaForm;

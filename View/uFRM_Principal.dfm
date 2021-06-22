@@ -567,6 +567,10 @@ object FRM_Principal: TFRM_Principal
         Caption = 'Ordem de Produ'#231#227'o'
         OnClick = OrdemdeProduo1Click
       end
+      object CondiodePagamento1: TMenuItem
+        Caption = 'Condi'#231#227'o de Pagamento'
+        OnClick = CondiodePagamento1Click
+      end
     end
   end
   object ImageList1: TImageList

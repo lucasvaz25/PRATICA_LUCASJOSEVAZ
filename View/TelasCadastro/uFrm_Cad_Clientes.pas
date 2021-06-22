@@ -35,7 +35,6 @@ type
     LblNomeFantasia: TLabel;
     LblCPF: TLabel;
     EdCPF: TVazMaskEdit;
-    EdDtNasc: TDateTimePicker;
     LblDtNasc: TLabel;
     RgSexo: TRadioGroup;
     EdCEP: TVazMaskEdit;
@@ -66,19 +65,25 @@ type
     EdCondPag: TVazEdit;
     PnlPesquisaCondPag: TPanel;
     ImgPesquisaCondPag: TImage;
+    EdDtNasc: TVazMaskEdit;
     procedure RgTpPessoaClick( Sender: TObject );
+    procedure FormCreate( Sender: TObject );
+    procedure ImgPesquisarClick( Sender: TObject );
+    procedure EdCodCidadeExit( Sender: TObject );
+    procedure EdCodCidadeKeyPress( Sender: TObject; var Key: Char );
   private
     { Private declarations }
     CondPagControl: TCondicaoPagamentoController;
     CidadeControl: TCidadesController;
     procedure FormatInterface;
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
     procedure ConsultarCondPag;
     procedure PesquisaBtnCondPag;
     procedure ConsultarCidade;
     procedure PesquisaBtnCidade;
+    function GetTpDoc: string;
   public
     { Public declarations }
     ClienteControl: TClientesController;
@@ -99,6 +104,7 @@ uses
   UCondicaoPagamento,
   UCidades,
   UClientes,
+  UEnum,
   UFrm_Consulta_CondicaoPagamento,
   UFrm_Consulta_Cidades;
 
@@ -167,6 +173,19 @@ begin
   end;
 end;
 
+procedure TFrm_Cad_Clientes.EdCodCidadeExit( Sender: TObject );
+begin
+  inherited;
+  Self.ConsultarCidade;
+end;
+
+procedure TFrm_Cad_Clientes.EdCodCidadeKeyPress( Sender: TObject; var Key: Char );
+begin
+  inherited;
+  if Key = #13 then
+    Self.ConsultarCidade;
+end;
+
 procedure TFrm_Cad_Clientes.FormatInterface;
 begin
   case RgTpPessoa.ItemIndex of
@@ -199,6 +218,19 @@ begin
         RgSexo.Visible          := False;
       end;
   end;
+end;
+
+procedure TFrm_Cad_Clientes.FormCreate( Sender: TObject );
+begin
+  inherited;
+  ClienteControl := nil;
+  ClienteControl.GetInstance( ClienteControl, Self );
+
+  CondPagControl := nil;
+  CondPagControl.GetInstance( CondPagControl, Self );
+
+  CidadeControl := nil;
+  CidadeControl.GetInstance( CidadeControl, Self );
 end;
 
 procedure TFrm_Cad_Clientes.PesquisaBtnCidade;
@@ -257,6 +289,8 @@ begin
     EdCondPag.Text       := CondPagamento.CondPag;
     EdCodCondPag.Text    := IntToStr( CondPagamento.Codigo );
     RgTpPessoa.ItemIndex := Integer( TpPessoa );
+    EdDtNasc.EditText    := DateToStr( DataNasc );
+    RgSexo.ItemIndex     := Integer( Sexo );
   end;
 end;
 
@@ -264,23 +298,26 @@ procedure TFrm_Cad_Clientes.PopulaObj;
 begin
   with ClienteControl.GetEntity do
   begin
-    Codigo                := StrToInt( EdCodigo.Text );
-    Nome                  := UpperCase( EdNome.Text );
-    RG                    := EdRG.Text;
-    Bairro                := UpperCase( EdBairro.Text );
-    CPF                   := EdCPF.Text;
-    CEP                   := EdCEP.Text;
-    Numero                := EdNum.Text;
-    Apelido               := EdNomeFantasia.Text;
-    Endereco              := EdLogradouro.Text;
-    Telefone              := EdTelefone.Text;
-    Email                 := EdEmail.Text;
-    Cidade.Cidade         := EdCidade.Text;
-    Cidade.Codigo         := StrToInt( EdCodCidade.Text );
-    Cidade.Estado.UF      := EdUF.Text;
-    CondPagamento.CondPag := EdCondPag.Text;
-    CondPagamento.Codigo  := StrToInt( EdCodCondPag.Text );
-    // TpPessoa              := TTipoPessoa( RgTpPessoa.ItemIndex );
+    Codigo   := StrToInt( EdCodigo.Text );
+    DataCad  := Now;
+    DataAlt  := Now;
+    UserCad  := 'LUCAS';
+    UserAlt  := 'LUCAS';
+    Nome     := EdNome.Text;
+    Apelido  := EdNomeFantasia.Text;
+    CEP      := EdCEP.Text;
+    Endereco := EdLogradouro.Text;
+    Numero   := EdNum.Text;
+    Bairro   := EdBairro.Text;
+    // Cidade.Codigo;
+    Telefone             := EdTelefone.Text;
+    Email                := EdEmail.Text;
+    CPF                  := EdCPF.Text;
+    RG                   := EdRG.Text;
+    Sexo                 := TSexo( RgSexo.ItemIndex );
+    DataNasc             := TToolsSistema.GetDefaultDate( EdDtNasc.EditText, 'Data Nascimento' );
+    TpPessoa             := TTipoPessoa( RgTpPessoa.ItemIndex );
+    CondPagamento.Codigo := StrToInt( EdCodCondPag.Text );
   end;
 end;
 
@@ -297,15 +334,95 @@ begin
 end;
 
 procedure TFrm_Cad_Clientes.Salvar;
+var
+  Aux: TObject;
 begin
   inherited;
-  if Salvou then
-    Self.Sair;
+  if ValidaForm then
+  begin
+
+    PopulaObj;
+    Aux := ClienteControl.GetEntity;
+    if EdCodigo.Text = '0' then
+      Salvou := ClienteControl.Inserir( Aux )
+    else
+      Salvou := ClienteControl.Editar( Aux );
+
+    if Salvou then
+      Self.Sair;
+  end
 end;
 
 function TFrm_Cad_Clientes.ValidaForm: Boolean;
+var
+  DtNascimento: TDateTime;
 begin
+  Result := False;
 
+  if Length( EdNome.Text ) < 3 then
+  begin
+    MessageDlg( 'Informe um nome de Cliente válido!!', MtInformation, [ MbOK ], 0 );
+    EdNome.SetFocus;
+    Exit;
+  end;
+
+  if ( EdCodCidade.Text = '' ) or ( EdCidade.Text = '' ) then
+  begin
+    MessageDlg( 'Selecione uma Cidade válida!!', MtInformation, [ MbOK ], 0 );
+    EdCidade.SetFocus;
+    Exit;
+  end;
+
+  if RgTpPessoa.ItemIndex = 0 then
+  begin
+    if not TToolsSistema.ValidarCPF( EdCPF.Text ) then
+    begin
+      MessageDlg( 'Informe um CPF válido!!', MtInformation, [ MbOK ], 0 );
+      EdCPF.SetFocus;
+      Exit;
+    end;
+
+    if ( RgSexo.ItemIndex < 0 ) then
+    begin
+      MessageDlg( 'Informe o sexo do Cliente!!', MtInformation, [ MbOK ], 0 );
+      RgSexo.SetFocus;
+      Exit;
+    end;
+  end
+  else
+  begin
+    // validacaoCNPJ
+  end;
+
+  DtNascimento := TToolsSistema.GetDefaultDate
+              ( EdDtNasc.EditText, 'Data Nascimento' );
+
+  if EdCodigo.Text = '0' then
+    if ClienteControl.VerificaExisteCPF_CNPJ( UpperCase( EdCPF.Text ) ) then
+    begin
+      MessageDlg( 'Já existe um Cliente com esse '
+                  + GetTpDoc + '!!', MtInformation, [ MbOK ], 0 );
+      EdNome.SetFocus;
+      Exit;
+    end;
+
+  Result := True;
+end;
+
+function TFrm_Cad_Clientes.GetTpDoc: string;
+begin
+  if ( Length( EdCPF.Text ) = 11 ) then
+    Result := 'CPF'
+  else if ( Length( EdCPF.Text ) = 14 ) then
+    Result := 'CNPJ'
+  else
+    Result := '';
+end;
+
+procedure TFrm_Cad_Clientes.ImgPesquisarClick( Sender: TObject );
+begin
+  inherited;
+  Self.PesquisaBtnCidade;
 end;
 
 end.

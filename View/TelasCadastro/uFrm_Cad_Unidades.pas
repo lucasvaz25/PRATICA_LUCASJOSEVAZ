@@ -24,11 +24,10 @@ type
     EdUnidade: TVazEdit;
     LblUnidade: TLabel;
     procedure FormCreate( Sender: TObject );
-    procedure FormShow( Sender: TObject );
   private
     { Private declarations }
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
   public
     { Public declarations }
@@ -54,13 +53,6 @@ begin
   inherited;
   UnidadeControl := nil;
   UnidadeControl.GetInstance( UnidadeControl, Self );
-end;
-
-procedure TFrm_Cad_Unidades.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
 end;
 
 procedure TFrm_Cad_Unidades.PopulaForm;

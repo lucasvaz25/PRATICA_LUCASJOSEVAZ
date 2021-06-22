@@ -3,7 +3,6 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
   ClientHeight = 685
   ClientWidth = 655
   OnCreate = FormCreate
-  ExplicitTop = -291
   ExplicitWidth = 661
   ExplicitHeight = 714
   PixelsPerInch = 96

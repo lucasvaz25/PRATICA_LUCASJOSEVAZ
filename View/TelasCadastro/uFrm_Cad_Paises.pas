@@ -28,13 +28,12 @@ type
     EdSigla: TVazEdit;
     LblPais: TLabel;
     EdPais: TVazEdit;
-    procedure FormShow( Sender: TObject );
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
   private
     { Private declarations }
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
   public
     { Public declarations }
@@ -64,13 +63,6 @@ procedure TFrm_Cad_Paises.FormDestroy( Sender: TObject );
 begin
   Paiscontrol.Free;
   inherited;
-end;
-
-procedure TFrm_Cad_Paises.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
 end;
 
 procedure TFrm_Cad_Paises.PopulaForm;

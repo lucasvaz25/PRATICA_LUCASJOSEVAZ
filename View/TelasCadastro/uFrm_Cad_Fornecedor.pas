@@ -77,7 +77,7 @@ type
     CidadeControl: TCidadesController;
     CondPagControl: TCondicaoPagamentoController;
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
     procedure ConsultarCondPag;
     procedure PesquisaBtnCondPag;
@@ -244,10 +244,7 @@ procedure TFrm_Cad_Fornecedor.FormShow( Sender: TObject );
 begin
   inherited;
   if not( EdCodigo.Text = '0' ) then
-  begin
-    PopulaForm;
-    BlockFields;
-  end
+    BlockFields
   else
     UnlockFields;
 end;
@@ -265,7 +262,7 @@ end;
 procedure TFrm_Cad_Fornecedor.ImgPesquisarClick( Sender: TObject );
 begin
   inherited;
-  Self.PesquisaBtnCidade
+  Self.PesquisaBtnCidade;
 end;
 
 procedure TFrm_Cad_Fornecedor.PesquisaBtnCidade;

@@ -39,6 +39,7 @@ type
   protected
     procedure UpperCaseField;
     procedure ClearFieldsDate;
+    procedure PopulaForm; virtual;
   public
     { Public declarations }
     Salvou: Boolean;
@@ -108,7 +109,12 @@ begin
   inherited;
   UppercaseField;
   if EdCodigo.Text = '0' then
-    Self.LimparCampos;
+    Self.LimparCampos
+  else
+  begin
+    Self.PopulaForm;
+    Self.ClearFieldsDate;
+  end;
 end;
 
 procedure TFrm_Cadastro.LimparCampos;
@@ -133,6 +139,11 @@ begin
     else if ( Components[ I ] is TDBLookupComboBox ) then
       TDBLookupComboBox( Components[ I ] ).KeyValue := Null;
   end;
+end;
+
+procedure TFrm_Cadastro.PopulaForm;
+begin
+
 end;
 
 procedure TFrm_Cadastro.Sair;

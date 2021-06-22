@@ -145,14 +145,13 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add( 'UPDATE Clientes SET ' );
-      SQL.Add( 'CODIGO = :CODIGO, DATA_CAD = :DATA_CAD, DATA_ALT = :DATA_ALT, ' );
-      SQL.Add( 'USER_CAD = :USER_CAD, USER_ALT = :USER_ALT, CEP = :CEP, ' );
-      SQL.Add( 'num = :num, bairro = :bairro, APELIDO = :APELIDO, ' );
-      SQL.Add( 'logradouro = :logradouro, Cliente = :Cliente, RG = :RG, ' );
-      SQL.Add( 'CPF = :CPF, DATA_ADMISSAO = :DATA_ADMISSAO, DATA_DEMISSAO = :DATA_DEMISSAO, ' );
-      SQL.Add( 'EMAIL = :EMAIL, TELEFONE = :TELEFONE, SALARIO = :SALARIO, COD_CARGO = :COD_CARGO, ' );
-      SQL.Add( 'CNH = :CNH, CATEGORIA = :CATEGORIA, VALIDADE_CNH = :VALIDADE_CNH, SEXO = :SEXO, cod_cidade = :cod_cidade ' );
+      SQL.Add( 'UPDATE CLIENTES SET ' );
+      SQL.Add( 'CODIGO	= :CODIGO, DATA_CAD = :DATA_CAD, DATA_ALT = :DATA_ALT, ' );
+      SQL.Add( 'USER_CAD = :USER_CAD, USER_ALT = :USER_ALT, CLIENTE = :CLIENTE, ' );
+      SQL.Add( 'APELIDO = :APELIDO, CEP = :CEP, LOGRADOURO = :LOGRADOURO, NUMERO = :NUMERO, ' );
+      SQL.Add( 'BAIRRO = :BAIRRO, COD_CIDADE = :COD_CIDADE, TELEFONE = :TELEFONE, ' );
+      SQL.Add( 'EMAIL = :EMAIL, CPF = :CPF, RG = :RG, SEXO = :SEXO, DATA_NASC = :DATA_NASC, ' );
+      SQL.Add( 'TIPO_PESSOA = :TIPO_PESSOA, COD_CONDPAG = :COD_CONDPAG ' );
       SQL.Add( 'WHERE  CODIGO = :CODIGO' );
       ObjToFields( Cliente );
       ExecSQL;
@@ -178,7 +177,7 @@ begin
     UserAlt              := FieldByName( 'USER_ALT' ).AsString;
     Nome                 := FieldByName( 'Cliente' ).AsString;
     Endereco             := FieldByName( 'logradouro' ).AsString;
-    Numero               := FieldByName( 'num' ).AsString;
+    Numero               := FieldByName( 'numero' ).AsString;
     Bairro               := FieldByName( 'bairro' ).AsString;
     Apelido              := FieldByName( 'APELIDO' ).AsString;
     CEP                  := FieldByName( 'CEP' ).AsString;
@@ -205,16 +204,18 @@ begin
     begin
       Close;
       SQl.Clear;
-      SQL.Add( 'INSERT INTO Clientes ( ' );
-      SQL.Add( 'CODIGO, DATA_CAD, DATA_ALT, USER_CAD, USER_ALT, ' );
-      SQL.Add( 'Cliente, logradouro, num, bairro, APELIDO, CEP, ' );
-      SQL.Add( 'TELEFONE, EMAIL, CPF, RG, ' );
-      SQL.Add( 'DATA_NASC, cod_CondPag, TIPO_PESSOA, SEXO, cod_cidade ' );
+      SQL.Add( 'INSERT INTO CLIENTES ( ' );
+      SQL.Add( 'CODIGO,	DATA_CAD, DATA_ALT, USER_CAD, ' );
+      SQL.Add( 'USER_ALT, CLIENTE, APELIDO, CEP, ' );
+      SQL.Add( 'LOGRADOURO, NUMERO, BAIRRO, COD_CIDADE, ' );
+      SQL.Add( 'TELEFONE, EMAIL, CPF, RG, SEXO, DATA_NASC, ' );
+      SQL.Add( 'TIPO_PESSOA, COD_CONDPAG ' );
       SQL.Add( ')VALUES(' );
-      SQL.Add( ':CODIGO, :DATA_CAD, :DATA_ALT, :USER_CAD, :USER_ALT, ' );
-      SQL.Add( ':Cliente, :logradouro, :num, :bairro, :APELIDO, :CEP, ' );
-      SQL.Add( ':TELEFONE, :EMAIL, :CPF, :RG, ' );
-      SQL.Add( ':DATA_NASC, :cod_CondPag, :TIPO_PESSOA, :SEXO, :cod_cidade ' );
+      SQL.Add( ':CODIGO, :DATA_CAD, :DATA_ALT, :USER_CAD, ' );
+      SQL.Add( ':USER_ALT, :CLIENTE, :APELIDO, :CEP, ' );
+      SQL.Add( ':LOGRADOURO, :NUMERO, :BAIRRO, :COD_CIDADE, ' );
+      SQL.Add( ':TELEFONE, :EMAIL, :CPF, :RG, :SEXO, :DATA_NASC, ' );
+      SQL.Add( ':TIPO_PESSOA, :COD_CONDPAG ' );
       SQL.Add( ')' );
       ObjToFields( Cliente );
       ExecSQL;
@@ -238,21 +239,25 @@ begin
     ParamByName( 'DATA_ALT' ).AsDateTime   := DataAlt;
     ParamByName( 'USER_CAD' ).AsString     := UserCad;
     ParamByName( 'USER_ALT' ).AsString     := UserAlt;
-    ParamByName( 'Cliente' ).AsString      := Nome;
-    ParamByName( 'logradouro' ).AsString   := Endereco;
-    ParamByName( 'num' ).AsString          := Numero;
-    ParamByName( 'bairro' ).AsString       := Bairro;
+    ParamByName( 'CLIENTE' ).AsString      := Nome;
     ParamByName( 'APELIDO' ).AsString      := Apelido;
     ParamByName( 'CEP' ).AsString          := CEP;
+    ParamByName( 'LOGRADOURO' ).AsString   := Endereco;
+    ParamByName( 'BAIRRO' ).AsString       := Bairro;
+    ParamByName( 'COD_CIDADE' ).AsInteger  := Cidade.Codigo;
     ParamByName( 'TELEFONE' ).AsString     := Telefone;
     ParamByName( 'EMAIL' ).AsString        := Email;
     ParamByName( 'CPF' ).AsString          := CPF;
     ParamByName( 'RG' ).AsString           := RG;
     ParamByName( 'SEXO' ).AsInteger        := Integer( Sexo );
-    ParamByName( 'cod_cidade' ).AsInteger  := Cidade.Codigo;
     ParamByName( 'DATA_NASC' ).AsDateTime  := DataNasc;
-    ParamByName( 'cod_condPag' ).AsInteger := CondPagamento.Codigo;
     ParamByName( 'TIPO_PESSOA' ).AsInteger := Integer( TpPessoa );
+    ParamByName( 'COD_CONDPAG' ).AsInteger := CondPagamento.Codigo;
+
+    if not( Numero = '' ) then
+      ParamByName( 'NUMERO' ).AsInteger := Numero.ToInteger
+    else
+      ParamByName( 'NUMERO' ).IsNull;
 
   end;
 end;

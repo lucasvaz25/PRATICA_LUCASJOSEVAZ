@@ -1,0 +1,33 @@
+inherited Frm_Consulta_Cliente: TFrm_Consulta_Cliente
+  Caption = 'Frm_Consulta_Cliente'
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TDset_Clientes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 488
+    Top = 273
+    object TDset_Clientescodigo: TIntegerField
+      DisplayLabel = 'C'#243'd.'
+      FieldName = 'codigo'
+    end
+    object TDset_Clientescliente: TStringField
+      DisplayLabel = 'Cliente'
+      FieldName = 'cliente'
+      Size = 50
+    end
+    object TDset_Clientescpf: TStringField
+      DisplayLabel = 'CPF/CNPJ'
+      FieldName = 'cpf'
+    end
+    object TDset_Clientestelefone: TStringField
+      DisplayLabel = 'Telefone'
+      FieldName = 'telefone'
+    end
+  end
+  object DsClientes: TDataSource
+    DataSet = TDset_Clientes
+    Left = 544
+    Top = 249
+  end
+end

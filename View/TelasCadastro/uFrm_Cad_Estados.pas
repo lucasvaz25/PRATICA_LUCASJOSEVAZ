@@ -39,7 +39,6 @@ type
                 Y: Integer );
     procedure ImgPesquisarMouseLeave( Sender: TObject );
     procedure FormCreate( Sender: TObject );
-    procedure FormShow( Sender: TObject );
     procedure BtnPesquisarClick( Sender: TObject );
     procedure EdCodPaisExit( Sender: TObject );
     procedure EdCodPaisKeyPress( Sender: TObject; var Key: Char );
@@ -48,7 +47,7 @@ type
     PaisControl: TPaisesController;
 
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
     procedure ConsultarPais;
     procedure PesquisaBtnPais;
@@ -135,13 +134,6 @@ begin
   EstadoControl.GetInstance( EstadoControl, Self );
 end;
 
-procedure TFrm_Cad_Estados.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
-end;
-
 procedure TFrm_Cad_Estados.ImgPesquisarMouseLeave( Sender: TObject );
 begin
   inherited;
@@ -179,6 +171,7 @@ begin
   begin
     EdCodigo.Text             := IntToStr( Codigo );
     EdEstado.Text             := Estado;
+    EdCodPais.Text            := Pais.Codigo.ToString;
     EdPais.Text               := Pais.Nome;
     EdUF.Text                 := UF;
     LblUsuarioDataCad.Caption := 'Usuário: ' + Usercad + ' - Data Cadastro :' + Datetostr( DataCad );

@@ -2,6 +2,8 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
   Caption = 'Frm_Cad_Clientes'
   ClientHeight = 640
   ClientWidth = 675
+  OnCreate = FormCreate
+  ExplicitTop = -246
   ExplicitWidth = 681
   ExplicitHeight = 669
   PixelsPerInch = 96
@@ -234,19 +236,19 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       ParentFont = False
     end
     inherited edCodigo: TVazEdit
-      TabOrder = 12
+      TabOrder = 11
     end
     inherited pnlSalvar: TPanel
       Left = 380
       Top = 544
-      TabOrder = 13
+      TabOrder = 12
       ExplicitLeft = 380
       ExplicitTop = 544
     end
     inherited pnlSair: TPanel
       Left = 528
       Top = 544
-      TabOrder = 14
+      TabOrder = 13
       ExplicitLeft = 528
       ExplicitTop = 544
     end
@@ -287,7 +289,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
         'J'#250'ridica')
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 14
       OnClick = rgTpPessoaClick
     end
     object edNomeFantasia: TVazEdit
@@ -324,21 +326,6 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       TypeMask = TtmCPF
       ChangeColor = 14745599
     end
-    object edDtNasc: TDateTimePicker
-      Left = 369
-      Top = 420
-      Width = 132
-      Height = 29
-      Date = 44258.000000000000000000
-      Time = 0.064958599534293170
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 11
-    end
     object rgSexo: TRadioGroup
       Left = 440
       Top = 25
@@ -355,7 +342,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
         'Masculino'
         'Feminino')
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 15
     end
     object edCEP: TVazMaskEdit
       Left = 543
@@ -452,7 +439,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Style = []
       MaxLength = 50
       ParentFont = False
-      TabOrder = 17
+      TabOrder = 16
       ChangeColor = 14745599
     end
     object pnlPesquisar: TPanel
@@ -463,7 +450,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 18
+      TabOrder = 17
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -500,6 +487,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgPesquisarClick
         ExplicitLeft = 16
       end
     end
@@ -568,7 +556,9 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 19
+      TabOrder = 18
+      OnExit = edCodCidadeExit
+      OnKeyPress = edCodCidadeKeyPress
       ChangeColor = 14745599
     end
     object edCodCondPag: TVazEdit
@@ -586,7 +576,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 20
+      TabOrder = 19
       ChangeColor = 14745599
     end
     object edCondPag: TVazEdit
@@ -602,7 +592,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       MaxLength = 12
       ParentFont = False
       ReadOnly = True
-      TabOrder = 21
+      TabOrder = 20
       ChangeColor = 14745599
     end
     object pnlPesquisaCondPag: TPanel
@@ -613,7 +603,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 22
+      TabOrder = 21
       object imgPesquisaCondPag: TImage
         Left = 0
         Top = 0
@@ -652,6 +642,24 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
         ShowHint = True
         ExplicitLeft = 16
       end
+    end
+    object edDtNasc: TVazMaskEdit
+      Left = 369
+      Top = 422
+      Width = 105
+      Height = 27
+      EditMask = '99/99/9999;0;_'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      MaxLength = 10
+      ParentFont = False
+      TabOrder = 22
+      Text = ''
+      TypeMask = TtmData
+      ChangeColor = 14745599
     end
   end
 end

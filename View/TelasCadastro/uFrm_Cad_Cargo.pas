@@ -39,11 +39,10 @@ type
     procedure EdCodDeptKeyPress( Sender: TObject; var Key: Char );
     procedure EdCodDeptExit( Sender: TObject );
     procedure FormCreate( Sender: TObject );
-    procedure FormShow( Sender: TObject );
   private
     { Private declarations }
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
     procedure ConsultaDept;
     procedure PesquisaDept;
@@ -125,13 +124,6 @@ begin
 
   DeptControl := nil;
   DeptControl.GetInstance( DeptControl, Self );
-end;
-
-procedure TFrm_Cad_Cargo.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
 end;
 
 procedure TFrm_Cad_Cargo.PesquisaDept;

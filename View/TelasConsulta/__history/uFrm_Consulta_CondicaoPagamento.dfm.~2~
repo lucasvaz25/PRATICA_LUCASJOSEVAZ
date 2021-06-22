@@ -1,0 +1,16 @@
+inherited Frm_Consulta_CondicaoPagamento: TFrm_Consulta_CondicaoPagamento
+  Caption = 'Frm_Consulta_CondicaoPagamento'
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DsCondPag: TDataSource
+    DataSet = TDset_CondPag
+    Left = 656
+    Top = 201
+  end
+  object TDset_CondPag: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 568
+    Top = 233
+  end
+end

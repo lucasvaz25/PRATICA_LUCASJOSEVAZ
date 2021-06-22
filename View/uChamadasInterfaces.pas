@@ -17,6 +17,7 @@ uses
   UFrm_Consulta_Funcionarios,
   UFrm_Consulta_Produtos,
   UFrm_Consulta_OrdemProducao,
+  UFrm_Consulta_CondicaoPagamento,
   System.Classes;
 
 type
@@ -37,6 +38,7 @@ type
     ConsultaFuncionarios: TFrm_Consulta_Funcionario;
     ConsultaProdutos: TFrm_Consulta_Produtos;
     ConsultaOrdemProducao: TFrm_Consulta_OrdemProducao;
+    ConsultaCondPagamento: TFrm_Consulta_CondicaoPagamento;
 
   public
     constructor Create( Owner: TComponent );
@@ -84,6 +86,9 @@ type
 
     procedure ChamadaConsultaOrdemProducao( Parent: TObject ); overload;
     procedure ChamadaConsultaOrdemProducao; overload;
+
+    procedure ChamadaConsultaCondPagamento( Parent: TObject ); overload;
+    procedure ChamadaConsultaCondPagamento; overload;
   end;
 
 implementation
@@ -176,6 +181,7 @@ begin
   ConsultaFuncionarios  := TFrm_Consulta_Funcionario.Create( Owner );
   ConsultaProdutos      := TFrm_Consulta_Produtos.Create( Owner );
   ConsultaOrdemProducao := TFrm_Consulta_OrdemProducao.Create( Owner );
+  ConsultaCondPagamento := TFrm_Consulta_CondicaoPagamento.Create( Owner );
 end;
 
 destructor TchamadasInterfaces.Destroy;
@@ -194,6 +200,7 @@ begin
   ConsultaFuncionarios.Release;
   ConsultaProdutos.Release;
   ConsultaOrdemProducao.Release;
+  ConsultaCondPagamento.Release;
 end;
 
 procedure TchamadasInterfaces.Free;
@@ -224,6 +231,20 @@ end;
 procedure TchamadasInterfaces.ChamadaConsultaClientes;
 begin
   ConsultaClientes.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaCondPagamento;
+begin
+  ConsultaCondPagamento.ShowModal;
+end;
+
+procedure TchamadasInterfaces.ChamadaConsultaCondPagamento( Parent: TObject );
+begin
+  ConsultaCondPagamento.Parent      := TPanel( Parent );
+  ConsultaCondPagamento.Align       := Alclient;
+  ConsultaCondPagamento.BorderStyle := BsNone;
+  TPanel( Parent ).Tag              := 1;
+  ConsultaCondPagamento.Show;
 end;
 
 procedure TchamadasInterfaces.ChamadaConsultaClientes( Parent: TObject );

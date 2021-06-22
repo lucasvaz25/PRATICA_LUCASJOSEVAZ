@@ -1,0 +1,22 @@
+unit uParcelas;
+
+interface
+uses
+uGeral;
+type
+TParcelas = class(TGeral)
+  public
+  constructor create;
+  destructor destroy;
+  procedure Free;
+
+  property numero: Integer;
+  property dias:Integer;
+  property porcentagem :Real;
+  property FormaPagamento:TFormaPagamento;
+
+end;
+
+implementation
+
+end.

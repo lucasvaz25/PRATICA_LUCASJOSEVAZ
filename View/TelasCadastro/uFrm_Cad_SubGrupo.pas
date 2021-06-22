@@ -40,14 +40,13 @@ type
     ImgPesquisar: TImage;
     BtnPesquisar: TSpeedButton;
     procedure FormCreate( Sender: TObject );
-    procedure FormShow( Sender: TObject );
     procedure BtnPesquisarClick( Sender: TObject );
     procedure EdCodGrupoExit( Sender: TObject );
     procedure EdCodGrupoKeyPress( Sender: TObject; var Key: Char );
   private
     { Private declarations }
     procedure PopulaObj;
-    procedure PopulaForm;
+    procedure PopulaForm; override;
     function ValidaForm: Boolean;
     procedure ConsultaGrupoCod;
   public
@@ -139,13 +138,6 @@ begin
   GrupoControl := nil;
   GrupoControl.GetInstance( GrupoControl, Self );
 
-end;
-
-procedure TFrm_Cad_SubGrupo.FormShow( Sender: TObject );
-begin
-  inherited;
-  if not( EdCodigo.Text = '0' ) then
-    PopulaForm;
 end;
 
 procedure TFrm_Cad_SubGrupo.PopulaForm;

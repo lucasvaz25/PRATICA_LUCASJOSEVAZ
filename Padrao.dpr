@@ -87,7 +87,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   uFrm_Cad_CondicaoPagamento in 'View\TelasCadastro\uFrm_Cad_CondicaoPagamento.pas' {Frm_Cad_CondicaoPagamento},
-  uFrm_Consulta_CondicaoPagamento in 'View\TelasConsulta\uFrm_Consulta_CondicaoPagamento.pas' {Frm_Consulta_CondicaoPagamento};
+  uFrm_Consulta_CondicaoPagamento in 'View\TelasConsulta\uFrm_Consulta_CondicaoPagamento.pas' {Frm_Consulta_CondicaoPagamento},
+  uParcelas in 'Model\Classes\uParcelas.pas';
 
 {$R *.res}
 
