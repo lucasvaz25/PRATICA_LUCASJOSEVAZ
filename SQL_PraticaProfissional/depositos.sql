@@ -12,3 +12,7 @@ CEP VARCHAR(8),
 COD_CIDADE integer,
 foreign key (COD_CIDADE) references CIDADES(CODIGO)
 );
+
+
+alter table depositos
+add obs varchar(80);

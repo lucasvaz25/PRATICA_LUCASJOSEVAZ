@@ -2,6 +2,8 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
   Caption = 'Frm_Cad_Depositos'
   ClientHeight = 505
   ClientWidth = 579
+  OnCreate = FormCreate
+  ExplicitTop = -81
   ExplicitWidth = 585
   ExplicitHeight = 534
   PixelsPerInch = 96
@@ -74,8 +76,8 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       ParentFont = False
     end
     object lblCidade: TLabel [7]
-      Left = 24
-      Top = 245
+      Left = 72
+      Top = 244
       Width = 55
       Height = 21
       Caption = 'Cidade*'
@@ -126,15 +128,30 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       ParentFont = False
     end
+    object lblCodDept: TLabel [11]
+      Left = 26
+      Top = 244
+      Width = 31
+      Height = 21
+      Caption = 'C'#243'd.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     inherited pnlSalvar: TPanel
       Left = 257
       Top = 409
+      TabOrder = 9
       ExplicitLeft = 257
       ExplicitTop = 409
     end
     inherited pnlSair: TPanel
       Left = 411
       Top = 409
+      TabOrder = 10
       ExplicitLeft = 411
       ExplicitTop = 409
     end
@@ -150,7 +167,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       MaxLength = 40
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 1
       TextHint = 'digite o deposito'
       ChangeColor = 14745599
     end
@@ -166,7 +183,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       MaxLength = 40
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
       TextHint = 'digite o logradouro'
       ChangeColor = 14745599
     end
@@ -183,7 +200,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       MaxLength = 5
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 3
       ChangeColor = 14745599
     end
     object edBairro: TVazEdit
@@ -198,14 +215,14 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       MaxLength = 50
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
       TextHint = 'digite o bairro'
       ChangeColor = 14745599
     end
     object edCidade: TVazEdit
-      Left = 24
+      Left = 72
       Top = 265
-      Width = 445
+      Width = 397
       Height = 29
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -214,6 +231,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       MaxLength = 50
       ParentFont = False
+      ReadOnly = True
       TabOrder = 7
       TextHint = 'digite a cidade'
       ChangeColor = 14745599
@@ -231,7 +249,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       MaxLength = 50
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 11
       ChangeColor = 14745599
     end
     object pnlPesquisar: TPanel
@@ -242,7 +260,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 9
+      TabOrder = 12
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -279,6 +297,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgPesquisarClick
         ExplicitLeft = 16
       end
     end
@@ -294,7 +313,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       MaxLength = 100
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 8
     end
     object edCEP: TVazMaskEdit
       Left = 447
@@ -309,9 +328,29 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 5
       Text = ''
       TypeMask = TtmCEP
+      ChangeColor = 14745599
+    end
+    object edCodCidade: TVazEdit
+      Left = 24
+      Top = 265
+      Width = 47
+      Height = 29
+      BiDiMode = bdLeftToRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 5
+      NumbersOnly = True
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 6
+      OnExit = edCodCidadeExit
+      OnKeyPress = edCodCidadeKeyPress
       ChangeColor = 14745599
     end
   end

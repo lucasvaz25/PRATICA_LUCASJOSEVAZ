@@ -145,6 +145,7 @@ end;
 
 procedure TFrm_Cad_Cargo.PopulaForm;
 begin
+  inherited;
   with CargoControl.GetEntity do
   begin
     EdCodigo.Text             := IntToStr( Codigo );

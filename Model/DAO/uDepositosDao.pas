@@ -48,7 +48,9 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT D.* FROM Depositos D ' );
+    SQL.Add( 'SELECT D.*, C.CIDADE, C.COD_ESTADO, E.UF FROM Depositos D ' );
+    SQL.Add( 'LEFT JOIN CIDADES C ON C.CODIGO = D.COD_CIDADE ' );
+    SQL.Add( 'LEFT JOIN ESTADOS E ON E.CODIGO = C.COD_ESTADO ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
@@ -74,6 +76,8 @@ begin
       begin
         Aux := TDepositos.Create;
         Self.FieldsToObj( Aux );
+        Aux.Cidade.Cidade    := FieldByName( 'CIDADE' ).AsString;
+        Aux.Cidade.Estado.UF := FieldByName( 'UF' ).AsString;
         Result.Add( Aux );
 
         Next;
@@ -167,6 +171,7 @@ begin
     Bairro        := FieldByName( 'bairro' ).AsString;
     CEP           := FieldByName( 'CEP' ).AsString;
     Cidade.Codigo := FieldByName( 'cod_cidade' ).AsInteger;
+    Obs           := FieldByName( 'OBS' ).AsString;
   end;
 end;
 

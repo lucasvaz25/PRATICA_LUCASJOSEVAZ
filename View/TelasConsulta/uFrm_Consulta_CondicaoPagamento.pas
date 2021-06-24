@@ -34,6 +34,7 @@ type
     TDset_CondPagparcelas: TIntegerField;
     TDset_CondPagdatacad: TDateField;
     TDset_CondPagusercad: TStringField;
+    procedure FormCreate( Sender: TObject );
   private
     { Private declarations }
   public
@@ -171,6 +172,22 @@ begin
     if CondPagControl.Deletar( TDset_CondPagCodigo.AsInteger ) then
       Self.Consultar;
   end;
+end;
+
+procedure TFrm_Consulta_CondicaoPagamento.FormCreate( Sender: TObject );
+begin
+  inherited;
+  CondPagControl := nil;
+  CondPagControl.GetInstance( CondPagControl, Self );
+
+  TDset_CondPag.AfterScroll := nil;
+  if ( not TDset_CondPag.IsEmpty ) then
+    TDset_CondPag.EmptyDataSet;
+  TDset_CondPag.Active := False;
+  TDset_CondPag.DisableControls;
+  TDset_CondPag.CreateDataSet;
+
+  TDset_CondPag.Open;
 end;
 
 procedure TFrm_Consulta_CondicaoPagamento.Novo;

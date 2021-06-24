@@ -1,0 +1,5 @@
+inherited Frm_Consulta_FormasPagamentos: TFrm_Consulta_FormasPagamentos
+  Caption = 'Frm_Consulta_FormasPagamentos'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

@@ -9,13 +9,16 @@ type
   TFormasPagamentos = class( TGeral )
   private
     FFormaPagamento: string;
+    FObs: string;
     procedure SetFormaPagamento( const Value: string );
+    procedure SetObs( const Value: string );
   public
     constructor Create;
     destructor Destroy;
     procedure Free;
 
     property FormaPagamento: string read FFormaPagamento write SetFormaPagamento;
+    property Obs: string read FObs write SetObs;
 
     procedure CopiarDados( Value: TFormasPagamentos );
   end;
@@ -28,11 +31,14 @@ procedure TFormasPagamentos.CopiarDados( Value: TFormasPagamentos );
 begin
   inherited CopiarDados( Value );
   FFormaPagamento := Value.FormaPagamento;
+  FObs            := Value.Obs;
 end;
 
 constructor TFormasPagamentos.Create;
 begin
   inherited Create;
+  FFormaPagamento := '';
+  FObs            := '';
 end;
 
 destructor TFormasPagamentos.Destroy;
@@ -49,6 +55,11 @@ end;
 procedure TFormasPagamentos.SetFormaPagamento( const Value: string );
 begin
   FFormaPagamento := Value;
+end;
+
+procedure TFormasPagamentos.SetObs( const Value: string );
+begin
+  FObs := Value;
 end;
 
 end.

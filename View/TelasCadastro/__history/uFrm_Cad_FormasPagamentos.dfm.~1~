@@ -1,0 +1,5 @@
+inherited Frm_Cad_FormasPagamentos: TFrm_Cad_FormasPagamentos
+  Caption = 'Frm_Cad_FormasPagamentos'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

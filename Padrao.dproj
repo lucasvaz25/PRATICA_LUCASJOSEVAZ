@@ -294,6 +294,18 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Model\Classes\uParcelas.pas"/>
+        <DCCReference Include="Model\DAO\uFormasPagamentosDao.pas"/>
+        <DCCReference Include="Controller\uFormasPagamentosController.pas"/>
+        <DCCReference Include="View\TelasConsulta\uFrm_Consulta_FormasPagamentos.pas">
+            <Form>Frm_Consulta_FormasPagamentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\TelasCadastro\uFrm_Cad_FormasPagamentos.pas">
+            <Form>Frm_Cad_FormasPagamentos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Model\DAO\uParcelasDao.pas"/>
+        <DCCReference Include="Controller\uParcelasController.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

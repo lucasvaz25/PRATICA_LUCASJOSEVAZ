@@ -34,12 +34,17 @@ type
 implementation
 
 uses
-  Vcl.Dialogs;
+  Vcl.Dialogs,
+  System.Generics.Collections,
+  UParcelas,
+  UParcelasDao;
 { TCondicaoPagamentoDao }
 
 function TCondicaoPagamentoDao.Consulta( AFilter: TFilterSearch ): TObjectList;
 var
   Aux: TCondicaoPagamento;
+  ParcelaDao: TParcelasDao;
+  ListAux: TObjectList<TParcelas>;
 begin
   Result := nil;
 
@@ -74,6 +79,18 @@ begin
       begin
         Aux := TCondicaoPagamento.Create;
         Self.FieldsToObj( Aux );
+
+        if AFilter.RecuperarObj then
+        begin
+          ParcelaDao := TParcelasDao.Create;
+          try
+            ListAux := Aux.ListaParcelas;
+            ParcelaDao.RecuperarListaParcelas( ListAux, Aux.Codigo );
+          finally
+            ParcelaDao.Free;
+          end;
+        end;
+
         Result.Add( Aux );
 
         Next;

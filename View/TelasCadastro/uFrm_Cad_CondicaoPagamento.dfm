@@ -1,17 +1,24 @@
 inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
   Caption = 'Frm_Cad_CondicaoPagamento'
   ClientHeight = 662
-  ExplicitTop = -25
+  OnCreate = FormCreate
+  ExplicitTop = -318
   ExplicitHeight = 691
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     Height = 662
+    ExplicitHeight = 662
     inherited lblUsuarioDataCad: TLabel
+      Left = 10
       Top = 566
+      ExplicitLeft = 10
+      ExplicitTop = 566
     end
     inherited lblUsuarioDataAlteracao: TLabel
+      Left = 10
       Top = 547
+      ExplicitLeft = 10
       ExplicitTop = 547
     end
     object lblCondPag: TLabel [3]
@@ -220,6 +227,8 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
         NumbersOnly = True
         ParentFont = False
         TabOrder = 3
+        OnExit = edCodFormaPagamentoExit
+        OnKeyPress = edCodFormaPagamentoKeyPress
         ChangeColor = 14745599
       end
       object pnlPesquisar: TPanel
@@ -267,6 +276,7 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
             50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
           Proportional = True
           ShowHint = True
+          OnClick = imgPesquisarClick
           ExplicitLeft = 16
         end
       end
@@ -339,13 +349,15 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 5
-      ExplicitTop = 498
+      ExplicitLeft = 8
     end
     inherited pnlSalvar: TPanel
       Top = 566
+      ExplicitTop = 566
     end
     inherited pnlSair: TPanel
       Top = 566
+      ExplicitTop = 566
     end
     object edCondPag: TVazEdit
       Left = 24
@@ -378,6 +390,7 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
+      ReadOnly = True
       TabOrder = 4
       ChangeColor = 14745599
     end
@@ -395,7 +408,6 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
         Width = 673
         Height = 176
         Align = alClient
-        BorderStyle = bsNone
         DataSource = DsParcelas
         DrawingStyle = gdsClassic
         FixedColor = 8553090
@@ -428,15 +440,18 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
           item
             Expanded = False
             FieldName = 'porcentagem'
+            Width = 112
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'FormaPagamento'
+            Width = 383
             Visible = True
           end
           item
             Expanded = False
+            Width = 43
             Visible = True
           end>
       end
@@ -503,14 +518,14 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       DisplayLabel = 'Dias'
       FieldName = 'dias'
     end
-    object TDset_Parcelasporcentagem: TIntegerField
-      DisplayLabel = 'Porcentagem %'
-      FieldName = 'porcentagem'
-    end
     object TDset_ParcelasFormaPagamento: TStringField
       DisplayLabel = 'Forma Pagamento'
       FieldName = 'FormaPagamento'
       Size = 50
+    end
+    object TDset_Parcelasporcentagem: TFloatField
+      DisplayLabel = 'Porcentagem %'
+      FieldName = 'porcentagem'
     end
   end
   object DsParcelas: TDataSource

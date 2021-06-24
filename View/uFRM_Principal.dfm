@@ -571,6 +571,13 @@ object FRM_Principal: TFRM_Principal
         Caption = 'Condi'#231#227'o de Pagamento'
         OnClick = CondiodePagamento1Click
       end
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object FormasdePagamentos1: TMenuItem
+        Caption = 'Formas de Pagamentos'
+        OnClick = FormasdePagamentos1Click
+      end
     end
   end
   object ImageList1: TImageList
