@@ -51,7 +51,7 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT P.* FROM Parcelas P ' );
+    SQL.Add( 'SELECT P.* FROM PARCELAS_CONDPGTO P ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
@@ -106,7 +106,7 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add( 'DELETE FROM Parcelas WHERE CODIGO = ' + IntToStr( VID ) );
+      SQL.Add( 'DELETE FROM PARCELAS_CONDPGTO WHERE CODIGO = ' + IntToStr( VID ) );
       ExecSQL;
     end;
     DM.Trans.Commit;
@@ -137,7 +137,7 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add( 'UPDATE Parcelas SET ' );
+      SQL.Add( 'UPDATE PARCELAS_CONDPGTO SET ' );
       SQL.Add( 'CODIGO = :CODIGO, DATA_ALT = :DATA_ALT, USER_ALT = :USER_ALT, ' );
       SQL.Add( 'Parcela = :Parcela, DATA_CAD = :DATA_CAD, USER_CAD = :USER_CAD ' );
       SQL.Add( 'WHERE  CODIGO = :CODIGO' );
@@ -158,12 +158,16 @@ procedure TParcelasDao.FieldsToObj( var Value: TParcelas );
 begin
   with Value, Qry do
   begin
-    Codigo  := FieldByName( 'CODIGO' ).AsInteger;
-    DataCad := FieldByName( 'DATA_CAD' ).AsDateTime;
-    DataAlt := FieldByName( 'DATA_ALT' ).AsDateTime;
-    UserCad := FieldByName( 'USER_CAD' ).AsString;
-    UserAlt := FieldByName( 'USER_ALT' ).AsString;
-    Numero  := FieldByName( 'Numero' ).AsInteger;
+    // Codigo  := FieldByName( 'CODIGO' ).AsInteger;
+    // DataCad := FieldByName( 'DATA_CAD' ).AsDateTime;
+    // DataAlt := FieldByName( 'DATA_ALT' ).AsDateTime;
+    // UserCad := FieldByName( 'USER_CAD' ).AsString;
+    // UserAlt := FieldByName( 'USER_ALT' ).AsString;
+    Numero                := FieldByName( 'Numero' ).AsInteger;
+    Dias                  := FieldByName( 'dias' ).AsInteger;
+    Porcentagem           := FieldByName( 'porcentagem' ).AsFloat;
+    FormaPagamento.Codigo := FieldByName( 'cod_formapgto' ).AsInteger;
+    CodCondPgto           := FieldByName( 'cod_condpgto' ).AsInteger;
   end;
 end;
 
@@ -178,7 +182,7 @@ begin
     begin
       Close;
       SQl.Clear;
-      SQL.Add( 'INSERT INTO Parcelas ( ' );
+      SQL.Add( 'INSERT INTO PARCELAS_CONDPGTO ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, USER_CAD, ' );
       SQL.Add( 'Parcela, ' );
       SQL.Add( 'USER_ALT, DATA_ALT ' );
@@ -205,12 +209,12 @@ procedure TParcelasDao.ObjToFields( var Value: TParcelas );
 begin
   with Value, Qry do
   begin
-    ParamByName( 'CODIGO' ).AsInteger    := Codigo;
-    ParamByName( 'DATA_CAD' ).AsDateTime := DataCad;
-    ParamByName( 'DATA_ALT' ).AsDateTime := DataAlt;
-    ParamByName( 'USER_CAD' ).AsString   := UserCad;
-    ParamByName( 'USER_ALT' ).AsString   := UserAlt;
-    ParamByName( 'NUMERO' ).AsInteger    := Numero;
+    // ParamByName( 'CODIGO' ).AsInteger    := Codigo;
+    // ParamByName( 'DATA_CAD' ).AsDateTime := DataCad;
+    // ParamByName( 'DATA_ALT' ).AsDateTime := DataAlt;
+    // ParamByName( 'USER_CAD' ).AsString   := UserCad;
+    // ParamByName( 'USER_ALT' ).AsString   := UserAlt;
+    ParamByName( 'NUMERO' ).AsInteger := Numero;
   end;
 end;
 
@@ -261,7 +265,6 @@ begin
       begin
         Parcela := TParcelas.Create;
         Self.FieldsToObj( Parcela );
-
         Lista.Add( Parcela );
       end;
     finally

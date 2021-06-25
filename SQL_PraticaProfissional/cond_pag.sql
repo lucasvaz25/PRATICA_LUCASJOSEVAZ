@@ -5,5 +5,9 @@ user_alt varchar(40),
 data_cad timestamp,
 data_alt timestamp,
 condpag varchar(40),
-obs varchar(100) 
+PARCELAS integer,
+TXJUROS real,
+multa real,
+desconto real
 );
+

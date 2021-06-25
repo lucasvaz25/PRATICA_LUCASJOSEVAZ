@@ -53,7 +53,7 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT CP.* FROM CondicaoPagamento CP ' );
+    SQL.Add( 'SELECT CP.* FROM COND_PAG CP ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
@@ -63,14 +63,14 @@ begin
 
       TpCParam:
         begin
-          SQL.Add( 'WHERE CP.CondicaoPagamento LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
+          SQL.Add( 'WHERE CP.CONDPAG LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
         end;
 
       TpCTODOS:
         ;
     end;
 
-    SQL.Add( ' ORDER BY CP.CondicaoPagamento ' );
+    SQL.Add( ' ORDER BY CP.CONDPAG ' );
     Open;
 
     try
@@ -120,7 +120,7 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add( 'DELETE FROM CondicaoPagamento WHERE CODIGO = ' + IntToStr( VID ) );
+      SQL.Add( 'DELETE FROM cond_pag WHERE CODIGO = ' + IntToStr( VID ) );
       ExecSQL;
     end;
     DM.Trans.Commit;
@@ -151,9 +151,10 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add( 'UPDATE CondicaoPagamento SET ' );
+      SQL.Add( 'UPDATE cond_pag SET ' );
       SQL.Add( 'CODIGO = :CODIGO, DATA_ALT = :DATA_ALT, USER_ALT = :USER_ALT,  ' );
-      SQL.Add( 'CondicaoPagamento = :CondicaoPagamento, DATA_CAD = :DATA_CAD, USER_CAD = :USER_CAD ' );
+      SQL.Add( 'condpag = :condpag, DATA_CAD = :DATA_CAD, USER_CAD = :USER_CAD, ' );
+      SQL.Add( 'PARCELAS = :PARCELAS, TXJUROS = :TXJUROS, MULTA = :MULTA, DESCONTO = :DESCONTO ' );
       SQL.Add( 'WHERE  CODIGO = :CODIGO' );
       ObjToFields( CondicaoPagamento );
       ExecSQL;
@@ -172,12 +173,16 @@ procedure TCondicaoPagamentoDao.FieldsToObj( var Value: TCondicaoPagamento );
 begin
   with Value, Qry do
   begin
-    Codigo  := FieldByName( 'CODIGO' ).AsInteger;
-    DataCad := FieldByName( 'DATA_CAD' ).AsDateTime;
-    DataAlt := FieldByName( 'DATA_ALT' ).AsDateTime;
-    UserCad := FieldByName( 'USER_CAD' ).AsString;
-    UserAlt := FieldByName( 'USER_ALT' ).AsString;
-    CondPag := FieldByName( 'condpag ' ).AsString;
+    Codigo   := FieldByName( 'CODIGO' ).AsInteger;
+    DataCad  := FieldByName( 'DATA_CAD' ).AsDateTime;
+    DataAlt  := FieldByName( 'DATA_ALT' ).AsDateTime;
+    UserCad  := FieldByName( 'USER_CAD' ).AsString;
+    UserAlt  := FieldByName( 'USER_ALT' ).AsString;
+    CondPag  := FieldByName( 'CONDPAG' ).AsString;
+    Parcelas := FieldByName( 'PARCELAS' ).AsInteger;
+    TxJuros  := FieldByName( 'TXJUROS' ).AsFloat;
+    Multa    := FieldByName( 'MULTA' ).AsFloat;
+    Desconto := FieldByName( 'DESCONTO' ).AsFloat;
   end;
 end;
 
@@ -192,13 +197,15 @@ begin
     begin
       Close;
       SQl.Clear;
-      SQL.Add( 'INSERT INTO CondicaoPagamento ( ' );
+      SQL.Add( 'INSERT INTO cond_pag ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, USER_CAD, ' );
-      SQL.Add( 'CondicaoPagamento, ' );
+      SQL.Add( 'condpag, PARCELAS, TXJUROS, ' );
+      SQL.Add( 'MULTA, DESCONTO, ' );
       SQL.Add( 'USER_ALT, DATA_ALT ' );
       SQL.Add( ')VALUES(' );
       SQL.Add( ':CODIGO, :DATA_CAD, :USER_CAD, ' );
-      SQL.Add( ':CondicaoPagamento, ' );
+      SQL.Add( ':condpag, :PARCELAS, :TXJUROS, ' );
+      SQL.Add( ':MULTA, :DESCONTO, ' );
       SQL.Add( ':USER_ALT, :DATA_ALT' );
 
       SQL.Add( ')' );
@@ -224,8 +231,11 @@ begin
     ParamByName( 'DATA_ALT' ).AsDateTime := DataAlt;
     ParamByName( 'USER_CAD' ).AsString   := UserCad;
     ParamByName( 'USER_ALT' ).AsString   := UserAlt;
-    ParamByName( 'condpag ' ).AsString   := Condpag;
-
+    ParamByName( 'condpag' ).AsString    := Condpag;
+    ParamByName( 'PARCELAS' ).AsInteger  := Parcelas;
+    ParamByName( 'TXJUROS' ).AsFloat     := TxJuros;
+    ParamByName( 'MULTA' ).AsFloat       := Multa;
+    ParamByName( 'DESCONTO' ).AsFloat    := Desconto;
   end;
 end;
 

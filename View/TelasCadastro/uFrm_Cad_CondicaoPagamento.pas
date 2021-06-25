@@ -24,7 +24,9 @@ uses
   Vcl.Imaging.Pngimage,
   UCondicaoPagamentoController,
   UParcelasController,
-  UFormasPagamentosController;
+  UFormasPagamentosController,
+  System.ImageList,
+  Vcl.ImgList;
 
 type
   TFrm_Cad_CondicaoPagamento = class( TFrm_Cadastro )
@@ -63,10 +65,14 @@ type
     PnlEditar: TPanel;
     BtnEditar: TSpeedButton;
     TDset_Parcelasporcentagem: TFloatField;
+    ImageList1: TImageList;
     procedure FormCreate( Sender: TObject );
     procedure ImgPesquisarClick( Sender: TObject );
     procedure EdCodFormaPagamentoExit( Sender: TObject );
     procedure EdCodFormaPagamentoKeyPress( Sender: TObject; var Key: Char );
+    procedure DBGrid1DrawColumnCell( Sender: TObject; const Rect: TRect;
+                DataCol: Integer; Column: TColumn; State: TGridDrawState );
+    procedure BtnInserirListaClick( Sender: TObject );
   private
     { Private declarations }
     FormaPgtoControl: TFormasPagamentosController;
@@ -78,6 +84,10 @@ type
     function ValidaForm: Boolean;
     procedure ConsultaFormaPgto;
     procedure PesquisaFormaPgto;
+
+    procedure InserirParcela;
+    procedure EditarParcela;
+    procedure ExcluirParcela;
   public
     { Public declarations }
     CondPagControl: TCondicaoPagamentoController;
@@ -100,6 +110,12 @@ uses
 {$R *.dfm}
 
 { TFrm_Cad_CondicaoPagamento }
+
+procedure TFrm_Cad_CondicaoPagamento.BtnInserirListaClick( Sender: TObject );
+begin
+  inherited;
+  Self.InserirParcela;
+end;
 
 procedure TFrm_Cad_CondicaoPagamento.ConsultaFormaPgto;
 var
@@ -131,6 +147,17 @@ begin
   end;
 end;
 
+procedure TFrm_Cad_CondicaoPagamento.DBGrid1DrawColumnCell( Sender: TObject;
+            const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState );
+begin
+  inherited;
+//   if Column.Field.FieldName = '' then
+  // begin
+  // DBGrid1.Canvas.FillRect( Rect );
+  // ImageList1.Draw( DBGrid1.Canvas, Rect.Left + 24, Rect.Top + 1, 0 );
+  // end;
+end;
+
 procedure TFrm_Cad_CondicaoPagamento.EdCodFormaPagamentoExit( Sender: TObject );
 begin
   inherited;
@@ -143,6 +170,16 @@ begin
   inherited;
   if Key = #13 then
     Self.ConsultaFormaPgto;
+end;
+
+procedure TFrm_Cad_CondicaoPagamento.EditarParcela;
+begin
+
+end;
+
+procedure TFrm_Cad_CondicaoPagamento.ExcluirParcela;
+begin
+
 end;
 
 procedure TFrm_Cad_CondicaoPagamento.FormCreate( Sender: TObject );
@@ -171,6 +208,39 @@ procedure TFrm_Cad_CondicaoPagamento.ImgPesquisarClick( Sender: TObject );
 begin
   inherited;
   Self.PesquisaFormaPgto;
+end;
+
+procedure TFrm_Cad_CondicaoPagamento.InserirParcela;
+var
+  Parcela: Tparcelas;
+begin
+  Parcela := TParcelas.Create;
+  try
+    with Parcela do
+    begin
+      Dias        := StrToInt( EdDias.Text );
+      Porcentagem := StrToFloat( EdPorcentagem.Text );
+      FormaPagamento.CopiarDados( ParcelaControl.GetEntity.FormaPagamento );
+    end;
+
+    with TDset_Parcelas do
+    begin
+      Append;
+      FieldByName( 'numero' ).AsInteger        := RecordCount + 1;
+      FieldByName( 'dias' ).AsInteger          := Parcela.Dias;
+      FieldByName( 'porcentagem' ).AsFloat     := Parcela.Porcentagem;
+      FieldByName( 'formapagamento' ).AsString := Parcela.FormaPagamento.FormaPagamento;
+      Parcela.Numero                           := FieldByName( 'numero' ).AsInteger;
+      EdParcelas.Text                          := Parcela.Numero.ToString;
+      Post;
+    end;
+    TDset_Parcelas.EnableControls;
+
+    CondPagControl.GetEntity.ListaParcelas.Add( Parcela );
+  finally
+    Parcela.Free;
+  end;
+
 end;
 
 procedure TFrm_Cad_CondicaoPagamento.PesquisaFormaPgto;
