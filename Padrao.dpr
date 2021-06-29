@@ -94,7 +94,10 @@ uses
   uFrm_Consulta_FormasPagamentos in 'View\TelasConsulta\uFrm_Consulta_FormasPagamentos.pas' {Frm_Consulta_FormasPagamentos},
   uFrm_Cad_FormasPagamentos in 'View\TelasCadastro\uFrm_Cad_FormasPagamentos.pas' {Frm_Cad_FormasPagamentos},
   uParcelasDao in 'Model\DAO\uParcelasDao.pas',
-  uParcelasController in 'Controller\uParcelasController.pas';
+  uParcelasController in 'Controller\uParcelasController.pas',
+  uProdutos in 'Model\Classes\uProdutos.pas',
+  uProdutosDao in 'Model\DAO\uProdutosDao.pas',
+  uProdutosController in 'Controller\uProdutosController.pas';
 
 {$R *.res}
 

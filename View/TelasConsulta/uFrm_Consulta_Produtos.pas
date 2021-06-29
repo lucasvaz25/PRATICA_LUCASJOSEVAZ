@@ -20,10 +20,15 @@ uses
   Vcl.ExtCtrls,
   VazEdit,
   Vcl.Imaging.Pngimage,
-  Vcl.Buttons;
+  Vcl.Buttons, Datasnap.DBClient;
 
 type
   TFrm_Consulta_Produtos = class( TFrm_Consulta )
+    TDset_Produtos: TClientDataSet;
+    DsProdutos: TDataSource;
+    TDset_Produtoscodigo: TIntegerField;
+    TDset_Produtosproduto: TStringField;
+    TDset_ProdutosprecoVenda: TCurrencyField;
   private
     { Private declarations }
   public

@@ -139,7 +139,7 @@ begin
       Close;
       SQL.Clear;
       SQL.Add( 'UPDATE Depositos SET ' );
-      SQL.Add( 'CODIGO = :CODIGO, DATA_ALT = :DATA_ALT, USER_ALT = :USER_ALT, CEP = :CEP, ' );
+      SQL.Add( 'CODIGO = :CODIGO, DATA_ALT = :DATA_ALT, USER_ALT = :USER_ALT, ' );
       SQL.Add( 'logradouro = :logradouro, num = :num, bairro = :bairro, obs = :obs, cod_cidade = :cod_cidade, ' );
       SQL.Add( 'Deposito = :Deposito, CEP = :CEP,DATA_CAD = :DATA_CAD, USER_CAD = :USER_CAD ' );
       SQL.Add( 'WHERE  CODIGO = :CODIGO' );

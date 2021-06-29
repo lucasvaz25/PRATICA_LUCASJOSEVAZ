@@ -38,6 +38,8 @@ type
 
 implementation
 
+uses
+  UParcelasDao;
 { TCondicaoPagamentoController }
 
 function TCondicaoPagamentoController.Consulta( AFilter: TFilterSearch ): TObjectList;

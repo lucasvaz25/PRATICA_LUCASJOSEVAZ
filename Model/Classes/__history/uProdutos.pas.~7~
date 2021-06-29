@@ -1,0 +1,37 @@
+unit uProdutos;
+
+interface
+
+uses
+  System.Classes,
+
+  UGeral,
+  UFornecedores,
+  UUnidades,
+  USubGrupos;
+
+type
+  TProdutos = class( TGeral )
+  public
+    constructor Create;
+    destructor Destroy;
+    procedure Free;
+
+    property Produto: string;
+    property PrecoVenda: Currency;
+    property PrecoCusto: Currency;
+    property Estoque: Integer;
+    property Obs: string;
+    property Imagem: TMemoryStream;
+
+    property Fornecedor: TFornecedores;
+    property SubGrupo: TSubGrupos;
+    property Unidade: TUnidades;
+
+    procedure CopiarDados( Value: TProdutos );
+
+  end;
+
+implementation
+
+end.

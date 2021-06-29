@@ -6,6 +6,7 @@ uses
   System.Classes,
   System.Contnrs,
   System.SysUtils,
+  System.Generics.Collections,
 
   UFilterSearch,
   UController,
@@ -17,7 +18,7 @@ uses
 type
   TParcelasController = class( TController )
   protected
-    DepositoDao: TParcelasDao;
+    ParcelaDao: TParcelasDao;
   public
     constructor Create;
     destructor Destroy;
@@ -33,6 +34,8 @@ type
     function Recuperar( const VID: Integer; out Obj: TObject ): Boolean; override;
     // procedure SetDM( Value: TObject ); override;
     function VerificaExiste( Str: string ): Boolean;
+    function InserirLista( Lista: TObjectList<TParcelas> ): Boolean;
+    function ExcluirListaParcelas( const Cod_CondPgto: Integer ): Boolean;
 
   end;
 
@@ -42,29 +45,35 @@ implementation
 
 function TParcelasController.Consulta( AFilter: TFilterSearch ): TObjectList;
 begin
-  Result := DepositoDao.Consulta( AFilter );
+  Result := ParcelaDao.Consulta( AFilter );
 end;
 
 constructor TParcelasController.Create;
 begin
   inherited;
-  DepositoDao := TParcelasDao.Create;
+  ParcelaDao := TParcelasDao.Create;
 end;
 
 function TParcelasController.Deletar( const VID: Integer ): Boolean;
 begin
-  Result := DepositoDao.Deletar( VID );
+  Result := ParcelaDao.Deletar( VID );
 end;
 
 destructor TParcelasController.Destroy;
 begin
-  DepositoDao.Destroy;
+  ParcelaDao.Destroy;
   inherited;
 end;
 
 function TParcelasController.Editar( var Value: TObject ): Boolean;
 begin
-  Result := DepositoDao.Editar( Value );
+  Result := ParcelaDao.Editar( Value );
+end;
+
+function TParcelasController.ExcluirListaParcelas(
+            const Cod_CondPgto: Integer ): Boolean;
+begin
+  Result := ParcelaDao.ExcluirListaParcelas( Cod_CondPgto );
 end;
 
 procedure TParcelasController.Free;
@@ -90,18 +99,24 @@ end;
 
 function TParcelasController.Inserir( var Value: TObject ): Boolean;
 begin
-  Result := DepositoDao.Inserir( Value );
+  Result := ParcelaDao.Inserir( Value );
+end;
+
+function TParcelasController.InserirLista(
+            Lista: TObjectList<TParcelas> ): Boolean;
+begin
+  Result := ParcelaDao.InserirLista( Lista );
 end;
 
 function TParcelasController.Recuperar( const VID: Integer;
             out Obj: TObject ): Boolean;
 begin
-  Result := DepositoDao.Recuperar( VID, Obj );
+  Result := ParcelaDao.Recuperar( VID, Obj );
 end;
 
 function TParcelasController.VerificaExiste( Str: string ): Boolean;
 begin
-  Result := DepositoDao.VerificaExiste( Str );
+  Result := ParcelaDao.VerificaExiste( Str );
 end;
 
 end.

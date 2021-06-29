@@ -2,7 +2,6 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
   Caption = 'Frm_Cad_Produto'
   ClientHeight = 568
   ClientWidth = 735
-  ExplicitTop = -49
   ExplicitWidth = 741
   ExplicitHeight = 597
   PixelsPerInch = 96
@@ -13,14 +12,12 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
     ExplicitWidth = 735
     ExplicitHeight = 568
     inherited lblUsuarioDataCad: TLabel
-      Top = 541
-      ExplicitTop = 541
+      Top = 472
+      ExplicitTop = 472
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 539
-      Top = 541
-      ExplicitLeft = 565
-      ExplicitTop = 541
+      Top = 500
+      ExplicitTop = 500
     end
     object lblDescricao: TLabel [3]
       Left = 24
@@ -36,7 +33,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     object lblVlrCusto: TLabel [4]
-      Left = 24
+      Left = 356
       Top = 138
       Width = 90
       Height = 21
@@ -49,7 +46,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     object lblVlrVenda: TLabel [5]
-      Left = 160
+      Left = 257
       Top = 138
       Width = 93
       Height = 21
@@ -62,8 +59,8 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     object lblUnidade: TLabel [6]
-      Left = 432
-      Top = 83
+      Left = 72
+      Top = 139
       Width = 58
       Height = 21
       Caption = 'Unidade'
@@ -75,8 +72,8 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     object lblEstoque: TLabel [7]
-      Left = 380
-      Top = 138
+      Left = 452
+      Top = 139
       Width = 55
       Height = 21
       Caption = 'Estoque'
@@ -88,7 +85,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     object lblFornecedor: TLabel [8]
-      Left = 24
+      Left = 72
       Top = 198
       Width = 79
       Height = 21
@@ -101,8 +98,8 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     object lblSubGrupo: TLabel [9]
-      Left = 24
-      Top = 256
+      Left = 72
+      Top = 255
       Width = 71
       Height = 21
       Caption = 'SubGrupo'
@@ -140,27 +137,69 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Style = []
       ParentFont = False
     end
+    object lblCodFormaPagamento: TLabel [12]
+      Left = 31
+      Top = 139
+      Width = 31
+      Height = 21
+      Hint = 'Porcentagem'
+      Caption = 'C'#243'd.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label1: TLabel [13]
+      Left = 31
+      Top = 198
+      Width = 31
+      Height = 21
+      Hint = 'Porcentagem'
+      Caption = 'C'#243'd.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel [14]
+      Left = 31
+      Top = 255
+      Width = 31
+      Height = 21
+      Hint = 'Porcentagem'
+      Caption = 'C'#243'd.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMenuText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     inherited edCodigo: TVazEdit
-      TabOrder = 7
+      TabOrder = 6
     end
     inherited pnlSalvar: TPanel
       Left = 465
       Top = 472
-      TabOrder = 8
+      TabOrder = 7
       ExplicitLeft = 465
       ExplicitTop = 472
     end
     inherited pnlSair: TPanel
       Left = 601
       Top = 472
-      TabOrder = 9
+      TabOrder = 8
       ExplicitLeft = 601
       ExplicitTop = 472
     end
     object edDescricao: TVazEdit
       Left = 24
       Top = 104
-      Width = 402
+      Width = 497
       Height = 29
       Anchors = [akLeft, akTop, akRight]
       BiDiMode = bdLeftToRight
@@ -177,9 +216,27 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ChangeColor = 14745599
     end
     object edVlrCusto: TVazEdit
-      Left = 24
-      Top = 160
-      Width = 113
+      Left = 356
+      Top = 159
+      Width = 90
+      Height = 29
+      Anchors = [akLeft, akTop, akRight]
+      BiDiMode = bdLeftToRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 50
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 1
+      ChangeColor = 14745599
+    end
+    object edVlrVenda: TVazEdit
+      Left = 257
+      Top = 159
+      Width = 93
       Height = 29
       Anchors = [akLeft, akTop, akRight]
       BiDiMode = bdLeftToRight
@@ -194,37 +251,6 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       TabOrder = 2
       ChangeColor = 14745599
     end
-    object edVlrVenda: TVazEdit
-      Left = 160
-      Top = 160
-      Width = 121
-      Height = 29
-      Anchors = [akLeft, akTop, akRight]
-      BiDiMode = bdLeftToRight
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      MaxLength = 50
-      ParentBiDiMode = False
-      ParentFont = False
-      TabOrder = 3
-      ChangeColor = 14745599
-    end
-    object cbUnidade: TComboBox
-      Left = 432
-      Top = 104
-      Width = 89
-      Height = 29
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-    end
     object pnlImage: TPanel
       Left = 535
       Top = 60
@@ -238,7 +264,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
       object imgProduto: TImage
         Left = 8
         Top = 20
@@ -311,8 +337,8 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       end
     end
     object edEstoque: TVazEdit
-      Left = 380
-      Top = 160
+      Left = 452
+      Top = 159
       Width = 69
       Height = 29
       Anchors = [akLeft, akTop, akRight]
@@ -326,13 +352,13 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       ChangeColor = 14745599
     end
     object edFornecedor: TVazEdit
-      Left = 24
+      Left = 72
       Top = 220
-      Width = 386
+      Width = 338
       Height = 29
       Anchors = [akLeft, akTop, akRight]
       BiDiMode = bdLeftToRight
@@ -344,7 +370,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       TextHint = 'digite o nome do fornecedor'
       ChangeColor = 14745599
     end
@@ -356,7 +382,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 11
+      TabOrder = 10
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -399,9 +425,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       end
     end
     object edSubGrupo: TVazEdit
-      Left = 24
+      Left = 72
       Top = 278
-      Width = 386
+      Width = 338
       Height = 29
       Anchors = [akLeft, akTop, akRight]
       BiDiMode = bdLeftToRight
@@ -413,7 +439,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
       TextHint = 'digite o subgrupo'
       ChangeColor = 14745599
     end
@@ -425,7 +451,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 12
+      TabOrder = 11
       object Image1: TImage
         Left = 0
         Top = 0
@@ -482,7 +508,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 12
       ChangeColor = 14745599
     end
     object edObs: TMemo
@@ -496,7 +522,124 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      TabOrder = 13
+    end
+    object VazEdit1: TVazEdit
+      Left = 72
+      Top = 159
+      Width = 137
+      Height = 29
+      Anchors = [akLeft, akTop, akRight]
+      BiDiMode = bdLeftToRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 50
+      ParentBiDiMode = False
+      ParentFont = False
       TabOrder = 14
+      TextHint = 'digite o nome do fornecedor'
+      ChangeColor = 14745599
+    end
+    object Panel2: TPanel
+      Left = 215
+      Top = 160
+      Width = 33
+      Height = 29
+      BevelOuter = bvNone
+      Color = 16744448
+      ParentBackground = False
+      TabOrder = 15
+      object Image2: TImage
+        Left = 0
+        Top = 0
+        Width = 33
+        Height = 29
+        Hint = 'Pesquisar Pa'#237'ses'
+        Align = alClient
+        ParentShowHint = False
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+          00200806000000737A7AF400000006624B474400FF00FF00FFA0BDA793000002
+          A54944415478DAED965B884D511CC6D76E2E261ECC50333C30721D531EE445B9
+          0CD128920721522EC983E461521445CAED8DE24152232F484A2986D230529E24
+          1A83D4BC98A4DC4586D3F6FBB7D66EFE767B9F598B3947C9AAAFEFECB5D7F7FF
+          BEBD2E7B9FC8FCE516FD1301E238963A0DE06B14451FCA1200D349D046B0064C
+          0415EE563FB80F2E82B304FA34A401301E011D01DB9CBE580D998D5D84383524
+          01301F077580A640ED39B08520FDBF1D00F391D00330C1E9625000E7C10DD00B
+          6AC034639765AE964B08026CF8930057A0E5CA5CD6792D457B73C62F32761FD4
+          299FAD8C3F1D1C8062F3A1DBEA696E81A559539AD235BA59AB735DEFC178BD31
+          7D035C8596B94B113752E49DA776317453756D477BD23B80DBF56256E59E7E0F
+          050EFB98AB1A5D66604F74A25F1812600E7457753551E06960801DD07177F90D
+          7D4D488055C66E26E366A08A0285C000ADC61EDFA4D5266F4C9F00EB8D3DC7D2
+          7E806AC471608016A853753550E3B56F8025D075D53516F1ABC00072FEDBDD65
+          C1CD62EC1B600CD4A7C66E42DC3E982E55E302B4DA5DF6A09F9EDCF33D86DD50
+          227A069A7DF701DAC9626AECC74A9EFA00DAFDA10136436754D7418AECF5D00D
+          33F604CD725EB287A6E8B7A76F806AE811989A748143605FDE4CA0190D5D022D
+          66E0F57D8CF16D7A9C6F805150975B06AD790EE4A5D441E13EC655CA13829560
+          3718AECC1F83D98CFB1214C099DF01CDAA58964EA6B722638CFC7E011660FE32
+          2D2A1A20C7FC09A854CB3158BB6CECC9F998753337408EB99C06F9327E06EBC0
+          4E755FB7EFE01A388AF1BD62E932031479F279147C9B1A5B0FCD04C2B2BEF2CE
+          78985E6BEF0014AC35F6DB3F4399F738F3379ED3EEDD7E09506EF3AC00F2C56A
+          4D2E8D5BF3F4B4973280FCD53EE1FABB4DC69A9734800AB1C2D83F9C2535CF0C
+          50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
+        Proportional = True
+        ShowHint = True
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 32
+        ExplicitHeight = 27
+      end
+    end
+    object edCodFormaPagamento: TVazEdit
+      Left = 24
+      Top = 159
+      Width = 42
+      Height = 29
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 12
+      NumbersOnly = True
+      ParentFont = False
+      TabOrder = 16
+      ChangeColor = 14745599
+    end
+    object VazEdit2: TVazEdit
+      Left = 24
+      Top = 220
+      Width = 42
+      Height = 29
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 12
+      NumbersOnly = True
+      ParentFont = False
+      TabOrder = 17
+      ChangeColor = 14745599
+    end
+    object VazEdit3: TVazEdit
+      Left = 24
+      Top = 278
+      Width = 42
+      Height = 29
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 12
+      NumbersOnly = True
+      ParentFont = False
+      TabOrder = 18
+      ChangeColor = 14745599
     end
   end
 end
