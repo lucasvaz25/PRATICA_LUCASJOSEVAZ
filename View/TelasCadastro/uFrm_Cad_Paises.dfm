@@ -4,8 +4,8 @@ inherited Frm_Cad_Paises: TFrm_Cad_Paises
   ClientWidth = 532
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ExplicitWidth = 548
-  ExplicitHeight = 300
+  ExplicitWidth = 538
+  ExplicitHeight = 290
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
@@ -14,14 +14,12 @@ inherited Frm_Cad_Paises: TFrm_Cad_Paises
     ExplicitWidth = 532
     ExplicitHeight = 261
     inherited lblUsuarioDataCad: TLabel
-      Top = 234
-      ExplicitTop = 234
+      Top = 165
+      ExplicitTop = 165
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 336
-      Top = 234
-      ExplicitLeft = 336
-      ExplicitTop = 234
+      Top = 193
+      ExplicitTop = 193
     end
     object lblDDI: TLabel [3]
       Left = 455

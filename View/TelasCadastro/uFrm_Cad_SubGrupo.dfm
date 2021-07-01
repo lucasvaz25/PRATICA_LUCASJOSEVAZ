@@ -13,14 +13,12 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
     ExplicitWidth = 558
     ExplicitHeight = 449
     inherited lblUsuarioDataCad: TLabel
-      Top = 422
-      ExplicitTop = 422
+      Top = 353
+      ExplicitTop = 353
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 362
-      Top = 422
-      ExplicitLeft = 232
-      ExplicitTop = 422
+      Top = 381
+      ExplicitTop = 381
     end
     object lblSubGrupo: TLabel [3]
       Left = 24
@@ -88,7 +86,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       ExplicitTop = 353
     end
     object edSubGrupo: TVazEdit
-      Left = 22
+      Left = 21
       Top = 104
       Width = 484
       Height = 29
@@ -98,7 +96,7 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 40
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 2

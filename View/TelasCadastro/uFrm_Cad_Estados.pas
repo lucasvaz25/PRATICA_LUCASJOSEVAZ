@@ -103,7 +103,7 @@ begin
       begin
         ShowMessage( 'País não encontrado!!' );
         EdCodPais.Clear;
-        EdPais.SetFocus;
+        EdCodPais.SetFocus;
       end;
     finally
       Filtro.Free;

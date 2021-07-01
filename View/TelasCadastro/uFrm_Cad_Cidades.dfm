@@ -13,14 +13,12 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
     ExplicitWidth = 513
     ExplicitHeight = 332
     inherited lblUsuarioDataCad: TLabel
-      Top = 305
-      ExplicitTop = 305
+      Top = 236
+      ExplicitTop = 236
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 317
-      Top = 305
-      ExplicitLeft = 317
-      ExplicitTop = 305
+      Top = 264
+      ExplicitTop = 264
     end
     object lblCidade: TLabel [3]
       Left = 24
@@ -36,7 +34,7 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
       ParentFont = False
     end
     object lblDDD: TLabel [4]
-      Left = 456
+      Left = 424
       Top = 82
       Width = 33
       Height = 21
@@ -77,19 +75,21 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
     inherited pnlSalvar: TPanel
       Left = 235
       Top = 236
+      TabOrder = 4
       ExplicitLeft = 235
       ExplicitTop = 236
     end
     inherited pnlSair: TPanel
       Left = 375
       Top = 236
+      TabOrder = 5
       ExplicitLeft = 375
       ExplicitTop = 236
     end
     object edCidade: TVazEdit
       Left = 24
       Top = 104
-      Width = 426
+      Width = 393
       Height = 29
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -98,23 +98,25 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
       Font.Style = []
       MaxLength = 40
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 1
       TextHint = 'digite o nome da Cidade'
       ChangeColor = 14745599
     end
     object edDDD: TVazEdit
-      Left = 456
+      Left = 424
       Top = 104
-      Width = 40
+      Width = 68
       Height = 29
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 40
+      MaxLength = 5
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
+      OnEnter = edDDDEnter
+      OnExit = edDDDEnter
       ChangeColor = 14745599
     end
     object edEstado: TVazEdit
@@ -130,7 +132,7 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
       MaxLength = 40
       ParentFont = False
       ReadOnly = True
-      TabOrder = 5
+      TabOrder = 6
       TextHint = 'digite o nome do Estado'
       ChangeColor = 14745599
     end
@@ -142,7 +144,7 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 6
+      TabOrder = 7
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -209,7 +211,7 @@ inherited Frm_Cad_Cidades: TFrm_Cad_Cidades
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 3
       OnExit = edCodEstadoExit
       OnKeyPress = edCodEstadoKeyPress
       ChangeColor = 14745599

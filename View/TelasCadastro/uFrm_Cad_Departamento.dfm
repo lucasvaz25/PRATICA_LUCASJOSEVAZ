@@ -13,14 +13,12 @@ inherited Frm_Cad_Departamento: TFrm_Cad_Departamento
     ExplicitWidth = 506
     ExplicitHeight = 263
     inherited lblUsuarioDataCad: TLabel
-      Top = 236
-      ExplicitTop = 236
+      Top = 167
+      ExplicitTop = 167
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 310
-      Top = 236
-      ExplicitLeft = 310
-      ExplicitTop = 236
+      Top = 195
+      ExplicitTop = 195
     end
     object lblDepartamento: TLabel [3]
       Left = 24
@@ -58,7 +56,7 @@ inherited Frm_Cad_Departamento: TFrm_Cad_Departamento
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 40
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 3

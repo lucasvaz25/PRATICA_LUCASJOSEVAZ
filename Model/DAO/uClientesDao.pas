@@ -36,12 +36,16 @@ implementation
 
 uses
   UEnum,
+  UCondicaoPagamento,
+  UCondicaoPagamentoDao,
   Vcl.Dialogs;
 { TClientesDao }
 
 function TClientesDao.Consulta( AFilter: TFilterSearch ): TObjectList;
 var
   Aux: TClientes;
+  Condpgto: TCondicaoPagamento;
+  CondpgtoDao: TCondicaoPagamentoDao;
 begin
   Result := nil;
 
@@ -85,6 +89,20 @@ begin
         Self.FieldsToObj( Aux );
         Aux.Cidade.Cidade    := FieldByName( 'CIDADE' ).AsString;
         Aux.Cidade.Estado.UF := FieldByName( 'UF' ).AsString;
+
+        if Afilter.RecuperarObj then
+        begin
+          if Aux.CondPagamento.Codigo > 0 then
+          begin
+            CondpgtoDao := TCondicaoPagamentoDao.Create;
+            try
+              Condpgto := Aux.CondPagamento;
+              CondpgtoDao.Recuperar( Condpgto.Codigo, TObject( Condpgto ) );
+            finally
+              CondpgtoDao.Free;
+            end;
+          end;
+        end;
         Result.Add( Aux );
 
         Next;

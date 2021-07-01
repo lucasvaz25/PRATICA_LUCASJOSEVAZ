@@ -5,7 +5,7 @@ user_alt varchar(50),
 data_cad timestamp,
 data_alt timestamp,
 cidade varchar (50) not null,
-ddd integer,
+ddd varchar(5),
 cod_estado integer not null, 
 foreign key (cod_estado) references estados(codigo)
 );

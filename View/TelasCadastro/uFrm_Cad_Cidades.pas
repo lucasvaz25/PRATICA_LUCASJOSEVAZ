@@ -40,6 +40,7 @@ type
     procedure EdCodEstadoExit( Sender: TObject );
     procedure EdCodEstadoKeyPress( Sender: TObject; var Key: Char );
     procedure BtnPesquisarEstadosClick( Sender: TObject );
+    procedure edDDDEnter(Sender: TObject);
 
   private
     EstadoControl: TEstadosController;
@@ -120,6 +121,12 @@ begin
   inherited;
   if Key = #13 then
     Self.ConsultarEstado;
+end;
+
+procedure TFrm_Cad_Cidades.edDDDEnter(Sender: TObject);
+begin
+  inherited;
+self.FormatDDD(Sender);
 end;
 
 procedure TFrm_Cad_Cidades.FormCreate( Sender: TObject );

@@ -59,7 +59,6 @@ type
     ImgPesquisar: TImage;
     EdNumCNH: TVazEdit;
     LblCNH: TLabel;
-    EdCategoria: TVazEdit;
     LblCategoria: TLabel;
     LblValCNH: TLabel;
     LblCargo: TLabel;
@@ -75,6 +74,7 @@ type
     EdDtDemissao: TVazMaskEdit;
     EdDtAdmissao: TVazMaskEdit;
     EdValCNH: TVazMaskEdit;
+    EdCategoria: TComboBox;
     procedure FormCreate( Sender: TObject );
     procedure EdCodCidadeExit( Sender: TObject );
     procedure EdCodCidadeKeyPress( Sender: TObject; var Key: Char );
@@ -82,6 +82,8 @@ type
     procedure EdCodCargoKeyPress( Sender: TObject; var Key: Char );
     procedure ImgPesquisarClick( Sender: TObject );
     procedure ImgCargoClick( Sender: TObject );
+    procedure FormShow( Sender: TObject );
+    procedure EdSalarioExit( Sender: TObject );
   private
     { Private declarations }
     CidadeControl: TCidadesController;
@@ -213,6 +215,12 @@ begin
     Self.ConsultarCidade;
 end;
 
+procedure TFrm_Cad_Funcionario.EdSalarioExit( Sender: TObject );
+begin
+  inherited;
+  Self.FormatCurrency( Sender );
+end;
+
 procedure TFrm_Cad_Funcionario.FormCreate( Sender: TObject );
 begin
   inherited;
@@ -224,6 +232,15 @@ begin
 
   CidadeControl := nil;
   CidadeControl.GetInstance( CidadeControl, Self );
+end;
+
+procedure TFrm_Cad_Funcionario.FormShow( Sender: TObject );
+begin
+  inherited;
+  if not( EdCodigo.Text = '0' ) then
+    BlockFields
+  else
+    UnlockFields;
 end;
 
 procedure TFrm_Cad_Funcionario.ImgCargoClick( Sender: TObject );
@@ -277,21 +294,21 @@ procedure TFrm_Cad_Funcionario.PopulaForm;
 begin
   with FuncionarioControl.GetEntity do
   begin
-    EdCodigo.Text     := IntToStr( Codigo );
-    EdNome.Text       := Nome;
-    EdRG.Text         := RG;
-    EdBairro.Text     := Bairro;
-    EdCPF.Text        := CPF;
-    EdCEP.Text        := CEP;
-    EdNum.Text        := Numero;
-    RgSexo.ItemIndex  := Integer( Sexo );
-    EdApelido.Text    := Apelido;
-    EdLogradouro.Text := Endereco;
-    EdTelefone.Text   := Telefone;
-    EdEmail.Text      := Email;
-    EdSalario.Text    := FormatCurr( '0.00', Salario );
-    EdNumCNH.Text     := CNH;
-    // EdCategoria.Text      := Categoria;
+    EdCodigo.Text         := IntToStr( Codigo );
+    EdNome.Text           := Nome;
+    EdRG.Text             := RG;
+    EdBairro.Text         := Bairro;
+    EdCPF.Text            := CPF;
+    EdCEP.Text            := CEP;
+    EdNum.Text            := Numero;
+    RgSexo.ItemIndex      := Integer( Sexo );
+    EdApelido.Text        := Apelido;
+    EdLogradouro.Text     := Endereco;
+    EdTelefone.Text       := Telefone;
+    EdEmail.Text          := Email;
+    EdSalario.Text        := FormatCurr( 'R$ 0.00#', Salario );
+    EdNumCNH.Text         := CNH;
+    EdCategoria.ItemIndex := Ord( Categoria );
     EdCidade.Text         := Cidade.Cidade;
     EdCodCidade.Text      := IntToStr( Cidade.Codigo );
     EdUF.Text             := Cidade.Estado.UF;
@@ -307,23 +324,23 @@ procedure TFrm_Cad_Funcionario.PopulaObj;
 begin
   with FuncionarioControl.GetEntity do
   begin
-    Codigo   := StrToInt( EdCodigo.Text );
-    Nome     := UpperCase( EdNome.Text );
-    RG       := EdRG.Text;
-    Bairro   := UpperCase( EdBairro.Text );
-    CPF      := EdCPF.Text;
-    CEP      := EdCEP.Text;
-    Numero   := EdNum.Text;
-    Sexo     := TSexo( RgSexo.ItemIndex );
-    Apelido  := UpperCase( EdApelido.Text );
-    Endereco := UpperCase( EdLogradouro.Text );
-    Telefone := EdTelefone.Text;
-    Email    := EdEmail.Text;
-    Salario  := StrToCurr( EdSalario.Text );
-    CNH      := EdNumCNH.Text;
-    // Categoria     := EdCategoria.Text;
-    DataCad := Date;
-    UserCad := UpperCase( 'lucas' );
+    Codigo    := StrToInt( EdCodigo.Text );
+    Nome      := UpperCase( EdNome.Text );
+    RG        := EdRG.Text;
+    Bairro    := UpperCase( EdBairro.Text );
+    CPF       := EdCPF.Text;
+    CEP       := EdCEP.Text;
+    Numero    := EdNum.Text;
+    Sexo      := TSexo( RgSexo.ItemIndex );
+    Apelido   := UpperCase( EdApelido.Text );
+    Endereco  := UpperCase( EdLogradouro.Text );
+    Telefone  := EdTelefone.Text;
+    Email     := EdEmail.Text;
+    Salario   := StrToCurr( StringReplace( EdSalario.Text, 'R$', '', [ RfReplaceAll, RfIgnoreCase ] ) );
+    CNH       := EdNumCNH.Text;
+    Categoria := TCategoriaCNH( EdCategoria.ItemIndex );
+    DataCad   := Date;
+    UserCad   := UpperCase( 'lucas' );
 
     Data_Admissao := TToolsSistema.GetDefaultDate
                 ( EdDtAdmissao.EditText, 'Data Admissão' );

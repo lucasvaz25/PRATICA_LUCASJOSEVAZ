@@ -34,9 +34,9 @@ type
     procedure BtnSairClick( Sender: TObject );
     procedure BtnSalvarClick( Sender: TObject );
     procedure FormShow( Sender: TObject );
-  private
-    { Private declarations }
   protected
+    procedure FormatCurrency( Sender: TObject );
+    procedure FormatDDD( Sender: TObject );
     procedure UpperCaseField;
     procedure ClearFieldsDate;
     procedure PopulaForm; virtual;
@@ -172,6 +172,48 @@ begin
       TMemo( Components[ I ] ).CharCase := EcUpperCase;
   end;
 
+end;
+
+procedure TFrm_Cadastro.FormatCurrency( Sender: TObject );
+var
+  Value: Currency;
+  Str: string;
+begin
+  if Length( TVazEdit( Sender ).Text ) > 0 then
+  begin
+    Str := StringReplace( TVazEdit( Sender ).Text, 'R$', '', [ RfReplaceAll, RfIgnoreCase ] );
+    try
+      Value := StrToCurr( Str );
+    except
+      MessageDlg( 'Valor Inválido!', MtInformation, [ MbOK ], 0 );
+      TVazEdit( Sender ).Clear;
+      TVazEdit( Sender ).SetFocus;
+      Exit;
+    end;
+
+    TVazEdit( Sender ).Text := FormatFloat( 'R$ 0.00##', Value );
+  end;
+end;
+
+procedure TFrm_Cadastro.FormatDDD( Sender: TObject );
+var
+  Value: Double;
+  Str: string;
+begin
+  if Length( TVazEdit( Sender ).Text ) > 0 then
+  begin
+    Str := StringReplace( TVazEdit( Sender ).Text, '+', '', [ RfReplaceAll, RfIgnoreCase ] );
+    try
+      Value := StrToInt( Str );
+    except
+      MessageDlg( 'Valor Inválido!', MtInformation, [ MbOK ], 0 );
+      TVazEdit( Sender ).Clear;
+      TVazEdit( Sender ).SetFocus;
+      Exit;
+    end;
+
+    TVazEdit( Sender ).Text := FormatFloat( '+0', Value );
+  end;
 end;
 
 end.

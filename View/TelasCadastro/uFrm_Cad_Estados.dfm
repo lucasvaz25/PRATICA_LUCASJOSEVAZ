@@ -13,14 +13,12 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
     ExplicitWidth = 510
     ExplicitHeight = 326
     inherited lblUsuarioDataCad: TLabel
-      Top = 299
-      ExplicitTop = 299
+      Top = 230
+      ExplicitTop = 230
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 314
-      Top = 299
-      ExplicitLeft = 314
-      ExplicitTop = 299
+      Top = 258
+      ExplicitTop = 258
     end
     object lblEstado: TLabel [3]
       Left = 24
@@ -77,12 +75,14 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
     inherited pnlSalvar: TPanel
       Left = 220
       Top = 230
+      TabOrder = 4
       ExplicitLeft = 220
       ExplicitTop = 230
     end
     inherited pnlSair: TPanel
       Left = 360
       Top = 230
+      TabOrder = 5
       ExplicitLeft = 360
       ExplicitTop = 230
     end
@@ -98,7 +98,7 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       Font.Style = []
       MaxLength = 40
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 1
       TextHint = 'digite o nome do Estado'
       ChangeColor = 14745599
     end
@@ -114,7 +114,7 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       Font.Style = []
       MaxLength = 2
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
       ChangeColor = 14745599
     end
     object edPais: TVazEdit
@@ -130,7 +130,7 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       MaxLength = 40
       ParentFont = False
       ReadOnly = True
-      TabOrder = 5
+      TabOrder = 6
       TextHint = 'digite o nome do Pa'#237's'
       ChangeColor = 14745599
     end
@@ -142,7 +142,7 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 6
+      TabOrder = 7
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -215,7 +215,7 @@ inherited Frm_Cad_Estados: TFrm_Cad_Estados
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 3
       OnExit = edCodPaisExit
       OnKeyPress = edCodPaisKeyPress
       ChangeColor = 14745599

@@ -72,6 +72,9 @@ type
     procedure EdCodCidadeKeyPress( Sender: TObject; var Key: Char );
     procedure ImgPesquisarClick( Sender: TObject );
     procedure RgTpPessoaClick( Sender: TObject );
+    procedure EdCodCondPagExit( Sender: TObject );
+    procedure EdCodCondPagKeyPress( Sender: TObject; var Key: Char );
+    procedure ImgPesquisaCondPagClick( Sender: TObject );
   private
     { Private declarations }
     CidadeControl: TCidadesController;
@@ -227,6 +230,20 @@ begin
     Self.ConsultarCidade;
 end;
 
+procedure TFrm_Cad_Fornecedor.EdCodCondPagExit( Sender: TObject );
+begin
+  inherited;
+  Self.ConsultarCondPag;
+end;
+
+procedure TFrm_Cad_Fornecedor.EdCodCondPagKeyPress( Sender: TObject;
+            var Key: Char );
+begin
+  inherited;
+  if Key = #13 then
+    Self.ConsultarCondPag;
+end;
+
 procedure TFrm_Cad_Fornecedor.FormCreate( Sender: TObject );
 begin
   inherited;
@@ -257,6 +274,12 @@ begin
     Result := 'CNPJ'
   else
     Result := '';
+end;
+
+procedure TFrm_Cad_Fornecedor.ImgPesquisaCondPagClick( Sender: TObject );
+begin
+  inherited;
+  Self.PesquisaBtnCondPag;
 end;
 
 procedure TFrm_Cad_Fornecedor.ImgPesquisarClick( Sender: TObject );

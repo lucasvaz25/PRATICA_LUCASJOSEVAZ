@@ -13,14 +13,12 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
     ExplicitWidth = 688
     ExplicitHeight = 640
     inherited lblUsuarioDataCad: TLabel
-      Top = 613
-      ExplicitTop = 613
+      Top = 544
+      ExplicitTop = 544
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 492
-      Top = 613
-      ExplicitLeft = 492
-      ExplicitTop = 613
+      Top = 572
+      ExplicitTop = 572
     end
     object lblNome: TLabel [3]
       Left = 24
@@ -299,12 +297,14 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
     inherited pnlSalvar: TPanel
       Left = 394
       Top = 544
+      TabOrder = 21
       ExplicitLeft = 394
       ExplicitTop = 544
     end
     inherited pnlSair: TPanel
       Left = 529
       Top = 544
+      TabOrder = 22
       ExplicitLeft = 529
       ExplicitTop = 544
     end
@@ -322,7 +322,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 1
       TextHint = 'digite o nome do funcionario'
       ChangeColor = 14745599
     end
@@ -336,9 +336,9 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 30
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 2
       TextHint = 'Digite o apelido do funcion'#225'rio'
       ChangeColor = 14745599
     end
@@ -355,7 +355,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 3
       Text = ''
       TypeMask = TtmCEP
       ChangeColor = 14745599
@@ -376,7 +376,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
         'Masculino'
         'Feminino')
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 23
     end
     object edNum: TVazEdit
       Left = 580
@@ -391,7 +391,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
       ChangeColor = 14745599
     end
     object edLogradouro: TVazEdit
@@ -406,7 +406,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 40
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 4
       TextHint = 'digite o logradouro'
       ChangeColor = 14745599
     end
@@ -422,7 +422,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 50
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 6
       TextHint = 'digite o bairro'
       ChangeColor = 14745599
     end
@@ -431,6 +431,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Top = 315
       Width = 473
       Height = 29
+      TabStop = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -439,7 +440,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       MaxLength = 50
       ParentFont = False
       ReadOnly = True
-      TabOrder = 10
+      TabOrder = 19
       TextHint = 'digite a cidade'
       ChangeColor = 14745599
     end
@@ -448,6 +449,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Top = 314
       Width = 40
       Height = 29
+      TabStop = False
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -456,12 +458,12 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 50
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 20
       ChangeColor = 14745599
     end
     object edTelefone: TVazMaskEdit
-      Left = 24
-      Top = 366
+      Left = 32
+      Top = 364
       Width = 117
       Height = 29
       EditMask = '(99) 9999-9999;0;_'
@@ -472,7 +474,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 8
       Text = ''
       TypeMask = TtmTelefone
       ChangeColor = 14745599
@@ -489,7 +491,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 40
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 9
       TextHint = 'digite o e-mail'
       ChangeColor = 14745599
     end
@@ -506,7 +508,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 14
+      TabOrder = 10
       Text = ''
       TypeMask = TtmCPF
       ChangeColor = 14745599
@@ -524,7 +526,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 11
       ChangeColor = 14745599
     end
     object pnlPesquisar: TPanel
@@ -535,7 +537,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 17
+      TabOrder = 24
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -590,22 +592,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 18
-      ChangeColor = 14745599
-    end
-    object edCategoria: TVazEdit
-      Left = 460
-      Top = 476
-      Width = 76
-      Height = 29
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      MaxLength = 40
-      ParentFont = False
-      TabOrder = 19
+      TabOrder = 16
       ChangeColor = 14745599
     end
     object edSalario: TVazEdit
@@ -619,9 +606,10 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Name = 'Segoe UI'
       Font.Style = []
       MaxLength = 12
-      NumbersOnly = True
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 14
+      OnEnter = edSalarioExit
+      OnExit = edSalarioExit
       ChangeColor = 14745599
     end
     object edCodCidade: TVazEdit
@@ -639,7 +627,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 20
+      TabOrder = 7
       OnExit = edCodCidadeExit
       OnKeyPress = edCodCidadeKeyPress
       ChangeColor = 14745599
@@ -659,7 +647,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 21
+      TabOrder = 15
       OnExit = edCodCargoExit
       OnKeyPress = edCodCargoKeyPress
       ChangeColor = 14745599
@@ -669,6 +657,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Top = 476
       Width = 183
       Height = 29
+      TabStop = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -678,7 +667,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       NumbersOnly = True
       ParentFont = False
       ReadOnly = True
-      TabOrder = 22
+      TabOrder = 25
       ChangeColor = 14745599
     end
     object pnlPesquisaCargo: TPanel
@@ -689,7 +678,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 23
+      TabOrder = 26
       object imgCargo: TImage
         Left = 0
         Top = 0
@@ -744,7 +733,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 24
+      TabOrder = 13
       Text = ''
       TypeMask = TtmData
       ChangeColor = 14745599
@@ -762,7 +751,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 25
+      TabOrder = 12
       Text = ''
       TypeMask = TtmData
       ChangeColor = 14745599
@@ -780,10 +769,33 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 26
+      TabOrder = 18
       Text = ''
       TypeMask = TtmData
       ChangeColor = 14745599
+    end
+    object edCategoria: TComboBox
+      Left = 458
+      Top = 476
+      Width = 72
+      Height = 29
+      Align = alCustom
+      Style = csOwnerDrawFixed
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ItemHeight = 23
+      ParentFont = False
+      TabOrder = 17
+      Items.Strings = (
+        'A'
+        'B'
+        'C'
+        'D'
+        'E'
+        'AB')
     end
   end
 end

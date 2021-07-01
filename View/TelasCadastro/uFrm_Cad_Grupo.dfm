@@ -71,7 +71,7 @@ inherited Frm_Cad_Grupo: TFrm_Cad_Grupo
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 40
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 3

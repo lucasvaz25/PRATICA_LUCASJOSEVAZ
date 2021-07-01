@@ -7,7 +7,7 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
   TextHeight = 13
   inherited pnlFundo: TPanel
     Height = 671
-    ExplicitHeight = 662
+    ExplicitHeight = 671
     inherited lblUsuarioDataCad: TLabel
       Left = 10
       Top = 575
@@ -358,17 +358,16 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 8
-      ExplicitTop = 548
     end
     inherited pnlSalvar: TPanel
       Top = 575
       TabOrder = 6
-      ExplicitTop = 566
+      ExplicitTop = 575
     end
     inherited pnlSair: TPanel
       Top = 575
       TabOrder = 7
-      ExplicitTop = 566
+      ExplicitTop = 575
     end
     object edCondPag: TVazEdit
       Left = 24
@@ -381,7 +380,7 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 40
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 1
@@ -529,7 +528,7 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
   object TDset_Parcelas: TClientDataSet
     Aggregates = <>
     Params = <>
-    BeforeInsert = TDset_ParcelasBeforeInsert
+    BeforePost = TDset_ParcelasBeforePost
     BeforeDelete = TDset_ParcelasBeforeDelete
     Left = 487
     Top = 400

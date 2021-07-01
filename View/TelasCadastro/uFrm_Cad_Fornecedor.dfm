@@ -14,14 +14,12 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     ExplicitWidth = 655
     ExplicitHeight = 685
     inherited lblUsuarioDataCad: TLabel
-      Top = 658
-      ExplicitTop = 509
+      Top = 589
+      ExplicitTop = 589
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 459
-      Top = 658
-      ExplicitLeft = 554
-      ExplicitTop = 509
+      Top = 617
+      ExplicitTop = 617
     end
     object lblNome: TLabel [3]
       Left = 24
@@ -285,7 +283,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 30
       ParentFont = False
       TabOrder = 4
       TextHint = 'Digite o nome fantasia da empresa'
@@ -301,7 +299,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 15
+      MaxLength = 14
       NumbersOnly = True
       ParentFont = False
       TabOrder = 5
@@ -378,7 +376,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     end
     object edBairro: TVazEdit
       Left = 24
-      Top = 268
+      Top = 266
       Width = 610
       Height = 29
       Font.Charset = DEFAULT_CHARSET
@@ -500,7 +498,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 40
+      MaxLength = 20
       ParentFont = False
       TabOrder = 15
       TextHint = 'digite o nome do contato'
@@ -516,7 +514,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 40
+      MaxLength = 30
       ParentFont = False
       TabOrder = 16
       TextHint = 'digite o site da empresa'
@@ -598,6 +596,8 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 20
+      OnExit = edCodCondPagExit
+      OnKeyPress = edCodCondPagKeyPress
       ChangeColor = 14745599
     end
     object edCondPag: TVazEdit
@@ -661,6 +661,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgPesquisaCondPagClick
         ExplicitLeft = 16
       end
     end

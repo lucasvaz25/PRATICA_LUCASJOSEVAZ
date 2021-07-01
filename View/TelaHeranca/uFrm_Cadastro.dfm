@@ -4,7 +4,6 @@ inherited Frm_Cadastro: TFrm_Cadastro
   ClientHeight = 482
   ClientWidth = 722
   OnShow = FormShow
-  ExplicitTop = -138
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel

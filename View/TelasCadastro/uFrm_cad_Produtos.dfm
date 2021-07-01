@@ -2,6 +2,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
   Caption = 'Frm_Cad_Produto'
   ClientHeight = 568
   ClientWidth = 735
+  OnCreate = FormCreate
   ExplicitWidth = 741
   ExplicitHeight = 597
   PixelsPerInch = 96
@@ -35,9 +36,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
     object lblVlrCusto: TLabel [4]
       Left = 356
       Top = 138
-      Width = 90
+      Width = 83
       Height = 21
-      Caption = 'Pre'#231'o Custo*'
+      Caption = 'Pre'#231'o Custo'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -61,9 +62,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
     object lblUnidade: TLabel [6]
       Left = 72
       Top = 139
-      Width = 58
+      Width = 65
       Height = 21
-      Caption = 'Unidade'
+      Caption = 'Unidade*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -77,6 +78,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Width = 55
       Height = 21
       Caption = 'Estoque'
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -87,9 +89,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
     object lblFornecedor: TLabel [8]
       Left = 72
       Top = 198
-      Width = 79
+      Width = 86
       Height = 21
-      Caption = 'Fornecedor'
+      Caption = 'Fornecedor*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -100,9 +102,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
     object lblSubGrupo: TLabel [9]
       Left = 72
       Top = 255
-      Width = 71
+      Width = 78
       Height = 21
-      Caption = 'SubGrupo'
+      Caption = 'SubGrupo*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -180,23 +182,23 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       ParentFont = False
     end
     inherited edCodigo: TVazEdit
-      TabOrder = 6
+      TabOrder = 12
     end
     inherited pnlSalvar: TPanel
       Left = 465
       Top = 472
-      TabOrder = 7
+      TabOrder = 13
       ExplicitLeft = 465
       ExplicitTop = 472
     end
     inherited pnlSair: TPanel
       Left = 601
       Top = 472
-      TabOrder = 8
+      TabOrder = 14
       ExplicitLeft = 601
       ExplicitTop = 472
     end
-    object edDescricao: TVazEdit
+    object edproduto: TVazEdit
       Left = 24
       Top = 104
       Width = 497
@@ -230,7 +232,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 4
+      OnEnter = edVlrVendaEnter
+      OnExit = edVlrVendaEnter
       ChangeColor = 14745599
     end
     object edVlrVenda: TVazEdit
@@ -248,7 +252,9 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 3
+      OnEnter = edVlrVendaEnter
+      OnExit = edVlrVendaEnter
       ChangeColor = 14745599
     end
     object pnlImage: TPanel
@@ -264,12 +270,13 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 15
       object imgProduto: TImage
         Left = 8
         Top = 20
         Width = 161
         Height = 105
+        Stretch = True
       end
       object lblImageProduto: TLabel
         Left = 35
@@ -301,6 +308,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          OnClick = btnInserirImagemClick
           ExplicitLeft = 32
           ExplicitTop = 16
           ExplicitWidth = 23
@@ -343,6 +351,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Height = 29
       Anchors = [akLeft, akTop, akRight]
       BiDiMode = bdLeftToRight
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -352,7 +361,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 5
       ChangeColor = 14745599
     end
     object edFornecedor: TVazEdit
@@ -370,8 +379,8 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 4
-      TextHint = 'digite o nome do fornecedor'
+      ReadOnly = True
+      TabOrder = 7
       ChangeColor = 14745599
     end
     object pnlPesquisar: TPanel
@@ -382,7 +391,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 10
+      TabOrder = 16
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -418,6 +427,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgPesquisarClick
         ExplicitLeft = 1
         ExplicitTop = 1
         ExplicitWidth = 32
@@ -439,8 +449,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 5
-      TextHint = 'digite o subgrupo'
+      TabOrder = 9
       ChangeColor = 14745599
     end
     object Panel1: TPanel
@@ -451,7 +460,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 11
+      TabOrder = 17
       object Image1: TImage
         Left = 0
         Top = 0
@@ -487,6 +496,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = Image1Click
         ExplicitLeft = 1
         ExplicitTop = 1
         ExplicitWidth = 32
@@ -500,6 +510,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Height = 29
       Anchors = [akLeft, akTop, akRight]
       BiDiMode = bdLeftToRight
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -508,7 +519,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 10
       ChangeColor = 14745599
     end
     object edObs: TMemo
@@ -521,10 +532,11 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
+      MaxLength = 100
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 11
     end
-    object VazEdit1: TVazEdit
+    object edUnidade: TVazEdit
       Left = 72
       Top = 159
       Width = 137
@@ -539,8 +551,8 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 50
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 14
-      TextHint = 'digite o nome do fornecedor'
+      ReadOnly = True
+      TabOrder = 2
       ChangeColor = 14745599
     end
     object Panel2: TPanel
@@ -551,7 +563,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 15
+      TabOrder = 18
       object Image2: TImage
         Left = 0
         Top = 0
@@ -587,13 +599,14 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = Image2Click
         ExplicitLeft = 1
         ExplicitTop = 1
         ExplicitWidth = 32
         ExplicitHeight = 27
       end
     end
-    object edCodFormaPagamento: TVazEdit
+    object edCodUnidade: TVazEdit
       Left = 24
       Top = 159
       Width = 42
@@ -606,10 +619,12 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 1
+      OnExit = edCodUnidadeExit
+      OnKeyPress = edCodUnidadeKeyPress
       ChangeColor = 14745599
     end
-    object VazEdit2: TVazEdit
+    object edCodFornecedor: TVazEdit
       Left = 24
       Top = 220
       Width = 42
@@ -622,10 +637,12 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 17
+      TabOrder = 6
+      OnExit = edCodFornecedorExit
+      OnKeyPress = edCodFornecedorKeyPress
       ChangeColor = 14745599
     end
-    object VazEdit3: TVazEdit
+    object edCodSubgrupo: TVazEdit
       Left = 24
       Top = 278
       Width = 42
@@ -638,8 +655,14 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 18
+      TabOrder = 8
+      OnExit = edCodSubgrupoExit
+      OnKeyPress = edCodSubgrupoKeyPress
       ChangeColor = 14745599
     end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 672
+    Top = 104
   end
 end

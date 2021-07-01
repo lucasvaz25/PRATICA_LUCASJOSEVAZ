@@ -1,11 +1,13 @@
 inherited Frm_Consulta_Produtos: TFrm_Consulta_Produtos
   Caption = 'Frm_Consulta_Produtos'
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlFundo: TPanel
     inherited pnlGrid: TPanel
       inherited DBGrid1: TDBGrid
         DataSource = DsProdutos
+        OnDblClick = DBGrid1DblClick
         Columns = <
           item
             Expanded = False

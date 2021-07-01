@@ -62,24 +62,24 @@ begin
 
     SQL.Clear;
 
-    SQL.Add( 'SELECT P* FROM PRODUTOS P ' );
+    SQL.Add( 'SELECT P.* FROM PRODUTOS P ' );
     case AFilter.TipoConsulta of
 
       TpCCodigo:
         begin
-          SQL.Add( 'WHERE D.CODIGO = ' + IntToStr( AFilter.Codigo ) );
+          SQL.Add( 'WHERE P.CODIGO = ' + IntToStr( AFilter.Codigo ) );
         end;
 
       TpCParam:
         begin
-          SQL.Add( 'WHERE D.produto LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
+          SQL.Add( 'WHERE P.produto LIKE ' + QuotedStr( '%' + AFilter.Parametro + '%' ) );
         end;
 
       TpCTODOS:
         ;
     end;
 
-    SQL.Add( ' ORDER BY D.produto ' );
+    SQL.Add( ' ORDER BY P.produto ' );
     Open;
 
     try
@@ -121,7 +121,7 @@ begin
               SubGrupo := Aux.SubGrupo;
               SubGrupoDao.Recuperar( Aux.SubGrupo.Codigo, TObject( SubGrupo ) );
             finally
-              SubGrupo.Free;
+              SubGrupoDao.Free;
             end;
           end;
         end;
@@ -233,9 +233,12 @@ begin
     if FieldByName( 'COD_SUBGRUPO' ).IsNull then
       SubGrupo.Codigo := 0
     else
-      SubGrupo.Codigo := FieldByName( 'COD_SUBGRUPO' ).AsInteger
-                  ;
-    Imagem.LoadFromStream( TMemoryStream( FieldByName( 'IMAGEM' ).AsString ) );
+      SubGrupo.Codigo := FieldByName( 'COD_SUBGRUPO' ).AsInteger;
+
+    if ( FieldByName( 'IMAGEM' ).IsBlob ) then
+      ( FieldByName( 'IMAGEM' ) as TBlobField ).SaveToStream( Imagem );
+
+    // Imagem.LoadFromStream( TMemoryStream( FieldByName( 'IMAGEM' ).AsString ) );
   end;
 end;
 

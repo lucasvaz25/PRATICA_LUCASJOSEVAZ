@@ -3,7 +3,6 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
   ClientHeight = 640
   ClientWidth = 675
   OnCreate = FormCreate
-  ExplicitTop = -246
   ExplicitWidth = 681
   ExplicitHeight = 669
   PixelsPerInch = 96
@@ -17,14 +16,14 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Anchors = [akLeft, akTop, akRight]
     end
     inherited lblUsuarioDataCad: TLabel
-      Top = 613
-      ExplicitTop = 490
+      Left = -1
+      Top = 544
+      ExplicitLeft = -1
+      ExplicitTop = 544
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 479
-      Top = 613
-      ExplicitLeft = 565
-      ExplicitTop = 490
+      Top = 572
+      ExplicitTop = 572
     end
     object lblNome: TLabel [3]
       Left = 24
@@ -302,7 +301,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 30
       ParentFont = False
       TabOrder = 1
       TextHint = 'Digite o apelido do cliente'
@@ -577,6 +576,8 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       ParentBiDiMode = False
       ParentFont = False
       TabOrder = 19
+      OnExit = edCodCondPagExit
+      OnKeyPress = edCodCondPagKeyPress
       ChangeColor = 14745599
     end
     object edCondPag: TVazEdit
@@ -640,6 +641,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
           50EEF63FC04FEFFA05307EEA3F860000000049454E44AE426082}
         Proportional = True
         ShowHint = True
+        OnClick = imgPesquisaCondPagClick
         ExplicitLeft = 16
       end
     end

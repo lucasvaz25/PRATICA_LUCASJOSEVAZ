@@ -3,7 +3,6 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
   ClientHeight = 505
   ClientWidth = 579
   OnCreate = FormCreate
-  ExplicitTop = -81
   ExplicitWidth = 585
   ExplicitHeight = 534
   PixelsPerInch = 96
@@ -14,14 +13,12 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
     ExplicitWidth = 579
     ExplicitHeight = 505
     inherited lblUsuarioDataCad: TLabel
-      Top = 478
-      ExplicitTop = 478
+      Top = 409
+      ExplicitTop = 409
     end
     inherited lblUsuarioDataAlteracao: TLabel
-      Left = 310
-      Top = 478
-      ExplicitLeft = 310
-      ExplicitTop = 478
+      Top = 437
+      ExplicitTop = 437
     end
     object lblDeposito: TLabel [3]
       Left = 24
@@ -213,7 +210,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 50
+      MaxLength = 40
       ParentFont = False
       TabOrder = 4
       TextHint = 'digite o bairro'
@@ -311,7 +308,7 @@ inherited Frm_Cad_Depositos: TFrm_Cad_Depositos
       Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 100
+      MaxLength = 80
       ParentFont = False
       TabOrder = 8
     end
