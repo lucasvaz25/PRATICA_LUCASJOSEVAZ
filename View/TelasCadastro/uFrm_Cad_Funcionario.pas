@@ -114,7 +114,6 @@ implementation
 uses
   System.Contnrs,
   UEnum,
-  UToolsSistema,
   UFilterSearch,
   UCargos,
   UCidades,
@@ -342,13 +341,13 @@ begin
     DataCad   := Date;
     UserCad   := UpperCase( 'lucas' );
 
-    Data_Admissao := TToolsSistema.GetDefaultDate
+    Data_Admissao := Self.GetDefaultDate
                 ( EdDtAdmissao.EditText, 'Data Admissão' );
 
-    Data_Demissao := TToolsSistema.GetDefaultDate
+    Data_Demissao := Self.GetDefaultDate
                 ( EdDtDemissao.EditText, 'Data Demissão' );
 
-    ValidadeCNH := TToolsSistema.GetDefaultDate
+    ValidadeCNH := Self.GetDefaultDate
                 ( EdValCNH.EditText, 'Val. CNH' );
   end;
 end;
@@ -408,7 +407,7 @@ begin
     Exit;
   end;
 
-  if not TToolsSistema.ValidarCPF( EdCPF.Text ) then
+  if not Self.ValidarCPF( EdCPF.Text ) then
   begin
     MessageDlg( 'Informe um CPF válido!!', MtInformation, [ MbOK ], 0 );
     EdCPF.SetFocus;
@@ -436,11 +435,21 @@ begin
     Exit;
   end;
 
-  DtDemissao := TToolsSistema.GetDefaultDate
+  DtAdmissao := Self.GetDefaultDate
+              ( EdDtAdmissao.EditText, 'Data Admissão' );
+  if DtAdmissao = 0 then
+  begin
+    MessageDlg( 'Informe uma data de admissão válida!!', MtInformation, [ MbOK ], 0 );
+    EdDtAdmissao.Clear;
+    EdDtAdmissao.SetFocus;
+    Exit;
+  end;
+
+  DtDemissao := Self.GetDefaultDate
               ( EdDtDemissao.EditText, 'Data Demissão' );
   if ( DtDemissao > 0 ) then
   begin
-    DtAdmissao := TToolsSistema.GetDefaultDate
+    DtAdmissao := Self.GetDefaultDate
                 ( EdDtAdmissao.EditText, 'Data Admissão' );
     if ( DtAdmissao > DtDemissao ) then
     begin
@@ -464,8 +473,17 @@ begin
       EdCategoria.SetFocus;
       Exit;
     end;
-    DtCNH := TToolsSistema.GetDefaultDate
+    DtCNH := Self.GetDefaultDate
                 ( EdValCNH.EditText, 'Val. CNH' );
+
+    if DtCNH = 0 then
+    begin
+      MessageDlg( 'Informe uma Data de Validade da CNH válida!!', MtInformation, [ MbOK ], 0 );
+      EdValCNH.Clear;
+      EdValCNH.SetFocus;
+      Exit;
+    end;
+
     if DtCNH < Date then
     begin
       MessageDlg( 'Insira uma Data de Validade da CNH vencida!!', MtInformation, [ MbOK ], 0 );

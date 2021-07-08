@@ -73,9 +73,9 @@ inherited Frm_Cad_SubGrupo: TFrm_Cad_SubGrupo
       ParentFont = False
     end
     inherited pnlSalvar: TPanel
-      Left = 214
+      Left = 250
       Top = 353
-      ExplicitLeft = 214
+      ExplicitLeft = 250
       ExplicitTop = 353
     end
     inherited pnlSair: TPanel

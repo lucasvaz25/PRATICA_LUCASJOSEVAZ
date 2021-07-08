@@ -105,7 +105,7 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add( 'DELETE FROM FormasPagamentos WHERE CODIGO = ' + IntToStr( VID ) );
+      SQL.Add( 'DELETE FROM F_PAGAMENTOS WHERE CODIGO = ' + IntToStr( VID ) );
       ExecSQL;
     end;
     DM.Trans.Commit;

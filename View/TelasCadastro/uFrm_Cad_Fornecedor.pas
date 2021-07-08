@@ -105,7 +105,6 @@ implementation
 uses
   System.Contnrs,
   UEnum,
-  UToolsSistema,
   UFilterSearch,
   UCondicaoPagamento,
   UCidades,
@@ -172,6 +171,12 @@ begin
         EdCidade.Text := TCidade( List[ 0 ] ).Cidade;
         EdUF.Text     := TCidade( List[ 0 ] ).Estado.UF;
         FornecedorControl.GetEntity.Cidade.CopiarDados( TCidade( List[ 0 ] ) );
+
+        if RgTpPessoa.ItemIndex = 0 then
+          if FornecedorControl.GetEntity.Cidade.Estado.Pais.Nome = 'BRASIL' then
+            LblIE.Caption := 'RG*'
+          else
+            LblIE.Caption := 'RG';
       end
       else
       begin
@@ -264,6 +269,8 @@ begin
     BlockFields
   else
     UnlockFields;
+
+  Self.ChangeTpPessoa;
 end;
 
 function TFrm_Cad_Fornecedor.GetTpDoc: string;
@@ -300,6 +307,12 @@ begin
     EdCidade.Text    := Frm.CidadeControl.GetEntity.Cidade;
     EdCodCidade.Text := IntToStr( Frm.CidadeControl.GetEntity.Codigo );
     FornecedorControl.GetEntity.Cidade.CopiarDados( Frm.CidadeControl.GetEntity );
+
+    if RgTpPessoa.ItemIndex = 0 then
+      if FornecedorControl.GetEntity.Cidade.Estado.Pais.Nome = 'BRASIL' then
+        LblIE.Caption := 'RG*'
+      else
+        LblIE.Caption := 'RG';
   finally
     Frm.Release;
   end;
@@ -346,6 +359,7 @@ begin
     EdContato.Text       := Contato;
     EdSite.Text          := Site;
     RgTpPessoa.ItemIndex := Integer( TpPessoa );
+    RgSexo.ItemIndex     := Integer( Sexo );
   end;
 end;
 
@@ -372,6 +386,7 @@ begin
     Contato               := EdContato.Text;
     Site                  := EdSite.Text;
     TpPessoa              := TTipoPessoa( RgTpPessoa.ItemIndex );
+    Sexo                  := TSexo( RgSexo.ItemIndex );
   end;
 end;
 
@@ -444,7 +459,7 @@ begin
 
   if RgTpPessoa.ItemIndex = 0 then
   begin
-    if TToolsSistema.ValidarCPF( EdCNPJ.Text ) then
+    if not Self.ValidarCPF( EdCNPJ.Text ) then
     begin
       MessageDlg( 'Informe um CPF válido!!', MtInformation, [ MbOK ], 0 );
       EdCNPJ.SetFocus;
@@ -457,10 +472,28 @@ begin
       RgSexo.SetFocus;
       Exit;
     end;
+
+    if ( Pos( '*', LblIE.Caption ) > 0 ) then
+    begin
+      if EdIE.Text = '' then
+      begin
+        MessageDlg( 'Informe um RG válido!!', MtInformation, [ MbOK ], 0 );
+        EdIE.SetFocus;
+        Exit;
+      end;
+    end;
+
   end
   else
   begin
     // validacaoCNPJ
+  end;
+
+  if ( EdCodCondPag.Text = '' ) or ( EdCondPag.Text = '' ) then
+  begin
+    MessageDlg( 'Selecione uma condição de pagamento válida!!', MtInformation, [ MbOK ], 0 );
+    EdCodCondPag.SetFocus;
+    Exit;
   end;
 
   if EdCodigo.Text = '0' then

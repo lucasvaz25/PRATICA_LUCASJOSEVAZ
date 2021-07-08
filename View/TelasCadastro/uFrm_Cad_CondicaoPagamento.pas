@@ -79,11 +79,11 @@ type
                 DataCol: Integer; Column: TColumn; State: TGridDrawState );
     procedure BtnInserirListaClick( Sender: TObject );
     procedure BtnEditarClick( Sender: TObject );
-    procedure TDset_ParcelasBeforeDelete( DataSet: TDataSet );
     procedure DBGrid1CellClick( Column: TColumn );
-    procedure TDset_ParcelasBeforePost( DataSet: TDataSet );
+    procedure EdTxJurosEnter( Sender: TObject );
   private
     { Private declarations }
+    TotalPorcentagem: Double;
     FormaPgtoControl: TFormasPagamentosController;
     ParcelaControl: TParcelasController;
     procedure PopulaObj;
@@ -99,6 +99,7 @@ type
     procedure ExcluirParcela;
 
     function ValidarParcela: Boolean;
+    procedure CalcPorcentagem( ADataSet: TDataSet );
   public
     { Public declarations }
     CondPagControl: TCondicaoPagamentoController;
@@ -132,7 +133,11 @@ procedure TFrm_Cad_CondicaoPagamento.BtnInserirListaClick( Sender: TObject );
 begin
   inherited;
   if ValidarParcela then
+  begin
     Self.InserirParcela;
+    EdParcelas.Text := TDset_Parcelas.RecordCount.ToString;
+    Self.CalcPorcentagem( TDset_Parcelas );
+  end;
 end;
 
 procedure TFrm_Cad_CondicaoPagamento.ConsultaFormaPgto;
@@ -212,12 +217,12 @@ begin
   // DBGrid1.Canvas.FillRect( Rect );
   // ImageList1.Draw( DBGrid1.Canvas, Rect.Left + 24, Rect.Top + 1, 2 );
   // end;
-  if Column.Index = 4 then
-  begin
-    Column.Title.Caption := '';
-    DBGrid1.Canvas.FillRect( Rect );
-    ImageList1.Draw( DBGrid1.Canvas, Rect.Left + 5, Rect.Top + 1, 2 );
-  end;
+  // if Column.Index = 4 then
+  // begin
+  // Column.Title.Caption := '';
+  // DBGrid1.Canvas.FillRect( Rect );
+  // ImageList1.Draw( DBGrid1.Canvas, Rect.Left + 5, Rect.Top + 1, 2 );
+  // end;
 end;
 
 procedure TFrm_Cad_CondicaoPagamento.EdCodFormaPagamentoExit( Sender: TObject );
@@ -241,21 +246,34 @@ begin
     MessageDlg( 'Nenhum Item Selecionado!', MtInformation, [ MbOK ], 0 );
     Exit;
   end;
+  TDset_Parcelas.Last;
+  TDset_Parcelas.Delete;
+  EdParcelas.Text := TDset_Parcelas.RecordCount.ToString;
+  Self.CalcPorcentagem( TDset_Parcelas );
+  // with TDset_Parcelas do
+  // begin
+  // EdDias.Text              := FieldByName( 'dias' ).AsInteger.ToString;
+  // EdPorcentagem.Text       := FieldByName( 'porcentagem' ).AsFloat.ToString;
+  // EdCodFormaPagamento.Text := FieldByName( 'cod_formapgto' ).AsInteger.ToString;
+  // EdFormaPagamento.Text    := FieldByName( 'formapagamento' ).AsString;
+  // Self.ConsultaFormaPgto;
+  // TDset_Parcelas.Delete;
+  // end;
+end;
 
-  with TDset_Parcelas do
-  begin
-    EdDias.Text              := FieldByName( 'dias' ).AsInteger.ToString;
-    EdPorcentagem.Text       := FieldByName( 'porcentagem' ).AsFloat.ToString;
-    EdCodFormaPagamento.Text := FieldByName( 'cod_formapgto' ).AsInteger.ToString;
-    EdFormaPagamento.Text    := FieldByName( 'formapagamento' ).AsString;
-    Self.ConsultaFormaPgto;
-    TDset_Parcelas.Delete;
-  end;
+procedure TFrm_Cad_CondicaoPagamento.EdTxJurosEnter( Sender: TObject );
+begin
+  inherited;
+  Self.FormatNumeroDecimais( Sender );
 end;
 
 procedure TFrm_Cad_CondicaoPagamento.ExcluirParcela;
 begin
-  TDset_Parcelas.Delete;
+  if not( TDset_Parcelas.IsEmpty ) then
+  begin
+    TDset_Parcelas.Delete;
+    Self.CalcPorcentagem( TDset_Parcelas );
+  end;
 end;
 
 procedure TFrm_Cad_CondicaoPagamento.FormCreate( Sender: TObject );
@@ -332,13 +350,14 @@ begin
     EdCodigo.Text                   := Codigo.ToString;
     EdCondPag.Text                  := CondPag;
     EdParcelas.Text                 := Parcelas.ToString;
-    EdTxJuros.Text                  := FloatToStr( TxJuros );
-    EdMulta.Text                    := FloatToStr( Multa );
-    EdDesconto.Text                 := FloatToStr( Desconto );
+    EdTxJuros.Text                  := FormatFloat( '0.00##', TxJuros );
+    EdMulta.Text                    := FormatFloat( '0.00##', Multa );
+    EdDesconto.Text                 := FormatFloat( '0.00##', Desconto );
     LblUsuarioDataCad.Caption       := 'Usuário Cad.:' + UserCad + ' - Data Cad.' + DateToStr( DataCad );
     LblUsuarioDataAlteracao.Caption := 'Usuário Alt.:' + UserAlt + ' - Data Alt.' + DateToStr( DataAlt );
   end;
   Self.PopularDataSetParcelas;
+  Self.CalcPorcentagem( TDset_Parcelas );
 end;
 
 procedure TFrm_Cad_CondicaoPagamento.PopulaObj;
@@ -350,7 +369,12 @@ begin
     Parcelas := StrToInt( EdParcelas.Text );
     TxJuros  := StrToFloat( EdTxJuros.Text );
     Multa    := StrToFloat( EdMulta.Text );
-    Desconto := StrToFloat( EdDesconto.Text );
+
+    if EdDesconto.Text = '' then
+      Desconto := 0
+    else
+      Desconto := StrToFloat( EdDesconto.Text );
+
     if ( Codigo = 0 ) then
     begin
       Datacad := Date;
@@ -464,28 +488,17 @@ begin
   end;
 end;
 
-procedure TFrm_Cad_CondicaoPagamento.TDset_ParcelasBeforeDelete(
-            DataSet: TDataSet );
-var
-  I: Integer;
+procedure TFrm_Cad_CondicaoPagamento.CalcPorcentagem( ADataSet: TDataSet );
 begin
-  inherited;
-  DataSet.First;
-  for I := 0 to DataSet.RecordCount - 1 do
+  TotalPorcentagem := 0;
+  ADataSet.First;
+  while not( ADataSet.Eof ) do
   begin
-    DataSet.Edit;
-    DataSet.FieldByName( 'numero' ).AsInteger := I + 1;
-    DataSet.Next;
+    TotalPorcentagem := TotalPorcentagem + ADataSet.FieldByName( 'porcentagem' ).AsFloat;
+    ADataSet.Next;
   end;
-
-  EdParcelas.Text := DataSet.RecordCount.ToString;
-end;
-
-procedure TFrm_Cad_CondicaoPagamento.TDset_ParcelasBeforePost(
-            DataSet: TDataSet );
-begin
-  inherited;
-  EdParcelas.Text := DataSet.RecordCount.ToString;
+  LblTotalPorcentagem.Caption := 'Total ' + TotalPorcentagem.ToString + '%';
+  ProgressBar1.Position       := Trunc( TotalPorcentagem );
 end;
 
 function TFrm_Cad_CondicaoPagamento.ValidaForm: Boolean;
@@ -503,6 +516,27 @@ begin
   begin
     MessageDlg( 'Não é permitido Condição de Pagamento sem nenhum parcela lançada!', MtInformation, [ MbOK ], 0 );
     EdDias.SetFocus;
+    Exit;
+  end;
+
+  if ( TotalPorcentagem < 100 ) then
+  begin
+    MessageDlg( 'O total de porcentagem das parcelas deve ser igual a 100%!', MtInformation, [ MbOK ], 0 );
+    EdDias.SetFocus;
+    Exit;
+  end;
+
+  if EdTxJuros.Text = '' then
+  begin
+    MessageDlg( 'Informe uma taxa de juros válida!', MtInformation, [ MbOK ], 0 );
+    EdTxJuros.SetFocus;
+    Exit;
+  end;
+
+  if EdMulta.Text = '' then
+  begin
+    MessageDlg( 'Informe uma multa válida!', MtInformation, [ MbOK ], 0 );
+    EdMulta.SetFocus;
     Exit;
   end;
 
@@ -528,6 +562,18 @@ begin
     Exit;
   end;
 
+  if not( TDset_Parcelas.IsEmpty ) then
+  begin
+    TDset_Parcelas.Last;
+
+    if ( StrToInt( EdDias.Text ) <= TDset_Parcelasdias.Value ) then
+    begin
+      MessageDlg( 'Os dias da parcela não podem ser inferior ou igual aos dias da parcela anterior!', MtInformation, [ MbOK ], 0 );
+      EdDias.SetFocus;
+      Exit;
+    end;
+  end;
+
   if EdPorcentagem.Text = '' then
   begin
     MessageDlg( 'Insira um valor válido para Porcentagem ' + Chr( 39 ) + '%' + Chr( 39 ) + ' da Parcela!', MtInformation, [ MbOK ], 0 );
@@ -538,6 +584,20 @@ begin
   if ( EdCodFormaPagamento.Text = '' ) or ( EdFormaPagamento.Text = '' ) then
   begin
     MessageDlg( 'Insira uma forma de pagamento válida para a Parcela!', MtInformation, [ MbOK ], 0 );
+    EdPorcentagem.SetFocus;
+    Exit;
+  end;
+
+  if not( TotalPorcentagem < 100 ) then
+  begin
+    MessageDlg( 'O total de porcentagem das parcelas já atingiu 100%!', MtInformation, [ MbOK ], 0 );
+    EdPorcentagem.SetFocus;
+    Exit;
+  end;
+
+  if ( TotalPorcentagem + StrToFloat( EdPorcentagem.Text ) ) > 100 then
+  begin
+    MessageDlg( 'O valor de porcentagem informado é superior a 100%!', MtInformation, [ MbOK ], 0 );
     EdPorcentagem.SetFocus;
     Exit;
   end;

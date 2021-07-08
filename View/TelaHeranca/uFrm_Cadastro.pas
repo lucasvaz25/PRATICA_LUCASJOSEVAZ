@@ -36,10 +36,14 @@ type
     procedure FormShow( Sender: TObject );
   protected
     procedure FormatCurrency( Sender: TObject );
+    procedure FormatNumeroDecimais( Sender: TObject );
     procedure FormatDDD( Sender: TObject );
     procedure UpperCaseField;
     procedure ClearFieldsDate;
     procedure PopulaForm; virtual;
+
+    function ValidarCPF( const Value: string ): Boolean;
+    function GetDefaultDate( const ADate, Field: string ): TDateTime;
   public
     { Public declarations }
     Salvou: Boolean;
@@ -117,6 +121,21 @@ begin
   end;
 end;
 
+function TFrm_Cadastro.GetDefaultDate( const ADate, Field: string ): TDateTime;
+begin
+  if not( ADate.Equals( '__/__/____' ) ) then
+  begin
+    if not( TryStrToDate( ADate, Result ) ) then
+    begin
+      MessageDlg( 'Data Inválida!' + #13#10 + 'Campo: ' +
+                  Field + '.', MtError, [ MbOK ], 0 );
+      Abort;
+    end;
+  end
+  else
+    Result := 0;
+end;
+
 procedure TFrm_Cadastro.LimparCampos;
 var
   I: Integer;
@@ -174,6 +193,56 @@ begin
 
 end;
 
+function TFrm_Cadastro.ValidarCPF( const Value: string ): Boolean;
+var
+  NumCPF: array [ 1 .. 11 ] of Integer;
+  I, Resto, Soma: Integer;
+begin
+
+  if not( Value.Length = 11 ) then
+  begin
+    Result := False;
+    Exit;
+  end;
+
+  for I         := Low( Value ) to High( Value ) do
+    NumCPF[ I ] := StrToInt( Value[ I ] );
+
+  /// ////   1º digito
+  Soma   := 0;
+  for I  := 1 to 9 do
+    Soma := Soma + ( NumCPF[ I ] * ( 11 - I ) );
+
+  Resto := ( Soma * 10 ) mod 11;
+
+  if ( Resto = 10 ) or ( Resto = 11 ) then
+    Resto := 0;
+
+  if not( Resto = NumCPF[ 10 ] ) then
+  begin
+    Result := False;
+    Exit;
+  end;
+
+  /// ////   2º digito
+  Soma   := 0;
+  for I  := 1 to 10 do
+    Soma := Soma + ( NumCPF[ I ] * ( 12 - I ) );
+
+  Resto := ( Soma * 10 ) mod 11;
+
+  if ( Resto = 10 ) or ( Resto = 11 ) then
+    Resto := 0;
+
+  if not( Resto = NumCPF[ 11 ] ) then
+  begin
+    Result := False;
+    Exit;
+  end;
+
+  Result := True;
+end;
+
 procedure TFrm_Cadastro.FormatCurrency( Sender: TObject );
 var
   Value: Currency;
@@ -213,6 +282,27 @@ begin
     end;
 
     TVazEdit( Sender ).Text := FormatFloat( '+0', Value );
+  end;
+end;
+
+procedure TFrm_Cadastro.FormatNumeroDecimais( Sender: TObject );
+var
+  Value: Real;
+  Str: string;
+begin
+  if Length( TVazEdit( Sender ).Text ) > 0 then
+  begin
+    Str := TVazEdit( Sender ).Text;
+    try
+      Value := StrToFloat( Str );
+    except
+      MessageDlg( 'Valor Inválido!', MtInformation, [ MbOK ], 0 );
+      TVazEdit( Sender ).Clear;
+      TVazEdit( Sender ).SetFocus;
+      Exit;
+    end;
+
+    TVazEdit( Sender ).Text := FormatFloat( '0.00##', Value );
   end;
 end;
 

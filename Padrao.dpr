@@ -83,7 +83,6 @@ uses
   uClientesController in 'Controller\uClientesController.pas',
   uFornecedoresDao in 'Model\DAO\uFornecedoresDao.pas',
   uFornecedoresController in 'Controller\uFornecedoresController.pas',
-  uToolsSistema in 'Model\Classes\uToolsSistema.pas',
   Vcl.Themes,
   Vcl.Styles,
   uFrm_Cad_CondicaoPagamento in 'View\TelasCadastro\uFrm_Cad_CondicaoPagamento.pas' {Frm_Cad_CondicaoPagamento},

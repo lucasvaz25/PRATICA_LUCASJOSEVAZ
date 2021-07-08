@@ -103,7 +103,10 @@ begin
       Filtro.Codigo       := StrToInt( EdCodGrupo.Text );
       List                := GrupoControl.Consulta( Filtro );
       if List.Count > 0 then
-        EdGrupo.Text := TGrupos( List[ 0 ] ).Grupo
+      begin
+        SubGrupoControl.GetEntity.Grupo.CopiarDados( TGrupos( List[ 0 ] ) );
+        EdGrupo.Text := TGrupos( List[ 0 ] ).Grupo;
+      end
       else
       begin
         ShowMessage( 'Grupo não encontrado!!' );

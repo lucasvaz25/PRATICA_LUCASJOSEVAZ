@@ -271,6 +271,7 @@ inherited Frm_Cad_Produto: TFrm_Cad_Produto
       Font.Style = []
       ParentFont = False
       TabOrder = 15
+      Visible = False
       object imgProduto: TImage
         Left = 8
         Top = 20

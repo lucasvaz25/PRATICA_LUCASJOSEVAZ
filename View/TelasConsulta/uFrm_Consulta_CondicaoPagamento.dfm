@@ -36,8 +36,7 @@ inherited Frm_Consulta_CondicaoPagamento: TFrm_Consulta_CondicaoPagamento
             Expanded = False
             FieldName = 'usercad'
             Title.Caption = 'Usu'#225'rio Cad.'
-            Width = 160
-            Visible = True
+            Visible = False
           end>
       end
     end

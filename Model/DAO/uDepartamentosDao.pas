@@ -165,11 +165,11 @@ begin
   Dept := TDepartamentos( Value );
   DM.Trans.StartTransaction;
   try
-    with DM.QryGrupos do
+    with DM.QryDepartamentos do
     begin
       Close;
       SQl.Clear;
-      SQL.Add( 'INSERT INTO GRUPOS ( ' );
+      SQL.Add( 'INSERT INTO DEPARTAMENTOS ( ' );
       SQL.Add( 'CODIGO, DATA_CAD, USER_CAD, ' );
       SQL.Add( 'DEPARTAMENTO, ' );
       SQL.Add( 'USER_ALT, DATA_ALT ' );

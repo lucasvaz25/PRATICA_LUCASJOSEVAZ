@@ -379,7 +379,7 @@ begin
     if List <> nil then
     begin
       for I := 0 to List.Count - 1 do
-        if ( Str = TFuncionarios( List[ I ] ).Nome ) then
+        if ( Str = TFuncionarios( List[ I ] ).CPF ) then
         begin
           Result := True;
           Break;

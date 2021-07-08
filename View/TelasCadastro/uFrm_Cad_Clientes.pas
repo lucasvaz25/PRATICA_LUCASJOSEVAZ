@@ -106,7 +106,6 @@ implementation
 
 uses
   System.Contnrs,
-  UToolsSistema,
   UFilterSearch,
   UCondicaoPagamento,
   UCidades,
@@ -146,6 +145,12 @@ begin
         EdCidade.Text := TCidade( List[ 0 ] ).Cidade;
         EdUF.Text     := TCidade( List[ 0 ] ).Estado.UF;
         ClienteControl.GetEntity.Cidade.CopiarDados( TCidade( List[ 0 ] ) );
+
+        if RgTpPessoa.ItemIndex = 0 then
+          if ClienteControl.GetEntity.Cidade.Estado.Pais.Nome = 'BRASIL' then
+            LblRG.Caption := 'RG*'
+          else
+            LblRG.Caption := 'RG';
       end
       else
       begin
@@ -233,6 +238,7 @@ begin
         LblRG.Caption           := 'RG*';
         LblDtNasc.Caption       := 'Data Nascimento';
         RgSexo.Visible          := True;
+        RgSexo.Caption          := 'Sexo*';
       end;
     1:
       begin
@@ -285,6 +291,13 @@ begin
     EdCidade.Text    := Frm.CidadeControl.GetEntity.Cidade;
     EdCodCidade.Text := IntToStr( Frm.CidadeControl.GetEntity.Codigo );
     ClienteControl.GetEntity.Cidade.CopiarDados( Frm.CidadeControl.GetEntity );
+
+    if RgTpPessoa.ItemIndex = 0 then
+      if ClienteControl.GetEntity.Cidade.Estado.Pais.Nome = 'BRASIL' then
+        LblRG.Caption := 'RG*'
+      else
+        LblRG.Caption := 'RG';
+
   finally
     Frm.Release;
   end;
@@ -355,7 +368,7 @@ begin
     CPF                  := EdCPF.Text;
     RG                   := EdRG.Text;
     Sexo                 := TSexo( RgSexo.ItemIndex );
-    DataNasc             := TToolsSistema.GetDefaultDate( EdDtNasc.EditText, 'Data Nascimento' );
+    DataNasc             := Self.GetDefaultDate( EdDtNasc.EditText, 'Data Nascimento' );
     TpPessoa             := TTipoPessoa( RgTpPessoa.ItemIndex );
     CondPagamento.Codigo := StrToInt( EdCodCondPag.Text );
   end;
@@ -425,7 +438,7 @@ begin
 
   if RgTpPessoa.ItemIndex = 0 then
   begin
-    if not TToolsSistema.ValidarCPF( EdCPF.Text ) then
+    if not Self.ValidarCPF( EdCPF.Text ) then
     begin
       MessageDlg( 'Informe um CPF válido!!', MtInformation, [ MbOK ], 0 );
       EdCPF.SetFocus;
@@ -438,14 +451,31 @@ begin
       RgSexo.SetFocus;
       Exit;
     end;
+
+    if ( Pos( '*', LblRG.Caption ) > 0 ) then
+    begin
+      if EdRG.Text = '' then
+      begin
+        MessageDlg( 'Informe um RG válido!!', MtInformation, [ MbOK ], 0 );
+        EdRG.SetFocus;
+        Exit;
+      end;
+    end;
   end
   else
   begin
     // validacaoCNPJ
   end;
 
-  DtNascimento := TToolsSistema.GetDefaultDate
+  DtNascimento := Self.GetDefaultDate
               ( EdDtNasc.EditText, 'Data Nascimento' );
+
+  if ( EdCodCondPag.Text = '' ) or ( EdCondPag.Text = '' ) then
+  begin
+    MessageDlg( 'Selecione uma condição de pagamento válida!!', MtInformation, [ MbOK ], 0 );
+    EdCodCondPag.SetFocus;
+    Exit;
+  end;
 
   if EdCodigo.Text = '0' then
     if ClienteControl.VerificaExisteCPF_CNPJ( UpperCase( EdCPF.Text ) ) then

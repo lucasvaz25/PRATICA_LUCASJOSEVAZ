@@ -18,6 +18,9 @@ type
     Qry: TFDQuery;
     procedure FieldsToObj( var Value: TCondicaoPagamento );
     procedure ObjToFields( var Value: TCondicaoPagamento );
+
+    function RetornaCod: Integer;
+
   public
     constructor Create;
     destructor Destroy;
@@ -208,9 +211,11 @@ begin
       SQL.Add( ':MULTA, :DESCONTO, ' );
       SQL.Add( ':USER_ALT, :DATA_ALT' );
 
-      SQL.Add( ')' );
+      SQL.Add( ') ' );
       ObjToFields( CondicaoPagamento );
       ExecSQL;
+
+      CondicaoPagamento.Codigo := RetornaCod;
     end;
     DM.Trans.Commit;
   except
@@ -260,6 +265,20 @@ begin
   finally
     Afilter.Free;
     List.Free;
+  end;
+end;
+
+function TCondicaoPagamentoDao.RetornaCod: Integer;
+begin
+  with Qry do
+  begin
+    SQL.Clear;
+
+    SQL.Add( 'SELECT FIRST 1 CODIGO FROM COND_PAG ORDER BY CODIGO DESC ' );
+
+    Open;
+    Result := FieldByName( 'CODIGO' ).AsInteger;
+    Close;
   end;
 end;
 

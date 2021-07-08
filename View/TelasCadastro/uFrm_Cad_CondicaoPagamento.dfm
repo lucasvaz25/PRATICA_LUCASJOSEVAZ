@@ -75,9 +75,9 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
     object lblDesconto: TLabel [7]
       Left = 204
       Top = 137
-      Width = 72
+      Width = 65
       Height = 21
-      Caption = 'Desconto*'
+      Caption = 'Desconto'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -200,6 +200,7 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
         NumbersOnly = True
         ParentFont = False
         TabOrder = 1
+        OnExit = edTxJurosEnter
         ChangeColor = 14745599
       end
       object edFormaPagamento: TVazEdit
@@ -334,8 +335,9 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
           Width = 80
           Height = 29
           Cursor = crHandPoint
+          Hint = 'Excluir a '#250'ltima parcela lan'#231'ada'
           Align = alClient
-          Caption = '&Editar'
+          Caption = '&Excluir'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindow
@@ -343,6 +345,8 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
           OnClick = btnEditarClick
           ExplicitLeft = 4
           ExplicitWidth = 121
@@ -464,8 +468,8 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
           item
             Expanded = False
             FieldName = 'botao'
-            Width = 26
-            Visible = True
+            Width = -1
+            Visible = False
           end>
       end
     end
@@ -480,9 +484,10 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       Font.Name = 'Segoe UI'
       Font.Style = []
       MaxLength = 12
-      NumbersOnly = True
       ParentFont = False
       TabOrder = 3
+      OnEnter = edTxJurosEnter
+      OnExit = edTxJurosEnter
       ChangeColor = 14745599
     end
     object edMulta: TVazEdit
@@ -496,9 +501,10 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       Font.Name = 'Segoe UI'
       Font.Style = []
       MaxLength = 12
-      NumbersOnly = True
       ParentFont = False
       TabOrder = 4
+      OnEnter = edTxJurosEnter
+      OnExit = edTxJurosEnter
       ChangeColor = 14745599
     end
     object edDesconto: TVazEdit
@@ -512,24 +518,25 @@ inherited Frm_Cad_CondicaoPagamento: TFrm_Cad_CondicaoPagamento
       Font.Name = 'Segoe UI'
       Font.Style = []
       MaxLength = 12
-      NumbersOnly = True
       ParentFont = False
       TabOrder = 5
+      OnEnter = edTxJurosEnter
+      OnExit = edTxJurosEnter
       ChangeColor = 14745599
     end
     object ProgressBar1: TProgressBar
-      Left = 530
-      Top = 522
+      Left = 98
+      Top = 518
       Width = 150
       Height = 17
+      BarColor = clHighlight
+      BackgroundColor = clHighlight
       TabOrder = 11
     end
   end
   object TDset_Parcelas: TClientDataSet
     Aggregates = <>
     Params = <>
-    BeforePost = TDset_ParcelasBeforePost
-    BeforeDelete = TDset_ParcelasBeforeDelete
     Left = 487
     Top = 400
     object TDset_Parcelasnumero: TIntegerField

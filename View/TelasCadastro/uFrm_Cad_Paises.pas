@@ -32,6 +32,7 @@ type
     procedure FormDestroy( Sender: TObject );
   private
     { Private declarations }
+    NomePais: string;
     procedure PopulaObj;
     procedure PopulaForm; override;
     function ValidaForm: Boolean;
@@ -71,6 +72,7 @@ begin
   begin
     EdCodigo.Text             := IntToStr( Codigo );
     EdPais.Text               := Nome;
+    NomePais                  := Nome;
     EdSigla.Text              := Sigla;
     EdDDI.Text                := DDI;
     LblUsuarioDataCad.Caption := 'Usuário: ' + Usercad + ' - Data Cadastro :' + Datetostr( DataCad );
@@ -139,12 +141,24 @@ begin
   end;
 
   if EdCodigo.Text = '0' then
+  begin
     if Paiscontrol.VerificaExiste( UpperCase( EdPais.Text ) ) then
     begin
       MessageDlg( 'Já existe um País com esse nome!!', MtInformation, [ MbOK ], 0 );
       EdPais.SetFocus;
       Exit;
     end;
+  end
+  else
+  begin
+    if ( NomePais <> EdPais.Text ) then
+      if Paiscontrol.VerificaExiste( UpperCase( EdPais.Text ) ) then
+      begin
+        MessageDlg( 'Já existe um País com esse nome!!', MtInformation, [ MbOK ], 0 );
+        EdPais.SetFocus;
+        Exit;
+      end;
+  end;
 
   Result := True;
 end;

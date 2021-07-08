@@ -10,6 +10,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
   inherited pnlFundo: TPanel
     Width = 675
     Height = 640
+    ExplicitLeft = 8
     ExplicitWidth = 675
     ExplicitHeight = 640
     inherited lblCodigo: TLabel
@@ -197,10 +198,10 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
     end
     object lblCondPag: TLabel [16]
       Left = 84
-      Top = 456
-      Width = 122
+      Top = 455
+      Width = 129
       Height = 21
-      Caption = 'Cond. Pagamento'
+      Caption = 'Cond. Pagamento*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -235,19 +236,19 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       ParentFont = False
     end
     inherited edCodigo: TVazEdit
-      TabOrder = 11
+      TabOrder = 14
     end
     inherited pnlSalvar: TPanel
       Left = 380
       Top = 544
-      TabOrder = 12
+      TabOrder = 15
       ExplicitLeft = 380
       ExplicitTop = 544
     end
     inherited pnlSair: TPanel
       Left = 528
       Top = 544
-      TabOrder = 13
+      TabOrder = 16
       ExplicitLeft = 528
       ExplicitTop = 544
     end
@@ -288,7 +289,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
         'J'#250'ridica')
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 14
+      TabOrder = 17
       OnClick = rgTpPessoaClick
     end
     object edNomeFantasia: TVazEdit
@@ -320,7 +321,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 10
       Text = ''
       TypeMask = TtmCPF
       ChangeColor = 14745599
@@ -341,7 +342,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
         'Masculino'
         'Feminino')
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 18
     end
     object edCEP: TVazMaskEdit
       Left = 543
@@ -421,13 +422,13 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Style = []
       MaxLength = 50
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 7
       TextHint = 'digite a cidade'
       ChangeColor = 14745599
     end
     object edUF: TVazEdit
-      Left = 609
-      Top = 314
+      Left = 607
+      Top = 315
       Width = 40
       Height = 29
       Enabled = False
@@ -438,7 +439,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Style = []
       MaxLength = 50
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 19
       ChangeColor = 14745599
     end
     object pnlPesquisar: TPanel
@@ -449,7 +450,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 17
+      TabOrder = 20
       object imgPesquisar: TImage
         Left = 0
         Top = 0
@@ -503,7 +504,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 8
       Text = ''
       TypeMask = TtmTelefone
       ChangeColor = 14745599
@@ -520,7 +521,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Style = []
       MaxLength = 40
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 9
       TextHint = 'digite o e-mail'
       ChangeColor = 14745599
     end
@@ -537,12 +538,12 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       MaxLength = 12
       NumbersOnly = True
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 11
       ChangeColor = 14745599
     end
     object edCodCidade: TVazEdit
-      Left = 24
-      Top = 314
+      Left = 27
+      Top = 311
       Width = 54
       Height = 29
       BiDiMode = bdLeftToRight
@@ -555,7 +556,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 18
+      TabOrder = 6
       OnExit = edCodCidadeExit
       OnKeyPress = edCodCidadeKeyPress
       ChangeColor = 14745599
@@ -575,7 +576,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       NumbersOnly = True
       ParentBiDiMode = False
       ParentFont = False
-      TabOrder = 19
+      TabOrder = 13
       OnExit = edCodCondPagExit
       OnKeyPress = edCodCondPagKeyPress
       ChangeColor = 14745599
@@ -593,7 +594,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       MaxLength = 12
       ParentFont = False
       ReadOnly = True
-      TabOrder = 20
+      TabOrder = 21
       ChangeColor = 14745599
     end
     object pnlPesquisaCondPag: TPanel
@@ -604,7 +605,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       BevelOuter = bvNone
       Color = 16744448
       ParentBackground = False
-      TabOrder = 21
+      TabOrder = 22
       object imgPesquisaCondPag: TImage
         Left = 0
         Top = 0
@@ -658,7 +659,7 @@ inherited Frm_Cad_Clientes: TFrm_Cad_Clientes
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 22
+      TabOrder = 12
       Text = ''
       TypeMask = TtmData
       ChangeColor = 14745599

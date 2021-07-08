@@ -40,7 +40,7 @@ type
     procedure EdCodEstadoExit( Sender: TObject );
     procedure EdCodEstadoKeyPress( Sender: TObject; var Key: Char );
     procedure BtnPesquisarEstadosClick( Sender: TObject );
-    procedure edDDDEnter(Sender: TObject);
+    procedure EdDDDEnter( Sender: TObject );
 
   private
     EstadoControl: TEstadosController;
@@ -66,7 +66,6 @@ implementation
 uses
   System.Contnrs,
   UEnum,
-  UToolsSistema,
   UFilterSearch,
   UEstados,
   UFrm_Consulta_Estados;
@@ -123,10 +122,10 @@ begin
     Self.ConsultarEstado;
 end;
 
-procedure TFrm_Cad_Cidades.edDDDEnter(Sender: TObject);
+procedure TFrm_Cad_Cidades.EdDDDEnter( Sender: TObject );
 begin
   inherited;
-self.FormatDDD(Sender);
+  Self.FormatDDD( Sender );
 end;
 
 procedure TFrm_Cad_Cidades.FormCreate( Sender: TObject );

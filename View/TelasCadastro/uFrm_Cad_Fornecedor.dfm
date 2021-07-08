@@ -233,9 +233,9 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
     object lblCondPag: TLabel [19]
       Left = 82
       Top = 518
-      Width = 122
+      Width = 129
       Height = 21
-      Caption = 'Cond. Pagamento'
+      Caption = 'Cond. Pagamento*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
@@ -670,7 +670,7 @@ inherited Frm_Cad_Fornecedor: TFrm_Cad_Fornecedor
       Top = 25
       Width = 209
       Height = 50
-      Caption = 'Sexo'
+      Caption = 'Sexo*'
       Columns = 2
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText

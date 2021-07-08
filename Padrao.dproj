@@ -284,7 +284,6 @@
         <DCCReference Include="Controller\uClientesController.pas"/>
         <DCCReference Include="Model\DAO\uFornecedoresDao.pas"/>
         <DCCReference Include="Controller\uFornecedoresController.pas"/>
-        <DCCReference Include="Model\Classes\uToolsSistema.pas"/>
         <DCCReference Include="View\TelasCadastro\uFrm_Cad_CondicaoPagamento.pas">
             <Form>Frm_Cad_CondicaoPagamento</Form>
             <FormType>dfm</FormType>

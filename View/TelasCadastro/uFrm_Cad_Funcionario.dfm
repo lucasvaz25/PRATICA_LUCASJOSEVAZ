@@ -462,8 +462,8 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       ChangeColor = 14745599
     end
     object edTelefone: TVazMaskEdit
-      Left = 32
-      Top = 364
+      Left = 24
+      Top = 366
       Width = 117
       Height = 29
       EditMask = '(99) 9999-9999;0;_'
