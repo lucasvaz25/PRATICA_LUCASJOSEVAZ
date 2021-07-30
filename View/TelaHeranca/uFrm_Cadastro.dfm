@@ -1,5 +1,5 @@
 inherited Frm_Cadastro: TFrm_Cadastro
-  BorderStyle = bsSingle
+  BorderStyle = bsDialog
   Caption = 'Frm_Cadastro'
   ClientHeight = 482
   ClientWidth = 722

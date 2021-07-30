@@ -492,10 +492,11 @@ object FRM_Principal: TFRM_Principal
     Height = 699
     Align = alClient
     BevelOuter = bvNone
-    Caption = 'Panel1'
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
+    ExplicitLeft = 46
+    ExplicitTop = 46
   end
   object MainMenu1: TMainMenu
     Left = 728
@@ -565,6 +566,7 @@ object FRM_Principal: TFRM_Principal
       end
       object OrdemdeProduo1: TMenuItem
         Caption = 'Ordem de Produ'#231#227'o'
+        Visible = False
         OnClick = OrdemdeProduo1Click
       end
       object CondiodePagamento1: TMenuItem

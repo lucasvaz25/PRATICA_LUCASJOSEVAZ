@@ -245,9 +245,9 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
     object lblCargo: TLabel [20]
       Left = 72
       Top = 454
-      Width = 42
+      Width = 49
       Height = 21
-      Caption = 'Cargo'
+      Caption = 'Cargo*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clMenuText
       Font.Height = -16
