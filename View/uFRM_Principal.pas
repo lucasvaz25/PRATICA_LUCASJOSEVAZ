@@ -70,6 +70,7 @@ type
     CondiodePagamento1: TMenuItem;
     N4: TMenuItem;
     FormasdePagamentos1: TMenuItem;
+    CategoryButtons3: TCategoryButtons;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure BtnFecharClick( Sender: TObject );
@@ -95,10 +96,19 @@ type
     procedure OrdemdeProduo1Click( Sender: TObject );
     procedure CondiodePagamento1Click( Sender: TObject );
     procedure FormasdePagamentos1Click( Sender: TObject );
+    procedure SplitView1MouseMove( Sender: TObject; Shift: TShiftState; X,
+                Y: Integer );
+    procedure CategoryButtons1Categories0Items4Click( Sender: TObject );
+    procedure CategoryButtons3MouseLeave( Sender: TObject );
+    procedure CategoryButtons3Categories0Items0Click( Sender: TObject );
+    procedure CategoryButtons3Categories0Items1Click( Sender: TObject );
+    procedure CategoryButtons3Categories0Items2Click( Sender: TObject );
 
   private
     { Private declarations }
     ChamadaInter: TchamadasInterfaces;
+    Rect: TRect;
+    procedure ChamaSubmenu( Menu, SubMenu: TCategoryButtons; Rect: TRect );
   public
     { Public declarations }
   end;
@@ -137,10 +147,39 @@ begin
   Frm.ShowModal;
 end;
 
+procedure TFRM_Principal.CategoryButtons1Categories0Items4Click(
+            Sender: TObject );
+begin
+  Self.ChamaSubmenu( CategoryButtons1, CategoryButtons3, Rect );
+end;
+
 procedure TFRM_Principal.CategoryButtons2Categories0Items0Click(
             Sender: TObject );
 begin
   Self.Close;
+end;
+
+procedure TFRM_Principal.CategoryButtons3Categories0Items0Click(
+            Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaPaises;
+end;
+
+procedure TFRM_Principal.CategoryButtons3Categories0Items1Click(
+            Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaEstados;
+end;
+
+procedure TFRM_Principal.CategoryButtons3Categories0Items2Click(
+            Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaCidades;
+end;
+
+procedure TFRM_Principal.CategoryButtons3MouseLeave( Sender: TObject );
+begin
+  CategoryButtons3.Visible := False;
 end;
 
 procedure TFRM_Principal.Cidades1Click( Sender: TObject );
@@ -180,6 +219,8 @@ end;
 
 procedure TFRM_Principal.FormCreate( Sender: TObject );
 begin
+  CategoryButtons3.Visible := False;
+
   ChamadaInter := TchamadasInterfaces.Create( Self );
 end;
 
@@ -223,6 +264,12 @@ begin
   CategoryButtons1.ShowHint := not SplitView1.Opened;
 end;
 
+procedure TFRM_Principal.SplitView1MouseMove( Sender: TObject;
+            Shift: TShiftState; X, Y: Integer );
+begin
+  CategoryButtons3.Visible := False;
+end;
+
 procedure TFRM_Principal.SplitView1Opened( Sender: TObject );
 begin
   CategoryButtons1.ShowHint := not SplitView1.Opened;
@@ -236,6 +283,27 @@ end;
 procedure TFRM_Principal.Unidades1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaUnidades;
+end;
+
+procedure TFRM_Principal.ChamaSubmenu( Menu, SubMenu: TCategoryButtons; Rect: TRect );
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    if ( Components[ I ] is TCategoryButtons ) then
+    begin
+      if ( TCategoryButtons( Components[ I ] ).Tag = 1 ) then
+        TCategoryButtons( Components[ I ] ).Visible := False;
+    end;
+  end;
+
+  Rect := Menu.Categories.CategoryButtons.GetButtonRect( Menu.Categories.CategoryButtons.SelectedItem );
+
+  SubMenu.Left    := Menu.Categories[ 0 ].Items[ 0 ].CategoryButtons.Width - Menu.Categories[ 0 ].Items[ 0 ].CategoryButtons.Width;
+  SubMenu.Top     := Rect.Top;
+  SubMenu.Visible := True;
+  SubMenu.Show;
 end;
 
 end.

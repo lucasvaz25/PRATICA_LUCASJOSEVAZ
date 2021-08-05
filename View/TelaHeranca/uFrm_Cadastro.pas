@@ -38,12 +38,14 @@ type
     procedure FormatCurrency( Sender: TObject );
     procedure FormatNumeroDecimais( Sender: TObject );
     procedure FormatDDD( Sender: TObject );
+    procedure IsDataAtual( Sender: TObject );
     procedure UpperCaseField;
     procedure ClearFieldsDate;
     procedure PopulaForm; virtual;
 
     function ValidarCPF( const Value: string ): Boolean;
     function GetDefaultDate( const ADate, Field: string ): TDateTime;
+
   public
     { Public declarations }
     Salvou: Boolean;
@@ -134,6 +136,39 @@ begin
   end
   else
     Result := 0;
+end;
+
+procedure TFrm_Cadastro.IsDataAtual( Sender: TObject );
+var
+  ADate: TDateTime;
+  DataStr: string;
+begin
+  if Sender.ClassType = TVazMaskEdit then
+  begin
+    DataStr := TVazMaskEdit( Sender ).EditText;
+
+    if not( DataStr.Equals( '__/__/____' ) ) then
+    begin
+      if ( TryStrToDate( DataStr, ADate ) ) then
+      begin
+        if ( ADate > Now ) then
+        begin
+          MessageDlg( 'A data do campo não pode ser superior a data atual: ' + DateToStr( Date ) + ' !', MtInformation, [ MbOK ], 0 );
+          TVazMaskEdit( Sender ).Clear;
+          TVazMaskEdit( Sender ).SetFocus;
+          Abort;
+        end;
+      end
+      else
+      begin
+        MessageDlg( 'Data Inválida!', MtError, [ MbOK ], 0 );
+        TVazMaskEdit( Sender ).Clear;
+        TVazMaskEdit( Sender ).SetFocus;
+        Abort;
+      end;
+    end;
+  end;
+
 end;
 
 procedure TFrm_Cadastro.LimparCampos;

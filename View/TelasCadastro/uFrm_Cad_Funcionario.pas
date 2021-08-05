@@ -84,6 +84,7 @@ type
     procedure ImgCargoClick( Sender: TObject );
     procedure FormShow( Sender: TObject );
     procedure EdSalarioExit( Sender: TObject );
+    procedure EdDtAdmissaoExit( Sender: TObject );
   private
     { Private declarations }
     CidadeControl: TCidadesController;
@@ -212,6 +213,12 @@ begin
   inherited;
   if Key = #13 then
     Self.ConsultarCidade;
+end;
+
+procedure TFrm_Cad_Funcionario.EdDtAdmissaoExit( Sender: TObject );
+begin
+  inherited;
+  Self.IsDataAtual( Sender );
 end;
 
 procedure TFrm_Cad_Funcionario.EdSalarioExit( Sender: TObject );

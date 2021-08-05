@@ -753,6 +753,7 @@ inherited Frm_Cad_Funcionario: TFrm_Cad_Funcionario
       ParentFont = False
       TabOrder = 12
       Text = ''
+      OnExit = edDtAdmissaoExit
       TypeMask = TtmData
       ChangeColor = 14745599
     end
