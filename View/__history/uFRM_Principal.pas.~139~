@@ -39,38 +39,19 @@ uses
 
 type
   TFRM_Principal = class( TForm )
-    MainMenu1: TMainMenu;
-    Consultas1: TMenuItem;
-    Paises1: TMenuItem;
-    Estados1: TMenuItem;
-    Cidades1: TMenuItem;
     SplitView1: TSplitView;
     ImageList1: TImageList;
-    N1: TMenuItem;
-    Grupos1: TMenuItem;
-    SubGrupos1: TMenuItem;
     PnlTop: TPanel;
     Image1: TImage;
     PnlMenu: TPanel;
     BtnMenu: TSpeedButton;
     CategoryButtons1: TCategoryButtons;
     CategoryButtons2: TCategoryButtons;
-    N2: TMenuItem;
-    Departamentos1: TMenuItem;
     Panel1: TPanel;
-    Unidades1: TMenuItem;
-    Depositos1: TMenuItem;
-    Cargos1: TMenuItem;
-    N3: TMenuItem;
-    Clientes1: TMenuItem;
-    Fornecedores1: TMenuItem;
-    Funcionarios1: TMenuItem;
-    Produtos1: TMenuItem;
-    OrdemdeProduo1: TMenuItem;
-    CondiodePagamento1: TMenuItem;
-    N4: TMenuItem;
-    FormasdePagamentos1: TMenuItem;
-    CategoryButtons3: TCategoryButtons;
+    CtbLocais: TCategoryButtons;
+    CtbEstoque: TCategoryButtons;
+    CtbAdmin: TCategoryButtons;
+    CtbFinan: TCategoryButtons;
     procedure FormCreate( Sender: TObject );
     procedure FormDestroy( Sender: TObject );
     procedure BtnFecharClick( Sender: TObject );
@@ -99,6 +80,30 @@ type
     procedure SplitView1MouseMove( Sender: TObject; Shift: TShiftState; X,
                 Y: Integer );
     procedure CategoryButtons1Categories0Items4Click( Sender: TObject );
+    procedure CtbLocaisMouseLeave( Sender: TObject );
+    procedure CategoryButtons3Categories0Items0Click( Sender: TObject );
+    procedure CategoryButtons3Categories0Items1Click( Sender: TObject );
+    procedure CategoryButtons3Categories0Items2Click( Sender: TObject );
+    procedure CtbEstoqueCategories0Items3Click( Sender: TObject );
+    procedure CtbEstoqueCategories0Items2Click( Sender: TObject );
+    procedure CtbEstoqueCategories0Items1Click( Sender: TObject );
+    procedure CtbEstoqueCategories0Items0Click( Sender: TObject );
+    procedure CategoryButtons1Categories0Items2Click( Sender: TObject );
+    procedure CtbEstoqueMouseLeave( Sender: TObject );
+    procedure CtbEstoqueCategories0Items4Click( Sender: TObject );
+    procedure CtbEstoqueCategories0Items5Click( Sender: TObject );
+    procedure CtbAdminCategories0Items0Click( Sender: TObject );
+    procedure CtbAdminCategories0Items1Click( Sender: TObject );
+    procedure CtbAdminCategories0Items2Click( Sender: TObject );
+    procedure CtbAdminCategories0Items3Click( Sender: TObject );
+    procedure CtbAdminCategories0Items4Click( Sender: TObject );
+    procedure CtbAdminMouseLeave( Sender: TObject );
+    procedure CtbAdminCategories0Items5Click( Sender: TObject );
+    procedure CtbFinanCategories0Items0Click( Sender: TObject );
+    procedure CtbFinanCategories0Items1Click( Sender: TObject );
+    procedure CtbFinanMouseLeave( Sender: TObject );
+    procedure CtbAdminSelectedItemChange( Sender: TObject;
+                const Button: TButtonItem );
 
   private
     { Private declarations }
@@ -136,23 +141,49 @@ end;
 
 procedure TFRM_Principal.CategoryButtons1Categories0Items0Click(
             Sender: TObject );
-var
-  Frm: TFrm_Cad_Ordem_Producao;
 begin
-  Frm := TFrm_Cad_Ordem_Producao.Create( Self );
-  Frm.ShowModal;
+  ChamaSubmenu( CategoryButtons1, CtbAdmin, Rect );
+end;
+
+procedure TFRM_Principal.CategoryButtons1Categories0Items2Click(
+            Sender: TObject );
+begin
+  Self.ChamaSubmenu( CategoryButtons1, CtbEstoque, Rect );
 end;
 
 procedure TFRM_Principal.CategoryButtons1Categories0Items4Click(
             Sender: TObject );
 begin
-  Self.ChamaSubmenu( CategoryButtons1, CategoryButtons3, Rect );
+  Self.ChamaSubmenu( CategoryButtons1, CtbLocais, Rect );
 end;
 
 procedure TFRM_Principal.CategoryButtons2Categories0Items0Click(
             Sender: TObject );
 begin
   Self.Close;
+end;
+
+procedure TFRM_Principal.CategoryButtons3Categories0Items0Click(
+            Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaPaises;
+end;
+
+procedure TFRM_Principal.CategoryButtons3Categories0Items1Click(
+            Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaEstados;
+end;
+
+procedure TFRM_Principal.CategoryButtons3Categories0Items2Click(
+            Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaCidades;
+end;
+
+procedure TFRM_Principal.CtbLocaisMouseLeave( Sender: TObject );
+begin
+  CtbLocais.Visible := False;
 end;
 
 procedure TFRM_Principal.Cidades1Click( Sender: TObject );
@@ -168,6 +199,106 @@ end;
 procedure TFRM_Principal.CondiodePagamento1Click( Sender: TObject );
 begin
   ChamadaInter.ChamadaConsultaCondPagamento;
+end;
+
+procedure TFRM_Principal.CtbAdminCategories0Items0Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaClientes;
+end;
+
+procedure TFRM_Principal.CtbAdminCategories0Items1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaFornecedores;
+end;
+
+procedure TFRM_Principal.CtbAdminCategories0Items2Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaFuncionarios;
+end;
+
+procedure TFRM_Principal.CtbAdminCategories0Items3Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaCargos;
+end;
+
+procedure TFRM_Principal.CtbAdminCategories0Items4Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaDepartamentos;
+end;
+
+procedure TFRM_Principal.CtbAdminCategories0Items5Click( Sender: TObject );
+begin
+  CtbAdmin.Tag := 0;
+  CtbFinan.Tag := 3;
+  ChamaSubmenu( CtbAdmin, CtbFinan, Rect );
+end;
+
+procedure TFRM_Principal.CtbAdminMouseLeave( Sender: TObject );
+begin
+  if not CtbFinan.Visible then
+    CtbAdmin.Visible := False;
+end;
+
+procedure TFRM_Principal.CtbAdminSelectedItemChange( Sender: TObject;
+            const Button: TButtonItem );
+var
+  I: Integer;
+begin
+  for I := 0 to ComponentCount - 1 do // se selecionar outro btn do menu pai o submenu é escondido
+  begin
+    if TCategoryButtons( Components[ I ] ).Tag = 2 then
+      TCategoryButtons( Components[ I ] ).Visible := False;
+  end;
+end;
+
+procedure TFRM_Principal.CtbEstoqueCategories0Items0Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaDepositos;
+end;
+
+procedure TFRM_Principal.CtbEstoqueCategories0Items1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaOrdemProducao;
+end;
+
+procedure TFRM_Principal.CtbEstoqueCategories0Items2Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaProdutos;
+end;
+
+procedure TFRM_Principal.CtbEstoqueCategories0Items3Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaUnidades;
+end;
+
+procedure TFRM_Principal.CtbEstoqueCategories0Items4Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaGrupos;
+end;
+
+procedure TFRM_Principal.CtbEstoqueCategories0Items5Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaSubGrupos;
+end;
+
+procedure TFRM_Principal.CtbEstoqueMouseLeave( Sender: TObject );
+begin
+  CtbEstoque.Visible := False;
+end;
+
+procedure TFRM_Principal.CtbFinanCategories0Items0Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaFormaPgto;
+end;
+
+procedure TFRM_Principal.CtbFinanCategories0Items1Click( Sender: TObject );
+begin
+  ChamadaInter.ChamadaConsultaCondPagamento;
+end;
+
+procedure TFRM_Principal.CtbFinanMouseLeave( Sender: TObject );
+begin
+  CtbFinan.Visible := False;
 end;
 
 procedure TFRM_Principal.Departamentos1Click( Sender: TObject );
@@ -192,7 +323,10 @@ end;
 
 procedure TFRM_Principal.FormCreate( Sender: TObject );
 begin
-  CategoryButtons3.Visible := False;
+  CtbLocais.Visible  := False;
+  CtbEstoque.Visible := False;
+  CtbAdmin.Visible   := False;
+  CtbFinan.Visible   := False;
 
   ChamadaInter := TchamadasInterfaces.Create( Self );
 end;
@@ -240,7 +374,7 @@ end;
 procedure TFRM_Principal.SplitView1MouseMove( Sender: TObject;
             Shift: TShiftState; X, Y: Integer );
 begin
-  CategoryButtons3.Visible := False;
+  CtbLocais.Visible := False;
 end;
 
 procedure TFRM_Principal.SplitView1Opened( Sender: TObject );
@@ -267,15 +401,30 @@ begin
     if ( Components[ I ] is TCategoryButtons ) then
     begin
       if ( TCategoryButtons( Components[ I ] ).Tag = 1 ) then
+      begin
         TCategoryButtons( Components[ I ] ).Visible := False;
+        TCategoryButtons( Components[ I ] ).Tag     := 0;
+      end;
     end;
   end;
 
   Rect := Menu.Categories.CategoryButtons.GetButtonRect( Menu.Categories.CategoryButtons.SelectedItem );
 
-  SubMenu.Left    := Menu.Categories[ 0 ].Items[ 0 ].CategoryButtons.Width - Menu.Categories[ 0 ].Items[ 0 ].CategoryButtons.Width;
-  SubMenu.Top     := Rect.Top;
+  if SubMenu.Tag = 3 then // tag 3 é submenu de submenu
+  begin
+    SubMenu.Left := Menu.Categories[ 0 ].Items[ 0 ].CategoryButtons.Width;
+    SubMenu.Top  := Rect.Top + Menu.Top;
+    SubMenu.Tag  := 2; // seta tag 2 para pode esconder somente quando outro btn for selecionado
+  end
+  else
+  begin
+    SubMenu.Left := Menu.Categories[ 0 ].Items[ 0 ].CategoryButtons.Width - Menu.Categories[ 0 ].Items[ 0 ].CategoryButtons.Width;
+    SubMenu.Top  := Rect.Top;
+    SubMenu.Tag  := 1;
+  end;
+
   SubMenu.Visible := True;
+
   SubMenu.Show;
 end;
 
